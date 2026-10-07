@@ -1,0 +1,32 @@
+---
+// SERVICES: "Strategy and build, under one roof." Three glass pillars of
+// different heights (the three service lines) stand under one floating glass
+// roof; one entry point on the floor feeds all three. Real CSS 3D.
+interface Props { lines: string[]; label: string }
+const { lines, label } = Astro.props;
+const cols = [
+  { x: 8, h: 20 },
+  { x: 41, h: 32 },
+  { x: 74, h: 26 },
+];
+const faces = ['front', 'back', 'left', 'right', 'top'];
+---
+
+<figure class="x3 rf" aria-label={label}>
+  <div class="x3-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="x3-scene rf-scene">
+      <span class="rf-floor"></span>
+      <span class="rf-entry"></span>
+      {
+        cols.map((c, i) => (
+          <div class={`bx rf-col rf-col-${i}`} style={`--x:${c.x}%;--h:${c.h}cqw`}>
+            {faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}
+            <span class="rf-tag">{lines[i]}</span>
+          </div>
+        ))
+      }
+      <div class="rf-roof"><span class="rf-roof-edge"></span></div>
+    </div>
+  </div>
+</figure>

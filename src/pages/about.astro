@@ -1,0 +1,194 @@
+---
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+import HomeCta from '../components/home/HomeCta.astro';
+import Loop3D from '../components/art/Loop3D.astro';
+import OrgShape from '../components/OrgShape.astro';
+import WorldMap from '../components/WorldMap.astro';
+import OverlapStrip from '../components/OverlapStrip.astro';
+import about from '../data/about.json';
+import footprint from '../data/footprint.json';
+import locations from '../data/locations.json';
+
+const numbers = about.record.map((r) => ({
+  ...footprint.record[r.key as keyof typeof footprint.record],
+  label: r.label,
+}));
+
+const structure = [
+  { head: 'No junior tier', body: 'The engineers who scope the work are the engineers who build it.' },
+  { head: 'No handover', body: 'Strategy and delivery are the same engagement, not two contracts.' },
+  { head: 'Limited capacity', body: 'We hold a small number of engagements at a time, by design.' },
+];
+
+const usual = ['Strategy firm', 'Scope', 'Handover', 'Delivery firm', 'Build'];
+const here = ['Diagnostic', 'Scope', 'Build', 'Retainer'];
+---
+
+<Base
+  title="About a senior-led applied AI and software firm | KalTech"
+  description="A senior-led applied AI and software firm for mid-market companies. We diagnose the constraint, scope the work against it, and build the system that moves it."
+  breadcrumb={[{ name: 'About', path: '/about' }]}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>About</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">We are the firm operators call when the <em class="h-mark">pilot</em> did not survive the month.</span>
+        </h1>
+        <p class="h-lead m-reveal">
+          KalTech is an applied AI and software firm. We work with established mid-market companies on
+          systems that have to hold up in production, in front of customers, and under audit.
+        </p>
+      </div>
+      <div class="h-hero-viz">
+        <Loop3D stations={here} label="One unbroken loop with four stations, diagnostic, scope, build and retainer, around one team: the same team throughout." />
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone" id="firm">
+    <div class="h-wrap ab-two">
+      <div>
+        <p class="h-eyebrow m-reveal">The firm</p>
+        <h2 class="h-h2 m-reveal">What we actually do.</h2>
+      </div>
+      <div class="ab-prose">
+        <p class="h-body m-reveal">
+          We are not a venture studio, not a staff augmentation shop, and not an agency that ships a
+          prototype and invoices for the learning. We diagnose the constraint a business is operating
+          under, scope the work against it, and build the system that moves it. The same people do all three.
+        </p>
+        <p class="h-body m-reveal">
+          Most of what we build sits in environments where failure is expensive. Regulated lending,
+          cross-border logistics, hospital operations. That is the work we are best at, and it is the
+          reason our first question is always about the process rather than the model.
+        </p>
+
+        <figure class="ab-handover m-reveal" aria-label="The usual arrangement runs strategy firm, scope, then a break marked handover, then delivery firm and build. Here it runs diagnostic, scope, build and retainer on one unbroken line with the same team throughout.">
+          <p class="sv-label">The usual arrangement</p>
+          <ol class="ab-chain">
+            {usual.map((u) => <li class={u === 'Handover' ? 'is-break' : ''}>{u}</li>)}
+          </ol>
+          <p class="sv-label ab-here">Here</p>
+          <ol class="ab-chain ab-chain-hot">
+            {here.map((u) => <li>{u}</li>)}
+          </ol>
+          <p class="sv-label">Same team throughout</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-white" id="delivery">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Delivery</p>
+          <h2 class="h-h2 m-reveal">The person who sells the work <span class="h-accent">runs</span> the work.</h2>
+        </div>
+      </div>
+      <div class="ab-two ab-two-top">
+        <div class="ab-prose">
+          <p class="h-body m-reveal">
+            Senior-led delivery, meaning there is no pyramid underneath, no account manager between you
+            and the engineers, and no discovery phase staffed by people who will not be there for the build.
+          </p>
+          <p class="h-body m-reveal">
+            This constrains how many engagements we can hold at once. That is a deliberate trade. It is
+            also why the diagnostic exists, because it is the only honest way to decide which work we take.
+          </p>
+        </div>
+        <div class="ab-light-card m-reveal"><OrgShape /></div>
+      </div>
+      <div class="ab-blocks">
+        {
+          structure.map((b) => (
+            <div class="ab-block m-reveal" data-spotlight>
+              <p class="sv-label sv-label-ink">{b.head}</p>
+              <p class="h-body">{b.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone" id="bench">
+    <div class="h-wrap ab-two">
+      <div>
+        <p class="h-eyebrow m-reveal">The bench</p>
+        <h2 class="h-h2 m-reveal"><span class="h-accent">Pedigree</span> is not the reason to hire us.</h2>
+      </div>
+      <div class="ab-prose">
+        <p class="ab-stand m-reveal">
+          Our senior engineers and consultants have built and shipped at companies operating at scale,
+          including Amazon, EY, McKinsey and TikTok. We mention it because it is true, not because it is
+          the argument. The argument is on the Work page.
+        </p>
+        <p class="m-reveal"><a class="h-link wk-link" href="/work"><span>See the work</span><span class="h-link-arrow" aria-hidden="true">&#8594;</span></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-dark" id="record">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">The record</p>
+          <h2 class="h-h2 m-reveal">What we have <span class="h-accent">shipped</span>.</h2>
+        </div>
+      </div>
+      <div class="h-stats ab-stats">
+        {
+          numbers.map((n, i) => (
+            <div class="h-stat m-reveal" data-spotlight>
+              <p class="h-stat-top"><span class="h-stat-idx">{String(i + 1).padStart(2, '0')}</span><span class="h-stat-tick" aria-hidden="true"></span></p>
+              <p class="h-stat-num">
+                <span class={n.count !== null ? 'm-count' : undefined} data-count={n.count ?? undefined} data-final={n.value.replace(/\+$/, '')}>{n.value.replace(/\+$/, '')}</span>
+                {n.value.endsWith('+') && <span class="h-stat-plus">+</span>}
+              </p>
+              <p class="h-stat-label">{n.label}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="ab-nc m-reveal">
+        <p class="sv-label">Not counted</p>
+        <ul>{about.notCounted.map((t) => <li class="h-body">{t}</li>)}</ul>
+        <p class="ab-nc-note">{about.sourceNote}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone" id="where">
+    <div class="h-wrap">
+      <p class="ab-stand ab-where m-reveal">
+        Incorporated in Delaware, operating across the US, UK and GCC, with the delivery team in Lahore.
+        We say this plainly rather than listing offices we do not have.
+      </p>
+      <div class="ab-light-card ab-map m-reveal">
+        <WorldMap
+          markers={locations.markers as any}
+          arcs={locations.arcs}
+          label="The delivery team in Lahore, and the three regions it works across: the US, the UK and the GCC."
+        />
+        {locations.showOverlap && <OverlapStrip />}
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+  <HomeFooter />
+</Base>

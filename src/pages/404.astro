@@ -1,0 +1,25 @@
+---
+// 404. Vercel serves this, with a real 404 status, for any URL that has no page.
+// Never indexed, in any build. One line, and the three ways back in.
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+---
+
+<Base title="Page not found | KalTech" description="There is no page at this address." noindex chrome="own">
+  <HomeHeader />
+  <section class="h-hero h-hero-sm h-dark" id="top">
+    <div class="h-hero-bg" aria-hidden="true"><span class="h-hero-grid"></span><span class="h-orb h-orb-a"></span></div>
+    <div class="h-wrap h-hero-inner h-hero-solo">
+      <div class="h-hero-copy">
+        <h1 class="h-h1">There is no page at this address.</h1>
+        <div class="h-actions">
+          <a class="h-btn h-btn-primary" href="/work"><span>Work</span></a>
+          <a class="h-btn h-btn-ghost" href="/services"><span>Services</span></a>
+          <a class="h-btn h-btn-ghost" href="/"><span>Home</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <HomeFooter />
+</Base>

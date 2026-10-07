@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — KalTech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F7;
+    --band:#EFEAE1;
+    --dark:#1E2528;
+    --ink:#16191B;
+    --muted:#5C6368;
+    --muted-dark:rgba(255,255,255,.62);
+    --red:#BE1E3C;
+    --red-light:#E8556A;
+    --rule:#DEDAD2;
+    --rule-dark:rgba(255,255,255,.14);
+    --pad:clamp(20px,5vw,72px);
+    --maxw:1320px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+
+  /* ---------- nav ---------- */
+  .nav{
+    border-bottom:1px solid var(--rule);
+    background:var(--paper);
+    position:sticky;top:0;z-index:20;
+  }
+  .nav-in{
+    max-width:var(--maxw);margin:0 auto;padding:0 0 0 var(--pad);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;text-decoration:none;padding:18px 0;}
+  .logo span{color:var(--red);}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{
+    text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink);
+    padding:20px 0;border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover{border-bottom-color:var(--red);}
+  .nav-links a[aria-current]{border-bottom-color:var(--red);}
+  .nav-cta{
+    background:var(--red);color:#fff;text-decoration:none;
+    font-size:14px;font-weight:600;padding:19px 26px;white-space:nowrap;
+  }
+  .nav-cta:hover{background:#A5182F;}
+
+  /* ---------- shared type ---------- */
+  .eyebrow{
+    font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 14px;
+  }
+  .eyebrow::before{
+    content:"";display:block;width:34px;height:3px;background:var(--red);margin-bottom:16px;
+  }
+  h1{
+    font-size:clamp(38px,6.2vw,76px);font-weight:800;line-height:1.02;
+    letter-spacing:-.035em;margin:0 0 26px;max-width:16ch;
+  }
+  h2{
+    font-size:clamp(30px,4vw,50px);font-weight:800;line-height:1.06;
+    letter-spacing:-.03em;margin:0 0 22px;max-width:18ch;
+  }
+  .red{color:var(--red);}
+  .stand{
+    font-size:clamp(16.5px,1.45vw,19px);color:var(--muted);
+    max-width:64ch;margin:0 0 18px;line-height:1.62;
+  }
+  .btn{
+    display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+    font-size:14.5px;font-weight:600;padding:17px 30px;margin-top:14px;
+  }
+  .btn:hover{background:#A5182F;}
+
+  section{padding:clamp(64px,8vw,118px) 0;}
+  .band{background:var(--band);}
+  .darkband{background:var(--dark);color:#fff;}
+  .darkband .eyebrow{color:rgba(255,255,255,.6);}
+  .darkband .eyebrow::before{background:var(--red-light);}
+  .darkband .stand{color:var(--muted-dark);}
+
+  .ph{
+    color:var(--red);font-weight:700;
+    border-bottom:1.5px dotted var(--red);
+  }
+  .darkband .ph{color:var(--red-light);border-bottom-color:var(--red-light);}
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,100px);}
+  .hero h1{max-width:14ch;}
+
+  /* ---------- service rows ---------- */
+  .srow{
+    display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);
+    gap:clamp(28px,5vw,80px);
+    padding:clamp(38px,4.5vw,58px) 0;
+    border-top:1px solid var(--rule);
+  }
+  .srow-head{display:flex;gap:22px;align-items:flex-start;}
+  .snum{
+    font-size:clamp(26px,2.6vw,34px);font-weight:800;color:var(--red);
+    line-height:1;letter-spacing:-.02em;flex:none;
+  }
+  .stitle{
+    font-size:clamp(21px,2.1vw,28px);font-weight:800;line-height:1.12;
+    letter-spacing:-.025em;margin:0;max-width:13ch;
+  }
+  .sintro{font-size:16.5px;color:var(--muted);margin:0 0 34px;max-width:66ch;line-height:1.62;}
+  .cols{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(20px,2.6vw,40px);
+    border-top:1px solid var(--rule);padding-top:24px;
+  }
+  .col h4{
+    font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px;line-height:1.5;
+  }
+  .col p{font-size:15px;color:var(--ink);margin:0;line-height:1.55;}
+
+  /* ---------- engagement track ---------- */
+  .track{margin-top:clamp(40px,5vw,64px);}
+  .track-row{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:clamp(20px,3vw,44px);
+  }
+  .stage-n{font-size:29px;font-weight:800;color:var(--red);line-height:1;letter-spacing:-.02em;}
+  .stage h4{font-size:18px;font-weight:800;margin:12px 0 9px;letter-spacing:-.02em;}
+  .stage p{font-size:14.5px;color:var(--muted);margin:0 0 24px;line-height:1.55;}
+
+  .track-line{align-items:stretch;}
+  .track-node{position:relative;height:22px;border-top:1.5px solid rgba(0,0,0,.28);}
+  .track-node::after{
+    content:"";position:absolute;top:-6.5px;left:0;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--red);
+  }
+  .track-node.open{border-top-style:dashed;border-top-color:rgba(0,0,0,.3);}
+  .track-node.open::after{background:var(--band);border:1.5px solid var(--red);}
+
+  .exit-l{
+    font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--red);margin:0 0 8px;
+  }
+  .exit-t{font-size:15.5px;font-weight:600;margin:0;line-height:1.5;letter-spacing:-.01em;}
+  .exit.open .exit-l{color:var(--muted);}
+  .exit.open .exit-t{font-weight:500;color:var(--muted);}
+
+  /* ---------- arrangement ---------- */
+  .arr-body{max-width:70ch;font-size:clamp(16.5px,1.4vw,18.5px);line-height:1.66;color:var(--ink);margin:0 0 clamp(40px,5vw,60px);}
+  .arr-cols{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(24px,3vw,52px);border-top:1px solid var(--rule);padding-top:26px;
+  }
+  .arr-cols h4{
+    font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px;
+  }
+  .arr-cols p{font-size:15.5px;margin:0;line-height:1.6;}
+
+  /* ---------- work ---------- */
+  .cards{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(24px,3vw,48px);margin-top:clamp(38px,5vw,58px);
+  }
+  .card{border-top:1px solid var(--rule-dark);padding-top:22px;}
+  .card .line{
+    font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--red-light);margin:0 0 7px;
+  }
+  .card .cons{
+    font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;
+    color:rgba(255,255,255,.55);margin:0 0 16px;
+  }
+  .card h4{font-size:25px;font-weight:800;margin:0 0 5px;letter-spacing:-.025em;}
+  .card .ind{font-size:14.5px;color:var(--muted-dark);margin:0 0 26px;}
+  .metric{font-size:clamp(40px,4.4vw,58px);font-weight:800;color:var(--red-light);line-height:1;letter-spacing:-.035em;margin:0 0 10px;}
+  .metric-l{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0 0 24px;line-height:1.5;}
+  .card a{font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;}
+  .card a:hover{border-bottom-color:var(--red-light);color:var(--red-light);}
+
+  /* ---------- fit ---------- */
+  .fit-box{
+    background:var(--band);padding:clamp(30px,4vw,54px);
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,64px);
+    margin-top:clamp(30px,4vw,44px);
+  }
+  .fit-col h3{font-size:21px;font-weight:800;margin:0 0 26px;letter-spacing:-.02em;}
+  .fit-col ul{list-style:none;margin:0;padding:0;}
+  .fit-col li{font-size:15.5px;line-height:1.55;padding:13px 0;border-top:1px solid rgba(0,0,0,.09);}
+  .fit-col li:first-child{border-top:0;padding-top:0;}
+  .fit-col.no{border-left:1px solid rgba(0,0,0,.13);padding-left:clamp(24px,3vw,44px);}
+  .fit-col.no li{color:var(--muted);}
+
+  /* ---------- close ---------- */
+  .close{background:var(--red);color:#fff;}
+  .close h2{color:#fff;max-width:20ch;}
+  .close .stand{color:rgba(255,255,255,.88);}
+  .close .btn{background:#fff;color:var(--red);}
+  .close .btn:hover{background:rgba(255,255,255,.88);}
+
+  footer{border-top:1px solid var(--rule);padding:44px 0;font-size:14px;color:var(--muted);}
+  .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .srow{grid-template-columns:1fr;gap:26px;}
+    .track-row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px;}
+    .cards{grid-template-columns:1fr;row-gap:40px;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:720px){
+    .cols,.arr-cols{grid-template-columns:1fr;row-gap:26px;}
+    .cols,.arr-cols{border-top:0;padding-top:0;}
+    .col,.arr-cols>div{border-top:1px solid var(--rule);padding-top:20px;}
+    .track-row{grid-template-columns:1fr;}
+    .track-line{display:none;}
+    .stage p{margin-bottom:14px;}
+    .exit{border-top:1.5px solid rgba(0,0,0,.28);padding-top:14px;margin-bottom:14px;}
+    .fit-box{grid-template-columns:1fr;}
+    .fit-col.no{border-left:0;padding-left:0;border-top:1px solid rgba(0,0,0,.13);padding-top:30px;}
+    h1{max-width:none;}
+  }
+  a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#">KalTech<span>.</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#" aria-current="page">Services</a>
+      <a href="#">Diagnostic</a>
+      <a href="#">Insights</a>
+      <a href="#">About</a>
+    </div>
+    <a class="nav-cta" href="#start">Get an AI Strategy Consult</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">What we do</p>
+    <h1>Strategy and build, under <span class="red">one roof</span>.</h1>
+    <p class="stand">The same firm that scopes the work ships it. That is the whole of the accountability claim, and it is why there is no handover between a strategy team and a delivery team.</p>
+    <p class="stand">Three lines run out of that arrangement. You are not expected to arrive knowing which one you need, because establishing that is what the first conversation is for.</p>
+    <a class="btn" href="#start">Get an AI Strategy Consult</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="padding-top:0;">
+  <div class="wrap">
+
+    <div class="srow">
+      <div class="srow-head">
+        <div class="snum">01</div>
+        <h3 class="stitle">AI and software consulting</h3>
+      </div>
+      <div>
+        <p class="sintro">We establish what should be built and what should not. This covers the diagnostic, architecture decisions, build-versus-buy calls, and the sequencing of a roadmap against payback rather than ambition. It ends in a written finding and a scope, not a deck.</p>
+        <div class="cols">
+          <div class="col">
+            <h4>What brings people here</h4>
+            <p>A build has been proposed internally or quoted by a vendor, and nobody in the room can say with confidence whether it addresses the thing that is actually costing money.</p>
+          </div>
+          <div class="col">
+            <h4>What an engagement looks like</h4>
+            <p>Two to three weeks, senior-led throughout, ending in a written finding and a priced scope.</p>
+          </div>
+          <div class="col">
+            <h4>What it is not</h4>
+            <p>A strategy deck, a vendor comparison exercise, or a discovery phase staffed by people who will not build the work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="srow">
+      <div class="srow-head">
+        <div class="snum">02</div>
+        <h3 class="stitle">AI and software development</h3>
+      </div>
+      <div>
+        <p class="sintro">We build and ship production systems. Platforms, internal tooling, integrations, and applied AI where it earns its place. Senior engineers on the work throughout, with no junior tier absorbing the delivery.</p>
+        <div class="cols">
+          <div class="col">
+            <h4>What brings people here</h4>
+            <p>The constraint is established and the case is settled, and what is needed now is a system that survives production rather than a prototype that survives a demo.</p>
+          </div>
+          <div class="col">
+            <h4>What an engagement looks like</h4>
+            <p>Scoped against a diagnostic finding and delivered in stages, typically <span class="ph">[X to Y]</span>, with the existing operation live throughout and a working system in production before the final stage.</p>
+          </div>
+          <div class="col">
+            <h4>What it is not</h4>
+            <p>Staff augmentation, offshore capacity, or a prototype delivered with an invoice for the learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="srow" style="border-bottom:1px solid var(--rule);">
+      <div class="srow-head">
+        <div class="snum">03</div>
+        <h3 class="stitle">Technology strategy and transformation</h3>
+      </div>
+      <div>
+        <p class="sintro">We work alongside operators through a change that spans more than one system. Migration off legacy platforms, consolidation of fragmented data, and the operating decisions that come with both.</p>
+        <div class="cols">
+          <div class="col">
+            <h4>What brings people here</h4>
+            <p>A change is already underway, it touches more than one system, and the decisions are arriving faster than a fixed scope can absorb them.</p>
+          </div>
+          <div class="col">
+            <h4>What an engagement looks like</h4>
+            <p>A retainer, because the work outlasts a single build. Reviewed at <span class="ph">[X]</span> intervals against what it has moved, rather than renewed by default.</p>
+          </div>
+          <div class="col">
+            <h4>What it is not</h4>
+            <p>An ongoing support contract, a managed service, or a seat on a steering committee.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW WE ENGAGE -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">How we engage</p>
+    <h2>Diagnostic first.</h2>
+    <p class="stand">Nothing is scoped before the constraint is established. That sequence is the same on every engagement, whatever the eventual size of the work, and it can end at the close of any stage with something in your hands.</p>
+
+    <div class="track">
+      <div class="track-row">
+        <div class="stage">
+          <div class="stage-n">01</div>
+          <h4>Diagnostic</h4>
+          <p>Two to three weeks against the three lenses, ending in a written finding.</p>
+        </div>
+        <div class="stage">
+          <div class="stage-n">02</div>
+          <h4>Scope</h4>
+          <p>Priced against the finding, sequenced by payback rather than ambition.</p>
+        </div>
+        <div class="stage">
+          <div class="stage-n">03</div>
+          <h4>Build</h4>
+          <p>Senior-led delivery, staged, with the existing operation live throughout.</p>
+        </div>
+        <div class="stage">
+          <div class="stage-n">04</div>
+          <h4>Retainer</h4>
+          <p>Where the work outlasts the build, we stay on the roadmap.</p>
+        </div>
+      </div>
+
+      <div class="track-row track-line" aria-hidden="true">
+        <div class="track-node"></div>
+        <div class="track-node"></div>
+        <div class="track-node"></div>
+        <div class="track-node open"></div>
+      </div>
+
+      <div class="track-row">
+        <div class="exit">
+          <p class="exit-l">Stop here and you have</p>
+          <p class="exit-t">A written finding naming the constraint, with the evidence for it.</p>
+        </div>
+        <div class="exit">
+          <p class="exit-l">Stop here and you have</p>
+          <p class="exit-t">A priced plan detailed enough that another firm could build against it.</p>
+        </div>
+        <div class="exit">
+          <p class="exit-l">Stop here and you have</p>
+          <p class="exit-t">A system running in production, not a branch waiting on the next payment.</p>
+        </div>
+        <div class="exit open">
+          <p class="exit-l">Ongoing</p>
+          <p class="exit-t">Reviewed at each interval against what it has moved, rather than renewed by default.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE ARRANGEMENT -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The arrangement</p>
+    <h2>Every stage has an exit.</h2>
+    <p class="arr-body">There is no point in that sequence at which stopping leaves you holding nothing but a relationship. What follows is the rest of the arrangement, which is the part most firms discuss only once something has gone wrong.</p>
+    <div class="arr-cols">
+      <div>
+        <h4>Scope</h4>
+        <p>Fixed and priced before a stage begins. Where we have misjudged the estimate, that is our cost to absorb rather than a change order to negotiate.</p>
+      </div>
+      <div>
+        <h4>Code</h4>
+        <p>Yours. Repositories, infrastructure and documentation transfer at the close of each stage, not at the end of the engagement.</p>
+      </div>
+      <div>
+        <h4>People</h4>
+        <p>The engineers named at scoping are the engineers on the work. Where that has to change, you hear it before it happens rather than afterwards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE WORK -->
+<section class="darkband" id="work">
+  <div class="wrap">
+    <p class="eyebrow">The work</p>
+    <h2>Every service line on this page has shipped.</h2>
+    <div class="cards">
+      <div class="card">
+        <p class="line">01 Consulting → 02 Development</p>
+        <p class="cons">Constraint found — <span class="ph">[process]</span></p>
+        <h4>KalPay</h4>
+        <p class="ind">Regulated consumer lending</p>
+        <p class="metric">92%</p>
+        <p class="metric-l">Decisions returned without manual review</p>
+        <a href="#">Read the case study →</a>
+      </div>
+      <div class="card">
+        <p class="line">02 Development</p>
+        <p class="cons">Constraint found — Data</p>
+        <h4>AHW Global</h4>
+        <p class="ind">Logistics and cross-border shipping</p>
+        <p class="metric">3 → 1</p>
+        <p class="metric-l">Definitions of a shipment, consolidated</p>
+        <a href="#">Read the case study →</a>
+      </div>
+      <div class="card">
+        <p class="line">02 Development</p>
+        <p class="cons">Constraint found — Process</p>
+        <h4>BECS</h4>
+        <p class="ind">Hospital blood bank operations</p>
+        <p class="metric">100%</p>
+        <p class="metric-l">Unit traceability, donor to patient</p>
+        <a href="#">Read the case study →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Fit</p>
+    <h2>We are not the right firm for everyone.</h2>
+    <div class="fit-box">
+      <div class="fit-col">
+        <h3>This works when</h3>
+        <ul>
+          <li>You have a functioning business and a specific commercial problem.</li>
+          <li>Someone with budget authority is in the room.</li>
+          <li>The system will run in production, in front of customers or under audit.</li>
+          <li>You want the people who scope the work to be the people who build it.</li>
+          <li>You would rather be told the scope is smaller than you budgeted than be told the budget is achievable.</li>
+        </ul>
+      </div>
+      <div class="fit-col no">
+        <h3>This is not for</h3>
+        <ul>
+          <li>Teams looking for additional capacity rather than a partner.</li>
+          <li>Work where the brief is fixed and the constraint is not open to question.</li>
+          <li>Procurement run as a lowest-bid comparison against a specification that is not open to revision.</li>
+          <li>Companies without an operation for the system to run inside, where any answer we gave would be a forecast rather than a finding.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close" id="start">
+  <div class="wrap">
+    <p class="eyebrow" style="color:rgba(255,255,255,.75);">Start here</p>
+    <h2>You do not have to know which of the three you need.</h2>
+    <p class="stand">A thirty minute call, no fee and no deck. You describe the problem, and we tell you which line it belongs in, or that it belongs somewhere else.</p>
+    <a class="btn" href="#">Get an AI Strategy Consult</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>KalTech — An Applied AI Firm</div>
+    <div>info@kaltech.online</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.close .eyebrow').forEach(function(e){
+    e.style.setProperty('--x','');
+  });
+</script>
+<style>.close .eyebrow::before{background:#fff;}</style>
+</body>
+</html>

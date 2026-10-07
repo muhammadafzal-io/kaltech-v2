@@ -1,0 +1,485 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+import HomeCta from '../components/home/HomeCta.astro';
+import ImageWheel from '../components/home/ImageWheel.astro';
+import DiagArt from '../components/home/DiagArt.astro';
+import Hero3D from '../components/art/Hero3D.astro';
+import diagnostic from '../data/diagnostic.json';
+
+const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = (await getCollection('insights')).find((i) => i.data.featured && i.data.published)!;
+
+const stats = [
+  { value: '7', label: 'Countries delivered in', count: 7, suffix: '' },
+  { value: '60+', label: 'Products shipped', count: 60, suffix: '+' },
+  { value: '120,000+', label: 'Man-hours saved', count: 120000, suffix: '+' },
+];
+
+const quotes = [
+  {
+    quote:
+      'The diagnostic found the constraint in our data, not our software. The build that followed was half the scope we had budgeted.',
+    source: 'Head of Operations, KalPay',
+    id: 'kalpay',
+  },
+  {
+    quote:
+      'Senior engineers from the first call to the last release. There was no handover, and nothing was lost in one.',
+    source: 'VP Operations, AHW Global',
+    id: 'ahw-global',
+  },
+  {
+    quote:
+      'They put in writing that our first brief should not be built. Then they scoped the thing that should have been.',
+    source: 'Clinical Systems Lead, BECS',
+    id: 'becs',
+  },
+];
+
+const lenses = [
+  {
+    num: '01',
+    label: 'Process',
+    heading: 'Is this a process, or a habit?',
+    body: 'Software applied to undefined work produces an unreadable result. We establish whether the work, and the systems it currently runs through, are specified tightly enough to be encoded before anything is scoped.',
+    ask: 'Could two people perform this work and produce the same result?',
+  },
+  {
+    num: '02',
+    label: 'Data',
+    heading: 'Would two systems agree on this number?',
+    body: 'Most integration failures are definitional rather than technical. We establish whether the business holds one definition of a customer, an order or a case, or several definitions that disagree.',
+    ask: 'Could two systems answer the same question and return the same number?',
+  },
+  {
+    num: '03',
+    label: 'Unit Economics',
+    heading: 'Does the build clear its own cost at this volume?',
+    body: 'A system carries a maintenance cost that is rarely priced at scoping. We establish the volume at which it pays for itself, and whether the business operates above that line.',
+    ask: 'What does this cost to run in year two, and at what volume does it clear it?',
+  },
+];
+
+const serviceLines = [
+  {
+    num: '01',
+    title: 'AI and software consulting',
+    body: 'We establish what should be built and what should not. This covers the diagnostic, architecture decisions, build-versus-buy calls, and the sequencing of a roadmap against payback rather than ambition. It ends in a written finding and a scope, not a deck.',
+  },
+  {
+    num: '02',
+    title: 'AI and software development',
+    body: 'We build and ship production systems. Platforms, internal tooling, integrations, applied AI where it earns its place. Senior engineers on the work throughout, no junior tier absorbing the delivery.',
+  },
+  {
+    num: '03',
+    title: 'Technology strategy and transformation',
+    body: 'We work alongside operators through a change that spans more than one system. Migration off legacy platforms, consolidation of fragmented data, and the operating decisions that come with both.',
+  },
+];
+
+const fork = diagnostic.fork;
+const returns = diagnostic.returns.map((r) => r.short);
+const tone = ['cobalt', 'ink', 'sun'];
+const shots: Record<string, string> = {
+  kalpay: '/work/kalpay-leads.jpg',
+  'ahw-global': '/work/ahw-global-shipments.svg',
+  becs: '/work/becs-inventory.svg',
+};
+const caseById = Object.fromEntries(cases.map((c) => [c.id, c]));
+
+// DUMMY: abstract logo marks, no names, until the confirmed client logos arrive
+// (src/data/footprint.json). Each is a shape plus a wordmark-length bar.
+// Client logos (white on transparent; recoloured in CSS per theme).
+const clientLogos = [
+  { name: 'Graana.com', src: '/clients/graana.webp', w: 244, h: 48 },
+  { name: 'G42', src: '/clients/g42.webp', w: 138, h: 66 },
+  { name: 'Hyring', src: '/clients/hyring.webp', w: 208, h: 70 },
+  { name: 'KalPay', src: '/clients/kalpay.webp', w: 152, h: 50 },
+  { name: 'MayfairTech.ai', src: '/clients/mayfairtech.webp', w: 384, h: 163 },
+  { name: 'Shyppr', src: '/clients/shyppr.webp', w: 384, h: 87 },
+  { name: 'The Guild', src: '/clients/the-guild.webp', w: 163, h: 60 },
+  { name: 'Crytical', src: '/clients/crytical.webp', w: 234, h: 70 },
+];
+
+---
+
+<Base
+  title="Applied AI and software for mid-market companies | KalTech"
+  description="A senior-led applied AI and software firm for mid-market companies. Every engagement begins with a diagnostic against process, data and unit economics."
+  chrome="own"
+>
+  <HomeHeader />
+
+  <!-- 01 Hero -->
+  <section class="h-hero h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>Applied AI &#183; Mid-Market</p>
+
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">The Technology Partner</span>
+          <span class="h-line">for companies who care</span>
+          <span class="h-line">about <em class="h-mark">profit</em>, not pilots</span>
+        </h1>
+
+        <p class="h-lead m-reveal">
+          We design and build software and AI systems anchored to constraints in process,
+          data and unit economics, the three pillars that decide whether a technology
+          implementation shows up in the P&amp;L.
+        </p>
+
+        <div class="h-actions m-reveal">
+          <a class="h-btn h-btn-primary" href="/contact" data-magnetic>
+            <span>Get an AI Strategy Consult</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span>
+          </a>
+          <a class="h-btn h-btn-ghost" href="/work" data-magnetic><span>See our work</span></a>
+        </div>
+
+      </div>
+
+      <!-- The page's idea, drawn: a brief passes through three layers, the
+           three lenses, and one comes back binding. -->
+      <div class="h-hero-viz hx-col">
+        <Hero3D
+          lenses={lenses.map((l) => ({ num: l.num, label: l.label }))}
+          hot={0}
+          label="A brief travels into a glowing core surrounded by three glass panels, the three lenses: process, data and unit economics. Process is lit as binding."
+        />
+      </div>
+    </div>
+
+    <div class="h-wrap">
+      <div class="h-stats">
+        {
+          stats.map((s, i) => {
+            const plus = s.suffix === '+';
+            const shown = s.value.replace(/\+$/, '');
+            return (
+              <div class="h-stat m-reveal" data-spotlight>
+                <p class="h-stat-top">
+                  <span class="h-stat-idx">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="h-stat-tick" aria-hidden="true"></span>
+                </p>
+                <p class="h-stat-num">
+                  <span class="m-count" data-count={s.count} data-final={shown}>{shown}</span>
+                  {plus && <span class="h-stat-plus">+</span>}
+                </p>
+                <p class="h-stat-label">{s.label}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Clients -->
+  <section class="h-sec h-bone" id="clients">
+    <div class="h-wrap">
+      <div class="tc-top">
+        <p class="h-eyebrow m-reveal">Clients</p>
+      </div>
+
+      <div class="tc m-reveal" data-tc>
+        <div class="tc-bloom" aria-hidden="true"></div>
+
+        <button class="tc-arrow tc-prev" type="button" data-tc-prev aria-label="Previous client" data-js-control>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="tc-arrow tc-next" type="button" data-tc-next aria-label="Next client" data-js-control>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+
+        <!-- DUMMY heading copy, to be replaced -->
+        <h2 class="tc-title">In their <span class="tc-accent">own words</span>.</h2>
+
+        <div class="tc-dots" role="group" aria-label="Choose a client" data-js-control>
+          {quotes.map((q, i) => <button class="tc-dot" type="button" data-tc-dot={i} aria-label={`Show ${caseById[q.id].data.title}`}></button>)}
+        </div>
+
+        <div class="tc-stage">
+          {
+            quotes.map((q, i) => {
+              const c = caseById[q.id];
+              const pos = [0, 1, -1][i];
+              return (
+                <article class="tc-card" style={`--pos:${pos}`} data-tc-card={i}>
+                  <span class="tc-shape" aria-hidden="true"></span>
+                  <div class="tc-face">
+                    <span class="tc-avatar" aria-hidden="true">{c.data.title.charAt(0)}</span>
+                    <p class="tc-co">{q.source.split(', ').slice(1).join(', ')}</p>
+                    <p class="tc-role">{q.source.split(', ')[0]}</p>
+                    <blockquote class="tc-quote">{q.quote}</blockquote>
+                    <a class="tc-link" href={`/work/${q.id}`}>
+                      <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
+                      <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+                    </a>
+                  </div>
+                </article>
+              );
+            })
+          }
+        </div>
+        <p class="visually-hidden" aria-live="polite" data-tc-live></p>
+      </div>
+    </div>
+
+    <!-- Client logos: a caption, then one quiet row between hairlines. -->
+    <div class="h-wrap">
+      <div class="lg m-reveal">
+        <p class="lg-label">Teams we have built and shipped for</p>
+        <div class="lgm">
+          <div class="lgm-track">
+            {
+              [0, 1].map((copy) => (
+                <ul class="lgm-set" aria-hidden={copy === 1 ? 'true' : undefined}>
+                  {clientLogos.map((l) => (
+                    <li class="lgm-item">
+                      <img class="lg-img" src={l.src} alt={copy === 0 ? l.name : ''} width={l.w} height={l.h} loading="lazy" decoding="async" />
+                    </li>
+                  ))}
+                </ul>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Method -->
+  <section class="h-sec h-white" id="method">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Our Method</p>
+          <h2 class="h-h2 m-reveal">
+            Most companies commission a solution before the <span class="h-accent">constraint</span> has been identified.
+          </h2>
+        </div>
+        <p class="h-sub m-reveal">
+          A brief specifies a solution that has already been chosen. It rarely establishes that the
+          solution addresses the constraint the business is actually operating under. KalTech
+          identifies that constraint first, across process, data and economics.
+        </p>
+      </div>
+
+      <div class="h-lenses">
+        {
+          lenses.map((l) => (
+            <article class="h-lens m-reveal" data-spotlight>
+              <p class="h-lens-num">{l.num}</p>
+              <p class="h-lens-label">{l.label}</p>
+              <h3 class="h-h3">{l.heading}</h3>
+              <p class="h-body">{l.body}</p>
+              <p class="h-lens-ask"><strong>We ask:</strong> {l.ask}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 The diagnostic -->
+  <section class="h-sec h-dark" id="diagnostic">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap h-diag">
+      <div class="h-diag-copy">
+        <h2 class="h-h2 m-reveal">
+          Every engagement begins with a <span class="h-accent">diagnostic</span>.
+        </h2>
+        <p class="h-sub m-reveal">
+          The diagnostic runs against the three lenses. It ends in a written finding and
+          a scope priced against it. Companies that proceed to a build do so with the
+          constraint already established. Companies that do not proceed keep the finding.
+        </p>
+        <p class="m-reveal">
+          <a class="h-link" href="/diagnostic"><span>How the diagnostic works</span><span class="h-link-arrow" aria-hidden="true">&#8594;</span></a>
+        </p>
+      </div>
+
+
+
+      <div class="h-diag-visual" aria-hidden="true">
+        <span class="h-diag-halo"></span>
+        <DiagArt />
+      </div>
+
+      <figure
+        class="h-flow"
+        aria-label="The diagnostic leads to a written finding, and the finding forks into two exits: a scope, or nothing built."
+      >
+        <div class="h-flow-step m-reveal">
+          <span class="h-flow-node" aria-hidden="true"></span>
+          <div>
+            <p class="h-flow-name">{fork.entry}</p>
+            <p class="h-flow-note">{fork.entryNote}</p>
+          </div>
+        </div>
+        <div class="h-flow-step h-flow-step-lg m-reveal">
+          <span class="h-flow-node" aria-hidden="true"></span>
+          <div>
+            <p class="h-flow-name">{fork.finding}</p>
+            <ul class="h-flow-returns">
+              {returns.map((r) => <li>{r}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div class="h-flow-exits m-reveal">
+          <div class="h-flow-exit"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p></div>
+          <div class="h-flow-exit"><span class="h-flow-node h-flow-node-hollow" aria-hidden="true"></span><p class="h-flow-name">{fork.nothing}</p></div>
+        </div>
+      </figure>
+      <blockquote class="h-pull h-pull-wide m-reveal">{fork.quote}</blockquote>
+    </div>
+  </section>
+
+  <!-- 05 Selected work -->
+  <section class="h-sec h-bone" id="work">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Selected Work</p>
+          <h2 class="h-h2 m-reveal">
+            <a class="h-hlink" href="/work">Every one of these started with a <span class="h-accent">constraint</span>, not a brief.</a>
+          </h2>
+        </div>
+      </div>
+
+      <div class="h-work-wheel">
+        <ImageWheel cases={cases} featured={featured} />
+      </div>
+
+      <div class="h-bento">
+        {
+          cases.map((c, i) => (
+            <a class={`h-case h-case-${tone[i]} h-case-${i + 1} m-reveal`} href={`/work/${c.id}`} data-spotlight>
+              <div class="h-shot">
+                <img class="h-shot-img" src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
+              </div>
+              <div class="h-case-body">
+                <p class="h-case-pill">Constraint found &#8212; {c.data.constraintFound}</p>
+                <h3 class="h-case-title">{c.data.title}</h3>
+                <p class="h-case-industry">{c.data.industry}</p>
+                <p class="h-case-text">{c.data.cardParas[1]}</p>
+                <div class="h-case-foot">
+                  <div>
+                    <p class="h-case-fig">
+                      <span
+                        class={c.data.cardCount !== null ? 'm-count' : undefined}
+                        data-count={c.data.cardCount ?? undefined}
+                        data-suffix={c.data.cardSuffix || undefined}
+                        data-final={c.data.cardFigure}
+                      >{c.data.cardFigure}</span>
+                    </p>
+                    <p class="h-case-figlabel">{c.data.cardFigureLabel}</p>
+                  </div>
+                  <p class="h-case-link">
+                    <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
+                    <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="h-pull h-pull-light m-reveal">
+        Senior engineers on the work throughout. No junior tier absorbing the delivery.
+      </p>
+    </div>
+  </section>
+
+  <!-- 06 Services -->
+  <section class="h-sec h-white" id="services">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Services</p>
+          <h2 class="h-h2 m-reveal">
+            <a class="h-hlink" href="/services">Strategy and build, under <span class="h-accent">one roof</span>.</a>
+          </h2>
+        </div>
+        <p class="h-sub m-reveal">
+          The same firm that scopes the work ships it. That is the whole of the accountability
+          claim, and it is why there is no handover between a strategy team and a delivery
+          team.
+        </p>
+      </div>
+
+      <div class="hs-grid">
+        {
+          serviceLines.map((s, i) => (
+            <a class="hs-card m-reveal" href="/services" data-spotlight>
+              <div class="hs-top">
+                <span class="hs-num">{s.num}</span>
+                <span class="hs-stack" aria-hidden="true">
+                  <span class="hs-scene">
+                    {Array.from({ length: i + 1 }, (_, k) => <span class="hs-slab" style={`--k:${k}`}></span>)}
+                  </span>
+                </span>
+              </div>
+              <h3 class="hs-title">{s.title}</h3>
+              <p class="hs-body">{s.body}</p>
+              <span class="hs-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Insights -->
+  <section class="h-sec h-dark" id="insights">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Insights</p>
+          <h2 class="h-h2 m-reveal">
+            <a class="h-hlink" href="/insights">We read the <span class="h-accent">research</span> so a build does not have to discover it.</a>
+          </h2>
+        </div>
+        <p class="h-sub m-reveal">
+          Frontier work moves faster than any delivery cycle. We track it, test the parts that
+          claim a production benefit, and publish what held. Most of it does not. The value is
+          knowing which.
+        </p>
+      </div>
+
+      <a class="in-feature m-reveal" href={`/insights/${featured.id}`}>
+        <div class="in-copy">
+          <p class="in-kicker">{featured.data.kicker}</p>
+          <h3 class="in-title">{featured.data.title}</h3>
+          <p class="in-text">
+            Where retrieval holds up, where tuning earns its cost, and the volume at which that
+            answer flips.
+          </p>
+          <p class="in-meta">
+            <span>{featured.data.readingTime}</span>
+            <span class="in-read"><span>Read the article</span><span class="h-link-arrow" aria-hidden="true">&#8594;</span></span>
+          </p>
+        </div>
+        <div class="in-art" aria-hidden="true">
+          <span class="in-halo"></span>
+          <img class="in-img" src="/work/insights-layers.png" alt="" width="1700" height="858" loading="lazy" decoding="async" />
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <HomeCta />
+
+  <HomeFooter />
+</Base>

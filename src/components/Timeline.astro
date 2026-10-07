@@ -1,0 +1,108 @@
+---
+// THE PROPORTIONAL TIMELINE.
+// A horizontal bar of segments whose widths are relative lengths. States:
+// solid, outline, open (a hatch fading toward the right edge, for work with no
+// fixed end) and gap. Anything slotted in beneath is laid on the same column
+// template, so a label sits under the segment it belongs to, starting where the
+// segment starts. Below 768 those labels stack into a list keyed by a swatch of
+// their segment, rather than shrinking type.
+//
+// HTML rather than SVG on purpose: a hatch and the vertical gate marker distort
+// under a non-uniformly scaled viewBox, and non-scaling strokes break .m-draw's
+// pathLength dash in every engine. Segments draw with .m-rule, the primitive the
+// Diagnostic phase rail already used.
+//
+// Widths here are illustrative unless a caller says otherwise, and the caption
+// says so.
+import timelines from '../data/timelines.json';
+
+interface Segment {
+  width: number;
+  state: 'solid' | 'outline' | 'open' | 'gap' | 'fill';
+  accent?: boolean;
+  key?: string;
+}
+
+interface Props {
+  segments: Segment[];
+  /** Index of the segment the gate follows. */
+  gateAfter?: number | null;
+  gateLabel?: string;
+  /** A label at the right-hand end of the bar, such as a total duration. */
+  scale?: string;
+  caption?: string | null;
+  size?: 'md' | 'sm';
+  /** Draw on a scale longer than the segments, so short work reads as short. */
+  scaleOf?: number;
+  label: string;
+  class?: string;
+}
+
+const {
+  segments,
+  gateAfter = null,
+  gateLabel,
+  scale,
+  caption = timelines.caption,
+  size = 'md',
+  scaleOf,
+  label,
+  class: extra = '',
+} = Astro.props;
+
+const used = segments.reduce((s, x) => s + x.width, 0);
+const total = scaleOf && scaleOf > used ? scaleOf : used;
+const drawn = total > used ? [...segments, { width: total - used, state: 'fill' as const }] : segments;
+const cols = drawn.map((s) => `${s.width}fr`).join(' ');
+const gateAt =
+  gateAfter === null
+    ? null
+    : (segments.slice(0, gateAfter + 1).reduce((s, x) => s + x.width, 0) / total) * 100;
+const hasSlot = Astro.slots.has('default');
+---
+
+<figure
+  class={`tl tl-${size} ${gateAt !== null ? 'tl-gated' : ''} ${extra}`.trim()}
+  style={`--tl-cols:${cols};${gateAt !== null ? `--tl-gate:${gateAt.toFixed(2)}%;` : ''}`}
+>
+  <div class="tl-body">
+    {
+      (gateLabel || scale) && (
+        <div class="tl-head">
+          {gateAt !== null && gateLabel && <p class="t-label tl-gate-label">{gateLabel}</p>}
+          {scale && <p class="t-meta tl-scale">{scale}</p>}
+        </div>
+      )
+    }
+
+    <div class="tl-barwrap">
+      <div class="tl-bar" role="img" aria-label={label}>
+        {
+          drawn.map((s) => (
+            <span
+              class={[
+                'tl-seg',
+                `tl-${s.state}`,
+                s.accent ? 'tl-accent rule-struct' : '',
+                s.state !== 'gap' && s.state !== 'fill' ? 'm-rule' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            />
+          ))
+        }
+      </div>
+      {gateAt !== null && <span class="tl-gate-mark rule-struct" aria-hidden="true" data-responsive-alt />}
+    </div>
+
+    {hasSlot && (
+      <div class="tl-cells">
+        <slot />
+      </div>
+    )}
+
+    {gateAt !== null && <span class="tl-gate rule-struct" aria-hidden="true" data-responsive-alt />}
+  </div>
+
+  {caption && <figcaption class="t-meta tl-caption">{caption}</figcaption>}
+</figure>

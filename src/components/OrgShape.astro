@@ -1,0 +1,49 @@
+---
+// TWO ORGANISATION SHAPES.
+// Left, in --muted: a pyramid of one, three and nine, with a single line from
+// the top to you, routed around the pyramid rather than through it. Right, in
+// --ink: one row, every person connected to you. It shows who you reach, not
+// how many people there are, and it is captioned "Illustrative" because the
+// dot counts are not a headcount. Small and monochrome by design: the About
+// page's bold moment is the map.
+import about from '../data/about.json';
+
+const { left, right, node, caption } = about.org;
+
+// Pyramid rows: 1, 3, 9, centred on x = 100.
+const pyramid = [
+  { y: 16, xs: [100] },
+  { y: 48, xs: [76, 100, 124] },
+  { y: 80, xs: Array.from({ length: 9 }, (_, i) => 36 + i * 16) },
+];
+const flat = [40, 70, 100, 130, 160];
+---
+
+<figure class="org">
+  <div class="org-pair">
+    <div class="org-one org-pyramid">
+      <svg class="m-draw" viewBox="0 0 200 150" width="100%" role="img" aria-labelledby="org-pyramid-title" aria-describedby="org-pyramid-desc">
+        <title id="org-pyramid-title">{left}</title>
+        <desc id="org-pyramid-desc">{`${caption}: rows of one, three and nine, with one line from the top to ${node}, routed around the rows.`}</desc>
+        <path class="org-line-muted" pathLength="1" d="M104 16 H188 V142 H106" />
+        {pyramid.flatMap((row) => row.xs.map((x) => <rect class="org-dot-muted" x={x - 4} y={row.y - 4} width="8" height="8" />))}
+        <rect class="org-node-muted" x="94" y="136" width="12" height="12" />
+      </svg>
+      <p class="t-meta org-node-label">{node}</p>
+      <p class="t-body org-name org-name-muted">{left}</p>
+    </div>
+
+    <div class="org-one org-flat">
+      <svg class="m-draw" viewBox="0 0 200 150" width="100%" role="img" aria-labelledby="org-flat-title" aria-describedby="org-flat-desc">
+        <title id="org-flat-title">{right}</title>
+        <desc id="org-flat-desc">{`${caption}: one row of ${flat.length}, every one connected to ${node}.`}</desc>
+        {flat.map((x) => <path class="org-line" pathLength="1" d={`M${x} 80 L100 142`} />)}
+        {flat.map((x) => <rect class="org-dot" x={x - 4} y="76" width="8" height="8" />)}
+        <rect class="org-node" x="94" y="136" width="12" height="12" />
+      </svg>
+      <p class="t-meta org-node-label org-node-label-ink">{node}</p>
+      <p class="t-body org-name">{right}</p>
+    </div>
+  </div>
+  <figcaption class="t-meta org-caption">{caption}</figcaption>
+</figure>

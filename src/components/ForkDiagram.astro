@@ -1,0 +1,53 @@
+---
+// THE DIAGNOSTIC FORK (homepage).
+// Diagnostic → written finding → two exits: Scope, and Nothing built. Both
+// exits are drawn equally solid, because both are real outcomes; the pull quote
+// is the second branch's annotation. The finding node carries the four things
+// it returns, in the facsimile's own short labels.
+//
+// Built in HTML with 1px lines rather than as a scaled SVG, so its sentences
+// stay at full size at every width. Lines draw with .m-rule. Below 1025 the
+// fork runs down the page on one spine.
+import diagnostic from '../data/diagnostic.json';
+
+const f = diagnostic.fork;
+const returns = diagnostic.returns.map((r) => r.short);
+---
+
+<figure class="fork" aria-label="The diagnostic leads to a written finding, and the finding forks into two exits: a scope, or nothing built.">
+  <div class="fork-grid">
+    <!-- Trunk: Diagnostic → Written finding → the fork point -->
+    <span class="fork-trunk m-rule" aria-hidden="true"></span>
+    <span class="fork-spine m-rule m-rule-y" aria-hidden="true"></span>
+
+    <div class="fork-stop fork-entry">
+      <span class="fork-node" aria-hidden="true"></span>
+      <p class="fork-name">{f.entry}</p>
+      <p class="t-meta fork-note">{f.entryNote}</p>
+    </div>
+
+    <div class="fork-stop fork-finding">
+      <span class="fork-node" aria-hidden="true"></span>
+      <p class="fork-name">{f.finding}</p>
+      <ul class="fork-returns">
+        {returns.map((r) => <li class="t-meta">{r}</li>)}
+      </ul>
+    </div>
+
+    <div class="fork-branch fork-scope">
+      <span class="fork-arm m-rule" aria-hidden="true"></span>
+      <span class="fork-node" aria-hidden="true"></span>
+      <p class="fork-name">{f.scope}</p>
+    </div>
+
+    <div class="fork-branch fork-nothing">
+      <span class="fork-arm m-rule" aria-hidden="true"></span>
+      <span class="fork-node" aria-hidden="true"></span>
+      <p class="fork-name">{f.nothing}</p>
+    </div>
+
+    <blockquote class="t-pullquote pullquote-left fork-quote">
+      {f.quote}
+    </blockquote>
+  </div>
+</figure>

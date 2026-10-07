@@ -1,0 +1,92 @@
+{
+  "_about": "The three service lines. The hero routing diagram and the service-line rows both read this list. Copy is verbatim from Source/kaltech-services.html.",
+  "routingEntry": "First conversation",
+  "lines": [
+    {
+      "num": "01",
+      "title": "AI and software consulting",
+      "accent": "consulting",
+      "intro": "We establish what should be built and what should not. This covers the diagnostic, architecture decisions, build-versus-buy calls, and the sequencing of a roadmap against payback rather than ambition. It ends in a written finding and a scope, not a deck.",
+      "subs": [
+        {
+          "head": "What brings people here",
+          "body": "A build has been proposed internally or quoted by a vendor, and nobody in the room can say with confidence whether it addresses the thing that is actually costing money."
+        },
+        {
+          "head": "What an engagement looks like",
+          "body": "Two to three weeks, senior-led throughout, ending in a written finding and a priced scope."
+        },
+        {
+          "head": "What it is not",
+          "body": "A strategy deck, a vendor comparison exercise, or a discovery phase staffed by people who will not build the work."
+        }
+      ]
+    },
+    {
+      "num": "02",
+      "title": "AI and software development",
+      "accent": "development",
+      "intro": "We build and ship production systems. Platforms, internal tooling, integrations, and applied AI where it earns its place. Senior engineers on the work throughout, with no junior tier absorbing the delivery.",
+      "subs": [
+        {
+          "head": "What brings people here",
+          "body": "The constraint is established and the case is settled, and what is needed now is a system that survives production rather than a prototype that survives a demo."
+        },
+        {
+          "head": "What an engagement looks like",
+          "body": "Scoped against a diagnostic finding and delivered in stages, typically [PLACEHOLDER], with the existing operation live throughout and a working system in production before the final stage."
+        },
+        {
+          "head": "What it is not",
+          "body": "Staff augmentation, offshore capacity, or a prototype delivered with an invoice for the learning."
+        }
+      ]
+    },
+    {
+      "num": "03",
+      "title": "Technology strategy and transformation",
+      "accent": "transformation",
+      "intro": "We work alongside operators through a change that spans more than one system. Migration off legacy platforms, consolidation of fragmented data, and the operating decisions that come with both.",
+      "subs": [
+        {
+          "head": "What brings people here",
+          "body": "A change is already underway, it touches more than one system, and the decisions are arriving faster than a fixed scope can absorb them."
+        },
+        {
+          "head": "What an engagement looks like",
+          "body": "A retainer, because the work outlasts a single build. Reviewed at [PLACEHOLDER] intervals against what it has moved, rather than renewed by default."
+        },
+        {
+          "head": "What it is not",
+          "body": "An ongoing support contract, a managed service, or a seat on a steering committee."
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "num": "01",
+      "title": "Diagnostic",
+      "body": "Two to three weeks against the three lenses, ending in a written finding.",
+      "href": "/diagnostic"
+    },
+    {
+      "num": "02",
+      "title": "Scope",
+      "body": "Priced against the finding, sequenced by payback rather than ambition.",
+      "href": null
+    },
+    {
+      "num": "03",
+      "title": "Build",
+      "body": "Senior-led delivery, staged, with the existing operation live throughout.",
+      "href": null
+    },
+    {
+      "num": "04",
+      "title": "Retainer",
+      "body": "Where the work outlasts the build, we stay on the roadmap.",
+      "href": null
+    }
+  ]
+}

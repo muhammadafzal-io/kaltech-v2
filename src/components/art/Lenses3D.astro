@@ -1,0 +1,24 @@
+---
+// DIAGNOSTIC: "It runs against three lenses." Three optical lenses stand in a
+// row; a beam passes through them and turns amber at the binding lens.
+interface Props { lenses: string[]; hot: number; label: string }
+const { lenses, hot, label } = Astro.props;
+---
+
+<figure class="x3 ln" aria-label={label}>
+  <div class="x3-stage ln-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="ln-scene">
+      <span class="ln-beam ln-beam-in"></span>
+      <span class="ln-beam ln-beam-out"></span>
+      {
+        lenses.map((name, i) => (
+          <div class={i === hot ? `ln-lens ln-lens-${i} is-hot` : `ln-lens ln-lens-${i}`}>
+            <span class="ln-disc"><span class="ln-ring"></span><span class="ln-ring ln-ring-2"></span></span>
+            <span class="ln-tag">{name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</figure>

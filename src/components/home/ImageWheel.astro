@@ -1,0 +1,53 @@
+---
+// THE IMAGE WHEEL.
+// A ring of tilted, rounded image cards that turns on its own, can be dragged,
+// and speeds up while the page scrolls. The geometry is all CSS: every card
+// takes one angle (--a, the ring's --rot plus its own step) and works out its
+// position, tilt, size and fade from it with sin() and cos(), so the ring is
+// laid out correctly with JavaScript off. motion.js only moves --rot.
+//
+// The ring is decorative and hidden from assistive tech; the case studies are
+// linked in Selected Work.
+interface Props {
+  cases: { id: string; data: any }[];
+  featured: { id: string; data: any };
+}
+
+const { cases, featured } = Astro.props;
+
+// Twelve cards: KalPay, AHW Global, BECS and Lumiere Med Spa, three times round,
+// interleaved so that every second card (the half kept on a phone) still shows
+// all four projects. KalPay and Lumiere use the products' own screens; AHW
+// Global and BECS use illustrative interfaces drawn from their case-study copy
+// (public/work/*.svg), to be replaced with real screens. `r` is each card's own
+// roll, so the ring reads as scattered.
+const art = {
+  kalpay: ['/work/kalpay-table.webp', '/work/kalpay-filters.webp', '/work/kalpay-store.jpg', '/work/kalpay-leads.jpg'],
+  ahw: ['/work/ahw-global-shipments.svg', '/work/ahw-global-record.svg'],
+  becs: ['/work/becs-inventory.svg', '/work/becs-sequence.svg'],
+  lumiere: ['/work/lumiere-hero.jpg', '/work/lumiere-cards.jpg', '/work/lumiere-copy.jpg'],
+};
+
+const order = [
+  art.kalpay[0], art.becs[1], art.ahw[0], art.lumiere[1],
+  art.becs[0], art.kalpay[2], art.lumiere[0], art.ahw[1],
+  art.kalpay[1], art.becs[0], art.lumiere[2], art.ahw[0],
+];
+
+const rolls = [-9, 6, -4, 11, -7, 3, 10, -6, 5, -11, 8, -3];
+const COUNT = order.length;
+const items: { r: number; src: string }[] = order.map((src, i) => ({ r: rolls[i], src }));
+---
+
+<div class="iw" data-wheel aria-hidden="true">
+  <div class="iw-glow"></div>
+  <div class="iw-ring" style={`--count:${COUNT}`}>
+    {
+      items.map((it, i) => (
+        <div class="iw-card" style={`--i:${i};--r:${it.r}deg`}>
+          <img class="iw-img" src={it.src} alt="" width="1200" height="900" loading="lazy" decoding="async" draggable="false" />
+        </div>
+      ))
+    }
+  </div>
+</div>

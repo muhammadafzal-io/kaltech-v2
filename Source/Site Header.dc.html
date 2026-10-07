@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="responsive.css">
+<style>
+.kt-menu{display:none;}
+.kt-menu summary{list-style:none;}
+.kt-menu summary::-webkit-details-marker{display:none;}
+.kt-menu .kt-close{display:none;}
+.kt-menu[open] .kt-close{display:inline;}
+.kt-menu[open] .kt-open{display:none;}
+@media (max-width:1024px){
+.kt-desknav{display:none !important;}
+.kt-menu{display:block;}
+}
+</style>
+</helmet>
+<header data-kt-header style="position:fixed;top:0;left:0;right:0;z-index:50;height:var(--header-h);background:{{ bg }};border-bottom:1px solid {{ borderColor }};transition:background 250ms ease,border-color 250ms ease;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;">
+    <a href="KalTech Homepage v4.dc.html" data-navitem style="font-family:'Sora',sans-serif;font-weight:700;font-size:23px;letter-spacing:-1.2px;color:{{ navColor }};">KalTech<span style="color:#BE263B;">.</span></a>
+    <div class="kt-desknav" style="display:flex;align-items:center;gap:36px;">
+      <a href="work.dc.html" data-navitem style="font-size:14px;font-weight:500;color:{{ navColor }};background-image:linear-gradient(#BE263B,#BE263B);background-size:0% 1px;background-repeat:no-repeat;background-position:left bottom;transition:background-size 200ms ease;padding-bottom:4px;" style-hover="background-size:100% 1px;">Work</a>
+      <a href="services.dc.html" data-navitem style="font-size:14px;font-weight:500;color:{{ navColor }};background-image:linear-gradient(#BE263B,#BE263B);background-size:0% 1px;background-repeat:no-repeat;background-position:left bottom;transition:background-size 200ms ease;padding-bottom:4px;" style-hover="background-size:100% 1px;">Services</a>
+      <a href="diagnostic.dc.html" data-navitem style="font-size:14px;font-weight:500;color:{{ navColor }};background-image:linear-gradient(#BE263B,#BE263B);background-size:0% 1px;background-repeat:no-repeat;background-position:left bottom;transition:background-size 200ms ease;padding-bottom:4px;" style-hover="background-size:100% 1px;">Diagnostic</a>
+      <a href="insights.dc.html" data-navitem style="font-size:14px;font-weight:500;color:{{ navColor }};background-image:linear-gradient(#BE263B,#BE263B);background-size:0% 1px;background-repeat:no-repeat;background-position:left bottom;transition:background-size 200ms ease;padding-bottom:4px;" style-hover="background-size:100% 1px;">Insights</a>
+      <a href="about.dc.html" data-navitem style="font-size:14px;font-weight:500;color:{{ navColor }};background-image:linear-gradient(#BE263B,#BE263B);background-size:0% 1px;background-repeat:no-repeat;background-position:left bottom;transition:background-size 200ms ease;padding-bottom:4px;" style-hover="background-size:100% 1px;">About</a>
+      <a href="contact.dc.html" data-cta style="display:inline-block;font-size:14px;font-weight:500;color:#FFFFFF;background:#BE263B;padding:14px 26px;transition:background 240ms ease;" style-hover="background:#93182B;color:#FFFFFF;">Get an AI Strategy Consult</a>
+    </div>
+    <details class="kt-menu" data-menu>
+      <summary style="cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 12px;font-size:14px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:{{ navColor }};"><span class="kt-open">Menu</span><span class="kt-close">Close</span></summary>
+      <div style="position:fixed;left:0;right:0;top:var(--header-h);bottom:0;z-index:49;background:#FAF9F5;overflow-y:auto;padding:32px clamp(20px,5vw,72px) 48px;box-sizing:border-box;">
+        <nav style="display:flex;flex-direction:column;">
+          <a href="work.dc.html" style="display:flex;align-items:center;min-height:56px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.8px;color:#171F21;">Work</a>
+          <a href="services.dc.html" style="display:flex;align-items:center;min-height:56px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.8px;color:#171F21;">Services</a>
+          <a href="diagnostic.dc.html" style="display:flex;align-items:center;min-height:56px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.8px;color:#171F21;">Diagnostic</a>
+          <a href="insights.dc.html" style="display:flex;align-items:center;min-height:56px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.8px;color:#171F21;">Insights</a>
+          <a href="about.dc.html" style="display:flex;align-items:center;min-height:56px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.8px;color:#171F21;">About</a>
+        </nav>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid #D8D5CD;">
+          <a href="contact.dc.html" style="display:block;text-align:center;min-height:44px;box-sizing:border-box;font-size:15px;font-weight:500;color:#FFFFFF;background:#BE263B;padding:17px 24px;transition:background 240ms ease;" style-hover="background:#93182B;color:#FFFFFF;">Get an AI Strategy Consult</a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bg&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;transparent&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;borderColor&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;transparent&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;navColor&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;#171F21&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      bg: p.bg ?? 'transparent',
+      borderColor: p.borderColor ?? 'transparent',
+      navColor: p.navColor ?? '#171F21'
+    };
+  }
+  componentDidMount() {
+    // Menu works without JS via <details>; these are enhancements only.
+    const d = document.querySelector('[data-menu]');
+    if (!d) return;
+    d.addEventListener('toggle', () => { document.body.style.overflow = d.open ? 'hidden' : ''; });
+    d.addEventListener('click', e => { if (e.target.closest('a')) d.open = false; });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape' && d.open) d.open = false; });
+  }
+}
+</script>
+</body>
+</html>

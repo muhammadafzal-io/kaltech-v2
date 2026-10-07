@@ -1,0 +1,59 @@
+{
+  "_about": "Interface sketches on /work. Abstracted screens drawn in tokens, never screenshots. Labels are taken from each case study's own 'What was built' copy.",
+  "caption": "Illustrative interface",
+  "kalpay": {
+    "schema": "queue",
+    "labels": [
+      "Agent console",
+      "Document verification",
+      "Drop-off analytics"
+    ]
+  },
+  "ahw-global": {
+    "schema": "table",
+    "labels": [
+      "Shipment",
+      "Customer",
+      "Order",
+      "Rate"
+    ]
+  },
+  "becs": {
+    "schema": "grid",
+    "labels": [
+      "Component inventory",
+      "Multi-branch control",
+      "Issuance and audit tracking"
+    ]
+  },
+  "shape": {
+    "_note": "Heights of the purely drawn marks (a spark line in the queue sketch, tile fills in the grid sketch), in percent. Shape, not data.",
+    "spark": [
+      70,
+      52,
+      61,
+      38,
+      44,
+      29
+    ],
+    "tiles": [
+      62,
+      48,
+      80,
+      35,
+      71,
+      55,
+      90,
+      42,
+      66,
+      58,
+      30,
+      74
+    ],
+    "pickedRow": {
+      "queue": 2,
+      "table": 3
+    },
+    "pickedTile": 6
+  }
+}

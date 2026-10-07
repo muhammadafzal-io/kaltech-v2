@@ -1,0 +1,115 @@
+---
+// THE INTERFACE SKETCH.
+// An abstracted product screen drawn in tokens: a frame, a sidebar of bars, a
+// header bar and a content area built from one small schema. It is never a
+// screenshot and never presented as one — the caption "Illustrative interface"
+// is always rendered. Two or three real labels come from the case study's own
+// "What was built" copy (src/data/sketches.json); everything else is shape.
+//
+//   queue  a work queue: rows with a status pill, one row picked out
+//   table  a record table: named columns, rows of bars, one row picked out
+//   grid   an inventory grid: a field of tiles, one tile picked out
+import sketches from '../data/sketches.json';
+
+interface Props {
+  id: 'kalpay' | 'ahw-global' | 'becs';
+  ground?: 'sand' | 'slate';
+  class?: string;
+}
+
+const { id, ground = 'sand', class: extra = '' } = Astro.props;
+const s = sketches[id];
+const shape = sketches.shape;
+const [a, b, c, d] = s.labels;
+const rows = [0, 1, 2, 3, 4, 5];
+const qPick = shape.pickedRow.queue;
+const tPick = shape.pickedRow.table;
+---
+
+<figure class={`sk sk-${s.schema} sk-on-${ground} ${extra}`.trim()}>
+  <div class="sk-frame" role="img" aria-label={sketches.caption}>
+    <div class="sk-side">
+      <span class="sk-mark"></span>
+      <span class="sk-nav is-on"></span>
+      <span class="sk-nav"></span>
+      <span class="sk-nav"></span>
+      <span class="sk-nav sk-nav-short"></span>
+    </div>
+
+    <div class="sk-main">
+      {
+        s.schema === 'queue' && (
+          <>
+            <div class="sk-head">
+              <span class="sk-title">{a}</span>
+              <span class="sk-pill">{b}</span>
+            </div>
+            <div class="sk-body">
+              {rows.map((r) => (
+                <div class={r === qPick ? 'sk-row is-picked' : 'sk-row'}>
+                  <span class="sk-cell sk-w-40" />
+                  <span class="sk-cell sk-w-20" />
+                  <span class={r === qPick ? 'sk-status is-live' : r < qPick ? 'sk-status is-done' : 'sk-status'} />
+                </div>
+              ))}
+            </div>
+            <div class="sk-foot">
+              <span class="sk-foot-label">{c}</span>
+              <span class="sk-spark">
+                {shape.spark.map((h) => <span style={`--h:${h}%`} />)}
+              </span>
+            </div>
+          </>
+        )
+      }
+
+      {
+        s.schema === 'table' && (
+          <>
+            <div class="sk-head">
+              <span class="sk-bar sk-w-30" />
+            </div>
+            <div class="sk-body">
+              <div class="sk-row sk-row-4 sk-row-head">
+                <span class="sk-colname">{a}</span>
+                <span class="sk-colname">{b}</span>
+                <span class="sk-colname">{c}</span>
+                <span class="sk-colname">{d}</span>
+              </div>
+              {rows.map((r) => (
+                <div class={r === tPick ? 'sk-row sk-row-4 is-picked' : 'sk-row sk-row-4'}>
+                  <span class="sk-cell" />
+                  <span class="sk-cell sk-w-70" />
+                  <span class="sk-cell sk-w-50" />
+                  <span class="sk-cell sk-w-40" />
+                </div>
+              ))}
+            </div>
+          </>
+        )
+      }
+
+      {
+        s.schema === 'grid' && (
+          <>
+            <div class="sk-head">
+              <span class="sk-title">{a}</span>
+              <span class="sk-pill">{b}</span>
+            </div>
+            <div class="sk-tiles">
+              {shape.tiles.map((h, i) => (
+                <span class={i === shape.pickedTile ? 'sk-tile is-picked' : 'sk-tile'}>
+                  <span class="sk-tile-bar" style={`--h:${h}%`} />
+                </span>
+              ))}
+            </div>
+            <div class="sk-foot">
+              <span class="sk-foot-label">{c}</span>
+            </div>
+          </>
+        )
+      }
+    </div>
+  </div>
+  <figcaption class="t-meta sk-caption">{sketches.caption}</figcaption>
+</figure>

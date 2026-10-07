@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="responsive.css">
+<style>
+html{background:#FAF9F5;}
+html,body{margin:0;padding:0;color:#4A5457;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:#171F21;text-decoration:none;cursor:pointer;}
+a:hover{color:#171F21;}
+::selection{background:#BE263B;color:#FAF9F5;}
+:focus-visible{outline:2px solid #BE263B;outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#FAF9F5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#FAF9F5"></rect><text x="60" y="74" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="38" fill="#171F21">K<tspan fill="#BE263B">.</tspan></text></svg></template>
+<div style="background:#FAF9F5;">
+
+<dc-import name="Site Header" bg="{{ hdrBg }}" border-color="{{ hdrBorder }}" nav-color="{{ hdrNav }}" hint-size="100%,88px"></dc-import>
+
+<section id="top" data-screen-label="01 Hero" style="background:#FAF9F5;padding:calc(var(--header-h) + clamp(72px,8vw,120px)) 0 clamp(32px,4vw,48px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Insights</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h1 style="grid-column:1/span 9;margin:24px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-3px;color:#171F21;text-wrap:balance;">We read the <span style="color:#BE263B;">research</span> so a build does not have to discover it.</h1>
+    </div>
+    <p style="margin:24px 0 0;max-width:1176px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:balance;">Frontier work moves faster than any delivery cycle. We track it, test the parts that claim a production benefit, and publish what held. Most of it does not. The value is knowing which.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Filters" style="background:#FAF9F5;padding:0 0 48px;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;display:flex;gap:12px;">
+    <span style="font-size:14px;font-weight:500;color:#FAF9F5;background:#171F21;border:1px solid #171F21;padding:10px 20px;">All</span>
+    <span style="font-size:14px;font-weight:500;color:#4A5457;border:1px solid #D8D5CD;padding:10px 20px;">Field Notes</span>
+    <span style="font-size:14px;font-weight:500;color:#4A5457;border:1px solid #D8D5CD;padding:10px 20px;">Bench Tests</span>
+  </div>
+</section>
+
+<section data-screen-label="03 Featured article" style="background:#FAF9F5;padding:0 0 80px;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:stretch;">
+      <a href="insights-retrieval-versus-fine-tuning.dc.html" style="grid-column:1/span 7;display:block;color:inherit;">
+        <div style="position:relative;background:#1F292B;aspect-ratio:16/9;overflow:hidden;">
+          <div style="position:absolute;top:24px;left:24px;">
+            <div style="width:32px;height:32px;border:1px solid #E8616A;"></div>
+            <p style="margin:12px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Feature image &#8212; Bench test environment</p>
+          </div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top, rgba(15,20,22,0.85), rgba(15,20,22,0));"></div>
+          <p style="position:absolute;left:36px;right:36px;bottom:36px;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.25;letter-spacing:-0.8px;color:#FAF9F5;text-wrap:balance;">Retrieval versus fine tuning on domain documents: what changed in 2026, and what did not.</p>
+        </div>
+      </a>
+      <a href="insights-retrieval-versus-fine-tuning.dc.html" data-arrowlink style="grid-column:9/span 4;display:flex;flex-direction:column;justify-content:space-between;height:100%;color:inherit;">
+        <div>
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Bench Test</p>
+          <h3 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Retrieval versus fine tuning on domain documents: what changed in 2026, and what did not.</h3>
+          <p style="margin:16px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The fine tuning case gets made again every quarter. We ran both approaches over the same regulated corpus and measured retrieval accuracy, cost per query and time to update. One of the three decided it.</p>
+        </div>
+        <p style="margin:24px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">12 min read</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Article list" style="background:#FAF9F5;padding:0 0 clamp(56px,7vw,96px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <a href="insights-retrieval-versus-fine-tuning.dc.html" data-listrow style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:center;padding:32px 0;border-top:1px solid #D8D5CD;color:inherit;transition:background 220ms ease;" style-hover="background:#EFEAE0;">
+      <p style="grid-column:1/span 3;margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Field Notes</p>
+      <h3 data-listtitle style="grid-column:4/span 7;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;transition:transform 220ms ease;">Your pilot passed the demo and failed the month.</h3>
+      <p style="grid-column:11/span 2;margin:0;text-align:right;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">7 min read</p>
+    </a>
+    <a href="insights-retrieval-versus-fine-tuning.dc.html" data-listrow style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:center;padding:32px 0;border-top:1px solid #D8D5CD;color:inherit;transition:background 220ms ease;" style-hover="background:#EFEAE0;">
+      <p style="grid-column:1/span 3;margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Architecture Notes</p>
+      <h3 data-listtitle style="grid-column:4/span 7;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;transition:transform 220ms ease;">Deterministic validation gates: where the model proposes and the code decides.</h3>
+      <p style="grid-column:11/span 2;margin:0;text-align:right;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">6 min read</p>
+    </a>
+    <a href="insights-retrieval-versus-fine-tuning.dc.html" data-listrow style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:center;padding:32px 0;border-top:1px solid #D8D5CD;color:inherit;transition:background 220ms ease;" style-hover="background:#EFEAE0;">
+      <p style="grid-column:1/span 3;margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Bench Tests</p>
+      <h3 data-listtitle style="grid-column:4/span 7;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;transition:transform 220ms ease;">Benchmark scores do not predict behaviour on your data.</h3>
+      <p style="grid-column:11/span 2;margin:0;text-align:right;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">5 min read</p>
+    </a>
+    <a href="insights-retrieval-versus-fine-tuning.dc.html" data-listrow style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:center;padding:32px 0;border-top:1px solid #D8D5CD;border-bottom:1px solid #D8D5CD;color:inherit;transition:background 220ms ease;" style-hover="background:#EFEAE0;">
+      <p style="grid-column:1/span 3;margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Field Notes</p>
+      <h3 data-listtitle style="grid-column:4/span 7;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;transition:transform 220ms ease;">We told a client not to build it. The arithmetic behind that call.</h3>
+      <p style="grid-column:11/span 2;margin:0;text-align:right;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">6 min read</p>
+    </a>
+  </div>
+</section>
+
+<section id="cta" data-screen-label="05 Closing CTA" style="position:relative;background:#BE263B;padding:clamp(64px,8vw,120px) 0;">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 110px);background-position:calc(50% - 660px) 0;"></div>
+  <div style="position:relative;max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:stretch;">
+      <div style="grid-column:1/span 6;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;">
+        <div>
+          <div style="width:40px;height:3px;background:#FFFFFF;"></div>
+          <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">Start Here</p>
+          <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,3.5vw,50px);line-height:1.1;letter-spacing:-2px;color:#FFFFFF;text-wrap:balance;">Start with the question, not the brief.</h2>
+        </div>
+        <p style="margin:48px 0 0;font-size:14px;line-height:1.6;color:#FFFFFF;">For companies operating above $1M in revenue with a specific commercial problem.</p>
+      </div>
+      <div style="grid-column:8/span 5;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;padding-top:73px;">
+        <div>
+          <p style="margin:0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:rgba(255,255,255,0.88);text-wrap:balance;">A 30-minute call. You describe what you are considering building. We tell you which of the three lenses we would run it through first, and whether we are the right firm for it. No fee, no deck, no follow-up sequence.</p>
+          <p style="margin:32px 0 0;"><a href="contact.dc.html" style="display:inline-block;font-size:14px;font-weight:500;color:#BE263B;background:#FFFFFF;padding:17px 30px;transition:background 240ms ease;" style-hover="background:#FAF9F5;color:#93182B;">Get an AI Strategy Consult</a></p>
+        </div>
+        <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.3);display:flex;justify-content:space-between;">
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">01</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">30 Minutes</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">02</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Fee</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">03</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Deck</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hdrBg: 'transparent', hdrBorder: 'transparent', hdrNav: '#171F21' };
+  renderVals() {
+    return { hdrBg: this.state.hdrBg, hdrBorder: this.state.hdrBorder, hdrNav: this.state.hdrNav };
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  componentDidMount() {
+    const doc = document;
+    const $$ = s => Array.from(doc.querySelectorAll(s));
+    const overDark = () => $$('footer').some(el => {
+      const r = el.getBoundingClientRect();
+      return r.top <= 88 && r.bottom >= 0;
+    });
+    const syncHeader = () => {
+      const dark = overDark();
+      const on = (window.scrollY || 0) > 24;
+      const next = dark
+        ? { hdrBg: '#1F292B', hdrBorder: 'rgba(250,249,245,0.14)', hdrNav: '#FAF9F5' }
+        : { hdrBg: on ? '#FAF9F5' : 'transparent', hdrBorder: on ? '#D8D5CD' : 'transparent', hdrNav: '#171F21' };
+      this.setState(prev => (prev.hdrBg === next.hdrBg && prev.hdrBorder === next.hdrBorder && prev.hdrNav === next.hdrNav) ? null : next);
+    };
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    let last = 0;
+    const tick = ts => {
+      this._raf = requestAnimationFrame(tick);
+      if (document.visibilityState !== 'visible' || ts - last < 100) return;
+      last = ts;
+      syncHeader();
+    };
+    this._raf = requestAnimationFrame(tick);
+
+    $$('[data-listrow]').forEach(r => {
+      const t = r.querySelector('[data-listtitle]');
+      if (!t) return;
+      r.addEventListener('mouseenter', () => { t.style.transform = 'translateX(6px)'; });
+      r.addEventListener('mouseleave', () => { t.style.transform = 'translateX(0)'; });
+    });
+    $$('[data-arrowlink]').forEach(l => {
+      const a = l.querySelector('[data-arrow]');
+      if (!a) return;
+      l.addEventListener('mouseenter', () => { a.style.transform = 'translateX(5px)'; });
+      l.addEventListener('mouseleave', () => { a.style.transform = 'translateX(0)'; });
+    });
+  }
+}
+</script>
+</body>
+</html>

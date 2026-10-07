@@ -1,0 +1,328 @@
+/* ==========================================================================
+   KalTech design tokens — locked.
+   This is the ONLY file in the project permitted to contain a colour literal.
+   Everything else references a custom property. See CLAUDE.md.
+   ========================================================================== */
+
+:root {
+  /* ---- Ground ---------------------------------------------------------- */
+  --paper: #FAF9F5;
+  --sand: #EFEAE0;
+  --slate: #E4E8E7;
+  --deep: #1F292B;
+
+  /* ---- Text ------------------------------------------------------------ */
+  --ink: #171F21;
+  --body: #4A5457;
+  --muted: #61696A;
+
+  /* ---- Accent ---------------------------------------------------------- */
+  --accent: #BE263B;
+  --accent-pressed: #93182B;
+  --accent-dark: #E8616A;
+
+  /* ---- Rules ----------------------------------------------------------- */
+  --rule: #D8D5CD;
+  --rule-sand: #DBD4C6;
+  --rule-slate: #D2D6D5;
+  --rule-dark: rgba(250, 249, 245, 0.14);
+
+  /* ---- On dark ground -------------------------------------------------- */
+  --body-dark: #A8B4B6;
+  --muted-dark: #9AA5A7;
+
+  /* ---- On accent ground ------------------------------------------------
+     The closing band is the one place pure white appears. It is the ground
+     inversion of the accent band, not a new grey.                          */
+  --on-accent: #FFFFFF;
+  --on-accent-dim: rgba(255, 255, 255, 0.88);
+  --rule-on-accent: rgba(255, 255, 255, 0.3);
+
+  /* ---- Ground steps used by hover (see CLAUDE.md hover vocabulary) ------ */
+  --deep-step: #263133;
+
+  /* ---- Overlays -------------------------------------------------------- */
+  --grid-on-accent: rgba(255, 255, 255, 0.05);
+  --grid-on-deep: rgba(250, 249, 245, 0.045);
+  --scrim-deep: rgba(15, 20, 22, 0.72);
+  --scrim-none: rgba(15, 20, 22, 0);
+
+  /* ---- Home redesign: depth tokens. The only place these literals live. --- */
+  --glow-accent: rgba(190, 38, 59, 0.38);
+  --glow-accent-soft: rgba(190, 38, 59, 0.10);
+  --glow-edge: rgba(232, 97, 106, 0.5);
+  --glow-light: rgba(255, 255, 255, 0.18);
+  --glow-cool: rgba(168, 180, 182, 0.12);
+  --glass-bg: rgba(250, 249, 245, 0.05);
+  --spot-light: rgba(250, 249, 245, 0.09);
+  --spot-accent: rgba(190, 38, 59, 0.07);
+  --shadow-card: 0 1px 2px rgba(23, 31, 33, 0.05), 0 14px 32px -14px rgba(23, 31, 33, 0.14);
+  --shadow-lift: 0 2px 4px rgba(23, 31, 33, 0.05), 0 28px 52px -18px rgba(23, 31, 33, 0.26);
+  --shadow-dark: 0 28px 64px -24px rgba(8, 12, 13, 0.7);
+  --shadow-btn: 0 10px 28px -10px rgba(190, 38, 59, 0.6);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 40px;
+
+  /* ---- Hero depth: red family, used by the home hero ---------------------- */
+  --crimson-900: #2A0810;
+  --crimson-800: #3F0D17;
+  --crimson-700: #4F1320;
+  --crimson-600: #6A1727;
+  --kalpay-red: #BC263A;
+  --glass-bg-strong: rgba(255, 255, 255, 0.12);
+  --glass-line: rgba(255, 255, 255, 0.32);
+  --glow-white: rgba(255, 255, 255, 0.22);
+
+  /* ---- Type families --------------------------------------------------- */
+  --font-display: 'Sora', sans-serif;
+  --font-text: 'Instrument Sans', sans-serif;
+
+  /* ---- Type scale ------------------------------------------------------ */
+  --fs-h1: clamp(34px, 5.6vw, 76px);
+  --lh-h1: 1.04;
+  --ls-h1: -3px;
+
+  --fs-h1-inner: clamp(32px, 4.8vw, 60px);
+  --lh-h1-inner: 1.06;
+  --ls-h1-inner: -2.4px;
+
+  --fs-h2: clamp(26px, 3.2vw, 44px);
+  --lh-h2: 1.12;
+  --ls-h2: -1.8px;
+
+  --fs-h2-side: clamp(24px, 2.6vw, 34px);
+  --lh-h2-side: 1.15;
+  --ls-h2-side: -1.2px;
+
+  --fs-h3: clamp(19px, 1.7vw, 23px);
+  --lh-h3: 1.3;
+  --ls-h3: -0.6px;
+
+  --fs-figure: clamp(44px, 6vw, 84px);
+  --lh-figure: 1;
+  --ls-figure: -3.5px;
+
+  /* The paired figures on the Diagnostic sit at a step below --fs-figure. */
+  --fs-figure-md: clamp(40px, 4.5vw, 64px);
+  --ls-figure-md: -2.4px;
+
+  --fs-numeral: clamp(28px, 3vw, 40px);
+  --lh-numeral: 1;
+  --ls-numeral: -1.5px;
+
+  --fs-standfirst: clamp(18px, 1.6vw, 22px);
+  --lh-standfirst: 1.5;
+
+  --fs-body: clamp(16px, 1.2vw, 17px);
+  --lh-body: 1.65;
+
+  --fs-label: 12px;
+  --lh-label: 1.2;
+  --ls-label: 1.2px;
+
+  /* Supporting sizes carried over from the export, fixed at every width. */
+  --fs-meta: 14px;
+  --fs-meta-lg: 14.5px;
+  --fs-nav: 14px;
+  --fs-link: 15px;
+  --fs-small: 13px;
+  --fs-pullquote: clamp(24px, 2.4vw, 32px);
+  --lh-pullquote: 1.35;
+  --ls-pullquote: -1px;
+  --fs-quote: 20px;
+  --lh-quote: 1.45;
+  --ls-quote: -0.4px;
+  --fs-h3-fixed: 19px;
+  --lh-h3-fixed: 1.35;
+  --ls-h3-fixed: -0.4px;
+  --fs-cta-h2: clamp(34px, 3.5vw, 50px);
+  --lh-cta-h2: 1.1;
+  --ls-cta-h2: -2px;
+  --fs-feature-title: clamp(22px, 2vw, 28px);
+  --fs-wordmark: clamp(19px, 1.7vw, 23px);
+  --ls-wordmark: -1.2px;
+  --fs-menu-item: 28px;
+  --ls-menu-item: -0.8px;
+
+  /* ---- Weights --------------------------------------------------------- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --wrapper: 1464px;
+  --content: 1320px;
+  --gutter: clamp(20px, 5vw, 72px);
+  --grid-gap: 28px;
+  --grid-gap-half: 21px;
+  --section-pad: clamp(56px, 7vw, 96px);
+  --band-pad: clamp(64px, 8vw, 120px);
+  --hero-top: clamp(72px, 8vw, 120px);
+  --header-h: 88px;
+  --header-h-compact: 72px;
+  --sticky-top: calc(var(--header-h) + 32px);
+
+  /* ---- Spacing steps --------------------------------------------------- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-88: 88px;
+
+  /* ---- Devices --------------------------------------------------------- */
+  --rule-weight: 1px;
+  --rule-weight-thick: 3px;
+  --label-rule-w: 40px;
+  --imageslot-square: 32px;
+  --tap-min: 44px;
+  --grain-opacity: 0.03;
+  --logo-rest-opacity: 0.6;
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-reveal: 700ms;
+  --dur-rule: 500ms;
+  --dur-count: 1400ms;
+  --dur-draw: 1400ms;
+  --dur-band: 700ms;
+  --dur-image: 1100ms;
+  --dur-hover: 260ms;
+  --dur-hover-slow: 320ms;
+  --dur-header: 250ms;
+  --dur-nav: 200ms;
+  --dur-scale: 500ms;
+  --dur-route: 200ms;
+  --dur-node: 500ms;
+  --dur-node-lag: 700ms;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-h: 64px;
+  }
+}
+
+/* The header over any dark section is KalPay red, on every page. */
+.hdr { --deep: var(--kalpay-red); }
+
+/* ==========================================================================
+   Home page, version 2. Its own palette, scoped by the --h- prefix so the other
+   pages are untouched until they are redesigned.
+     ink / night   the dark grounds: a deep wine, the dark end of the red
+     cobalt        the one accent: the brand red #BE263B (the name is historical)
+     bone / mist   the light grounds
+     sun           a signal colour, used only to mark "the binding constraint"
+   ========================================================================== */
+:root {
+  --h-ink: #2D0912;
+  --h-night: #430E1B;
+  --h-night-2: #5E1424;
+  --h-cobalt: #BE263B;
+  --h-cobalt-deep: #93182B;
+  --h-cobalt-soft: #FBE7EA;
+  --h-cobalt-light: #FF5A6E;
+  --h-bone: #F5F3EE;
+  --h-mist: #E9E6DD;
+  --h-white: #FFFFFF;
+  --h-sun: #FFB224;
+  --h-sun-soft: #FFEFCC;
+
+  --h-text: #5A4A4F;
+  --h-muted: #6A585D;
+  --h-text-dark: #DAC5CA;
+  --h-muted-dark: #B9A0A6;
+  --h-line: #DEDAD0;
+  --h-line-dark: rgba(255, 255, 255, 0.12);
+
+  --h-glass: rgba(255, 255, 255, 0.06);
+  --h-glass-line: rgba(255, 255, 255, 0.18);
+  --h-glow-cobalt: rgba(190, 38, 59, 0.5);
+  --h-glow-soft: rgba(190, 38, 59, 0.16);
+  --h-glow-sun: rgba(255, 178, 36, 0.4);
+  --h-scrim: rgba(58, 10, 20, 0.82);
+
+  /* Dark mode, after Framer: true black, graphite panels, hairlines, one accent. */
+  --h-ground: #000000;
+  --h-ground-2: #070707;
+  --h-surface: #0E0E0E;
+  --h-surface-2: #161616;
+  --h-surface-3: #1F1F1F;
+  --h-border: rgba(255, 255, 255, 0.1);
+  --h-border-strong: rgba(255, 255, 255, 0.2);
+  --h-fg: #FFFFFF;
+  --h-fg-2: #A3A3A3;
+  --h-fg-3: #8A8A8A;
+  --h-red-bright: #FF5A6E;
+  --h-neon: rgba(190, 38, 59, 0.65);
+  --h-wine-900: #3A0A14;
+  --h-wine-800: #5A1020;
+  --h-wine-700: #7E1426;
+  --h-on-red: rgba(255, 255, 255, 0.86);
+  --h-on-red-dim: rgba(255, 255, 255, 0.7);
+  --h-glow-light: rgba(255, 255, 255, 0.2);
+  --h-glass-red: rgba(255, 255, 255, 0.1);
+  --h-glass-red-line: rgba(255, 255, 255, 0.28);
+
+  --h-stage: #02060F;
+  --h-sun-ring: rgba(255, 178, 36, 0.22);
+  --h-sun-ring-off: rgba(255, 178, 36, 0);
+
+  --h-pending-bg: rgba(190, 38, 59, 0.08);
+
+  /* Light values used by the 3D drawings. */
+  --h-lit-1: rgba(255, 255, 255, 0.14);
+  --h-lit-2: rgba(255, 255, 255, 0.28);
+  --h-lit-3: rgba(255, 255, 255, 0.35);
+  --h-lit-4: rgba(255, 255, 255, 0.45);
+  --h-lit-5: rgba(255, 255, 255, 0.55);
+  --h-lit-6: rgba(255, 255, 255, 0.7);
+  --h-lit-7: rgba(255, 255, 255, 0.85);
+
+  --h-ink-glass: rgba(255, 255, 255, 0.07);
+  --h-ink-line: rgba(255, 255, 255, 0.16);
+  --h-ink-soft: rgba(255, 255, 255, 0.55);
+  --h-shade: rgba(0, 0, 0, 0.32);
+
+  --h-beam: rgba(255, 90, 110, 0.32);
+  --h-beam-end: rgba(255, 90, 110, 0);
+
+  --h-shadow-card: 0 1px 2px rgba(45, 9, 18, 0.05), 0 18px 40px -22px rgba(45, 9, 18, 0.26);
+  --h-shadow-lift: 0 2px 4px rgba(45, 9, 18, 0.06), 0 34px 64px -26px rgba(45, 9, 18, 0.4);
+  --h-shadow-dark: 0 30px 70px -30px rgba(45, 9, 18, 0.75);
+
+  --h-r-sm: 12px;
+  --h-r-md: 20px;
+  --h-r-lg: 28px;
+}
+
+/* Dark theme: the Framer-style black. The light theme is the :root above.
+   motion.js sets data-theme on <html> before first paint. */
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --h-ink: #000000;
+  --h-night: #0E0E0E;
+  --h-night-2: #1A1A1A;
+  --h-text-dark: #A3A3A3;
+  --h-muted-dark: #8A8A8A;
+  --h-line-dark: rgba(255, 255, 255, 0.1);
+  --h-scrim: rgba(0, 0, 0, 0.66);
+  --h-shadow-dark: 0 30px 70px -30px rgba(0, 0, 0, 0.9);
+}

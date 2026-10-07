@@ -1,0 +1,54 @@
+---
+import org from '../../data/organization.json';
+
+const company = [
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+const services = [
+  { href: '/services', label: 'Consulting' },
+  { href: '/services', label: 'Development' },
+  { href: '/services', label: 'Strategy & transformation' },
+  { href: '/diagnostic', label: 'The diagnostic' },
+];
+const work = [
+  { href: '/work/kalpay', label: 'KalPay' },
+  { href: '/work/ahw-global', label: 'AHW Global' },
+  { href: '/work/becs', label: 'BECS' },
+  { href: '/work', label: 'All case studies' },
+];
+const legal = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+];
+const cols = [
+  { head: 'Company', items: company },
+  { head: 'Services', items: services },
+  { head: 'Work', items: work },
+  { head: 'Legal', items: legal },
+];
+---
+
+<footer class="hf" slot="footer">
+  <div class="h-wrap">
+    <div class="hf-grid">
+      <div class="hf-brand">
+        <p class="hf-logo">KalTech</p>
+        <p class="hf-blurb">A senior-led applied AI and software firm for established mid-market companies.</p>
+      </div>
+      {
+        cols.map((c) => (
+          <div class="hf-col">
+            <p class="hf-head">{c.head}</p>
+            {c.items.map((i) => <a class="hf-link" href={i.href}>{i.label}</a>)}
+          </div>
+        ))
+      }
+    </div>
+    <div class="hf-base">
+      <a class="hf-link" href="mailto:info@kaltech.online">info@kaltech.online</a>
+      <a class="hf-link" href={org.linkedin} rel="noopener">LinkedIn</a>
+      <span class="hf-copy">&#169; 2026 KalTech</span>
+    </div>
+  </div>
+</footer>

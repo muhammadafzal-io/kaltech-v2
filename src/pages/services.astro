@@ -1,0 +1,312 @@
+---
+// Copy source: Source/kaltech-services.html (the NEW copy), via src/data/*.json.
+// Rebuilt in the homepage design system (home.css): same header, footer,
+// palette, light and dark themes. The words are unchanged.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+import HomeCta from '../components/home/HomeCta.astro';
+import services from '../data/services.json';
+import timelines from '../data/timelines.json';
+import fit from '../data/fit.json';
+import { service } from '../lib/schema';
+import Roof3D from '../components/art/Roof3D.astro';
+
+const lines = services.lines;
+const steps = services.steps;
+const ENGAGEMENT = 'What an engagement looks like';
+const cases = Object.fromEntries((await getCollection('work')).map((c) => [c.id, c]));
+
+const exits = [
+  { num: '01', stage: 'Diagnostic', head: 'Stop here and you have', body: 'A written finding naming the constraint, with the evidence for it.' },
+  { num: '02', stage: 'Scope', head: 'Stop here and you have', body: 'A priced plan detailed enough that another firm could build against it.' },
+  { num: '03', stage: 'Build', head: 'Stop here and you have', body: 'A system running in production, not a branch waiting on the next payment.' },
+  { num: '04', stage: 'Retainer', head: 'Ongoing', body: 'Reviewed at each interval against what it has moved, rather than renewed by default.' },
+];
+
+const commitments = [
+  { head: 'Scope', body: 'Fixed and priced before a stage begins. Where we have misjudged the estimate, that is our cost to absorb rather than a change order to negotiate.' },
+  { head: 'Code', body: 'Yours. Repositories, infrastructure and documentation transfer at the close of each stage, not at the end of the engagement.' },
+  { head: 'People', body: 'The engineers named at scoping are the engineers on the work. Where that has to change, you hear it before it happens rather than afterwards.' },
+];
+
+const proof = [
+  { id: 'kalpay', routing: ['01 Consulting', '02 Development'] },
+  { id: 'ahw-global', routing: ['02 Development'] },
+  { id: 'becs', routing: ['02 Development'] },
+];
+
+const set = fit.services;
+const need = set.items.length - 1;
+const segs = timelines.engage.segments;
+---
+
+<Base
+  title="Consulting, development and technology strategy | KalTech"
+  description="Consulting, development, and technology strategy and transformation under one roof. The same firm that scopes the work ships it, and every stage has an exit."
+  breadcrumb={[{ name: 'Services', path: '/services' }]}
+  graph={lines.map((l) => service({ key: l.accent, name: l.title, description: l.intro }))}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <!-- Hero -->
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>What we do</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">Strategy and build,</span>
+          <span class="h-line">under <em class="h-mark">one roof</em>.</span>
+        </h1>
+        <p class="h-lead m-reveal">
+          The same firm that scopes the work ships it. That is the whole of the accountability
+          claim, and it is why there is no handover between a strategy team and a delivery team.
+        </p>
+        <p class="h-lead sv-lead2 m-reveal">
+          Three lines run out of that arrangement. You are not expected to arrive knowing which
+          one you need, because establishing that is what the first conversation is for.
+        </p>
+        <div class="h-actions m-reveal">
+          <a class="h-btn h-btn-primary" href="/contact" data-magnetic>
+            <span>Get an AI Strategy Consult</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Routing: one first conversation, three lines. Drawn as three depth
+           layers of one picture, each carrying a service line. -->
+      <div class="h-hero-viz">
+        <p class="sl3-entry"><span class="sv-route-node" aria-hidden="true"></span>{services.routingEntry}</p>
+        <Roof3D
+          lines={lines.map((l) => l.title.replace('AI and software ', '').replace('Technology strategy and ', ''))}
+          label={`The first conversation routes to one of three lines: ${lines.map((l) => l.title).join(', ')}.`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- The three lines -->
+  <section class="h-sec h-bone" id="lines">
+    <div class="h-wrap">
+      <div class="sv-lines">
+        {
+          lines.map((l) => {
+            const engagement = l.subs.find((x) => x.head === ENGAGEMENT)!;
+            const rest = l.subs.filter((x) => x.head !== ENGAGEMENT);
+            const at = l.title.indexOf(l.accent);
+            return (
+              <article class="sv-line m-reveal" data-spotlight>
+                <div class="sv-line-head">
+                  <p class="sv-line-num">{l.num}</p>
+                  <h2 class="sv-line-title">
+                    {at === -1 ? l.title : <>{l.title.slice(0, at)}<span class="h-accent">{l.accent}</span>{l.title.slice(at + l.accent.length)}</>}
+                  </h2>
+                </div>
+                <p class="sv-line-intro">{l.intro}</p>
+                <div class="sv-line-eng">
+                  <p class="sv-label">{engagement.head}</p>
+                  <p class="h-body">{engagement.body}</p>
+                </div>
+                <div class="sv-line-subs">
+                  {
+                    rest.map((sub) => (
+                      <div class="sv-sub">
+                        <p class="sv-label">{sub.head}</p>
+                        <p class="h-body">{sub.body}</p>
+                      </div>
+                    ))
+                  }
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How we engage -->
+  <section class="h-sec h-white" id="engage">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">How we engage</p>
+          <h2 class="h-h2 m-reveal"><span class="h-accent">Diagnostic</span> first.</h2>
+        </div>
+        <p class="h-sub m-reveal">
+          Nothing is scoped before the constraint is established. That sequence is the same on every
+          engagement, whatever the eventual size of the work, and it can end at the close of any stage
+          with something in your hands.
+        </p>
+      </div>
+
+      <div class="sv-bar m-reveal" role="img" aria-label="Diagnostic and scope are short, the build is the longest stage, and the retainer has no fixed end. Nothing past the diagnostic is scoped without a finding.">
+        {segs.map((s, i) => <span class={`sv-seg sv-seg-${s.state}${i === 0 ? ' is-first' : ''}`} style={`flex:${s.width}`}></span>)}
+      </div>
+      <p class="sv-gate m-reveal"><span class="sv-gate-mark" aria-hidden="true"></span>{timelines.engage.gateLabel}</p>
+
+      <ol class="sv-steps">
+        {
+          steps.map((st) => (
+            <li class="sv-step m-reveal" data-spotlight>
+              <p class="sv-step-num">{st.num}</p>
+              <h3 class="h-h3">
+                {st.href ? <a class="h-hlink" href={st.href}>{st.title}</a> : st.title}
+              </h3>
+              <p class="h-body">{st.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="sv-cap m-reveal">{timelines.caption}</p>
+    </div>
+  </section>
+
+  <!-- The arrangement -->
+  <section class="h-sec h-bone" id="arrangement">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">The arrangement</p>
+          <h2 class="h-h2 m-reveal">Every stage has an <span class="h-accent">exit</span>.</h2>
+        </div>
+        <p class="h-sub m-reveal">
+          There is no point in that sequence at which stopping leaves you holding nothing but a
+          relationship. What follows is the rest of the arrangement, which is the part most firms
+          discuss only once something has gone wrong.
+        </p>
+      </div>
+
+      <ol class="sv-exits">
+        {
+          exits.map((e) => (
+            <li class="sv-exit m-reveal" data-spotlight>
+              <p class="sv-exit-num">{e.num}</p>
+              <p class="sv-label">{e.stage}</p>
+              <div class="sv-exit-card">
+                <p class="sv-label sv-label-ink">{e.head}</p>
+                <p class="h-body">{e.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="sv-commit">
+        {
+          commitments.map((c) => (
+            <div class="sv-commit-item m-reveal">
+              <h3 class="h-h3">{c.head}</h3>
+              <p class="h-body">{c.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The work -->
+  <section class="h-sec h-dark" id="proof">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">The work</p>
+          <h2 class="h-h2 m-reveal">Every service line on this page has <span class="h-accent">shipped</span>.</h2>
+        </div>
+      </div>
+
+      <div class="sv-proof">
+        {
+          proof.map((p) => {
+            const c = cases[p.id];
+            return (
+              <a class="sv-proof-card m-reveal" href={`/work/${p.id}`} data-spotlight>
+                <p class="sv-routing">
+                  {p.routing.map((stage, i) => <>{i > 0 && <span class="sv-routing-arrow"> → </span>}{stage}</>)}
+                </p>
+                <p class="sv-proof-pill">Constraint found &#8212; {c.data.constraintFound}</p>
+                <h3 class="sv-proof-name">{c.data.title}</h3>
+                <p class="sv-proof-industry">{c.data.industry}</p>
+                <p class="sv-proof-fig">
+                  <span
+                    class={c.data.cardCount !== null ? 'm-count' : undefined}
+                    data-count={c.data.cardCount ?? undefined}
+                    data-suffix={c.data.cardSuffix || undefined}
+                    data-final={c.data.cardFigure}
+                  >{c.data.cardFigure}</span>
+                </p>
+                <p class="sv-proof-figlabel">{c.data.cardFigureLabel}</p>
+                <p class="sv-proof-link">
+                  <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
+                  <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+                </p>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit -->
+  <section class="h-sec h-white" id="fit">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <h2 class="h-h2 m-reveal">We are not the right firm for <span class="h-accent">everyone</span>.</h2>
+        </div>
+      </div>
+
+      <div class="sv-fit" data-fit data-fit-threshold={need}>
+        <div class="sv-fit-main">
+          <h3 class="h-h3" id="fit-services-title">{set.title}</h3>
+          <ul class="sv-fit-list" aria-labelledby="fit-services-title">
+            {
+              set.items.map((text) => (
+                <li class="sv-fit-row">
+                  <label class="sv-fit-label">
+                    <input class="sv-fit-box" type="checkbox" data-fit-box data-js-control />
+                    <span class="h-body">{text}</span>
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <aside class="sv-fit-side" data-js-control>
+          <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+          <p class="sv-fit-cta" data-fit-cta>
+            <a class="h-btn h-btn-primary" href={fit.cta.href}><span>{fit.cta.label}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></a>
+          </p>
+        </aside>
+      </div>
+
+      <div class="sv-not">
+        <h3 class="h-h3">{set.notTitle}</h3>
+        <ul class="sv-not-list">
+          {set.not.map((t) => <li class="h-body">{t}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <HomeCta
+    label="Start here"
+    heading="You do not have to know which of the three you need."
+    body="A thirty minute call, no fee and no deck. You describe the problem, and we tell you which line it belongs in, or that it belongs somewhere else."
+    footnote={null}
+    notes={null}
+  />
+
+  <HomeFooter />
+</Base>

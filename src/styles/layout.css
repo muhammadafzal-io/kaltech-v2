@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Layout — wrapper, gutters, the 12-column grid, grounds, section rhythm.
+   Breakpoints: 1024, 768, 520. No others.
+   ========================================================================== */
+
+.wrap {
+  max-width: var(--wrapper);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* --------------------------------------------------------------------------
+   Grounds
+   -------------------------------------------------------------------------- */
+.g-paper { background: var(--paper); }
+.g-sand  { background: var(--sand); }
+.g-slate { background: var(--slate); }
+.g-deep  { background: var(--deep); }
+.g-accent { background: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+.section {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+}
+
+.section-t { padding-top: var(--section-pad); }
+.section-b { padding-bottom: var(--section-pad); }
+.section-flush-t { padding-top: 0; }
+.section-flush-b { padding-bottom: 0; }
+
+/* Full-bleed --deep and --accent bands carry the heavier rhythm. */
+.band {
+  padding-top: var(--band-pad);
+  padding-bottom: var(--band-pad);
+}
+
+.hero {
+  padding-top: calc(var(--header-h) + var(--hero-top));
+  padding-bottom: var(--section-pad);
+}
+
+/* The homepage hero runs tighter than an inner-page hero. */
+.hero-home {
+  padding-top: calc(var(--header-h) + clamp(48px, 6vw, 80px));
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+
+/* --------------------------------------------------------------------------
+   Grid
+   -------------------------------------------------------------------------- */
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+}
+
+.grid12-stretch {
+  align-items: stretch;
+}
+
+/* A grid item's automatic minimum size is its min-content width, which lets
+   wide content (the article data table, a long heading) push a track past the
+   viewport. `min-width: 0` removes that floor. This is what makes standing
+   rule 6 — no horizontal scroll at 320px — achievable; it is the opposite of
+   the min-width floor that rule forbids. */
+.grid12 > *,
+.cols-2 > *,
+.cols-3 > *,
+.cols-4 > *,
+.cols-5 > *,
+.cols-6 > * {
+  min-width: 0;
+}
+
+/* Column spans. */
+.c1-4  { grid-column: 1 / span 4; }
+.c1-5  { grid-column: 1 / span 5; }
+.c1-6  { grid-column: 1 / span 6; }
+.c1-7  { grid-column: 1 / span 7; }
+.c1-8  { grid-column: 1 / span 8; }
+.c1-9  { grid-column: 1 / span 9; }
+.c1-12 { grid-column: 1 / -1; }
+.c6-7  { grid-column: 6 / span 7; }
+.c7-6  { grid-column: 7 / span 6; }
+.c8-5  { grid-column: 8 / span 5; }
+.c6-2  { grid-column: 6 / span 2; }
+.c8-2  { grid-column: 8 / span 2; }
+.c10-2 { grid-column: 10 / span 2; }
+.c12-1 { grid-column: 12 / span 1; }
+.c9-4  { grid-column: 9 / span 4; }
+.c2-3  { grid-column: 2 / span 3; }
+.c3-5  { grid-column: 3 / span 5; }
+.c1-2  { grid-column: 1 / span 2; }
+.c6-3  { grid-column: 6 / span 3; }
+
+/* Equal-column rows used for stat tiles, quotes and outcome figures. */
+.cols-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--grid-gap);
+}
+
+.cols-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.cols-6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Standing rule 5: two-column sections share a bottom edge on desktop. */
+.share-edge {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-width: 0;
+}
+
+.fill {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.push { flex: 1; }
+
+/* Standing rule 4: sticky elements in a grid get align-self:start and no
+   clipped ancestor. */
+.sticky {
+  position: sticky;
+  top: var(--sticky-top);
+  align-self: start;
+}
+
+/* --------------------------------------------------------------------------
+   Dividers — depth comes from ground changes and 1px hairlines.
+   -------------------------------------------------------------------------- */
+.rule-t { border-top: var(--rule-weight) solid var(--rule); }
+.rule-b { border-bottom: var(--rule-weight) solid var(--rule); }
+.rule-l { border-left: var(--rule-weight) solid var(--rule); }
+
+.on-sand .rule-t,
+.on-sand .rule-b,
+.on-sand .rule-l { border-color: var(--rule-sand); }
+
+.on-slate .rule-t,
+.on-slate .rule-b,
+.on-slate .rule-l { border-color: var(--rule-slate); }
+
+.on-deep .rule-t,
+.on-deep .rule-b,
+.on-deep .rule-l { border-color: var(--rule-dark); }
+
+.on-accent .rule-t,
+.on-accent .rule-b,
+.on-accent .rule-l { border-color: var(--rule-on-accent); }
+
+/* --------------------------------------------------------------------------
+   Responsive — 1024
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .grid12 {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-40);
+  }
+
+  .grid12 > [class*='c1-'],
+  .grid12 > [class*='c2-'],
+  .grid12 > [class*='c3-'],
+  .grid12 > [class*='c6-'],
+  .grid12 > [class*='c7-'],
+  .grid12 > [class*='c8-'],
+  .grid12 > [class*='c9-'],
+  .grid12 > [class*='c10-'],
+  .grid12 > [class*='c12-'] {
+    grid-column: 1 / -1;
+  }
+
+  /* Sticky columns release when the grid stacks. */
+  .sticky {
+    position: static;
+  }
+
+  .share-edge,
+  .fill {
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .cols-6 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — 768
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .cols-6 { grid-template-columns: repeat(3, 1fr); }
+
+  .cols-3,
+  .cols-2,
+  .cols-5 {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-32);
+  }
+
+  /* Standing rule 5: the shared bottom edge is removed where columns stack,
+     and a vertical hairline becomes a horizontal one. */
+  .cols-3 > .rule-l,
+  .cols-2 > .rule-l,
+  .cols-5 > .rule-l {
+    border-left: 0;
+    border-top: var(--rule-weight) solid var(--rule);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: var(--space-24);
+  }
+
+  .on-sand .cols-3 > .rule-l,
+  .on-sand .cols-2 > .rule-l,
+  .on-sand .cols-5 > .rule-l { border-top-color: var(--rule-sand); }
+
+  .on-slate .cols-3 > .rule-l,
+  .on-slate .cols-2 > .rule-l,
+  .on-slate .cols-5 > .rule-l { border-top-color: var(--rule-slate); }
+
+  .on-deep .cols-3 > .rule-l,
+  .on-deep .cols-2 > .rule-l,
+  .on-deep .cols-5 > .rule-l { border-top-color: var(--rule-dark); }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — 520
+   -------------------------------------------------------------------------- */
+@media (max-width: 520px) {
+  .cols-6 { grid-template-columns: repeat(2, 1fr); }
+}
+
+.cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--grid-gap);
+}
+
+@media (max-width: 1024px) {
+  .cols-4 { grid-template-columns: 1fr 1fr; row-gap: var(--space-32); }
+}
+
+@media (max-width: 768px) {
+  .cols-4 { grid-template-columns: 1fr; row-gap: var(--space-32); }
+}

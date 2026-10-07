@@ -1,0 +1,35 @@
+---
+// WORK: "Every one of these started with a constraint." Three glass product
+// screens stand in a fan on a platform, one per engagement, each showing its
+// own result. The centre one stands forward. Real CSS 3D.
+interface Props { cases: { title: string; figure: string }[]; label: string }
+const { cases, label } = Astro.props;
+const fan = [
+  { x: -27, y: 6, r: 8 },
+  { x: 0, y: 12, r: 0 },
+  { x: 27, y: 6, r: -8 },
+];
+---
+
+<figure class="x3 sc" aria-label={label}>
+  <div class="x3-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="x3-scene sc-scene">
+      <span class="sc-floor"></span>
+      <span class="sc-rim"></span>
+      {
+        cases.map((c, i) => (
+          <div class={`sc-slot sc-slot-${i}`} style={`--x:${fan[i].x}cqw;--y:${fan[i].y}cqw;--r:${fan[i].r}deg`}>
+            <div class="sc-screen">
+              <span class="sc-bar"><i></i><i></i><i></i></span>
+              <span class="sc-fig">{c.figure}</span>
+              <span class="sc-name">{c.title}</span>
+              <span class="sc-lines"><i></i><i></i><i></i></span>
+            </div>
+            <span class="sc-stand"></span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</figure>

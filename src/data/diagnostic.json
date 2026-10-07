@@ -1,0 +1,132 @@
+{
+  "_about": "The Diagnostic page copy that feeds a visual, and the homepage fork. `weeks` is one value used by the How it runs heading and its timeline scale. `findingPages` is the finding's length, used by the facsimile foot and the note beneath it. `returns[].short` labels the facsimile on /diagnostic and the fork on the homepage; `returns[].page` is each contents line's page number.",
+  "weeks": "[PLACEHOLDER]",
+  "findingPages": "[PLACEHOLDER]",
+  "incentive": [
+    {
+      "key": "Who absorbs the cost",
+      "free": "The firm",
+      "paid": "The client"
+    },
+    {
+      "key": "What pays for it",
+      "free": "The build that follows",
+      "paid": "The document itself"
+    },
+    {
+      "key": "What a no costs the firm",
+      "free": "The entire engagement",
+      "paid": "Nothing",
+      "bars": {
+        "free": 1,
+        "paid": 0
+      }
+    },
+    {
+      "key": "Likely conclusion",
+      "free": "Build something",
+      "paid": "Whatever the evidence supports"
+    }
+  ],
+  "lenses": [
+    {
+      "num": "01",
+      "label": "Process",
+      "heading": "Is this a process, or a habit?",
+      "body": "Software applied to undefined work produces an unreadable result. It encodes one person's version of the job, presents it as the standard, and removes the discretion that was quietly holding the operation together. We establish whether the work, and the systems it currently runs through, are specified tightly enough to be encoded before anything is scoped.",
+      "examine": "How the work is performed rather than how it is documented. Where the variation between operators sits, which steps carry judgment that has never been written down, and what the people doing the work do when the documented path does not fit the case in front of them.",
+      "binding": "The same input produces materially different outputs depending on who handled it, and nobody in the operation can say with confidence which output was correct.",
+      "ask": "Could two people perform this work and produce the same result?",
+      "chart": false
+    },
+    {
+      "num": "02",
+      "label": "Data",
+      "heading": "Would two systems agree on this number?",
+      "body": "Most integration failures are definitional rather than technical. The business holds more than one definition of a customer, an order or a case, no integration reconciles a disagreement that was never settled before the systems were connected, and the disagreement surfaces as a reporting problem long after it became an operating one.",
+      "examine": "Where the same entity is defined in more than one place, what reconciles those definitions today and how often, and how long a disagreement survives before anyone notices it.",
+      "binding": "A question about the business has more than one defensible answer, and which answer gets used depends on which system was opened first.",
+      "ask": "Could two systems answer the same question and return the same number?",
+      "chart": false
+    },
+    {
+      "num": "03",
+      "label": "Unit economics",
+      "heading": "Does the build clear its own cost at this volume?",
+      "body": "A system carries a running cost that is rarely priced at scoping. Inference and infrastructure, monitoring, the human review that stays in the loop longer than anyone planned, and the engineering time that maintenance consumes for as long as the system exists. We establish the volume at which the build pays for itself, and whether the business currently operates above that line or below it.",
+      "examine": "Today's volumes rather than forecast ones, the cost of the operation as it currently runs, and what the system would cost to keep running in a year when nobody is excited about it any more.",
+      "binding": "The system works and still does not pay. This is the most expensive of the three failures because it passes every test at launch and only becomes visible in year two, by which point the budget that would have caught it has been spent.",
+      "ask": "What does this cost to run in year two, and at what volume does it clear it?",
+      "chart": true
+    }
+  ],
+  "phases": [
+    {
+      "num": "01",
+      "title": "Access and interviews",
+      "body": "We sit with the operators who run the work rather than with the sponsors who described it. The gap between those two accounts is frequently where the constraint is."
+    },
+    {
+      "num": "02",
+      "title": "Evidence",
+      "body": "We pull the numbers ourselves rather than accepting the reported ones. Where a figure cannot be reconstructed from something we can see, it does not go in the finding."
+    },
+    {
+      "num": "03",
+      "title": "The finding",
+      "body": "Written, delivered, and walked through with whoever has to act on it."
+    }
+  ],
+  "needs": [
+    "Read access to the relevant systems.",
+    "[PLACEHOLDER] hours across the people who perform the work.",
+    "Whatever has already been written internally about the problem."
+  ],
+  "returns": [
+    {
+      "num": "01",
+      "head": "The constraint that is binding.",
+      "body": "Stated plainly, with the evidence for it, in terms the operators who work inside it will recognise.",
+      "short": "The binding constraint",
+      "page": "[PLACEHOLDER]"
+    },
+    {
+      "num": "02",
+      "head": "What that constraint currently costs.",
+      "body": "Quantified against the operation as it runs today, not against a projection.",
+      "short": "What it costs",
+      "page": "[PLACEHOLDER]"
+    },
+    {
+      "num": "03",
+      "head": "What can be built against it.",
+      "body": "Sequenced by payback rather than ambition, with the work that pays first placed first.",
+      "short": "What can be built",
+      "page": "[PLACEHOLDER]"
+    },
+    {
+      "num": "04",
+      "head": "The line in the P&L it moves.",
+      "body": "Named explicitly, with the volume at which the build clears its own running cost.",
+      "short": "The P&L line and the volume",
+      "page": "[PLACEHOLDER]"
+    }
+  ],
+  "fork": {
+    "_note": "The homepage fork. The four return labels are `returns[].short`.",
+    "entry": "Diagnostic",
+    "entryNote": "Companies with a functioning business and a specific commercial problem.",
+    "finding": "Written finding",
+    "scope": "Scope",
+    "nothing": "Nothing built",
+    "quote": "Sometimes the finding is that nothing should be built. We deliver that as readily as any other."
+  },
+  "gate": {
+    "_note": "The lens gate on /diagnostic. The question on each branch is that lens's own heading. Which lens binds is an illustration, as the caption says.",
+    "brief": "Brief",
+    "binding": "Binding",
+    "constraint": "The constraint",
+    "clear": "Clear",
+    "bindingIndex": 0
+  }
+}

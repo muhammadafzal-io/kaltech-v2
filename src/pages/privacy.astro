@@ -1,0 +1,26 @@
+---
+// Placeholder page: the text wants legal review rather than drafting here.
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+---
+
+<Base
+  title="Privacy policy | KalTech"
+  description="Privacy policy for kaltech.online, the site of KalTech, a senior-led applied AI and software firm incorporated in Delaware, operating across the US, UK and GCC."
+  breadcrumb={[{ name: 'Privacy', path: '/privacy' }]}
+  chrome="own"
+>
+  <HomeHeader />
+  <section class="h-hero h-hero-sm h-dark" id="top">
+    <div class="h-hero-bg" aria-hidden="true"><span class="h-hero-grid"></span><span class="h-orb h-orb-a"></span></div>
+    <div class="h-wrap h-hero-inner h-hero-solo">
+      <div class="h-hero-copy">
+        <p class="h-badge"><span class="h-badge-dot" aria-hidden="true"></span>Privacy</p>
+        <h1 class="h-h1"><em class="h-mark">Privacy</em> policy</h1>
+        <p class="h-lead lg-body">[PLACEHOLDER]</p>
+      </div>
+    </div>
+  </section>
+  <HomeFooter />
+</Base>

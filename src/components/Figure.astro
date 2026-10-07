@@ -1,0 +1,61 @@
+---
+// A large number with a label beneath.
+// `count` carries the numeric target for the Phase 2 .m-count primitive. The
+// final value is always already in the markup — JavaScript only animates up to
+// it. A value that is not a number (a [PLACEHOLDER], or "3→1") never counts.
+interface Props {
+  value: string;
+  label: string;
+  size?: 'lg' | 'md' | 'sm';
+  rule?: boolean;
+  count?: number | null;
+  suffix?: string;
+  /** One lead figure per group is red; the rest of the group is ink. */
+  lead?: boolean;
+}
+
+const {
+  value,
+  label,
+  size = 'lg',
+  rule = false,
+  count = null,
+  suffix = '',
+  lead = true,
+} = Astro.props;
+
+const countable = count !== null && Number.isFinite(count);
+
+// TEMPORARY. Remove with .fig-pending (components.css) and the
+// :has(.fig-pending) layout rules (pages.css) once real figures land.
+const pending = value.trim() === '[PLACEHOLDER]';
+---
+
+<div class={lead ? 'fig' : 'fig fig-follow'}>
+  <p
+    class={[
+      'fig-value',
+      size !== 'lg' ? `fig-${size}` : '',
+      pending ? 'fig-pending' : '',
+    ]
+      .filter(Boolean)
+      .join(' ')}
+  >
+    {
+      countable ? (
+        <span
+          class="m-count"
+          data-count={String(count)}
+          data-suffix={suffix || undefined}
+          data-final={value}
+        >
+          {value}
+        </span>
+      ) : (
+        value
+      )
+    }
+  </p>
+  {rule && <span class="fig-rule m-rule"></span>}
+  <p class="t-label fig-label">{label}</p>
+</div>

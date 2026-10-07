@@ -1,0 +1,39 @@
+---
+// HOME HERO: the flagship scene. A brief travels a beam into a glowing core
+// (the business); three tall glass panels, the three lenses, stand around it,
+// one lit as binding. Orbit rings turn on a lit floor; sparks rise. Real CSS 3D.
+interface Props { lenses: { num: string; label: string }[]; hot: number; label: string }
+const { lenses, hot, label } = Astro.props;
+const angles = [200, 290, 20];
+const faces = ['front', 'back', 'left', 'right', 'top'];
+const sparks = [[30, 30], [70, 26], [62, 70], [24, 64], [48, 18], [80, 52]];
+---
+
+<figure class="x3 hx" aria-label={label}>
+  <div class="hx-stage" aria-hidden="true">
+    <span class="hx-bloom"></span>
+    <div class="hx-sway">
+      <div class="hx-scene">
+        <span class="hx-floor"></span>
+        <span class="hx-orbit hx-orbit-1"><i></i></span>
+        <span class="hx-orbit hx-orbit-2"><i></i></span>
+        <span class="hx-beam"><i></i></span>
+        <div class="bx hx-brief" style="--h:5cqw">{faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}<span class="hx-pill hx-pill-brief">Brief</span></div>
+        <div class="bx hx-core" style="--h:15cqw">{faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}</div>
+        {
+          lenses.map((l, i) => (
+            <div class={i === hot ? 'hx-slot is-hot' : 'hx-slot'} style={`--a:${angles[i]}deg`}>
+              <div class="hx-panel">
+                <span class="hx-num">{l.num}</span>
+                <span class="hx-name">{l.label}</span>
+                <span class="hx-grid"></span>
+                <span class="hx-flag">{i === hot ? 'Binding' : 'Clear'}</span>
+              </div>
+            </div>
+          ))
+        }
+        {sparks.map(([x, y], i) => <span class={`hx-spark hx-spark-${i}`} style={`left:${x}%;top:${y}%`}></span>)}
+      </div>
+    </div>
+  </div>
+</figure>

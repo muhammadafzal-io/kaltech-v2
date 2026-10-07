@@ -1,0 +1,43 @@
+---
+// The 3px rule / label / H2 / standfirst pattern used on every page.
+interface Props {
+  label: string;
+  heading?: string;
+  standfirst?: string;
+  headingClass?: string;
+  headingHref?: string;
+  id?: string;
+}
+
+const {
+  label,
+  heading,
+  standfirst,
+  headingClass = 't-h2',
+  headingHref,
+  id,
+} = Astro.props;
+---
+
+<div class="shead" id={id}>
+  <div class="shead-rule m-rule"></div>
+  <p class="t-label shead-label m-reveal">{label}</p>
+
+  {
+    heading && (
+      <h2 class={`${headingClass} shead-h2 m-reveal`}>
+        {headingHref ? (
+          <a class="inherit" href={headingHref}>
+            <Fragment set:html={heading} />
+          </a>
+        ) : (
+          <Fragment set:html={heading} />
+        )}
+      </h2>
+    )
+  }
+
+  {standfirst && <p class="t-standfirst shead-standfirst m-reveal" set:html={standfirst} />}
+
+  <slot />
+</div>

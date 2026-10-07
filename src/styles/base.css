@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Base — element defaults, typography primitives, accessibility.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--body);
+  font-family: var(--font-text);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Standing rule 6: no horizontal scroll at 320px. */
+  overflow-x: hidden;
+}
+
+/* Border radius 0 on every element. */
+* {
+  border-radius: 0;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: var(--rule-weight-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Type primitives. Every size, line-height and tracking is a token.
+   -------------------------------------------------------------------------- */
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.t-h1-inner {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h1-inner);
+  line-height: var(--lh-h1-inner);
+  letter-spacing: var(--ls-h1-inner);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.t-h2-side {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2-side);
+  line-height: var(--lh-h2-side);
+  letter-spacing: var(--ls-h2-side);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+.t-h3-fixed {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3-fixed);
+  line-height: var(--lh-h3-fixed);
+  letter-spacing: var(--ls-h3-fixed);
+  color: var(--ink);
+}
+
+.t-standfirst {
+  font-size: var(--fs-standfirst);
+  line-height: var(--lh-standfirst);
+  color: var(--body);
+  text-wrap: balance;
+}
+
+.t-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--body);
+}
+
+.t-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.t-meta {
+  font-size: var(--fs-meta);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.t-figure {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-figure);
+  line-height: var(--lh-figure);
+  letter-spacing: var(--ls-figure);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-numeral {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-numeral);
+  line-height: var(--lh-numeral);
+  letter-spacing: var(--ls-numeral);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-pullquote {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-pullquote);
+  line-height: var(--lh-pullquote);
+  letter-spacing: var(--ls-pullquote);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.t-quote {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-quote);
+  line-height: var(--lh-quote);
+  letter-spacing: var(--ls-quote);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* Ground-inverted variants. --accent-dark is the only red permitted on --deep. */
+.on-deep .t-h1,
+.on-deep .t-h1-inner,
+.on-deep .t-h2,
+.on-deep .t-h2-side,
+.on-deep .t-h3,
+.on-deep .t-h3-fixed,
+.on-deep .t-pullquote,
+.on-deep .t-quote {
+  color: var(--paper);
+}
+
+.on-deep .t-body,
+.on-deep .t-standfirst {
+  color: var(--body-dark);
+}
+
+.on-deep .t-label,
+.on-deep .t-meta {
+  color: var(--muted-dark);
+}
+
+.on-deep .t-figure {
+  color: var(--accent-dark);
+}
+
+/* Enumerating numerals (01, 02...) are not figures and do not take red. */
+.on-deep .t-numeral {
+  color: var(--paper);
+}
+
+.on-accent .t-h1,
+.on-accent .t-h2,
+.on-accent .t-h3,
+.on-accent .t-label,
+.on-accent .t-numeral {
+  color: var(--on-accent);
+}
+
+.on-accent .t-standfirst,
+.on-accent .t-body {
+  color: var(--on-accent-dim);
+}
+
+/* Accented word inside a heading. */
+/* Justified body text — kept, and unused by decision. Justification was tested
+   against every qualifying paragraph and 23 of 45 exceeded a 2x word gap in at
+   least one engine and width, so the site is left-aligned (HANDOVER.md, section
+   7). Anyone reconsidering must re-run `npm run verify:justify` first; it fails
+   any paragraph whose widest gap passes twice the typeface's own space.
+   `text-wrap: pretty` is left off on purpose: with it, no candidate stayed
+   under 2x in all three engines. At and below 768 everything is left-aligned. */
+@media (min-width: 769px) {
+  .t-justify {
+    text-align: justify;
+    text-justify: inter-word;
+    letter-spacing: normal;
+    word-spacing: normal;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-wrap: wrap;
+  }
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.on-deep .accent,
+.on-accent .accent {
+  color: var(--accent-dark);
+}
+
+.on-accent .accent {
+  color: var(--on-accent);
+}
+
+.inherit {
+  color: inherit;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.u-nowrap {
+  white-space: nowrap;
+}
+
+/* Standing rule 8: reduced motion disables all motion, everything stays visible. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: 0;
+  z-index: 100;
+  transform: translateY(-120%);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  padding: var(--space-12) var(--space-20);
+  transition: transform var(--dur-nav) ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Texture 1 of 2: grain. A fixed feTurbulence overlay across the whole page at
+   3 percent, above everything and inert to the pointer. Subtle enough that a
+   screenshot barely shows it. (Texture 2, the hairline grid, is --deep bands
+   only and lives in components.css.)
+   -------------------------------------------------------------------------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+@media print {
+  body::after {
+    display: none;
+  }
+}

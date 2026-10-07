@@ -1,0 +1,68 @@
+---
+// The closing red band. Cta on every page except Contact and article pages.
+// The qualifying line sits directly under the heading (review round 1), and the
+// band runs one padding step tighter than the other full-bleed bands.
+// Copy is prop-driven because the new Services copy closes with its own words;
+// every other page uses the defaults, which are the export's copy verbatim.
+interface Props {
+  label?: string;
+  heading?: string;
+  body?: string;
+  footnote?: string | null;
+  notes?: { num: string; label: string }[] | null;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  label = 'Start Here',
+  heading = 'Start with the question, not the brief.',
+  body =
+    'A 30-minute call. You describe what you are considering building. We tell you which of the three lenses we would run it through first, and whether we are the right firm for it. No fee, no deck, no follow-up sequence.',
+  footnote =
+    'For companies operating above $1M in revenue with a specific commercial problem.',
+  notes = [
+    { num: '01', label: '30 Minutes' },
+    { num: '02', label: 'No Fee' },
+    { num: '03', label: 'No Deck' },
+  ],
+  ctaLabel = 'Get an AI Strategy Consult',
+  ctaHref = '/contact',
+} = Astro.props;
+---
+
+<section class="cta g-accent band on-accent m-band" id="cta">
+  <div class="cta-grid-overlay"></div>
+  <div class="wrap cta-inner">
+    <div class="grid12 grid12-stretch">
+      <div class="c1-6">
+        <div class="shead-rule m-rule"></div>
+        <p class="t-label shead-label m-reveal">{label}</p>
+        <h2 class="t-cta-h2 shead-h2 m-reveal">{heading}</h2>
+        {footnote && <p class="cta-footnote t-meta m-reveal">{footnote}</p>}
+      </div>
+
+      <div class="c8-5 share-edge cta-body">
+        <div>
+          <p class="t-standfirst m-reveal">{body}</p>
+          <p class="cta-action m-reveal">
+            <a class="btn btn-invert" href={ctaHref} data-magnetic><span>{ctaLabel}</span></a>
+          </p>
+        </div>
+
+        {
+          notes && (
+            <div class="cta-notes m-reveal">
+              {notes.map((n) => (
+                <span class="cta-note">
+                  <span class="cta-note-num">{n.num}</span>
+                  <span class="t-label">{n.label}</span>
+                </span>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

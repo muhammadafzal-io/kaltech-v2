@@ -1,0 +1,13 @@
+---
+// A heading's text with its one accented word or phrase. Used where the text
+// comes from content rather than markup: case names and article titles.
+interface Props {
+  text: string;
+  accent?: string | null;
+}
+
+const { text, accent } = Astro.props;
+const at = accent ? text.indexOf(accent) : -1;
+---
+
+{at === -1 ? text : <>{text.slice(0, at)}<span class="accent">{accent}</span>{text.slice(at + accent!.length)}</>}

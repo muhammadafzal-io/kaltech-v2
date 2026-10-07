@@ -1,0 +1,32 @@
+---
+// INSIGHTS: "We track it, test the parts that claim a production benefit, and
+// publish what held." A benchmark: glass bars on a grid, a scan plane sweeping
+// across them like a test run, and one bar, the one that held, lit amber.
+interface Props { label: string }
+const { label } = Astro.props;
+const bars = [
+  [6, 10, 14], [6, 34, 22], [6, 58, 11],
+  [32, 10, 18], [32, 34, 34], [32, 58, 16],
+  [58, 10, 12], [58, 34, 20], [58, 58, 26],
+];
+const HELD = 4;
+const faces = ['front', 'back', 'left', 'right', 'top'];
+---
+
+<figure class="x3 ch" aria-label={label}>
+  <div class="x3-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="x3-scene ch-scene">
+      <span class="ch-floor"></span>
+      {
+        bars.map(([x, y, h], i) => (
+          <div class={i === HELD ? 'bx ch-bar is-held' : 'bx ch-bar'} style={`left:${x + 8}%;top:${y + 8}%;--h:${h}cqw`}>
+            {faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}
+          </div>
+        ))
+      }
+      <span class="ch-scan"></span>
+      <span class="ch-tag">What held</span>
+    </div>
+  </div>
+</figure>

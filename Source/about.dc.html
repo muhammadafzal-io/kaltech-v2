@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="responsive.css">
+<style>
+html{background:#FAF9F5;}
+html,body{margin:0;padding:0;color:#4A5457;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:#171F21;text-decoration:none;cursor:pointer;}
+a:hover{color:#171F21;}
+::selection{background:#BE263B;color:#FAF9F5;}
+:focus-visible{outline:2px solid #BE263B;outline-offset:2px;}
+.ab-hostack{display:none;}
+@media (max-width:768px){
+.ab-blocks{grid-template-columns:1fr !important;row-gap:28px;}
+.ab-blocks > *{border-left:0 !important;}
+.ab-hosvg{display:none;}
+.ab-hostack{display:block;}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#FAF9F5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#FAF9F5"></rect><text x="60" y="74" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="38" fill="#171F21">K<tspan fill="#BE263B">.</tspan></text></svg></template>
+<div style="background:#FAF9F5;">
+
+<dc-import name="Site Header" bg="{{ hdrBg }}" border-color="{{ hdrBorder }}" nav-color="{{ hdrNav }}" hint-size="100%,88px"></dc-import>
+
+<section id="top" data-screen-label="01 Hero" style="background:#FAF9F5;padding:calc(var(--header-h) + clamp(72px,8vw,120px)) 0 clamp(48px,6vw,80px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">About</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h1 style="grid-column:1/span 9;margin:24px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-3px;color:#171F21;text-wrap:balance;">We are the firm operators call when the <span style="color:#BE263B;">pilot</span> did not survive the month.</h1>
+    </div>
+    <p style="margin:24px 0 0;max-width:1176px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:balance;">KalTech is an applied AI and software firm. We work with established mid-market companies on systems that have to hold up in production, in front of customers, and under audit.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 What we actually do" style="background:#FAF9F5;padding:0 0 clamp(56px,7vw,96px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;padding-top:80px;border-top:1px solid #D8D5CD;">
+      <div style="grid-column:1/span 4;position:sticky;top:calc(var(--header-h) + 32px);align-self:start;">
+        <div style="width:40px;height:3px;background:#BE263B;"></div>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">The firm</p>
+        <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.15;letter-spacing:-1.2px;color:#171F21;text-wrap:balance;">What we actually do.</h2>
+      </div>
+      <div style="grid-column:6/span 7;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">We are not a venture studio, not a staff augmentation shop, and not an agency that ships a prototype and invoices for the learning. We diagnose the constraint a business is operating under, scope the work against it, and build the system that moves it. The same people do all three.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Most of what we build sits in environments where failure is expensive. Regulated lending, cross-border logistics, hospital operations. That is the work we are best at, and it is the reason our first question is always about the process rather than the model.</p>
+        <div data-handover style="margin-top:48px;padding-top:36px;border-top:1px solid #D8D5CD;">
+          <svg class="ab-hosvg" viewBox="0 0 720 250" width="100%" style="display:block;">
+            <text x="0" y="12" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">THE USUAL ARRANGEMENT</text>
+            <path data-hdraw1 d="M4 48 H344" fill="none" stroke="#61696A" stroke-width="1"></path>
+            <path data-hdraw1 d="M368 48 H716" fill="none" stroke="#61696A" stroke-width="1"></path>
+            <path data-hdraw1 d="M344 40 V56" fill="none" stroke="#61696A" stroke-width="1"></path>
+            <path data-hdraw1 d="M368 40 V56" fill="none" stroke="#61696A" stroke-width="1"></path>
+            <rect data-hnode1 x="0" y="44" width="8" height="8" fill="none" stroke="#61696A" stroke-width="1"></rect>
+            <rect data-hnode1 x="232" y="44" width="8" height="8" fill="none" stroke="#61696A" stroke-width="1"></rect>
+            <rect data-hnode1 x="472" y="44" width="8" height="8" fill="none" stroke="#61696A" stroke-width="1"></rect>
+            <rect data-hnode1 x="708" y="44" width="8" height="8" fill="none" stroke="#61696A" stroke-width="1"></rect>
+            <text data-hnode1 x="0" y="76" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">STRATEGY FIRM</text>
+            <text data-hnode1 x="232" y="76" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">SCOPE</text>
+            <text data-hnode1 x="472" y="76" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">DELIVERY FIRM</text>
+            <text data-hnode1 x="716" y="76" text-anchor="end" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">BUILD</text>
+            <text data-hnode1 x="356" y="100" text-anchor="middle" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">HANDOVER</text>
+            <text x="0" y="166" fill="#BE263B" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">HERE</text>
+            <path data-hdraw2 d="M4 202 H716" fill="none" stroke="#BE263B" stroke-width="1"></path>
+            <rect data-hnode2 x="0" y="198" width="8" height="8" fill="none" stroke="#BE263B" stroke-width="1"></rect>
+            <rect data-hnode2 x="232" y="198" width="8" height="8" fill="none" stroke="#BE263B" stroke-width="1"></rect>
+            <rect data-hnode2 x="472" y="198" width="8" height="8" fill="none" stroke="#BE263B" stroke-width="1"></rect>
+            <rect data-hnode2 x="708" y="198" width="8" height="8" fill="none" stroke="#BE263B" stroke-width="1"></rect>
+            <text data-hnode2 x="0" y="230" fill="#171F21" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">DIAGNOSTIC</text>
+            <text data-hnode2 x="232" y="230" fill="#171F21" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">SCOPE</text>
+            <text data-hnode2 x="472" y="230" fill="#171F21" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">BUILD</text>
+            <text data-hnode2 x="716" y="230" text-anchor="end" fill="#171F21" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1.2">RETAINER</text>
+          </svg>
+          <div class="ab-hostack">
+            <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">The usual arrangement</p>
+            <div style="margin-top:16px;padding-left:16px;border-left:1px solid #61696A;display:flex;flex-direction:column;gap:14px;">
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Strategy firm</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Scope</p>
+              <p style="margin:0;padding:14px 0;border-top:1px solid #61696A;border-bottom:1px solid #61696A;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Handover</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Delivery firm</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Build</p>
+            </div>
+            <p style="margin:36px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Here</p>
+            <div style="margin-top:16px;padding-left:16px;border-left:1px solid #BE263B;display:flex;flex-direction:column;gap:14px;">
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#171F21;">Diagnostic</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#171F21;">Scope</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#171F21;">Build</p>
+              <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#171F21;">Retainer</p>
+            </div>
+          </div>
+          <p style="margin:12px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Same team throughout</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 How the firm is structured" style="background:#EFEAE0;padding:clamp(56px,7vw,96px) 0;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div>
+      <div style="width:40px;height:3px;background:#BE263B;"></div>
+      <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Delivery</p>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+        <h2 style="grid-column:1/span 9;margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#171F21;text-wrap:balance;">The person who sells the work runs the work.</h2>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Senior-led delivery, meaning there is no pyramid underneath, no account manager between you and the engineers, and no discovery phase staffed by people who will not be there for the build.</p>
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">This constrains how many engagements we can hold at once. That is a deliberate trade. It is also why the diagnostic exists, because it is the only honest way to decide which work we take.</p>
+      </div>
+      <div>
+        <div class="ab-blocks" style="margin-top:48px;margin-left:-28px;margin-right:-28px;padding-top:36px;border-top:1px solid #DBD4C6;display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div style="padding:0 28px;">
+            <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">No junior tier</p>
+            <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#171F21;">The engineers who scope the work are the engineers who build it.</p>
+          </div>
+          <div style="padding:0 28px;border-left:1px solid #DBD4C6;">
+            <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">No handover</p>
+            <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#171F21;">Strategy and delivery are the same engagement, not two contracts.</p>
+          </div>
+          <div style="padding:0 28px;border-left:1px solid #DBD4C6;">
+            <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Limited capacity</p>
+            <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#171F21;">We hold a small number of engagements at a time, by design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 The bench" style="background:#FAF9F5;padding:clamp(28px,3.5vw,48px) 0;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 4;">
+        <div style="width:40px;height:3px;background:#BE263B;"></div>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">The bench</p>
+        <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.15;letter-spacing:-1.2px;color:#171F21;text-wrap:balance;">Pedigree is not the reason to hire us.</h2>
+      </div>
+      <div style="grid-column:6/span 7;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Our senior engineers and consultants have built and shipped at companies operating at scale, including Amazon, EY, McKinsey and TikTok. We mention it because it is true, not because it is the argument. The argument is on the Work page.</p>
+        <p style="margin:28px 0 0;"><a href="work.dc.html" data-arrowlink style="font-size:15px;font-weight:500;color:#171F21;">See the work <span data-arrow style="display:inline-block;color:#BE263B;transition:transform 220ms ease;">&#8594;</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 By the numbers" style="background:#1F292B;padding:clamp(56px,7vw,96px) 0;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#E8616A;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">The record</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h2 style="grid-column:1/span 8;margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#FAF9F5;text-wrap:balance;">What we have shipped.</h2>
+    </div>
+    <div style="margin:48px -36px 0;display:grid;grid-template-columns:1fr 1fr 1fr;">
+      <div style="padding:0 36px;min-width:0;overflow-wrap:anywhere;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-3.5px;color:#E8616A;font-variant-numeric:tabular-nums;">50+</p>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Companies served</p>
+      </div>
+      <div style="padding:0 36px;border-left:1px solid rgba(250,249,245,0.14);min-width:0;overflow-wrap:anywhere;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-3.5px;color:#E8616A;font-variant-numeric:tabular-nums;">60+</p>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Products shipped to production</p>
+      </div>
+      <div style="padding:0 36px;border-left:1px solid rgba(250,249,245,0.14);min-width:0;overflow-wrap:anywhere;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-3.5px;color:#E8616A;font-variant-numeric:tabular-nums;">7</p>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Countries delivered in</p>
+      </div>
+    </div>
+    <p style="margin:48px 0 0;font-size:14px;line-height:1.5;color:#9AA5A7;">Figures verified against delivery records as at [PLACEHOLDER].</p>
+    <div style="margin-top:32px;padding-top:32px;border-top:1px solid rgba(250,249,245,0.14);">
+      <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Not counted</p>
+      <div style="margin:20px -28px 0;display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <p style="margin:0;padding:0 28px;font-size:15px;line-height:1.6;color:#9AA5A7;">Pilots</p>
+        <p style="margin:0;padding:0 28px;border-left:1px solid rgba(250,249,245,0.14);font-size:15px;line-height:1.6;color:#9AA5A7;">Proofs of concept</p>
+        <p style="margin:0;padding:0 28px;border-left:1px solid rgba(250,249,245,0.14);font-size:15px;line-height:1.6;color:#9AA5A7;">Work that stopped at the demo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 Where we are" style="background:#FAF9F5;padding:clamp(56px,7vw,96px) 0;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Locations</p>
+    <p style="margin:20px 0 0;max-width:1000px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:pretty;">Incorporated in Delaware, operating across the US, UK and GCC, with the delivery team in Lahore. We say this plainly rather than listing offices we do not have.</p>
+  </div>
+</section>
+
+<section id="cta" data-screen-label="07 Closing CTA" style="position:relative;background:#BE263B;padding:clamp(64px,8vw,120px) 0;">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 110px);background-position:calc(50% - 660px) 0;"></div>
+  <div style="position:relative;max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:stretch;">
+      <div style="grid-column:1/span 6;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;">
+        <div>
+          <div style="width:40px;height:3px;background:#FFFFFF;"></div>
+          <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">Start Here</p>
+          <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,3.5vw,50px);line-height:1.1;letter-spacing:-2px;color:#FFFFFF;text-wrap:balance;">Start with the question, not the brief.</h2>
+        </div>
+        <p style="margin:48px 0 0;font-size:14px;line-height:1.6;color:#FFFFFF;">For companies operating above $1M in revenue with a specific commercial problem.</p>
+      </div>
+      <div style="grid-column:8/span 5;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;padding-top:73px;">
+        <div>
+          <p style="margin:0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:rgba(255,255,255,0.88);text-wrap:balance;">A 30-minute call. You describe what you are considering building. We tell you which of the three lenses we would run it through first, and whether we are the right firm for it. No fee, no deck, no follow-up sequence.</p>
+          <p style="margin:32px 0 0;"><a href="contact.dc.html" style="display:inline-block;font-size:14px;font-weight:500;color:#BE263B;background:#FFFFFF;padding:17px 30px;transition:background 240ms ease;" style-hover="background:#FAF9F5;color:#93182B;">Get an AI Strategy Consult</a></p>
+        </div>
+        <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.3);display:flex;justify-content:space-between;">
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">01</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">30 Minutes</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">02</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Fee</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">03</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Deck</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hdrBg: 'transparent', hdrBorder: 'transparent', hdrNav: '#171F21' };
+  renderVals() {
+    return { hdrBg: this.state.hdrBg, hdrBorder: this.state.hdrBorder, hdrNav: this.state.hdrNav };
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  componentDidMount() {
+    const doc = document;
+    const $$ = s => Array.from(doc.querySelectorAll(s));
+    const overDark = () => $$('[data-screen-label="05 By the numbers"], footer').some(el => {
+      const r = el.getBoundingClientRect();
+      return r.top <= 88 && r.bottom >= 0;
+    });
+    const syncHeader = () => {
+      const dark = overDark();
+      const on = (window.scrollY || 0) > 24;
+      const next = dark
+        ? { hdrBg: '#1F292B', hdrBorder: 'rgba(250,249,245,0.14)', hdrNav: '#FAF9F5' }
+        : { hdrBg: on ? '#FAF9F5' : 'transparent', hdrBorder: on ? '#D8D5CD' : 'transparent', hdrNav: '#171F21' };
+      this.setState(prev => (prev.hdrBg === next.hdrBg && prev.hdrBorder === next.hdrBorder && prev.hdrNav === next.hdrNav) ? null : next);
+    };
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    // This environment delivers no scroll events, so back the listener with a
+    // throttled poll (~10Hz, visible tabs only).
+    let last = 0;
+    const tick = ts => {
+      this._raf = requestAnimationFrame(tick);
+      if (document.visibilityState !== 'visible' || ts - last < 100) return;
+      last = ts;
+      syncHeader();
+    };
+    this._raf = requestAnimationFrame(tick);
+
+    // Handover diagram: authored complete and visible; this only replays the draw.
+    const dg = doc.querySelector('[data-handover]');
+    if (dg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        const draw = (sel, dur, delay) => Array.from(dg.querySelectorAll(sel)).forEach(p => {
+          const len = p.getTotalLength();
+          p.style.transition = 'none';
+          p.style.strokeDasharray = len + ' ' + len;
+          p.style.strokeDashoffset = len;
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            p.style.transition = 'stroke-dashoffset ' + dur + 'ms ' + ease + ' ' + delay + 'ms';
+            p.style.strokeDashoffset = '0';
+          }));
+        });
+        const fade = (sel, delay) => Array.from(dg.querySelectorAll(sel)).forEach(n => {
+          n.style.transition = 'none';
+          n.style.opacity = '0';
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            n.style.transition = 'opacity 400ms ease ' + delay + 'ms';
+            n.style.opacity = '1';
+          }));
+        });
+        draw('[data-hdraw1]', 700, 0);
+        fade('[data-hnode1]', 300);
+        draw('[data-hdraw2]', 700, 900);
+        fade('[data-hnode2]', 1200);
+      }), { threshold: 0.3 });
+      io.observe(dg);
+    }
+
+    $$('[data-arrowlink]').forEach(l => {
+      const a = l.querySelector('[data-arrow]');
+      if (!a) return;
+      l.addEventListener('mouseenter', () => { a.style.transform = 'translateX(5px)'; });
+      l.addEventListener('mouseleave', () => { a.style.transform = 'translateX(0)'; });
+    });
+  }
+}
+</script>
+</body>
+</html>

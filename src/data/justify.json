@@ -1,0 +1,4 @@
+{
+  "_about": "Empty by decision: the site is left-aligned. Justification was tested and 23 of 45 candidate paragraphs exceeded a 2x word gap in at least one engine and width (see HANDOVER.md, section 7). The homepage, /work and case-study templates justify a paragraph only if its text starts with an entry here, so an entry must first pass `npm run verify:justify`.",
+  "paragraphs": []
+}

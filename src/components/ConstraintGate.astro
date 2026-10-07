@@ -1,0 +1,97 @@
+---
+// THE CONSTRAINT GATE.
+// A brief enters, splits across the three lenses, and one lens comes back
+// binding. Two geometries: `lg` is the landscape diagram for a full-width row,
+// `sm` the portrait version for a narrow column or a phone. Both render complete
+// and static without JavaScript and draw via .m-draw with it. Every drawn
+// stroke is a real path of non-zero length carrying pathLength="1".
+// Monochrome except the binding node.
+interface Props {
+  size?: 'lg' | 'sm';
+  class?: string;
+  /** Marks one half of a responsive pair (only one is shown at a given width). */
+  alt?: boolean;
+}
+
+const { size = 'lg', class: extra = '', alt = false } = Astro.props;
+// Named by <title> (the drawn words) and described by <desc>. role="img" keeps
+// the individual <text> labels from being read one by one.
+const title = 'Brief: process, data, unit economics';
+const label =
+  'A brief enters a junction and splits into three branches: process, data and unit economics. Two return clear. One returns binding, and that is the constraint.';
+const altAttr = alt ? '' : undefined;
+const id = `gate-${size}`;
+---
+
+{
+  size === 'lg' ? (
+    <svg
+      class={`gate gate-lg m-draw ${extra}`.trim()}
+      viewBox="0 0 1320 300"
+      width="100%"
+      role="img"
+      aria-labelledby={`${id}-title`}
+      aria-describedby={`${id}-desc`}
+      data-responsive-alt={altAttr}
+    >
+      <title id={`${id}-title`}>{title}</title>
+      <desc id={`${id}-desc`}>{label}</desc>
+      <text class="svg-label gate-label" x="8" y="132">BRIEF</text>
+      <rect class="svg-node" x="8" y="144" width="12" height="12" />
+
+      <path class="svg-line" pathLength="1" d="M20 150 H480" />
+      <path class="svg-line" pathLength="1" d="M480 60 V240" />
+      <path class="svg-line" pathLength="1" d="M480 60 H920" />
+      <path class="svg-line" pathLength="1" d="M480 150 H920" />
+      <path class="svg-line" pathLength="1" d="M480 240 H920" />
+
+      <text class="svg-label gate-label" x="500" y="48">01 PROCESS</text>
+      <text class="svg-label gate-label" x="500" y="138">02 DATA</text>
+      <text class="svg-label gate-label" x="500" y="228">03 UNIT ECONOMICS</text>
+
+      <rect class="svg-accent-fill gate-node rule-struct" x="920" y="54" width="12" height="12" />
+      <text class="svg-label-ink gate-label gate-node" x="944" y="64">BINDING</text>
+      <text class="svg-label-ink gate-label gate-node" x="944" y="86">&#8592; THE CONSTRAINT</text>
+
+      <rect class="svg-node gate-node" x="920" y="144" width="12" height="12" />
+      <text class="svg-label gate-label gate-node" x="944" y="154">CLEAR</text>
+
+      <rect class="svg-node gate-node" x="920" y="234" width="12" height="12" />
+      <text class="svg-label gate-label gate-node" x="944" y="244">CLEAR</text>
+    </svg>
+  ) : (
+    <svg
+      class={`gate gate-sm m-draw ${extra}`.trim()}
+      viewBox="0 0 280 336"
+      width="100%"
+      role="img"
+      aria-labelledby={`${id}-title`}
+      aria-describedby={`${id}-desc`}
+      data-responsive-alt={altAttr}
+    >
+      <title id={`${id}-title`}>{title}</title>
+      <desc id={`${id}-desc`}>{label}</desc>
+      <text class="svg-label gate-label" x="0" y="12">BRIEF</text>
+      <rect class="svg-node" x="0" y="22" width="12" height="12" />
+
+      <path class="svg-line" pathLength="1" d="M6 34 V290" />
+      <path class="svg-line" pathLength="1" d="M6 110 H226" />
+      <path class="svg-line" pathLength="1" d="M6 200 H226" />
+      <path class="svg-line" pathLength="1" d="M6 290 H226" />
+
+      <text class="svg-label gate-label" x="20" y="100">01 PROCESS</text>
+      <text class="svg-label gate-label" x="20" y="190">02 DATA</text>
+      <text class="svg-label gate-label" x="20" y="280">03 UNIT ECONOMICS</text>
+
+      <rect class="svg-accent-fill gate-node rule-struct" x="226" y="104" width="12" height="12" />
+      <text class="svg-label-ink gate-label gate-node" x="280" y="136" text-anchor="end">BINDING</text>
+      <text class="svg-label-ink gate-label gate-node" x="280" y="152" text-anchor="end">THE CONSTRAINT</text>
+
+      <rect class="svg-node gate-node" x="226" y="194" width="12" height="12" />
+      <text class="svg-label gate-label gate-node" x="280" y="226" text-anchor="end">CLEAR</text>
+
+      <rect class="svg-node gate-node" x="226" y="284" width="12" height="12" />
+      <text class="svg-label gate-label gate-node" x="280" y="316" text-anchor="end">CLEAR</text>
+    </svg>
+  )
+}

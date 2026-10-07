@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import HomeHeader from '../../components/home/HomeHeader.astro';
+import HomeFooter from '../../components/home/HomeFooter.astro';
+import HomeCta from '../../components/home/HomeCta.astro';
+import Screens3D from '../../components/art/Screens3D.astro';
+
+const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const shots: Record<string, string> = {
+  kalpay: '/work/kalpay-leads.jpg',
+  'ahw-global': '/work/ahw-global-shipments.svg',
+  becs: '/work/becs-inventory.svg',
+};
+---
+
+<Base
+  title="Selected work in lending, logistics, blood banks | KalTech"
+  description="Three engagements in regulated lending, cross-border shipping and hospital blood bank operations: the test that failed first, and what shipped against it."
+  breadcrumb={[{ name: 'Work', path: '/work' }]}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>Selected Work</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">Every one of these</span>
+          <span class="h-line">started with a <em class="h-mark">constraint</em>,</span>
+          <span class="h-line">not a brief.</span>
+        </h1>
+        <p class="h-lead m-reveal">Three engagements, the test that failed first, and what shipped against it.</p>
+      </div>
+
+      <div class="h-hero-viz">
+        <Screens3D
+          cases={cases.map((c) => ({ title: c.data.title, figure: c.data.cardFigure }))}
+          label="Three product screens in a fan, one per engagement, each showing its result."
+        />
+      </div>
+    </div>
+    <div class="h-wrap wk-strip-wrap">
+      <nav class="wk-idx wk-idx-strip" aria-label="The three engagements">
+        <ol class="wk-idx-list">
+          {
+            cases.map((c) => (
+              <li>
+                <a class="wk-idx-link" href={`#${c.id}`}>
+                  <span class="wk-idx-text">
+                    <span class="wk-idx-name">{c.data.title}</span>
+                    <span class="wk-idx-meta">{c.data.industryShort}</span>
+                    <span class="wk-idx-meta">Constraint found &#8212; {c.data.constraintFound}</span>
+                    <span class="wk-idx-meta">{c.data.cardFigureLabel}</span>
+                  </span>
+                  <span class="wk-idx-fig">{c.data.cardFigure}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone" id="cases">
+    <div class="h-wrap wk-rows">
+      {
+        cases.map((c, i) => (
+          <article class="wk-row m-reveal" id={c.id} data-spotlight>
+            <div class={`wk-shot wk-shot-${i + 1}`}>
+              <img src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
+            </div>
+            <div class="wk-body">
+              <p class="h-case-pill wk-pill">Constraint found &#8212; {c.data.constraintFound}</p>
+              <h2 class="wk-title">{c.data.title}</h2>
+              <p class="wk-industry">{c.data.industry}</p>
+              {c.data.cardParas.map((p) => <p class="h-body">{p}</p>)}
+              <div class="wk-foot">
+                <div>
+                  <p class="wk-fig">
+                    <span
+                      class={c.data.cardCount !== null ? 'm-count' : undefined}
+                      data-count={c.data.cardCount ?? undefined}
+                      data-suffix={c.data.cardSuffix || undefined}
+                      data-final={c.data.cardFigure}
+                    >{c.data.cardFigure}</span>
+                  </p>
+                  <p class="sv-label">{c.data.cardFigureLabel}</p>
+                </div>
+                <a class="h-link wk-link" href={`/work/${c.id}`}>
+                  <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
+                  <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+
+      <blockquote class="h-pull h-pull-light m-reveal">
+        Every engagement on this page began with a finding that contradicted the brief.
+      </blockquote>
+    </div>
+  </section>
+
+  <HomeCta />
+  <HomeFooter />
+</Base>

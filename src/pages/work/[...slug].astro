@@ -1,0 +1,206 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import HomeHeader from '../../components/home/HomeHeader.astro';
+import HomeFooter from '../../components/home/HomeFooter.astro';
+import HomeCta from '../../components/home/HomeCta.astro';
+
+export const getStaticPaths = (async () => {
+  const cases = await getCollection('work');
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry, all: cases } }));
+}) satisfies GetStaticPaths;
+
+const { entry, all } = Astro.props;
+const d = entry.data;
+const others = all.filter((c) => c.id !== entry.id).sort((a, b) => a.data.order - b.data.order);
+
+const blocks = [
+  { id: 'blk-situation', label: 'The situation' },
+  { id: 'blk-constraint', label: 'The constraint we found' },
+  { id: 'blk-setaside', label: 'What we considered and set aside' },
+  { id: 'blk-built', label: 'What was built' },
+  { id: 'blk-difference', label: 'What made the difference' },
+];
+
+const shots: Record<string, string> = {
+  kalpay: '/work/kalpay-leads.jpg',
+  'ahw-global': '/work/ahw-global-shipments.svg',
+  becs: '/work/becs-inventory.svg',
+};
+---
+
+<Base
+  title={d.seo.title}
+  description={d.seo.description}
+  ogType="article"
+  breadcrumb={[
+    { name: 'Work', path: '/work' },
+    { name: d.title, path: `/work/${entry.id}` },
+  ]}
+  article={{
+    headline: d.seo.title.replace(/ \| KalTech$/, ''),
+    description: d.standfirst,
+    author: { organization: true },
+  }}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+    </div>
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="ar-crumb"><a class="h-hlink" href="/work">Work</a> <span aria-hidden="true">/</span> {d.title}</p>
+        <h1 class="h-h1 ar-title">{d.title}</h1>
+        <p class="h-lead m-reveal">{d.standfirst}</p>
+      </div>
+      <div class="h-hero-viz">
+        <div class="wk-hero-shot">
+          <img src={shots[entry.id]} alt={d.imageCaption} width="1200" height="900" decoding="async" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Snapshot -->
+  <section class="h-sec h-bone wk-snap-sec">
+    <div class="h-wrap">
+      <dl class="wk-snap m-reveal">
+        {d.snapshot.map((s) => (
+          <div class="wk-snap-item">
+            <dt class="sv-label">{s.label}</dt>
+            <dd class="h-body">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="h-sec h-bone wk-main">
+    <div class="h-wrap ar-grid">
+      <nav class="ar-idx" aria-label="On this page">
+        <p class="sv-label">On this page</p>
+        <div class="idx">
+          {
+            blocks.map((b, i) => (
+              <a class="idx-link" href={`#${b.id}`} data-idx={b.id} aria-current={i === 0 ? 'true' : undefined}>{b.label}</a>
+            ))
+          }
+        </div>
+      </nav>
+
+      <div class="wk-blocks">
+        <div class="wk-block" id="blk-situation" data-block>
+          <h2 class="wk-h2">The <span class="h-accent">situation</span></h2>
+          {d.situation.map((p) => <p class="h-body">{p}</p>)}
+        </div>
+
+        <div class="wk-block" id="blk-constraint" data-block>
+          <h2 class="wk-h2">The <span class="h-accent">constraint</span> we found</h2>
+          <div class="wk-big">
+            <p class="wk-big-fig">{d.constraint.figure}</p>
+            <p class="sv-label">{d.constraint.figureLabel}</p>
+          </div>
+          {d.constraint.paras.map((p) => <p class="h-body">{p}</p>)}
+        </div>
+
+        <div class="wk-block" id="blk-setaside" data-block>
+          <h2 class="wk-h2">What we considered and <span class="h-accent">set aside</span></h2>
+          <div class="wk-aside-list">
+            {
+              d.setAside.map((o) => (
+                <div class={o.taken ? 'wk-aside is-taken' : 'wk-aside'}>
+                  <h3 class="h-h3">{o.heading}</h3>
+                  <p class="h-body">{o.body}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="wk-block" id="blk-built" data-block>
+          <h2 class="wk-h2">What was <span class="h-accent">built</span></h2>
+          <ol class="wk-built">
+            {
+              d.built.map((b) => (
+                <li class="wk-built-item">
+                  <p class="wk-built-num">{b.num}</p>
+                  <div>
+                    <h3 class="h-h3">{b.heading}</h3>
+                    <p class="h-body">{b.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="wk-block" id="blk-difference" data-block>
+          <h2 class="wk-h2">What made the <span class="h-accent">difference</span></h2>
+          {d.difference.map((p) => <p class="h-body">{p}</p>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcome -->
+  <section class="h-sec h-dark" id="outcome" data-outcome>
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">Outcome</p>
+          <h2 class="h-h2 m-reveal">What <span class="h-accent">moved</span>.</h2>
+        </div>
+      </div>
+
+      <div class="wk-out-main m-reveal">
+        <p class="wk-out-fig">{d.outcome.primary}</p>
+        <p class="sv-label">{d.outcome.primaryLabel}</p>
+      </div>
+
+      <div class="wk-out-grid">
+        {
+          d.outcome.secondary.map((s) => (
+            <div class="wk-out m-reveal">
+              <p class="wk-out-val">{s.value}</p>
+              <p class="sv-label">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="sv-cap m-reveal">{d.outcome.footnote}</p>
+    </div>
+  </section>
+
+  <!-- More work -->
+  <section class="h-sec h-white">
+    <div class="h-wrap">
+      <p class="h-eyebrow m-reveal">More Work</p>
+      <div class="wk-more">
+        {
+          others.map((o) => (
+            <a class="wk-more-card m-reveal" href={`/work/${o.id}`} data-spotlight>
+              <div class="wk-more-shot"><img src={shots[o.id]} alt={o.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" /></div>
+              <p class="h-case-pill wk-pill">Constraint found &#8212; {o.data.constraintFound}</p>
+              <h3 class="h-h3">{o.data.title}</h3>
+              <p class="wk-industry">{o.data.industry}</p>
+              <p class="h-link wk-link">
+                <span>Read the <span class="visually-hidden">{o.data.title} </span>case study</span>
+                <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+              </p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+  <HomeFooter />
+</Base>

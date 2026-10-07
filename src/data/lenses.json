@@ -1,0 +1,25 @@
+{
+  "_about": "The two drawn lens diagrams on /diagnostic. The numbers in the data diagram are illustrative and carry the caption.",
+  "caption": "Illustrative",
+  "process": {
+    "input": "Input",
+    "operators": "Operators",
+    "outputs": "Outputs"
+  },
+  "data": {
+    "entity": "Customers",
+    "systems": [
+      {
+        "label": "System A",
+        "value": "1,204"
+      },
+      {
+        "label": "System B",
+        "value": "1,187"
+      }
+    ]
+  },
+  "economics": {
+    "caption": "Illustrative. The volume is what the diagnostic calculates."
+  }
+}

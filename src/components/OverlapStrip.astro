@@ -1,0 +1,80 @@
+---
+// THE WORKING-HOURS OVERLAP STRIP.
+// One row per location: its office hours as a bar on a shared 24-hour UTC axis.
+// Where a market's hours overlap the delivery team's, that stretch is filled;
+// the rest of the market's day is an outline. Built from locations.json and
+// rendered only when `showOverlap` is true — the hours there are standard office
+// hours, not the delivery team's real ones, and they wait for those.
+// Below 768 each label sits above its bar and the axis keeps three ticks, so no
+// type drops under 12px.
+import locations from '../data/locations.json';
+
+const o = locations.overlap;
+type Span = [number, number];
+
+// Local hours to UTC intervals in [0, 24), split where they cross midnight.
+function utc(row: { utcOffset: number; start: number; end: number }): Span[] {
+  const a = (((row.start - row.utcOffset) % 24) + 24) % 24;
+  const b = (((row.end - row.utcOffset) % 24) + 24) % 24;
+  return a < b ? [[a, b]] : [[a, 24], [0, b]];
+}
+
+function intersect(xs: Span[], ys: Span[]): Span[] {
+  const out: Span[] = [];
+  for (const [a, b] of xs) for (const [c, d] of ys) {
+    const lo = Math.max(a, c);
+    const hi = Math.min(b, d);
+    if (hi > lo) out.push([lo, hi]);
+  }
+  return out;
+}
+
+const delivery = o.rows.find((r) => 'delivery' in r && r.delivery)!;
+const home = utc(delivery);
+const rows = o.rows.map((r) => {
+  const own = utc(r);
+  const isDelivery = r === delivery;
+  return { label: r.label, own, overlap: isDelivery ? [] : intersect(own, home), isDelivery };
+});
+const pct = (h: number) => `${((h / 24) * 100).toFixed(3)}%`;
+const hours = (spans: Span[]) => spans.reduce((s, [a, b]) => s + (b - a), 0);
+const ticks = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+---
+
+<figure class="ovl">
+  <p class="t-label ovl-title">{o.title}</p>
+
+  <div class="ovl-grid">
+    <div class="ovl-axis" aria-hidden="true">
+      {ticks.map((t) => (
+        <span class={t % 12 === 0 ? 'ovl-tick ovl-tick-major' : 'ovl-tick'} style={`--at:${pct(t)}`}>
+          {String(t).padStart(2, '0')}
+        </span>
+      ))}
+    </div>
+
+    {
+      rows.map((r) => (
+        <div class={r.isDelivery ? 'ovl-row is-delivery' : 'ovl-row'}>
+          <span class="t-meta ovl-name">{r.label}</span>
+          <span
+            class="ovl-track"
+            role="img"
+            aria-label={
+              r.isDelivery
+                ? `${r.label}: ${hours(r.own)} office hours.`
+                : `${r.label}: ${hours(r.overlap)} of ${hours(r.own)} office hours overlap ${delivery.label}.`
+            }
+          >
+            {r.own.map(([a, b]) => (
+              <span class="ovl-hours" style={`left:${pct(a)};width:${pct(b - a)}`} />
+            ))}
+            {r.overlap.map(([a, b]) => (
+              <span class="ovl-shared" style={`left:${pct(a)};width:${pct(b - a)}`} />
+            ))}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</figure>

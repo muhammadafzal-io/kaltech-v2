@@ -1,0 +1,1381 @@
+/* ==========================================================================
+   Pages — treatments that belong to one page only.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Home
+   -------------------------------------------------------------------------- */
+.home-hero-wrap {
+  position: relative;
+  margin-top: var(--space-32);
+}
+
+.home-hero-copy { max-width: calc(80% - var(--grid-gap)); }
+
+/* The homepage H1 sets as three lines above 768, released below. */
+.home-hero-copy .t-h1 .u-nowrap { display: block; }
+
+.home-hero-slot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+}
+
+.home-hero-actions {
+  margin-top: var(--space-40);
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+  flex-wrap: wrap;
+}
+
+/* The three tiles are peers: all three figures accent, all three rules grey. */
+.home-stats .fig-rule { background: var(--rule); }
+
+.home-stats {
+  margin-top: var(--space-32);
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.home-stat { padding: var(--space-20) var(--space-36) 0 0; }
+.home-stat + .home-stat {
+  padding-left: var(--space-36);
+  border-left: var(--rule-weight) solid var(--rule);
+}
+.home-stat:last-child { padding-right: 0; }
+
+.logostrip-row {
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-20) var(--space-16);
+  align-items: center;
+  justify-items: start;
+  padding: var(--space-20) 0;
+  border-bottom: var(--rule-weight) solid var(--rule);
+}
+
+@media (max-width: 1024px) {
+  .logostrip-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .logostrip-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .logostrip-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.logostrip-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--fs-link);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.quote-strip {
+  margin-top: var(--space-64);
+  background: var(--slate);
+}
+
+.quote-strip-inner {
+  max-width: var(--wrapper);
+  margin: 0 auto;
+  padding: var(--space-32) var(--gutter);
+}
+
+.quote-item { padding-right: var(--space-36); }
+.quote-item + .quote-item {
+  padding-left: var(--space-36);
+  border-left: var(--rule-weight) solid var(--rule-slate);
+}
+
+.method-block { padding-bottom: var(--space-28); }
+.method-block + .method-block {
+  padding: var(--space-28) 0;
+  border-top: var(--rule-weight) solid var(--rule-sand);
+}
+.method-block:last-child { padding-bottom: 0; }
+
+.method-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-20);
+}
+
+.method-ask {
+  margin-top: var(--space-16);
+  padding-top: var(--space-14);
+  border-top: var(--rule-weight) solid var(--rule-sand);
+  color: var(--ink);
+}
+
+.method-ask-lead {
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+.pullquote-left {
+  padding-left: 29px;
+  border-left: var(--rule-weight-thick) solid var(--accent);
+}
+
+.on-deep .pullquote-left { border-left-color: var(--accent-dark); }
+
+.numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+.numbered-item {
+  display: flex;
+  gap: var(--space-20);
+  align-items: baseline;
+}
+
+.numbered-item-num {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-block { padding-bottom: var(--space-32); }
+.panel-block + .panel-block {
+  padding: var(--space-32) 0;
+  border-top: var(--rule-weight) solid var(--rule-sand);
+}
+.panel-block:last-child { padding-bottom: 0; }
+
+.workcards {
+  margin: var(--space-48) calc(var(--grid-gap-half) * -1) 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.workcard {
+  padding: var(--space-36) var(--grid-gap-half) 0;
+}
+
+.workcard + .workcard { border-left: var(--rule-weight) solid var(--rule-dark); }
+
+.workcard .toprule {
+  left: var(--grid-gap-half);
+  right: var(--grid-gap-half);
+}
+
+.servicerow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+  padding: 30px 0;
+}
+
+.servicerow:last-child { border-bottom: var(--rule-weight) solid var(--rule); }
+
+.servicerow-num { grid-column: 1; }
+.servicerow-title { grid-column: 2 / span 3; }
+.servicerow-body { grid-column: 6 / span 6; max-width: 70ch; }
+
+.servicerow-arrow {
+  grid-column: 12;
+  justify-self: end;
+  font-size: 18px;
+  color: var(--accent);
+  transition: transform var(--dur-hover) ease;
+}
+
+.servicerow:hover .servicerow-arrow { transform: translateX(6px); }
+
+.insight-feature {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-height: 480px;
+  background: var(--deep);
+}
+
+/* The slot fills the feature box; the title sits over it. */
+.insight-feature > .slot {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.insight-feature-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--scrim-deep) 0%, var(--scrim-none) 45%);
+}
+
+.insight-feature-title {
+  position: absolute;
+  left: var(--space-36);
+  right: var(--space-36);
+  bottom: var(--space-28);
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-feature-title);
+  line-height: 1.25;
+  letter-spacing: var(--ls-h3);
+  color: var(--paper);
+  text-wrap: balance;
+}
+
+@media (max-width: 1024px) {
+  .home-hero-copy { max-width: 100%; }
+
+  .home-hero-slot {
+    position: static;
+    width: 100%;
+    margin-top: var(--space-40);
+  }
+
+  .home-hero-slot .slot-3-4 { aspect-ratio: 16 / 9; }
+
+  .home-stats,
+  .workcards {
+    grid-template-columns: 1fr;
+  }
+
+  .workcards {
+    margin-left: 0;
+    margin-right: 0;
+    row-gap: var(--space-48);
+  }
+
+  .workcard { padding-left: 0; padding-right: 0; }
+  .workcard + .workcard { border-left: 0; }
+  .workcard .toprule { left: 0; right: 0; }
+
+  .home-stat,
+  .home-stat + .home-stat {
+    padding: var(--space-20) 0 0;
+    border-left: 0;
+  }
+
+  .home-stat + .home-stat {
+    margin-top: var(--space-24);
+    border-top: var(--rule-weight) solid var(--rule);
+  }
+
+  .servicerow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-12) var(--space-20);
+    align-items: baseline;
+  }
+
+  .servicerow-body { width: 100%; max-width: none; }
+  .servicerow-arrow { display: none; }
+
+  .insight-feature { min-height: 320px; }
+}
+
+@media (max-width: 768px) {
+  .quote-item,
+  .quote-item + .quote-item {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .quote-item + .quote-item {
+    margin-top: var(--space-24);
+    padding-top: var(--space-24);
+    border-top: var(--rule-weight) solid var(--rule-slate);
+  }
+
+  .home-hero-copy .t-h1 .u-nowrap { display: inline; white-space: normal; }
+}
+
+/* --------------------------------------------------------------------------
+   Work index
+   -------------------------------------------------------------------------- */
+.caserow {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+  align-items: stretch;
+  padding: var(--space-72) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.caserow:last-of-type { border-bottom: var(--rule-weight) solid var(--rule); }
+
+@media (max-width: 1024px) {
+  .caserow {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-40);
+    padding: var(--space-48) 0;
+  }
+  .caserow > * { grid-column: 1 / -1; }
+}
+
+/* --------------------------------------------------------------------------
+   Case study
+   -------------------------------------------------------------------------- */
+.case-body-block {
+  padding: var(--space-56) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.case-body-block:last-child { border-bottom: 0; }
+
+.setaside-list {
+  margin-top: var(--space-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.setaside-item h3,
+.setaside-item p { color: var(--muted); }
+
+.setaside-item-taken {
+  padding-left: var(--space-24);
+  border-left: var(--rule-weight-thick) solid var(--accent);
+}
+
+.setaside-item-taken h3,
+.setaside-item-taken p { color: var(--ink); }
+
+.built-item { padding: var(--space-28) 0; }
+.built-item + .built-item { border-top: var(--rule-weight) solid var(--rule); }
+
+.built-num {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-meta);
+  letter-spacing: -0.2px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.outcome-secondary { padding-right: var(--space-36); }
+.outcome-secondary + .outcome-secondary {
+  padding-left: var(--space-36);
+  border-left: var(--rule-weight) solid var(--rule-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Services
+   -------------------------------------------------------------------------- */
+.serviceline {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+  padding: var(--space-64) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.serviceline-num { grid-column: 1 / span 1; }
+.serviceline-title { grid-column: 2 / span 3; }
+.serviceline-intro { grid-column: 6 / span 3; }
+.serviceline-subs { grid-column: 9 / span 4; }
+
+.sub-block { padding-bottom: var(--space-24); }
+.sub-block + .sub-block {
+  padding: var(--space-24) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+.sub-block:last-child { padding-bottom: 0; }
+
+.step {
+  padding-top: var(--space-24);
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.commitment { padding-right: var(--space-36); }
+.commitment + .commitment {
+  padding-left: var(--space-36);
+  border-left: var(--rule-weight) solid var(--rule);
+}
+
+@media (max-width: 1024px) {
+  .serviceline { grid-template-columns: 1fr; row-gap: var(--space-24); padding: var(--space-48) 0; }
+  .serviceline > * { grid-column: 1 / -1; }
+}
+
+/* --------------------------------------------------------------------------
+   Diagnostic
+   -------------------------------------------------------------------------- */
+.inct {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-16);
+  padding: var(--space-16) 0;
+  border-bottom: var(--rule-weight) solid var(--rule-dark);
+}
+
+.inct-head { border-bottom-color: var(--rule-dark); }
+
+.inct-cellhead { display: none; }
+
+.inct-key { color: var(--muted-dark); }
+.inct-free { color: var(--muted-dark); }
+.inct-paid { color: var(--paper); }
+
+.lens {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+  row-gap: var(--grid-gap);
+  padding: var(--space-64) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.lens-num { grid-column: 1 / span 2; }
+.lens-body { grid-column: 3 / span 5; }
+.lens-aside { grid-column: 9 / span 4; }
+
+.rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: var(--grid-gap);
+}
+
+.rail-rule {
+  height: var(--rule-weight-thick);
+  width: 100%;
+  background: var(--accent);
+  margin-bottom: var(--space-28);
+}
+
+.facs {
+  background: var(--paper);
+  border: var(--rule-weight) solid var(--rule);
+  aspect-ratio: 1 / 1.414;
+  padding: var(--space-28);
+  display: flex;
+  flex-direction: column;
+}
+
+.facs-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+}
+
+.facs-leader {
+  flex: 1;
+  border-bottom: var(--rule-weight) dotted var(--rule);
+  transform: translateY(-3px);
+}
+
+.facs-greek {
+  height: var(--space-8);
+  background: var(--sand);
+  margin-top: var(--space-8);
+}
+
+.facs-greek-short { width: 62%; }
+
+
+
+@media (max-width: 1024px) {
+  .lens { grid-template-columns: 1fr; row-gap: var(--space-24); }
+  .lens > * { grid-column: 1 / -1; }
+  .rail { grid-template-columns: 1fr; row-gap: var(--space-32); }
+}
+
+@media (max-width: 768px) {
+  .inct { grid-template-columns: 1fr; gap: var(--space-8); }
+  .inct-head { display: none; }
+  .inct-cellhead {
+    display: block;
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--muted-dark);
+    margin-bottom: var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Insights
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   Article
+   -------------------------------------------------------------------------- */
+.article-body > * + * { margin-top: var(--space-20); }
+
+.article-body h2 {
+  margin-top: var(--space-48);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2-side);
+  line-height: var(--lh-h2-side);
+  letter-spacing: var(--ls-h2-side);
+  color: var(--ink);
+}
+
+.article-body p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--body);
+}
+
+.pullout {
+  margin: var(--space-32) 0;
+  padding: var(--space-28);
+  background: var(--sand);
+  border-left: var(--rule-weight-thick) solid var(--accent);
+}
+
+.pullout p {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------------- */
+.ab-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: var(--grid-gap);
+}
+
+.ab-block { padding-right: var(--space-28); }
+.ab-block + .ab-block {
+  padding-left: var(--space-28);
+  border-left: var(--rule-weight) solid var(--rule);
+}
+
+.notcounted-item {
+  padding: var(--space-16) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+  color: var(--muted);
+}
+
+.hostack { display: none; }
+
+@media (max-width: 768px) {
+  .ab-blocks { grid-template-columns: 1fr; row-gap: var(--space-24); }
+  .ab-block,
+  .ab-block + .ab-block {
+    padding: 0;
+    border-left: 0;
+  }
+  .ab-block + .ab-block {
+    padding-top: var(--space-24);
+    border-top: var(--rule-weight) solid var(--rule);
+  }
+
+  /* The handover diagram is an SVG on a 720-unit viewBox; below 768 it becomes
+     a stacked list so the labels stay legible. */
+  .hosvg { display: none; }
+  .hostack { display: block; }
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+.contact-notes {
+  margin-top: var(--space-40);
+  padding-top: var(--space-24);
+  border-top: var(--rule-weight) solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.next-step {
+  display: flex;
+  gap: var(--space-20);
+  align-items: baseline;
+  padding: var(--space-16) 0;
+}
+
+.next-step + .next-step { border-top: var(--rule-weight) solid var(--rule-sand); }
+
+.contact-detail { padding: var(--space-20) 0; }
+.contact-detail + .contact-detail { border-top: var(--rule-weight) solid var(--rule-sand); }
+
+/* --------------------------------------------------------------------------
+   Legal stubs
+   -------------------------------------------------------------------------- */
+.legal-body { max-width: 66ch; margin-top: var(--space-24); }
+
+/* 404: the three ways back in, in one row that wraps. */
+.nf-links {
+  list-style: none;
+  margin: var(--space-32) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16) var(--space-32);
+}
+
+/* --------------------------------------------------------------------------
+   SVG devices — fills and strokes are driven by CSS so no hex reaches markup.
+   -------------------------------------------------------------------------- */
+.svg-node,
+.svg-line { stroke: var(--muted); fill: none; }
+.svg-label { fill: var(--muted); font-family: var(--font-text); letter-spacing: var(--ls-label); }
+.svg-label-ink { fill: var(--ink); font-family: var(--font-text); letter-spacing: var(--ls-label); }
+.svg-accent-line { stroke: var(--accent); fill: none; }
+.svg-accent-fill { fill: var(--accent); }
+.svg-accent-label { fill: var(--accent); font-family: var(--font-text); letter-spacing: var(--ls-label); }
+.svg-rule { stroke: var(--rule); fill: none; }
+
+/* --------------------------------------------------------------------------
+   Home — spacing for the blocks composed in index.astro
+   -------------------------------------------------------------------------- */
+.quote-source { margin-top: var(--space-20); }
+
+.logostrip { margin-top: var(--space-28); }
+
+.method-h3 { margin-top: var(--space-12); }
+.method-body { margin-top: var(--space-12); max-width: 66ch; }
+
+.panel-block-head { margin-bottom: var(--space-20); }
+.panel-block + .panel-block .panel-block-head { margin-bottom: var(--space-12); }
+
+.home-diag { margin-top: var(--space-28); }
+.home-diag-copy { max-width: 540px; }
+.home-diag-link { margin-top: var(--space-28); }
+.home-diag-quote { margin-top: var(--space-48); }
+
+.workcard-kicker { margin-top: var(--space-28); color: var(--muted-dark); }
+.workcard-title { margin-top: var(--space-14); }
+.workcard-industry { margin-top: var(--space-6); }
+.workcard-summary {
+  margin-top: var(--space-20);
+  padding-top: var(--space-20);
+  color: var(--body-dark);
+}
+.workcard-figure { margin-top: var(--space-28); }
+.workcard-link { margin-top: var(--space-24); }
+
+.workcards-foot { margin-top: var(--space-88); }
+
+.servicerows { margin-top: var(--space-48); }
+
+.home-insights { margin-top: var(--space-48); }
+
+.insight-feature-kicker { margin-top: var(--space-20); }
+.insight-feature-summary { margin-top: var(--space-10); max-width: 66ch; }
+.insight-feature-time { margin-top: var(--space-10); }
+
+.insight-item-title { margin-top: var(--space-10); }
+
+/* --------------------------------------------------------------------------
+   Work index rows
+   -------------------------------------------------------------------------- */
+.work-standfirst { max-width: 720px; }
+.caserow-slot { flex: none; }
+.caserow-title { margin-top: var(--space-16); }
+.caserow-industry { margin-top: var(--space-8); }
+.caserow-lead {
+  margin-top: var(--space-24);
+  padding-top: var(--space-24);
+}
+.caserow-para { margin-top: var(--space-16); }
+.caserow-figure { margin-top: var(--space-40); }
+.caserow-link { margin-top: var(--space-28); }
+
+/* --------------------------------------------------------------------------
+   Case study
+   -------------------------------------------------------------------------- */
+.case-crumb a { color: var(--muted); }
+.case-title { margin-top: var(--space-24); }
+.case-standfirst { max-width: 720px; }
+
+.case-idx { margin-top: var(--space-56); }
+.case-idx-head { margin-bottom: var(--space-4); }
+
+.case-para { margin-top: var(--space-24); }
+.case-para + .case-para { margin-top: var(--space-16); }
+
+.case-constraint-figure { margin-top: var(--space-32); }
+.case-body-block .case-constraint-figure + .case-para { margin-top: var(--space-32); }
+
+.setaside-body { margin-top: var(--space-10); }
+
+.built-list { margin-top: var(--space-32); }
+.built-head { margin-top: var(--space-10); }
+.built-body { margin-top: var(--space-10); }
+
+.case-body-last { border-bottom: 0; }
+
+.case-outcome-primary { margin-top: var(--space-48); }
+.case-outcome-secondary { margin-top: var(--space-64); }
+.case-outcome-foot { margin-top: var(--space-64); }
+
+.case-more { margin-top: var(--space-48); }
+.case-more-card { padding-top: var(--space-24); }
+.case-more-kicker { margin-top: var(--space-24); }
+.case-more-title { margin-top: var(--space-14); }
+.case-more-industry { margin-top: var(--space-8); }
+.case-more-link { margin-top: var(--space-20); }
+
+@media (max-width: 1024px) {
+  .case-idx { margin-top: 0; }
+  .case-body-block { padding: var(--space-40) 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Services
+   -------------------------------------------------------------------------- */
+.svc-standfirst-2 { margin-top: var(--space-20); max-width: 870px; }
+.svc-hero-action { margin-top: var(--space-40); }
+
+.serviceline-title { text-wrap: balance; }
+.serviceline-intro { max-width: 46ch; }
+.sub-body { margin-top: var(--space-10); }
+
+.svc-steps { margin-top: var(--space-48); }
+.step-title { margin-top: var(--space-12); }
+.step-body { margin-top: var(--space-12); }
+
+.svc-exits { margin-top: var(--space-48); }
+.exit-stage { margin-top: var(--space-12); }
+.exit-card {
+  margin-top: var(--space-20);
+  padding: var(--space-24);
+  border: var(--rule-weight) solid var(--rule);
+}
+.exit-body { margin-top: var(--space-10); }
+
+.svc-commitments {
+  margin-top: var(--space-64);
+  padding-top: var(--space-48);
+  border-top: var(--rule-weight) solid var(--rule);
+}
+.commitment-body { margin-top: var(--space-12); }
+
+/* The second column's hairline needs the same measure of air as the others. */
+.fit-col.rule-l { padding-left: var(--space-36); }
+
+.svc-proof { margin-top: var(--space-48); column-gap: var(--grid-gap); }
+.svc-proof-card { padding-top: var(--space-28); }
+.svc-routing { color: var(--muted-dark); }
+.svc-routing-arrow { color: var(--accent-dark); }
+.svc-proof-constraint { margin-top: var(--space-20); }
+.svc-proof-name { margin-top: var(--space-14); }
+.svc-proof-industry { margin-top: var(--space-8); }
+.svc-proof-figure { margin-top: var(--space-28); }
+.svc-proof-link { margin-top: var(--space-24); }
+
+.svc-fit { margin-top: var(--space-48); }
+.fit-list { margin-top: var(--space-24); }
+.fit-item {
+  padding: var(--space-16) 0;
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+/* --------------------------------------------------------------------------
+   Diagnostic — spacing and device detail
+   -------------------------------------------------------------------------- */
+.dx-hero { margin-top: var(--space-32); }
+.dx-hero-action { margin-top: var(--space-40); }
+.dx-hero-value { margin-top: var(--space-12); }
+
+.dx-why { margin-top: var(--space-48); }
+.dx-para + .dx-para { margin-top: var(--space-16); }
+
+.dx-gate { margin-top: var(--space-48); }
+.dx-gate-caption { margin-top: var(--space-16); }
+
+.gate-label { font-size: 12px; font-weight: var(--fw-medium); }
+.gate-sm .gate-label { font-size: 13px; }
+
+.lens-label { margin-top: var(--space-14); }
+.lens-para { margin-top: var(--space-12); }
+.lens-subhead { margin-top: var(--space-20); }
+.lens-ask {
+  grid-column: 1 / -1;
+  margin-top: var(--space-24);
+  padding-top: var(--space-16);
+  border-top: var(--rule-weight) solid var(--rule);
+  color: var(--ink);
+}
+
+.dx-chart { margin-top: var(--space-24); padding-top: var(--space-20); border-top: var(--rule-weight) solid var(--rule); }
+.dx-chart svg { max-width: 320px; }
+.dx-chart-label { font-size: 10px; font-weight: var(--fw-medium); }
+.dx-chart-label-sm { font-size: 9px; font-weight: var(--fw-medium); }
+.dx-chart-caption { margin-top: var(--space-12); }
+
+.dx-rail-wrap { margin-top: var(--space-48); }
+.phase-title { margin-top: var(--space-12); }
+.phase-body { margin-top: var(--space-12); }
+
+.dx-needs { margin-top: var(--space-64); padding-top: var(--space-48); border-top: var(--rule-weight) solid var(--rule-sand); }
+.dx-needs-list { margin-top: var(--space-20); }
+.dx-needs-right { padding-left: var(--space-36); }
+
+.dx-facswrap { align-items: start; }
+.dx-return { padding: var(--space-20) 0; border-top: var(--rule-weight) solid var(--rule); }
+.dx-return:first-child { border-top: 0; padding-top: 0; }
+.dx-return-head { color: var(--ink); }
+.dx-return-body { margin-top: var(--space-8); }
+.dx-facs-note { margin-top: var(--space-40); }
+
+.facs-rule { height: var(--rule-weight); background: var(--rule); margin: var(--space-16) 0; }
+.facs-contents { display: flex; flex-direction: column; }
+.facs-num {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.facs-label { font-size: var(--fs-small); color: var(--ink); }
+.facs-page { font-size: var(--fs-small); color: var(--muted); }
+.facs-greeked { margin-top: var(--space-8); }
+.facs-foot { margin-top: auto; padding-top: var(--space-16); }
+
+.dx-costs { margin-top: var(--space-48); }
+.dx-isnot { margin-top: var(--space-48); }
+.dx-isnot-foot { margin-top: var(--space-32); }
+.dx-isnot-second { padding-left: var(--space-28); }
+.dx-useful { padding-top: var(--space-48); border-top: var(--rule-weight) solid var(--rule); }
+.dx-useful-right { padding-left: var(--space-36); }
+
+.dx-worked { margin-top: var(--space-48); }
+.dx-bars { margin-top: var(--space-8); }
+.dx-bars-foot { margin-top: var(--space-24); }
+
+@media (max-width: 768px) {
+  .dx-needs-right,
+  .dx-useful-right { padding-left: 0; }
+  .rail-rule { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Insights index + article
+   -------------------------------------------------------------------------- */
+.ins-standfirst { max-width: 870px; }
+
+.ins-featured { margin-top: var(--space-48); padding: var(--space-32) 0; }
+.ins-featured-body { padding-left: 0; }
+.ins-featured-title { margin-top: var(--space-12); }
+.ins-featured-standfirst { margin-top: var(--space-12); max-width: 60ch; }
+.ins-featured-time { margin-top: var(--space-20); }
+
+
+.art-crumb a { color: var(--muted); }
+.art-rule { margin-top: var(--space-24); }
+.art-kicker { margin-top: var(--space-16); }
+.art-title { margin-top: var(--space-16); }
+.art-standfirst { max-width: 760px; }
+.art-byline { margin-top: var(--space-20); }
+
+.art-closing { padding-top: var(--space-40); }
+.art-closing-para + .art-closing-para { margin-top: var(--space-16); }
+.art-closing-action { margin-top: var(--space-32); }
+
+.art-related { margin-top: var(--space-48); }
+.art-related-card { padding-right: var(--space-28); }
+.art-related-card.rule-l { padding-left: var(--space-28); }
+.art-related-time { margin-top: var(--space-12); }
+
+/* --------------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------------- */
+.ab-standfirst { max-width: 870px; }
+.ab-structure { margin-top: var(--space-40); }
+.ab-blocks-wrap { margin-top: var(--space-48); padding-top: var(--space-40); border-top: var(--rule-weight) solid var(--rule-sand); }
+.ab-block-body { margin-top: var(--space-12); }
+.ab-bench-link { margin-top: var(--space-28); }
+.ab-numbers { margin-top: var(--space-48); }
+.ab-numbers-foot { margin-top: var(--space-40); }
+.ab-notcounted { margin-top: var(--space-64); padding-top: var(--space-40); border-top: var(--rule-weight) solid var(--rule-dark); }
+.ab-notcounted-list { margin-top: var(--space-20); max-width: 42ch; }
+.on-deep .notcounted-item { border-top-color: var(--rule-dark); color: var(--muted-dark); }
+.ab-locations { margin-top: var(--space-24); }
+
+.handover { margin-top: var(--space-48); }
+.ho-caption { font-size: 12px; font-weight: var(--fw-medium); }
+.ho-label { font-size: 11px; font-weight: var(--fw-medium); }
+.svg-accent-node { stroke: var(--accent); fill: none; }
+.svg-node-ink { stroke: var(--ink); fill: none; }
+
+.hostack-list { margin-top: var(--space-16); }
+.hostack-item { padding: var(--space-10) 0; border-top: var(--rule-weight) solid var(--rule); color: var(--muted); }
+.hostack-break { color: var(--muted); font-weight: var(--fw-medium); }
+/* One unbroken accent line, as in the SVG form. */
+.hostack-list-accent {
+  border-left: var(--rule-weight-thick) solid var(--accent);
+  padding-left: var(--space-16);
+}
+.hostack-list-accent .hostack-item { color: var(--ink); }
+.hostack-here { margin-top: var(--space-28); }
+.hostack-foot { margin-top: var(--space-16); }
+
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+.ct-standfirst { max-width: 56ch; }
+.ct-formhead { margin-top: var(--space-40); padding-top: var(--space-24); }
+.ct-form { margin-top: var(--space-8); }
+.ct-submit { margin-top: var(--space-32); }
+.ct-steps { margin-top: var(--space-8); }
+.ct-detail-value { margin-top: var(--space-8); }
+
+/* --------------------------------------------------------------------------
+   TEMPORARY: pending-figure layouts. Remove together with .fig-pending
+   (components.css) once real figures land.
+
+   A pending figure is one unbreakable token that needs roughly eight times its
+   font size in width. Two rows are narrower than that while they hold one, and
+   stack only for as long as they do, so the exported layouts return untouched
+   when real values replace [PLACEHOLDER]:
+   - the paired figures under "What it is not" on the Diagnostic wrap between
+     1032px and 1432px. That is above the last breakpoint, so while pending the
+     pair stacks at every width;
+   - the secondary outcome figures on a case study wrap between 776px and
+     864px, so while pending that row stacks from 1024 down.
+   -------------------------------------------------------------------------- */
+.dx-isnot-pair:has(.fig-pending) {
+  grid-template-columns: 1fr;
+  row-gap: var(--space-24);
+}
+
+.dx-isnot-pair:has(.fig-pending) > .rule-l {
+  border-left: 0;
+  border-top: var(--rule-weight) solid var(--rule);
+  padding-left: 0;
+  padding-top: var(--space-24);
+}
+
+@media (max-width: 1024px) {
+  .case-outcome-secondary:has(.fig-pending) {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-24);
+  }
+
+  .case-outcome-secondary:has(.fig-pending) > .outcome-secondary {
+    padding-left: 0;
+    padding-right: 0;
+    border-left: 0;
+  }
+
+  .case-outcome-secondary:has(.fig-pending) > .rule-l {
+    border-top: var(--rule-weight) solid var(--rule-dark);
+    padding-top: var(--space-24);
+  }
+}
+
+/* Standing rule 5: where these three-up rows stack, the vertical hairline and
+   its indent go. layout.css draws the horizontal rule that replaces it. */
+@media (max-width: 768px) {
+  .outcome-secondary,
+  .outcome-secondary + .outcome-secondary,
+  .commitment,
+  .commitment + .commitment,
+  .fit-col.rule-l {
+    padding-left: 0;
+    padding-right: 0;
+    border-left: 0;
+  }
+}
+
+/* ==========================================================================
+   Phase 3 devices
+   ========================================================================== */
+
+/* Home: THE CONSTRAINT GATE in the hero, in the column the image slot held. */
+.home-hero-gate .gate { width: 100%; height: auto; }
+
+@media (max-width: 1024px) {
+  .home-hero-gate { max-width: 320px; }
+}
+
+/* Home: the logo strip rests at 60 percent and comes up on hover. */
+.logostrip-name {
+  opacity: var(--logo-rest-opacity);
+  transition: opacity var(--dur-hover) ease;
+}
+
+@media (hover: hover) {
+  .logostrip-name:hover { opacity: 1; }
+}
+
+/* Services: THE GATE. A vertical accent rule after step 01, labelled. */
+.svc-engage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--grid-gap);
+  row-gap: var(--space-16);
+}
+
+.svc-engage > .step { grid-row: 2; }
+.svc-engage > .step-1 { grid-column: 1; }
+.svc-engage > .step-2 { grid-column: 2; }
+.svc-engage > .step-3 { grid-column: 3; }
+.svc-engage > .step-4 { grid-column: 4; }
+
+.svc-gate-label {
+  grid-column: 2 / span 3;
+  grid-row: 1;
+}
+
+.svc-gate-rule {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: start;
+  width: var(--rule-weight);
+  margin-left: calc(var(--grid-gap) / -2);
+  background: var(--accent);
+}
+
+/* Services: THE EXIT LADDER. A horizontal accent rule across the top, four
+   columns hanging beneath it, each dropping a 40px accent line into its card. */
+.svc-ladder { margin-top: var(--space-48); }
+.svc-ladder .svc-exits { margin-top: 0; }
+.svc-ladder .exit { padding-top: var(--space-20); }
+.svc-ladder .exit-card { margin-top: 0; }
+
+.ladder-rule {
+  height: var(--rule-weight);
+  background: var(--accent);
+}
+
+.exit-drop {
+  display: block;
+  width: var(--rule-weight);
+  height: var(--space-40);
+  margin-top: var(--space-12);
+  background: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .svc-engage { grid-template-columns: 1fr; row-gap: var(--space-32); }
+  .svc-engage > .step,
+  .svc-engage > .svc-gate-label { grid-column: 1; grid-row: auto; }
+  .svc-gate-rule { display: none; }
+  .svc-gate-label {
+    padding-top: var(--space-16);
+    border-top: var(--rule-weight) solid var(--accent);
+  }
+
+  /* Stacked, the ladder hangs from a vertical spine instead. */
+  .svc-ladder {
+    border-left: var(--rule-weight) solid var(--accent);
+    padding-left: var(--space-24);
+  }
+  .svc-ladder .svc-exits { grid-template-columns: 1fr; row-gap: var(--space-32); }
+  .ladder-rule,
+  .exit-drop { display: none; }
+}
+
+/* Diagnostic: the landscape gate below 768 becomes the portrait one. */
+.gate-narrow { display: none; }
+
+@media (max-width: 768px) {
+  .gate-wide { display: none; }
+  .gate-narrow { display: block; max-width: 320px; }
+}
+
+/* Diagnostic: THE SCOPE DELTA BARS grow from zero. Labels sit above the bars,
+   so no text ever sits on the fill. On --deep, the red is --accent-dark. */
+.dx-bar + .dx-bar { margin-top: var(--space-24); }
+
+.dx-bar-label {
+  display: block;
+  margin-bottom: var(--space-10);
+}
+
+.bar {
+  position: relative;
+  height: 48px;
+}
+
+.bar-requested { width: 100%; }
+.bar-delivered { width: 46%; }
+
+.bar-fill {
+  position: absolute;
+  inset: 0;
+}
+
+.bar-requested .bar-fill { background: var(--muted-dark); }
+.bar-delivered .bar-fill { background: var(--accent-dark); }
+
+/* ==========================================================================
+   Review round 1 — layout for the sixteen redesigned sections. The evidence
+   components themselves are in diagrams.css.
+   ========================================================================== */
+
+/* --- Home: clients ------------------------------------------------------- */
+.clients-figs { margin-top: var(--space-32); }
+
+.clients-stack > .clients-fig + .clients-fig {
+  margin-top: var(--space-28);
+  padding-top: var(--space-28);
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.clients-split { align-items: center; }
+
+/* Gate closed: the eyebrow introduces the testimonials directly. */
+.quote-strip-lead { margin-top: var(--space-28); }
+.clients-map { margin-top: var(--space-32); }
+
+/* The strip, once six names are confirmed: one tight band of 56px rows. */
+.logostrip-tight { margin-top: var(--space-56); }
+.logostrip-tight .logostrip-row { min-height: 56px; padding: 0; }
+
+/* --- Home: the diagnostic fork ------------------------------------------ */
+.home-fork { margin-top: var(--space-48); }
+#diagnostic .home-diag-copy { max-width: 760px; }
+
+/* --- Work: hero and the case index (the page's signature) --------------- */
+.work-hero { align-items: start; }
+
+.caseidx-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule-weight) solid var(--ink);
+}
+
+.caseidx-row { border-bottom: var(--rule-weight) solid var(--rule); }
+
+.caseidx-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  column-gap: var(--space-20);
+  padding: var(--space-20) 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.caseidx-text { display: flex; flex-direction: column; min-width: 0; }
+
+.caseidx-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+.caseidx-sector { margin-top: var(--space-4); }
+.caseidx-constraint { margin-top: var(--space-4); }
+.caseidx-value { color: var(--ink); }
+.caseidx-figlabel { margin-top: var(--space-10); max-width: 30ch; }
+
+.caseidx-fig {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-figure-md);
+  line-height: 1;
+  letter-spacing: var(--ls-figure-md);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .caseidx-name {
+    background-image: linear-gradient(var(--ink), var(--ink));
+    background-size: 0% var(--rule-weight);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--dur-hover) var(--ease-soft);
+  }
+  .caseidx-link:hover .caseidx-name { background-size: 100% var(--rule-weight); }
+}
+
+.caseidx-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.caserow { scroll-margin-top: var(--sticky-top); }
+
+@media (max-width: 1024px) {
+  .caseidx { margin-top: var(--space-40); }
+}
+
+/* --- Services: hero with the routing diagram ----------------------------- */
+.svc-hero { align-items: start; }
+.svc-route { padding-top: var(--space-72); }
+
+@media (max-width: 1024px) {
+  .svc-route { padding-top: var(--space-48); max-width: 560px; }
+}
+
+/* --- Services: service lines, the card under each title ------------------
+   Title and card share the lead column; the intro reads at standfirst size as
+   the row's lead; the two remaining sub-blocks are the detail. */
+.serviceline-lead { grid-column: 2 / span 3; min-width: 0; }
+.serviceline .serviceline-intro { grid-column: 5 / span 4; max-width: none; padding-right: var(--space-12); }
+
+.sl-card {
+  position: sticky;
+  top: var(--sticky-top);
+  margin-top: var(--space-28);
+  padding: var(--space-20);
+  background: var(--sand);
+}
+
+.sl-card-body { margin-top: var(--space-10); }
+.sl-card-tl { margin-top: var(--space-20); }
+.sl-card-tl .tl-caption { margin-top: var(--space-10); }
+
+@media (max-width: 1024px) {
+  .serviceline-lead { grid-column: 1 / -1; }
+  .serviceline .serviceline-intro { grid-column: 1 / -1; padding-right: 0; }
+  .sl-card { position: static; max-width: 560px; }
+}
+
+/* --- Services: how we engage, the proportional timeline ------------------ */
+.svc-engage-tl { margin-top: var(--space-48); }
+.svc-engage-tl .step-title { margin-top: var(--space-12); }
+
+/* --- Services: fit ------------------------------------------------------- */
+.fit-heading { margin-top: var(--space-16); }
+
+/* --- Diagnostic: why it exists ------------------------------------------
+   The heading moves into the left column so the table can rise to meet it:
+   the table's first row sits on the heading's cap height. */
+.dx-why { margin-top: 0; align-items: start; }
+.dx-why-h2 { margin-bottom: var(--space-32); }
+/* Measured: the heading's cap top sits 2.36px below the table label's at 1025
+   and 4.46px at 1440, linear in the heading size. */
+.dx-why-table { margin-top: calc(var(--fs-h2) * 0.1875 - 3.8px); }
+
+@media (max-width: 1024px) {
+  .dx-why-table { margin-top: var(--space-40); }
+}
+.inct-bar { max-width: 160px; }
+
+/* --- Diagnostic: the three lenses ---------------------------------------- */
+.dx-lenses-h2 { margin-top: var(--space-16); }
+
+/* The numeral column widens to hold its 240px diagram. Desktop only: below
+   1025 the lens stacks, as before. */
+@media (min-width: 1025px) {
+  .lens .lens-num { grid-column: 1 / span 3; }
+  .lens .lens-body { grid-column: 4 / span 5; }
+  .lens .lens-aside { grid-column: 9 / span 4; }
+}
+
+/* --- Diagnostic: how it runs --------------------------------------------- */
+.dx-runs-tl { margin-top: var(--space-48); }
+
+.dx-needs-list {
+  margin: var(--space-20) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dx-need {
+  padding: var(--space-12) 0;
+  border-top: var(--rule-weight) solid var(--rule-sand);
+}
+
+.dx-need:last-child { border-bottom: var(--rule-weight) solid var(--rule-sand); }
+
+/* --- Diagnostic: what it returns ----------------------------------------- */
+.dxr { align-items: stretch; }
+
+.dxr-sticky {
+  position: sticky;
+  top: var(--sticky-top);
+}
+
+.dxr-facs {
+  max-width: 460px;
+  margin-top: var(--space-40);
+}
+
+.dxr-right { padding-top: calc(var(--space-16) + 3px); }
+.dxr-right .dx-facs-note { margin-top: var(--space-32); }
+
+.facs-line {
+  transition: background-color var(--dur-hover) var(--ease-soft);
+}
+
+/* Hover a return and its line in the finding lights. Hover only: the matching
+   titles already carry the relationship for keyboard and screen readers. */
+@media (hover: hover) {
+  .dxr-item { transition: color var(--dur-hover) var(--ease-soft); }
+  .dxr:has(.dxr-item[data-k='01']:hover) .facs-line[data-k='01'],
+  .dxr:has(.dxr-item[data-k='02']:hover) .facs-line[data-k='02'],
+  .dxr:has(.dxr-item[data-k='03']:hover) .facs-line[data-k='03'],
+  .dxr:has(.dxr-item[data-k='04']:hover) .facs-line[data-k='04'] {
+    background: var(--sand);
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dxr-sticky { position: static; }
+  .dxr-right { padding-top: var(--space-40); }
+}
+
+/* --- About: delivery, beside its org shape ------------------------------- */
+.ab-structure { align-items: center; }
+@media (max-width: 1024px) {
+  .ab-org { margin-top: var(--space-40); max-width: 480px; }
+}
+
+/* --- About: the record, with its exclusions as one row -------------------
+   The row sits on the figures' own three columns, so "Proofs of concept"
+   starts under 60+ and "Work that stopped at the demo" under 7. */
+.ab-nc {
+  margin-top: var(--space-56);
+  border-top: var(--rule-weight) solid var(--rule-dark);
+}
+
+.ab-nc-cell { padding: var(--space-24) var(--space-36) 0 0; min-width: 0; }
+.ab-nc-cell.rule-l { padding-left: var(--space-36); }
+
+.ab-nc-first {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-24);
+}
+
+.ab-nc-last {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-24);
+  padding-right: 0;
+}
+
+.ab-nc-label { flex: none; }
+.on-deep .ab-nc-item { color: var(--muted-dark); }
+.ab-nc-note { max-width: 20ch; text-align: right; }
+
+@media (max-width: 768px) {
+  .ab-nc-cell,
+  .ab-nc-cell.rule-l { padding: var(--space-16) 0 0; }
+  .ab-nc-first,
+  .ab-nc-last { flex-direction: column; gap: var(--space-8); }
+  .ab-nc-note { text-align: left; max-width: none; margin-top: var(--space-16); }
+}
+
+/* --- About: the footprint map --------------------------------------------- */
+.ab-map { margin-top: var(--space-56); }
+
+/* --- The closing band: one padding step tighter, qualifier under heading - */
+.cta.band {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+}
+
+.cta .cta-footnote { margin-top: var(--space-24); }

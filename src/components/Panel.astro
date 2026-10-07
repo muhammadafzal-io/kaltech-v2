@@ -1,0 +1,26 @@
+---
+// Bordered surface on sand or paper.
+interface Props {
+  ground?: 'sand' | 'paper';
+  size?: 'md' | 'lg';
+  fill?: boolean;
+  class?: string;
+}
+
+const { ground = 'sand', size = 'md', fill = false, class: extra = '' } = Astro.props;
+
+const cls = [
+  'panel',
+  ground === 'paper' ? 'panel-paper' : '',
+  size === 'lg' ? 'panel-lg' : '',
+  fill ? 'fill' : '',
+  'on-sand',
+  extra,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={cls}>
+  <slot />
+</div>

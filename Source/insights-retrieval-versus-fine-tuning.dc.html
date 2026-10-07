@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="responsive.css">
+<style>
+html{background:#FAF9F5;}
+html,body{margin:0;padding:0;color:#4A5457;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:#171F21;text-decoration:none;cursor:pointer;}
+a:hover{color:#171F21;}
+::selection{background:#BE263B;color:#FAF9F5;}
+:focus-visible{outline:2px solid #BE263B;outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#FAF9F5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#FAF9F5"></rect><text x="60" y="74" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="38" fill="#171F21">K<tspan fill="#BE263B">.</tspan></text></svg></template>
+<div style="background:#FAF9F5;">
+
+<dc-import name="Site Header" bg="{{ hdrBg }}" border-color="{{ hdrBorder }}" nav-color="{{ hdrNav }}" hint-size="100%,88px"></dc-import>
+
+<section id="top" data-screen-label="01 Article header" style="background:#FAF9F5;padding:calc(var(--header-h) + clamp(72px,8vw,120px)) 0 clamp(32px,4vw,48px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;"><a href="insights.dc.html" style="color:#61696A;transition:color 200ms ease;" style-hover="color:#171F21;text-decoration:underline;">Insights</a> / Bench Tests</p>
+    <p style="margin:32px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Bench Test</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h1 style="grid-column:1/span 9;margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-3px;color:#171F21;text-wrap:balance;">Retrieval versus fine tuning on domain documents: what changed in 2026, and what did not.</h1>
+    </div>
+    <p style="margin:24px 0 0;max-width:1176px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:balance;">The fine tuning case gets made again every quarter. We ran both approaches over the same regulated corpus and measured retrieval accuracy, cost per query and time to update. One of the three decided it.</p>
+    <p style="margin:32px 0 0;font-size:14px;line-height:1.5;color:#61696A;">Kaleem Ahmad &#183; 12 min read</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Feature image" style="background:#FAF9F5;padding:0 0 80px;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="position:relative;background:#1F292B;aspect-ratio:16/9;">
+      <div style="position:absolute;top:24px;left:24px;">
+        <div style="width:32px;height:32px;border:1px solid #E8616A;"></div>
+        <p style="margin:12px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Feature image &#8212; Bench test environment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Article body" style="background:#FAF9F5;padding:0 0 80px;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 3;position:sticky;top:calc(var(--header-h) + 32px);align-self:start;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Contents</p>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;">
+          <a href="#intro" data-index-item="intro" style="padding-top:12px;border-top:1px solid #D8D5CD;font-size:14px;line-height:1.5;color:#171F21;border-left:2px solid #BE263B;padding-left:12px;transition:color 200ms ease;">The test</a>
+          <a href="#measured" data-index-item="measured" style="padding-top:12px;border-top:1px solid #D8D5CD;font-size:14px;line-height:1.5;color:#61696A;border-left:2px solid transparent;padding-left:12px;transition:color 200ms ease;">What we measured</a>
+          <a href="#flips" data-index-item="flips" style="padding-top:12px;border-top:1px solid #D8D5CD;font-size:14px;line-height:1.5;color:#61696A;border-left:2px solid transparent;padding-left:12px;transition:color 200ms ease;">Where the answer flips</a>
+        </div>
+      </div>
+      <div style="grid-column:5/span 8;max-width:680px;">
+        <div id="intro" data-body-block>
+          <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The argument arrives with a business case attached. A model tuned on your own documents will know your domain, so it will answer questions about that domain more accurately than a general model reading the same documents at query time. It is a reasonable claim and it is testable, which is the only reason it is worth writing about.</p>
+          <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">We ran both approaches over one regulated corpus, held everything else constant, and measured three things that matter to an operation rather than to a benchmark: whether the answer was correct and attributable, what a query cost at volume, and how long it took to reflect a change in the source documents.</p>
+          <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The corpus was policy documentation from a lending operation, roughly the size and messiness of what a mid-market company actually holds. Not a clean dataset. That distinction turned out to matter more than the choice of approach.</p>
+        </div>
+        <h2 id="measured" data-body-block style="margin:56px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.15;letter-spacing:-1.2px;color:#171F21;text-wrap:balance;">What we measured</h2>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Retrieval accuracy was scored against a set of questions with known answers in the source, marked correct only when the response was right and cited the passage it came from. An answer that is correct without attribution is not usable in a regulated context, so we did not count it.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Cost per query was measured at the volume the operation actually runs, not at a demonstration volume. Time to update was measured from the moment a source document changed to the moment the system answered according to the new version.</p>
+        <div style="margin:32px 0 0;background:#EFEAE0;border-left:3px solid #BE263B;padding:32px;">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,1.8vw,24px);line-height:1.35;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">The third measure decided it. Accuracy and cost were close enough to argue about. Time to update was not close.</p>
+        </div>
+        <p style="margin:32px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">A tuned model reflects a document change when it is tuned again. A retrieval system reflects it when the document is indexed. In an operation where policy changes monthly and each change carries a compliance date, that difference is not a preference.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The accuracy gap that did appear was smaller than the gap between a well-chunked corpus and a badly chunked one, using the same approach in both cases. Most of what gets attributed to the model is attributable to the preparation of the documents underneath it.</p>
+        <h2 id="flips" data-body-block style="margin:56px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.15;letter-spacing:-1.2px;color:#171F21;text-wrap:balance;">Where the answer flips</h2>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Tuning earns its cost in a narrow band: high query volume against a corpus that changes rarely, where per-query cost dominates and the update cycle is annual rather than monthly. Below that volume the arithmetic does not clear.</p>
+        <table style="margin:32px 0 0;width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;">
+          <thead>
+            <tr>
+              <th style="text-align:left;padding:0 0 12px;border-bottom:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Measure</th>
+              <th style="text-align:right;padding:0 0 12px;border-bottom:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Retrieval</th>
+              <th style="text-align:right;padding:0 0 12px;border-bottom:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Fine tuned</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">Attributable accuracy</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+            </tr>
+            <tr>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">Cost per query at volume</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+            </tr>
+            <tr>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">Time to reflect a change</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+            </tr>
+            <tr>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">Volume at which cost clears</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+              <td style="padding:16px 0;border-bottom:1px solid #D8D5CD;text-align:right;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#4A5457;">[PLACEHOLDER]</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin:32px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">What did not change in 2026 is the order of the questions. Whether the corpus holds one definition of each term, and whether the operation can say what a correct answer looks like, still decide the outcome before the architecture does.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">On this corpus, retrieval shipped. Not because it won every measure, but because it won the one the operation could not absorb losing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Article footer" style="background:#FAF9F5;padding:0 0 clamp(56px,7vw,96px);">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <div style="grid-column:5/span 8;max-width:680px;padding-top:36px;border-top:1px solid #D8D5CD;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">We run this kind of test before a build commits to an approach, not after.</p>
+        <p style="margin:8px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">If you are weighing one against the other on your own documents, the diagnostic is where that gets settled.</p>
+        <p style="margin:28px 0 0;"><a href="contact.dc.html" style="display:inline-block;font-size:14px;font-weight:500;color:#FFFFFF;background:#BE263B;padding:17px 30px;transition:background 240ms ease;" style-hover="background:#93182B;color:#FFFFFF;">Get an AI Strategy Consult</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 Related articles" style="background:#EFEAE0;padding:clamp(56px,7vw,96px) 0;">
+  <div style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">More from Insights</p>
+    <div style="margin:48px -28px 0;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:stretch;">
+      <a href="insights.dc.html" style="padding:0 28px;display:flex;flex-direction:column;justify-content:space-between;height:100%;color:inherit;">
+        <div>
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Field Notes</p>
+          <h3 style="margin:14px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Your pilot passed the demo and failed the month.</h3>
+        </div>
+        <p style="margin:24px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">7 min read</p>
+      </a>
+      <a href="insights.dc.html" style="padding:0 28px;border-left:1px solid #DBD4C6;display:flex;flex-direction:column;justify-content:space-between;height:100%;color:inherit;">
+        <div>
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Architecture Notes</p>
+          <h3 style="margin:14px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Deterministic validation gates.</h3>
+        </div>
+        <p style="margin:24px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">6 min read</p>
+      </a>
+      <a href="insights.dc.html" style="padding:0 28px;border-left:1px solid #DBD4C6;display:flex;flex-direction:column;justify-content:space-between;height:100%;color:inherit;">
+        <div>
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#BE263B;">Field Notes</p>
+          <h3 style="margin:14px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">We told a client not to build it.</h3>
+        </div>
+        <p style="margin:24px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">6 min read</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hdrBg: 'transparent', hdrBorder: 'transparent', hdrNav: '#171F21' };
+  renderVals() {
+    return { hdrBg: this.state.hdrBg, hdrBorder: this.state.hdrBorder, hdrNav: this.state.hdrNav };
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  componentDidMount() {
+    const doc = document;
+    const $$ = s => Array.from(doc.querySelectorAll(s));
+    const overDark = () => $$('footer').some(el => {
+      const r = el.getBoundingClientRect();
+      return r.top <= 88 && r.bottom >= 0;
+    });
+    const syncHeader = () => {
+      const dark = overDark();
+      const on = (window.scrollY || 0) > 24;
+      const next = dark
+        ? { hdrBg: '#1F292B', hdrBorder: 'rgba(250,249,245,0.14)', hdrNav: '#FAF9F5' }
+        : { hdrBg: on ? '#FAF9F5' : 'transparent', hdrBorder: on ? '#D8D5CD' : 'transparent', hdrNav: '#171F21' };
+      this.setState(prev => (prev.hdrBg === next.hdrBg && prev.hdrBorder === next.hdrBorder && prev.hdrNav === next.hdrNav) ? null : next);
+    };
+    window.addEventListener('scroll', syncHeader, { passive: true });
+
+    // Contents index active state: progressive enhancement. The first entry is
+    // already marked in the markup, so this only ever moves the mark.
+    const items = $$('[data-index-item]');
+    const blocks = $$('[data-body-block]');
+    let current = 'intro';
+    const syncIndex = () => {
+      let active = current;
+      blocks.forEach(b => {
+        if (b.getBoundingClientRect().top <= 200) active = b.id;
+      });
+      if (active === current) return;
+      current = active;
+      items.forEach(it => {
+        const on = it.dataset.indexItem === active;
+        it.style.color = on ? '#171F21' : '#61696A';
+        it.style.borderLeftColor = on ? '#BE263B' : 'transparent';
+      });
+    };
+    let last = 0;
+    const tick = ts => {
+      this._raf = requestAnimationFrame(tick);
+      if (document.visibilityState !== 'visible' || ts - last < 100) return;
+      last = ts;
+      syncHeader();
+        syncIndex();
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+}
+</script>
+</body>
+</html>

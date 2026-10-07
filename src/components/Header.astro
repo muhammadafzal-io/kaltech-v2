@@ -1,0 +1,41 @@
+---
+// The wordmark is type-set, not an image. The PNGs in /brand are reference only.
+// Inversion over dark sections is a data attribute toggled by motion.js; with
+// JavaScript disabled the header renders in its light state, which is correct
+// against the paper ground every page opens on.
+const nav = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/diagnostic', label: 'Diagnostic' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="hdr" data-hdr>
+  <div class="hdr-inner">
+    <a class="wordmark" href="/" aria-label="KalTech, home"
+      >KalTech</a
+    >
+
+    <div class="nav-desk">
+      {nav.map((item) => <a class="nav-link" href={item.href}>{item.label}</a>)}
+      <a class="btn btn-sm" href="/contact"><span>Get an AI Strategy Consult</span></a>
+    </div>
+
+    <details class="menu" data-menu>
+      <summary aria-label="Menu">
+        <span class="menu-open">Menu</span>
+        <span class="menu-close">Close</span>
+      </summary>
+      <div class="menu-panel">
+        <nav class="menu-nav">
+          {nav.map((item) => <a class="menu-item" href={item.href}>{item.label}</a>)}
+        </nav>
+        <div class="menu-cta">
+          <a class="btn" href="/contact"><span>Get an AI Strategy Consult</span></a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

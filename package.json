@@ -1,0 +1,52 @@
+{
+  "name": "kaltech-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:production": "SITE_ENV=production astro build",
+    "build:review": "astro build && node scripts/relativise.mjs",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify:links": "node scripts/check-links.mjs",
+    "verify:hex": "node scripts/check-hex.mjs",
+    "verify:nojs": "node scripts/check-nojs.mjs",
+    "verify:overflow": "node scripts/check-overflow.mjs",
+    "verify": "npm run build && npm run verify:hex && npm run verify:links && npm run verify:nojs && npm run verify:overflow && npm run verify:meta && npm run verify:seo && npm run verify:schema && npm run verify:redirects && npm run verify:red && npm run verify:contrast && npm run verify:matrix && npm run verify:motion && npm run verify:devices && npm run verify:round1",
+    "verify:file": "node scripts/check-file-protocol.mjs",
+    "placeholders": "node scripts/list-placeholders.mjs",
+    "verify:motion": "node scripts/check-motion.mjs",
+    "verify:red": "node scripts/check-red.mjs",
+    "verify:devices": "node scripts/check-devices.mjs",
+    "verify:contrast": "node scripts/check-contrast.mjs",
+    "verify:matrix": "node scripts/check-matrix.mjs",
+    "verify:lighthouse": "node scripts/check-lighthouse.mjs",
+    "favicon": "node scripts/make-favicon.mjs",
+    "verify:meta": "node scripts/check-meta.mjs",
+    "geo": "node scripts/make-geo.mjs",
+    "verify:round1": "node scripts/capture-review.mjs after && node scripts/check-round1.mjs",
+    "verify:gates": "node scripts/check-round1-gates.mjs",
+    "review:capture": "node scripts/capture-review.mjs",
+    "verify:justify": "node scripts/check-justify.mjs",
+    "lastmod": "node scripts/stamp-lastmod.mjs",
+    "verify:seo": "node scripts/check-seo.mjs",
+    "verify:schema": "node scripts/check-schema.mjs",
+    "verify:redirects": "node scripts/check-redirects.mjs",
+    "verify:launch": "node scripts/check-launch.mjs"
+  },
+  "dependencies": {
+    "@fontsource/instrument-sans": "^5.2.6",
+    "@fontsource/sora": "^5.2.6",
+    "astro": "^5.14.1"
+  },
+  "devDependencies": {
+    "@vercel/routing-utils": "^6.6.0",
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.4.1",
+    "playwright": "^1.63.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}

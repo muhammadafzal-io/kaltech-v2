@@ -1,0 +1,144 @@
+---
+import '@fontsource/sora/600.css';
+import '@fontsource/sora/700.css';
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/500.css';
+
+// The four faces the pages actually request, preloaded so they start downloading
+// with the CSS rather than after it: measured at ~600ms of first paint on
+// throttled mobile, for no byte cost. `?url` returns the same hashed asset the
+// bundled @font-face rules point at, so nothing is fetched twice. The latin-ext
+// subsets are deliberately not preloaded — nothing on the site uses them.
+import soraSemibold from '@fontsource/sora/files/sora-latin-600-normal.woff2?url';
+import soraBold from '@fontsource/sora/files/sora-latin-700-normal.woff2?url';
+import instrumentRegular from '@fontsource/instrument-sans/files/instrument-sans-latin-400-normal.woff2?url';
+import instrumentMedium from '@fontsource/instrument-sans/files/instrument-sans-latin-500-normal.woff2?url';
+
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/motion.css';
+import '../styles/pages.css';
+import '../styles/diagrams.css';
+import '../styles/home.css';
+
+import motion from '../scripts/motion.js?raw';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import { SITE_ENV, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from 'astro:env/server';
+import {
+  OG_IMAGE,
+  article as articleNode,
+  breadcrumbList,
+  canonicalOf,
+  organization,
+  serialise,
+  webPage,
+  website,
+  type Author,
+  type Crumb,
+} from '../lib/schema';
+
+interface Props {
+  /** The whole title, ending " | KalTech". */
+  title: string;
+  description: string;
+  /** `article` on the case studies and the insights article. */
+  ogType?: 'website' | 'article';
+  /** Kept out of search in every build (the 404). No canonical, no og:url. */
+  noindex?: boolean;
+  /** The trail below Home. Omitted on the homepage, required everywhere else. */
+  breadcrumb?: Crumb[];
+  /** An Article node for this page: the case studies and the insights article. */
+  article?: { headline: string; description: string; author: Author; section?: string };
+  /** Further nodes for this page's graph (the three Services). */
+  graph?: object[];
+  /** `own`: the page renders its own header and footer (the redesigned homepage). */
+  chrome?: 'shared' | 'own';
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  noindex = false,
+  breadcrumb,
+  article,
+  graph = [],
+  chrome = 'shared',
+} = Astro.props;
+
+const isHome = Astro.url.pathname === '/';
+const canonical = canonicalOf(Astro.url.pathname);
+
+// SITE_ENV defaults to preview. Only a production build is indexable; a
+// preview build asks every crawler to stay out, whichever host serves it.
+const production = SITE_ENV === 'production';
+const robots = !production ? 'noindex,nofollow' : noindex ? 'noindex' : null;
+
+const nodes = noindex
+  ? [organization()]
+  : [
+      organization(),
+      ...(isHome ? [website()] : []),
+      webPage(canonical, title, description, !!breadcrumb?.length),
+      ...(breadcrumb?.length ? [breadcrumbList(canonical, breadcrumb)] : []),
+      ...(article ? [articleNode({ url: canonical, ...article })] : []),
+      ...graph,
+    ];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- One classic script, inline: no module, so it also runs from file://. -->
+    <script is:inline set:html={motion} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
+    {GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />}
+    {BING_SITE_VERIFICATION && <meta name="msvalidate.01" content={BING_SITE_VERIFICATION} />}
+    {
+      [soraSemibold, soraBold, instrumentRegular, instrumentMedium].map((href) => (
+        <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
+      ))
+    }
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <!-- Type-set from Sora, like the wordmark. The /brand PNGs have baked
+         backgrounds and are reference only. -->
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="KalTech" />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={OG_IMAGE.url} />
+    <meta property="og:image:width" content={String(OG_IMAGE.width)} />
+    <meta property="og:image:height" content={String(OG_IMAGE.height)} />
+    <meta property="og:image:alt" content="KalTech" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={OG_IMAGE.url} />
+    <meta name="twitter:image:alt" content="KalTech" />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline type="application/ld+json" set:html={serialise(nodes)} />
+  </head>
+  <body class={chrome === 'own' ? 'page-home' : undefined}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {chrome === 'shared' && <Header />}
+    <slot name="header" />
+    <main id="main">
+      <slot />
+    </main>
+    {chrome === 'shared' && <Footer />}
+    <slot name="footer" />
+  </body>
+</html>

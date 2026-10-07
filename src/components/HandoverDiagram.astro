@@ -1,0 +1,74 @@
+---
+// THE HANDOVER DIAGRAM.
+// Row one is the usual arrangement, broken between SCOPE and DELIVERY FIRM.
+// Row two is one unbroken accent line. Below 768 the SVG is swapped for a
+// stacked list so the labels stay legible; both render without JavaScript.
+---
+
+<div class="handover">
+  <svg
+    class="hosvg m-draw" data-responsive-alt
+    viewBox="0 0 720 272"
+    width="100%"
+    role="img"
+    aria-labelledby="ho-title"
+    aria-describedby="ho-desc"
+  >
+    <title id="ho-title">The usual arrangement, and here: same team throughout</title>
+    <desc id="ho-desc">The usual arrangement runs strategy firm, scope, then a break marked handover, then delivery firm and build. Here it runs diagnostic, scope, build and retainer on one unbroken line with the same team throughout.</desc>
+    <text class="svg-label ho-caption" x="0" y="12">THE USUAL ARRANGEMENT</text>
+
+    <path class="svg-line" pathLength="1" d="M4 48 H344" />
+    <path class="svg-line" pathLength="1" d="M368 48 H716" />
+    <path class="svg-line" pathLength="1" d="M344 40 V56" />
+    <path class="svg-line" pathLength="1" d="M368 40 V56" />
+
+    <rect class="svg-node" x="0" y="44" width="8" height="8" />
+    <rect class="svg-node" x="232" y="44" width="8" height="8" />
+    <rect class="svg-node" x="472" y="44" width="8" height="8" />
+    <rect class="svg-node" x="708" y="44" width="8" height="8" />
+
+    <text class="svg-label ho-label" x="0" y="76">STRATEGY FIRM</text>
+    <text class="svg-label ho-label" x="232" y="76">SCOPE</text>
+    <text class="svg-label ho-label" x="472" y="76">DELIVERY FIRM</text>
+    <text class="svg-label ho-label" x="716" y="76" text-anchor="end">BUILD</text>
+    <text class="svg-label ho-label" x="356" y="100" text-anchor="middle">HANDOVER</text>
+
+    <text class="svg-label-ink ho-caption" x="0" y="166">HERE</text>
+
+    <path class="svg-accent-line" pathLength="1" d="M4 202 H716" />
+
+    <rect class="svg-node-ink" x="0" y="198" width="8" height="8" />
+    <rect class="svg-node-ink" x="232" y="198" width="8" height="8" />
+    <rect class="svg-node-ink" x="472" y="198" width="8" height="8" />
+    <rect class="svg-node-ink" x="708" y="198" width="8" height="8" />
+
+    <text class="svg-label-ink ho-label" x="0" y="230">DIAGNOSTIC</text>
+    <text class="svg-label-ink ho-label" x="232" y="230">SCOPE</text>
+    <text class="svg-label-ink ho-label" x="472" y="230">BUILD</text>
+    <text class="svg-label-ink ho-label" x="716" y="230" text-anchor="end">RETAINER</text>
+    <text class="svg-label ho-label" x="360" y="264" text-anchor="middle">SAME TEAM THROUGHOUT</text>
+  </svg>
+
+  <div class="hostack" data-responsive-alt>
+    <p class="t-label">The usual arrangement</p>
+    <div class="hostack-list">
+      <p class="t-body hostack-item">Strategy firm</p>
+      <p class="t-body hostack-item">Scope</p>
+      <p class="t-body hostack-item hostack-break">Handover</p>
+      <p class="t-body hostack-item">Delivery firm</p>
+      <p class="t-body hostack-item">Build</p>
+    </div>
+
+    <p class="t-label hostack-here">Here</p>
+    <div class="hostack-list hostack-list-accent">
+      <p class="t-body hostack-item">Diagnostic</p>
+      <p class="t-body hostack-item">Scope</p>
+      <p class="t-body hostack-item">Build</p>
+      <p class="t-body hostack-item">Retainer</p>
+    </div>
+
+    <p class="t-label hostack-foot">Same team throughout</p>
+  </div>
+
+</div>

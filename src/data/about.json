@@ -1,0 +1,29 @@
+{
+  "_about": "The About record row and the delivery diagram. Figure values come from footprint.json `record`; only the labels live here.",
+  "record": [
+    {
+      "key": "companies",
+      "label": "Companies served"
+    },
+    {
+      "key": "products",
+      "label": "Products shipped to production"
+    },
+    {
+      "key": "countries",
+      "label": "Countries delivered in"
+    }
+  ],
+  "notCounted": [
+    "Pilots",
+    "Proofs of concept",
+    "Work that stopped at the demo"
+  ],
+  "sourceNote": "Figures verified against delivery records as at [PLACEHOLDER].",
+  "org": {
+    "left": "Pyramid",
+    "right": "Senior-led",
+    "node": "You",
+    "caption": "Illustrative"
+  }
+}

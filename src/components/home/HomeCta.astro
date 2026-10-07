@@ -1,0 +1,63 @@
+---
+// The closing band. Copy is prop-driven because Services closes with its own
+// words; every other page uses the defaults, which are the site's copy.
+interface Props {
+  label?: string;
+  heading?: string;
+  body?: string;
+  footnote?: string | null;
+  notes?: { num: string; label: string }[] | null;
+  ctaLabel?: string;
+}
+
+const {
+  label = 'Start Here',
+  heading = 'Start with the question, not the brief.',
+  body = 'A 30-minute call. You describe what you are considering building. We tell you which of the three lenses we would run it through first, and whether we are the right firm for it. No fee, no deck, no follow-up sequence.',
+  footnote = 'For companies operating above $1M in revenue with a specific commercial problem.',
+  notes = [
+    { num: '01', label: '30 Minutes' },
+    { num: '02', label: 'No Fee' },
+    { num: '03', label: 'No Deck' },
+  ],
+  ctaLabel = 'Get an AI Strategy Consult',
+} = Astro.props;
+---
+
+<section class="sh" id="cta">
+  <div class="h-wrap">
+    <div class="sh-panel">
+      <div class="sh-bg" aria-hidden="true"><span class="sh-glow"></span><span class="sh-grid"></span></div>
+
+      <div class="sh-copy">
+        <p class="h-eyebrow h-eyebrow-light m-reveal">{label}</p>
+        <h2 class="sh-h2 m-reveal">{heading}</h2>
+        {footnote && <p class="sh-foot m-reveal">{footnote}</p>}
+        <p class="sh-body m-reveal">{body}</p>
+        <div class="sh-actions m-reveal">
+          <a class="h-btn h-btn-light sh-btn" href="/contact" data-magnetic><span>{ctaLabel}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></a>
+          {notes && (
+            <ul class="sh-chips">
+              {notes.map((n) => <li><span>{n.num}</span>{n.label}</li>)}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      <!-- "A 30-minute call": a glass clock dial, half of it swept in amber. -->
+      <div class="sh-art" aria-hidden="true">
+        <div class="sh-dial-stage">
+          <div class="sh-dial">
+            <span class="sh-face"></span>
+            <span class="sh-arc"></span>
+            {Array.from({ length: 12 }, (_, i) => <span class="sh-tick" style={`--t:${i * 30}deg`}></span>)}
+            <span class="sh-hand"></span>
+            <span class="sh-core"><svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg></span>
+            <span class="sh-ring"></span>
+          </div>
+          <span class="sh-label">30 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

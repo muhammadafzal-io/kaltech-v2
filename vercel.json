@@ -1,0 +1,325 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "https://kaltech.online/about",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/about-us/",
+      "destination": "https://kaltech.online/about",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/contact-us",
+      "destination": "https://kaltech.online/contact",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "https://kaltech.online/contact",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/ai-solutions",
+      "destination": "https://kaltech.online/services",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/ai-solutions/",
+      "destination": "https://kaltech.online/services",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/custom-development",
+      "destination": "https://kaltech.online/services",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/custom-development/",
+      "destination": "https://kaltech.online/services",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/loan-management-system",
+      "destination": "https://kaltech.online/work/kalpay",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/loan-management-system/",
+      "destination": "https://kaltech.online/work/kalpay",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/products",
+      "destination": "https://kaltech.online/work",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/products/",
+      "destination": "https://kaltech.online/work",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/becs",
+      "destination": "https://kaltech.online/work/becs",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/becs/",
+      "destination": "https://kaltech.online/work/becs",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "https://kaltech.online/",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/:path+/",
+      "destination": "https://kaltech.online/:path+",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://kaltech.online/:path*",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kaltech.online"
+        }
+      ]
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-solutions",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-solutions/",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/custom-development",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/custom-development/",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/loan-management-system",
+      "destination": "/work/kalpay",
+      "statusCode": 301
+    },
+    {
+      "source": "/loan-management-system/",
+      "destination": "/work/kalpay",
+      "statusCode": 301
+    },
+    {
+      "source": "/products",
+      "destination": "/work",
+      "statusCode": 301
+    },
+    {
+      "source": "/products/",
+      "destination": "/work",
+      "statusCode": 301
+    },
+    {
+      "source": "/becs",
+      "destination": "/work/becs",
+      "statusCode": 301
+    },
+    {
+      "source": "/becs/",
+      "destination": "/work/becs",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/KalTech%20Pitch%20Deck.pdf",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/KalTech Pitch Deck.pdf",
+      "destination": "/api/gone"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-KImnP2ievcrUhMHOXpnqvnivZy9cOcKUw5gVDP0i+e8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?!kaltech\\.online$).*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

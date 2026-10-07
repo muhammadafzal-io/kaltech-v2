@@ -1,0 +1,18 @@
+{
+  "_about": "The Organization in the JSON-LD on every page, the LinkedIn links in the footer and on /contact, and the header of /llms.txt. Only what the site states. A value still set to the placeholder string is omitted from the output rather than published. The logo is provisional: the type-set 512px icon stands in until there is an SVG wordmark.",
+  "name": "KalTech",
+  "legalName": "AajKal Inc.",
+  "email": "info@kaltech.online",
+  "description": "A senior-led applied AI and software firm for established mid-market companies.",
+  "address": {
+    "addressRegion": "DE",
+    "addressCountry": "US"
+  },
+  "logo": {
+    "path": "/icon-512.png",
+    "width": 512,
+    "height": 512,
+    "provisional": true
+  },
+  "linkedin": "https://www.linkedin.com/company/kal-tech"
+}

@@ -1,0 +1,37 @@
+{
+  "_about": "Written by npm run lastmod. The sitemap uses a date only while the file still hashes to the value recorded with it. Unpublished articles are recorded too; they have no page, so no sitemap entry.",
+  "files": {
+    "src/content/work/ahw-global.md": {
+      "sha256": "93961e128e0b83c2f5c8cbea1a3f09fd36844c540359cafbd93f5f8dc84eef56",
+      "lastmod": "2026-09-24"
+    },
+    "src/content/work/becs.md": {
+      "sha256": "a28e16cfc14c687150e5d8d678848e68d73ccbb23759374fbf66429ee32975b1",
+      "lastmod": "2026-09-24"
+    },
+    "src/content/work/kalpay.md": {
+      "sha256": "6674a7e3c21d8e33631d5943215f0b43f43f6bd50e08bab30d1e0b48a97eb94e",
+      "lastmod": "2026-09-24"
+    },
+    "src/content/insights/benchmark-scores.md": {
+      "sha256": "dc26b9fe5f7caa1adab82ea197e6ed1b781865600e7a6deec2230aeb67326fa9",
+      "lastmod": "2026-09-15"
+    },
+    "src/content/insights/deterministic-validation-gates.md": {
+      "sha256": "b5bfb50403de2548c1412ea3e0b67fb7b20859143c5616c866cbe92fd116e728",
+      "lastmod": "2026-09-15"
+    },
+    "src/content/insights/pilot-passed-the-demo.md": {
+      "sha256": "9090f393e02abf25b137f018b95df010d1814411f90d7dbdf5e58ae222a30880",
+      "lastmod": "2026-09-15"
+    },
+    "src/content/insights/retrieval-versus-fine-tuning.md": {
+      "sha256": "9e3e5804126d153fdf146e02cabe30e789d38670592ae57c3a454ed8aa6222bb",
+      "lastmod": "2026-09-24"
+    },
+    "src/content/insights/told-a-client-not-to-build-it.md": {
+      "sha256": "eacd8562e9f1386faedaab7fea17ca6721e8588aada9428385ee51ab376ee98d",
+      "lastmod": "2026-09-15"
+    }
+  }
+}

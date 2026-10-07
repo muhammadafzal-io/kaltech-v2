@@ -1,0 +1,41 @@
+{
+  "_about": "The two fit checks. The meter has one segment per item and the call to action appears once all but one are ticked.",
+  "cta": {
+    "label": "Get an AI Strategy Consult",
+    "href": "/contact"
+  },
+  "services": {
+    "title": "This works when",
+    "items": [
+      "You have a functioning business and a specific commercial problem.",
+      "Someone with budget authority is in the room.",
+      "The system will run in production, in front of customers or under audit.",
+      "You want the people who scope the work to be the people who build it.",
+      "You would rather be told the scope is smaller than you budgeted than be told the budget is achievable."
+    ],
+    "notTitle": "This is not for",
+    "not": [
+      "Teams looking for additional capacity rather than a partner.",
+      "Work where the brief is fixed and the constraint is not open to question.",
+      "Procurement run as a lowest-bid comparison against a specification that is not open to revision.",
+      "Companies without an operation for the system to run inside, where any answer we gave would be a forecast rather than a finding."
+    ]
+  },
+  "diagnostic": {
+    "title": "It is useful when",
+    "items": [
+      "You are considering a build and want the constraint established before it is scoped",
+      "A previous pilot worked in demo and did not survive contact with the operation",
+      "Two parts of the business report different numbers for the same thing",
+      "A vendor has quoted you for a system and you want the quote tested against the problem rather than against its own specification",
+      "A system already shipped and the saving it was meant to produce has not appeared in the numbers",
+      "Budget is allocated to technology and there is no settled view internally on where it should land"
+    ],
+    "notTitle": "It is not useful when",
+    "not": [
+      "The brief is fixed and the constraint is not open to question",
+      "The decision has already been made and what is wanted is a document that supports it",
+      "The operation the system would run inside does not exist yet, because there is nothing to examine and the answer would be a forecast rather than a finding"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_about": "The record figures and the homepage client footprint. Each value lives here once: the homepage clients section and the About record both read `record`. Client names render only when `confirmed` is true, and the strip renders only once `stripMin` names are confirmed. Countries render only when `confirmed` is true, and the map renders only once `mapMin` countries are confirmed. `country` must match a Natural Earth name in country-centroids.json.",
+  "record": {
+    "companies": { "value": "50+", "count": 50, "suffix": "+" },
+    "countries": { "value": "7", "count": 7, "suffix": "" },
+    "products": { "value": "60+", "count": 60, "suffix": "+" },
+    "growth": { "value": "$100M+", "count": null, "suffix": "" }
+  },
+  "home": {
+    "figures": [
+      { "key": "companies", "label": "Companies" },
+      { "key": "countries", "label": "Countries" },
+      { "key": "growth", "label": "In growth delivered" }
+    ]
+  },
+  "stripMin": 6,
+  "mapMin": 5,
+  "clients": [
+    { "name": "KalPay", "confirmed": true },
+    { "name": "AHW Global", "confirmed": true },
+    { "name": "BECS", "confirmed": true }
+  ],
+  "countries": [
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false },
+    { "country": "[PLACEHOLDER]", "confirmed": false }
+  ]
+}

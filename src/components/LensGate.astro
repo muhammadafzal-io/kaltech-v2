@@ -1,0 +1,55 @@
+---
+// THE LENS GATE (Diagnostic).
+// The constraint gate with each lens's question written along its branch. The
+// junction sits about 30 percent across, so the brief's run-in is short and the
+// branches carry the width. One branch returns binding; which one is an
+// illustration, as the caption beneath says. The homepage hero keeps the
+// original ConstraintGate unchanged.
+//
+// HTML with 1px lines, so the questions stay legible at every width; lines draw
+// via .m-rule. The binding node is structural red, as in ConstraintGate.
+import diagnostic from '../data/diagnostic.json';
+
+const g = diagnostic.gate;
+const lenses = diagnostic.lenses;
+---
+
+<figure
+  class="lgate"
+  aria-label="A brief enters a junction and splits into three branches, each asking its lens's question: process, data and unit economics. Two return clear. One returns binding, and that is the constraint."
+>
+  <div class="lgate-brief">
+    <p class="t-label lgate-brief-label">{g.brief}</p>
+    <span class="lgate-node" aria-hidden="true"></span>
+  </div>
+  <span class="lgate-trunk m-rule" aria-hidden="true"></span>
+  <span class="lgate-spine m-rule m-rule-y" aria-hidden="true"></span>
+
+  <ol class="lgate-branches">
+    {
+      lenses.map((l, i) => {
+        const binding = i === g.bindingIndex;
+        return (
+          <li class={binding ? 'lgate-branch is-binding' : 'lgate-branch'}>
+            <p class="t-label lgate-lens">
+              {l.num} {l.label}
+            </p>
+            <span class="lgate-arm m-rule" aria-hidden="true" />
+            <p class="t-meta lgate-question">{l.heading}</p>
+            <span class={binding ? 'lgate-end rule-struct' : 'lgate-end'} aria-hidden="true" />
+            <p class="t-label lgate-status">
+              {binding ? (
+                <>
+                  <span class="lgate-status-ink">{g.binding}</span>
+                  <span class="lgate-status-ink lgate-status-sub">&#8592; {g.constraint}</span>
+                </>
+              ) : (
+                g.clear
+              )}
+            </p>
+          </li>
+        );
+      })
+    }
+  </ol>
+</figure>

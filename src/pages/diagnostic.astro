@@ -1,0 +1,390 @@
+---
+// Rebuilt in the homepage design system (home.css). Copy unchanged; values that
+// feed a diagram live in src/data/diagnostic.json.
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+import HomeCta from '../components/home/HomeCta.astro';
+import Lenses3D from '../components/art/Lenses3D.astro';
+import diagnostic from '../data/diagnostic.json';
+import timelines from '../data/timelines.json';
+import fit from '../data/fit.json';
+
+const { incentive, lenses, phases, needs, returns, weeks, findingPages } = diagnostic;
+const set = fit.diagnostic;
+const need = set.items.length - 1;
+
+const heroPanel = [
+  { label: 'Duration', value: '[PLACEHOLDER]' },
+  { label: 'Fee', value: '[PLACEHOLDER]' },
+  { label: 'Deliverable', value: 'A written finding' },
+];
+---
+
+<Base
+  title="A diagnostic of process, data and unit economics | KalTech"
+  description="Every engagement begins with a diagnostic against process, data and unit economics. It ends in a written finding and a scope priced against it, for a fixed fee."
+  breadcrumb={[{ name: 'Diagnostic', path: '/diagnostic' }]}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <!-- Hero -->
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>The diagnostic</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">Every engagement</span>
+          <span class="h-line">begins with a</span>
+          <span class="h-line"><em class="h-mark">diagnostic</em>.</span>
+        </h1>
+        <p class="h-lead m-reveal">
+          It runs against three lenses and ends in a written finding with a scope priced against it.
+          Companies that proceed to a build do so with the constraint already established. Companies
+          that do not proceed keep the finding.
+        </p>
+        <div class="h-actions m-reveal">
+          <a class="h-btn h-btn-primary" href="/contact" data-magnetic>
+            <span>Get an AI Strategy Consult</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+        <dl class="dg-facts m-reveal">
+          {heroPanel.map((i) => (
+            <div><dt class="sv-label">{i.label}</dt><dd>{i.value}</dd></div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="h-hero-viz">
+        <Lenses3D lenses={lenses.map((l) => l.label)} hot={diagnostic.gate.bindingIndex} label="Three lenses in a row with a beam passing through them; the beam turns at the binding lens." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it exists -->
+  <section class="h-sec h-dark" id="why">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap dg-why">
+      <div>
+        <p class="h-eyebrow m-reveal">Why it exists</p>
+        <h2 class="h-h2 m-reveal">A firm that builds should not be <span class="h-accent">trusted</span> to say what needs building.</h2>
+        <p class="h-body dg-p m-reveal">
+          That is the honest form of the objection, and we do not answer it by promising to be careful.
+          We answer it by charging for the finding as a document rather than as the opening phase of a
+          build, which means the diagnostic covers its own cost whatever it concludes. Where the work
+          recommends less than the client came in asking for, or nothing at all, we have already been
+          paid for the work that established it.
+        </p>
+        <p class="h-body dg-p m-reveal">
+          The alternative arrangement, where the assessment is free and the revenue sits entirely in what
+          follows, has one predictable output. Free assessments recommend builds. Not because the people
+          writing them are dishonest, but because a firm that has absorbed the cost of the analysis has an
+          interest in a particular conclusion, and interests are more reliable than intentions.
+        </p>
+        <p class="h-body dg-p m-reveal">
+          The diagnostic fee is not credited against a subsequent build. Crediting it would reintroduce the
+          incentive the fee exists to remove.
+        </p>
+      </div>
+
+      <div class="dg-inct">
+        <div class="dg-inct-row dg-inct-head m-reveal">
+          <span></span><span class="sv-label">Free assessment</span><span class="sv-label">Paid finding</span>
+        </div>
+        {
+          incentive.map((r) => (
+            <div class="dg-inct-row m-reveal">
+              <span class="dg-inct-key">{r.key}</span>
+              <span class="dg-inct-free"><span class="dg-inct-cell">Free assessment</span>{r.free}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.free * 100)}%`}></span></span>}</span>
+              <span class="dg-inct-paid"><span class="dg-inct-cell">Paid finding</span>{r.paid}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.paid * 100)}%`}></span></span>}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The three lenses -->
+  <section class="h-sec h-bone" id="lenses">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <h2 class="h-h2 m-reveal">Process, data, unit economics.</h2>
+        </div>
+        <p class="h-sub m-reveal">
+          One of the three is usually binding. The diagnostic establishes which, what it costs to leave in
+          place, and what it would take to move. The three are examined in this order because a data problem
+          examined before a process problem returns an answer that is technically correct and operationally
+          useless.
+        </p>
+      </div>
+
+      <div class="dg-lenses">
+        {
+          lenses.map((l, i) => (
+            <article class={i === 0 ? 'dg-lens is-binding m-reveal' : 'dg-lens m-reveal'} data-spotlight>
+              <div class="dg-lens-top">
+                <p class="dg-lens-num">{l.num}</p>
+                <p class="sv-label">{l.label}</p>
+                <span class="dg-flag">{i === 0 ? diagnostic.gate.binding : diagnostic.gate.clear}</span>
+              </div>
+              <h3 class="h-h3">{l.heading}</h3>
+              <p class="h-body">{l.body}</p>
+              <div class="dg-lens-aside">
+                <p class="sv-label">What we examine</p>
+                <p class="h-body">{l.examine}</p>
+                <p class="sv-label">When this lens is binding</p>
+                <p class="h-body">{l.binding}</p>
+              </div>
+              <p class="h-lens-ask"><strong>We ask:</strong> {l.ask}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p class="sv-cap m-reveal">
+        An illustration. Which lens is binding is what the diagnostic establishes, and it is not the same
+        one twice running.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it runs -->
+  <section class="h-sec h-white" id="runs">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">How it runs</p>
+          <h2 class="h-h2 m-reveal">What the {weeks} <span class="h-accent">weeks</span> actually consist of.</h2>
+        </div>
+        <p class="h-sub m-reveal">
+          The diagnostic is run by the engineers who would build against it, which is the reason it can be
+          short. There is no discovery team assembling context for a delivery team that has not been hired
+          yet, and no phase in which the work is explained a second time to the people who will actually do
+          it.
+        </p>
+      </div>
+
+      <div class="sv-bar m-reveal" role="img" aria-label="Access and interviews, then evidence, the longest phase, then the finding.">
+        {timelines.diagnosticPhases.map((s) => <span class="sv-seg sv-seg-solid" style={`flex:${s.width}`}></span>)}
+      </div>
+      <p class="sv-gate m-reveal"><span class="sv-gate-mark" aria-hidden="true"></span>{weeks} weeks</p>
+
+      <ol class="sv-steps dg-phases">
+        {
+          phases.map((ph) => (
+            <li class="sv-step m-reveal" data-spotlight>
+              <p class="sv-step-num">{ph.num}</p>
+              <h3 class="h-h3">{ph.title}</h3>
+              <p class="h-body">{ph.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="sv-cap m-reveal">{timelines.caption}</p>
+
+      <div class="dg-needs">
+        <div>
+          <p class="sv-label">What we need from you</p>
+          <ul class="dg-needs-list">{needs.map((n) => <li class="h-body">{n}</li>)}</ul>
+        </div>
+        <div>
+          <p class="sv-label">What we do not need</p>
+          <p class="h-body">
+            A brief, a requirements document, or a vendor evaluation. If one exists we will read it, but the
+            diagnostic does not start from it, and where the finding disagrees with it we will say so.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it returns -->
+  <section class="h-sec h-bone" id="returns">
+    <div class="h-wrap dg-returns">
+      <div class="dg-ret-left">
+        <h2 class="h-h2 m-reveal">What it <span class="h-accent">returns</span>.</h2>
+        <div class="dg-facs m-reveal" aria-hidden="true">
+          <p class="sv-label">KalTech Diagnostic Finding</p>
+          <div class="dg-facs-lines">
+            {
+              returns.map((r) => (
+                <p class="dg-facs-line">
+                  <span class="dg-facs-num">{r.num}</span>
+                  <span class="dg-facs-label">{r.short}</span>
+                  <span class="dg-facs-lead"></span>
+                  <span class="dg-facs-page">{r.page}</span>
+                </p>
+              ))
+            }
+          </div>
+          <div class="dg-facs-greek"><i></i><i></i><i class="s"></i></div>
+          <p class="sv-label">{findingPages} pages</p>
+        </div>
+      </div>
+
+      <div class="dg-ret-right">
+        {
+          returns.map((r) => (
+            <div class="dg-ret m-reveal">
+              <p class="dg-ret-num">{r.num}</p>
+              <div>
+                <p class="dg-ret-head">{r.head}</p>
+                <p class="h-body">{r.body}</p>
+              </div>
+            </div>
+          ))
+        }
+        <p class="h-body dg-ret-note">
+          The finding runs to roughly {findingPages} pages and is written to be read by someone who was not
+          in the interviews. Clients take it to boards, to lenders and to their own technology teams, and it
+          is written on the assumption that they will. Every figure in it is traceable to something we saw
+          rather than something we were told, which is also why some of the numbers in it are smaller than
+          the ones the business currently reports.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it costs -->
+  <section class="h-sec h-white" id="costs">
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">What it costs</p>
+          <h2 class="h-h2 m-reveal">A <span class="h-accent">fixed fee</span>, agreed before the work starts.</h2>
+        </div>
+      </div>
+      <div class="dg-cols">
+        <div class="dg-big m-reveal">
+          <p class="dg-big-fig">[PLACEHOLDER]</p>
+          <p class="sv-label">Fixed fee, agreed in advance</p>
+        </div>
+        <div>
+          <p class="h-body dg-p">
+            Fixed at the outset and not adjusted by what the work finds, which means the fee is identical
+            whether the finding recommends a build, a smaller build than the one you came in with, or no
+            build at all.
+          </p>
+          <p class="h-body dg-p">
+            The scope that follows is priced separately and by the team that would deliver it, so the
+            estimate is written by the people who have to meet it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it is not -->
+  <section class="h-sec h-bone" id="isnot">
+    <div class="h-wrap">
+      <blockquote class="h-pull h-pull-light m-reveal">
+        Sometimes the finding is that nothing should be built. We deliver that as readily as any other.
+      </blockquote>
+      <div class="dg-cols dg-cols-top">
+        <div>
+          <p class="sv-label">What it is not</p>
+          <p class="h-body dg-p">This is not a sales document. We are not pitching you a service at the end of it.</p>
+          <p class="h-body dg-p">
+            Often the answer is that the thing you asked for should not be built, or that the real problem
+            is somewhere else entirely. We tell you that plainly, in writing, and you keep the finding
+            either way.
+          </p>
+        </div>
+        <div class="dg-pair">
+          <div class="dg-big m-reveal">
+            <p class="dg-big-fig dg-big-sm">[PLACEHOLDER]</p>
+            <p class="sv-label">Of the last [PLACEHOLDER] diagnostics recommended less than the client asked for</p>
+          </div>
+          <div class="dg-big m-reveal">
+            <p class="dg-big-fig dg-big-sm">[PLACEHOLDER]</p>
+            <p class="sv-label">Recommended nothing be built</p>
+          </div>
+          <p class="sv-cap">Figures cover [PLACEHOLDER].</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Useful when -->
+  <section class="h-sec h-white" id="fit">
+    <div class="h-wrap">
+      <div class="sv-fit" data-fit data-fit-threshold={need}>
+        <div class="sv-fit-main">
+          <h2 class="h-h2" id="fit-diagnostic-title">{set.title}</h2>
+          <ul class="sv-fit-list" aria-labelledby="fit-diagnostic-title">
+            {
+              set.items.map((text) => (
+                <li class="sv-fit-row">
+                  <label class="sv-fit-label">
+                    <input class="sv-fit-box" type="checkbox" data-fit-box data-js-control />
+                    <span class="h-body">{text}</span>
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <aside class="sv-fit-side" data-js-control>
+          <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+          <p class="sv-fit-cta" data-fit-cta>
+            <a class="h-btn h-btn-primary" href={fit.cta.href}><span>{fit.cta.label}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></a>
+          </p>
+        </aside>
+      </div>
+      <div class="sv-not">
+        <h3 class="h-h3">{set.notTitle}</h3>
+        <ul class="sv-not-list">{set.not.map((t) => <li class="h-body">{t}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- A worked example -->
+  <section class="h-sec h-dark" id="worked">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap">
+      <div class="h-head">
+        <div class="h-head-main">
+          <p class="h-eyebrow m-reveal">A worked example</p>
+          <h2 class="h-h2 m-reveal">What the finding <span class="h-accent">changed</span>.</h2>
+        </div>
+      </div>
+      <div class="dg-cols dg-cols-top">
+        <div>
+          <p class="h-body dg-p">
+            [PLACEHOLDER] came in asking for a scoring model to shorten lending decisions. The brief named
+            the model, the vendor shortlist and the launch quarter.
+          </p>
+          <p class="h-body dg-p">The diagnostic ran all three lenses. The binding one was [PLACEHOLDER].</p>
+          <p class="h-body dg-p">
+            The finding said the brief as written addressed a symptom rather than the constraint, and set
+            out what had to be settled before a model could return a result anyone could defend.
+          </p>
+          <p class="h-body dg-p">
+            What was built was smaller than the brief. The system that removed the constraint came first,
+            and the model followed once the inputs it depended on could be trusted.
+          </p>
+        </div>
+        <div class="dg-delta m-reveal">
+          <div class="dg-delta-row">
+            <span class="sv-label">Scope requested &#183; [PLACEHOLDER]</span>
+            <span class="dg-delta-bar"><i style="width:100%"></i></span>
+          </div>
+          <div class="dg-delta-row">
+            <span class="sv-label">Scope delivered &#183; [PLACEHOLDER]</span>
+            <span class="dg-delta-bar dg-delta-hot"><i style="width:46%"></i></span>
+          </div>
+          <p class="sv-cap">The difference is what the diagnostic found.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+  <HomeFooter />
+</Base>

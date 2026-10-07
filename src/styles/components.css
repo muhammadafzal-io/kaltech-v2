@@ -1,0 +1,936 @@
+/* ==========================================================================
+   Components — shared surfaces used on three or more pages.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.hdr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-h);
+  /* Solid by default: without JavaScript the header sits over every section
+     and has to stay legible over all of them. */
+  background: var(--paper);
+  border-bottom: var(--rule-weight) solid var(--rule);
+  transition: background var(--dur-header) ease, border-color var(--dur-header) ease,
+    height var(--dur-header) ease;
+}
+
+.hdr-inner {
+  max-width: var(--wrapper);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* With JavaScript, motion.js marks <html> .m-js and keeps data-scrolled and
+   data-over current. Only then is the header transparent at the top of the
+   page, compact once scrolled, and inverted over a dark ground. */
+html.m-js .hdr:not([data-scrolled='true']) {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+/* 88px to 72px after 40px of scroll. At 1024 and below it is already 64px. */
+@media (min-width: 1025px) {
+  html.m-js .hdr[data-scrolled='true'] {
+    height: var(--header-h-compact);
+  }
+}
+
+html.m-js .hdr[data-over='dark'] {
+  background: var(--deep);
+  border-bottom-color: var(--rule-dark);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-wordmark);
+  letter-spacing: var(--ls-wordmark);
+  color: var(--ink);
+  line-height: 1;
+}
+
+.wordmark-dot { color: var(--accent); }
+
+.hdr[data-over='dark'] .wordmark { color: var(--paper); }
+.hdr[data-over='dark'] .wordmark-dot { color: var(--accent-dark); }
+
+.nav-desk {
+  display: flex;
+  align-items: center;
+  gap: var(--space-36);
+}
+
+.nav-link {
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+  padding-bottom: var(--space-4);
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% var(--rule-weight);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size var(--dur-hover) ease, color var(--dur-nav) ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  background-size: 100% var(--rule-weight);
+}
+
+.hdr[data-over='dark'] .nav-link {
+  color: var(--paper);
+  background-image: linear-gradient(var(--accent-dark), var(--accent-dark));
+}
+
+/* The CTA keeps --accent with white text on every ground. Over a dark band
+   --accent meets --deep at only 2.5:1, so a 1px --accent-dark outline defines
+   the edge without touching the text contrast. The focus ring still wins. */
+.hdr[data-over='dark'] .btn {
+  outline: var(--rule-weight) solid var(--accent-dark);
+  outline-offset: 0;
+}
+
+.hdr[data-over='dark'] .btn:focus-visible {
+  outline: var(--rule-weight-thick) solid var(--accent-dark);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-text);
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  color: var(--on-accent);
+  background: var(--accent);
+  border: 0;
+  padding: 17px 30px;
+  min-height: var(--tap-min);
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-sm { padding: 14px 26px; }
+
+/* Primary hover: --accent-pressed sweeps in from the left. */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-pressed);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-hover-slow) var(--ease-soft);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.btn > span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Inverted button on the accent band. */
+.btn-invert {
+  color: var(--accent);
+  background: var(--on-accent);
+}
+
+.btn-invert::before { background: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   Arrow link
+   -------------------------------------------------------------------------- */
+.arrowlink {
+  display: inline-block;
+  font-size: var(--fs-link);
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+.arrowlink .arrow {
+  display: inline-block;
+  color: var(--accent);
+  transition: transform var(--dur-hover) ease;
+}
+
+.arrowlink:hover .arrow,
+.arrowlink:focus-visible .arrow,
+a:hover .arrowlink .arrow {
+  transform: translateX(6px);
+}
+
+.arrowlink-label {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% var(--rule-weight);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size var(--dur-hover) ease;
+  padding-bottom: 2px;
+}
+
+.arrowlink:hover .arrowlink-label,
+.arrowlink:focus-visible .arrowlink-label {
+  background-size: 100% var(--rule-weight);
+}
+
+/* One red call to action per hero. Where a hero holds the primary button, its
+   secondary link arrows are ink; the red underline still grows on hover.
+   Everywhere else every arrow is red. */
+:is(.hero, .hero-home):has(.btn) .arrowlink .arrow { color: var(--ink); }
+
+.on-deep .arrowlink { color: var(--paper); }
+.on-deep .arrowlink .arrow { color: var(--accent-dark); }
+.on-deep .arrowlink-label {
+  background-image: linear-gradient(var(--accent-dark), var(--accent-dark));
+}
+
+/* Inline text link. */
+.link {
+  color: var(--ink);
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% var(--rule-weight);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size var(--dur-hover) ease;
+  padding-bottom: 2px;
+}
+
+.link:hover,
+.link:focus-visible { background-size: 100% var(--rule-weight); }
+
+.on-deep .link {
+  color: var(--body-dark);
+  background-image: linear-gradient(var(--accent-dark), var(--accent-dark));
+}
+
+.on-deep .link:hover { color: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   Mobile menu — <details>, works with JavaScript disabled.
+   -------------------------------------------------------------------------- */
+.menu { display: none; }
+
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding: 0 var(--space-16);
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.menu > summary::-webkit-details-marker { display: none; }
+.menu .menu-close { display: none; }
+.menu[open] .menu-close { display: inline; }
+.menu[open] .menu-open { display: none; }
+
+.hdr[data-over='dark'] .menu > summary { color: var(--paper); }
+
+/* A closed disclosure must not contribute layout. The panel is position:fixed,
+   which otherwise keeps it in the document scroll width even while hidden. */
+.menu:not([open]) .menu-panel {
+  display: none;
+}
+
+.menu-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-h);
+  bottom: 0;
+  z-index: 49;
+  background: var(--paper);
+  overflow-y: auto;
+  padding: var(--space-32) var(--gutter) var(--space-48);
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-menu-item);
+  letter-spacing: var(--ls-menu-item);
+  color: var(--ink);
+}
+
+.menu-cta {
+  margin-top: var(--space-28);
+  padding-top: var(--space-28);
+  border-top: var(--rule-weight) solid var(--rule);
+}
+
+.menu-cta .btn {
+  display: block;
+  width: 100%;
+  /* At 320px the label has to be allowed to break. */
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1024px) {
+  .nav-desk { display: none; }
+  .menu { display: block; }
+}
+
+/* --------------------------------------------------------------------------
+   SectionHead — the 3px rule, label, H2, standfirst pattern.
+   -------------------------------------------------------------------------- */
+.shead-rule {
+  width: var(--label-rule-w);
+  height: var(--rule-weight-thick);
+  background: var(--accent);
+}
+
+.on-deep .shead-rule,
+.on-accent .shead-rule { background: var(--accent-dark); }
+
+.on-accent .shead-rule { background: var(--on-accent); }
+
+.shead-label { margin-top: var(--space-16); }
+.shead-h2 { margin-top: var(--space-16); }
+.shead-standfirst { margin-top: var(--space-24); max-width: 870px; }
+
+/* --------------------------------------------------------------------------
+   Panel — bordered surface on sand or paper.
+   -------------------------------------------------------------------------- */
+.panel {
+  background: var(--sand);
+  border: var(--rule-weight) solid var(--rule-sand);
+  padding: var(--space-36);
+}
+
+.panel-paper {
+  background: var(--paper);
+  border-color: var(--rule);
+}
+
+.panel-lg { padding: var(--space-40); }
+
+/* --------------------------------------------------------------------------
+   Figure — a large number with a label beneath.
+   -------------------------------------------------------------------------- */
+.fig-value {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-figure);
+  line-height: var(--lh-figure);
+  letter-spacing: var(--ls-figure);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  /* "[PLACEHOLDER]" is one unbreakable token and is wider than a 320px
+     viewport at figure size. Without this it forces a horizontal scroll. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.fig-md {
+  font-size: var(--fs-figure-md);
+  letter-spacing: var(--ls-figure-md);
+}
+
+/* Every figure is red: the smaller size changes nothing but size. */
+.fig-sm {
+  font-size: var(--fs-h2-side);
+  letter-spacing: var(--ls-h2-side);
+}
+
+/* Pending figure. A value of [PLACEHOLDER] set at --fs-figure is a 13-character
+   token that wraps across two or three lines and makes review screenshots
+   unreadable, so until real figures land it renders at --fs-h2-side.
+   TEMPORARY: remove this rule, the `pending` check in Figure.astro, and the
+   :has(.fig-pending) layout rules in pages.css, once every figure on the site
+   carries a real value. */
+.fig-value.fig-pending {
+  font-size: var(--fs-h2-side);
+  line-height: var(--lh-h2-side);
+  letter-spacing: var(--ls-h2-side);
+}
+
+.fig-label { margin-top: var(--space-14); }
+
+/* One lead figure per group is red; the rest of the group is ink. A row of
+   equal red figures is weaker than one. */
+/* A peer group takes uniform treatment. Where all-accent would break the red
+   cap for a viewport, the whole group is ink instead: never one of three. */
+.fig-quiet .fig-value { color: var(--ink); }
+.on-deep .fig-quiet .fig-value { color: var(--paper); }
+
+.fig-follow .fig-value { color: var(--ink); }
+.on-deep .fig-follow .fig-value { color: var(--paper); }
+.fig-follow .fig-rule { background: var(--ink); }
+.on-deep .fig-follow .fig-rule { background: var(--paper); }
+
+.fig-rule {
+  display: block;
+  margin-top: var(--space-12);
+  height: var(--rule-weight);
+  width: 200px;
+  max-width: 100%;
+  background: var(--accent);
+}
+
+.on-deep .fig-value { color: var(--accent-dark); }
+.on-deep .fig-rule { background: var(--accent-dark); }
+
+/* --------------------------------------------------------------------------
+   ImageSlot — the designed placeholder.
+   -------------------------------------------------------------------------- */
+.slot {
+  position: relative;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.slot-paper { background: var(--paper); }
+.slot-sand  { background: var(--sand); }
+.slot-slate { background: var(--slate); }
+.slot-deep  { background: var(--deep); }
+
+.slot-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Square top left, caption bottom left: the two corners frame the block. */
+  justify-content: space-between;
+  gap: var(--space-14);
+  padding: var(--space-24);
+  transition: transform var(--dur-scale) var(--ease-soft);
+}
+
+.slot-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-scale) var(--ease-soft);
+}
+
+.slot-square {
+  width: var(--imageslot-square);
+  height: var(--imageslot-square);
+  border: var(--rule-weight) solid var(--muted);
+  flex: none;
+}
+
+.slot-deep .slot-square { border-color: var(--muted-dark); }
+
+.slot-caption {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.slot-deep .slot-caption { color: var(--muted-dark); }
+
+.slot-caption { max-width: 34ch; }
+
+/* Image slots: the inner block scales to 1.04 over 500ms inside its frame.
+   The only scale on hover anywhere on the site. */
+@media (hover: hover) {
+  .slot:hover .slot-inner,
+  .slot:hover .slot-img,
+  .card:hover .slot-inner,
+  .card:hover .slot-img {
+    transform: scale(1.04);
+  }
+}
+
+.card:focus-within .slot-inner,
+.card:focus-within .slot-img {
+  transform: scale(1.04);
+}
+
+.slot-3-2 { aspect-ratio: 3 / 2; }
+.slot-3-4 { aspect-ratio: 3 / 4; }
+.slot-16-9 { aspect-ratio: 16 / 9; }
+
+/* --------------------------------------------------------------------------
+   Cta — the closing red band.
+   -------------------------------------------------------------------------- */
+.cta {
+  position: relative;
+}
+
+.cta-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--grid-on-accent) 0,
+    var(--grid-on-accent) var(--rule-weight),
+    transparent var(--rule-weight),
+    transparent 110px
+  );
+  background-position: calc(50% - 660px) 0;
+}
+
+.cta-inner {
+  position: relative;
+}
+
+.cta-body { padding-top: 73px; }
+
+.t-cta-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-cta-h2);
+  line-height: var(--lh-cta-h2);
+  letter-spacing: var(--ls-cta-h2);
+  color: var(--on-accent);
+  text-wrap: balance;
+}
+
+.cta-footnote {
+  margin-top: var(--space-48);
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  color: var(--on-accent);
+}
+
+.cta-action { margin-top: var(--space-32); }
+
+.cta-notes {
+  margin-top: var(--space-36);
+  padding-top: var(--space-24);
+  border-top: var(--rule-weight) solid var(--rule-on-accent);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.cta-note {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-10);
+}
+
+.cta-note-num {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body);
+  color: var(--on-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1024px) {
+  .cta-body { padding-top: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.ftr {
+  background: var(--deep);
+  padding: var(--space-48) 0 var(--space-40);
+}
+
+.ftr-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+}
+
+.ftr-head { margin-bottom: var(--space-8); }
+
+.ftr-link,
+a.ftr-base-item {
+  background-image: linear-gradient(var(--accent-dark), var(--accent-dark));
+  background-size: 0% var(--rule-weight);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  padding-bottom: 2px;
+  transition: color var(--dur-nav) ease, background-size var(--dur-hover) ease;
+}
+
+.ftr-link {
+  font-size: var(--fs-meta-lg);
+  color: var(--body-dark);
+}
+
+.ftr-link:hover,
+.ftr-link:focus-visible,
+a.ftr-base-item:hover,
+a.ftr-base-item:focus-visible {
+  color: var(--paper);
+  background-size: 100% var(--rule-weight);
+}
+
+.ftr-blurb {
+  margin-top: var(--space-16);
+  font-size: var(--fs-meta-lg);
+  line-height: 1.5;
+  color: var(--body-dark);
+  max-width: 34ch;
+}
+
+.ftr-base {
+  margin-top: var(--space-32);
+  padding-top: var(--space-24);
+  border-top: var(--rule-weight) solid var(--rule-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-36);
+  flex-wrap: wrap;
+}
+
+.ftr-base-item {
+  font-size: var(--fs-small);
+  color: var(--muted-dark);
+}
+
+.ftr-wordmark {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-wordmark);
+  letter-spacing: var(--ls-wordmark);
+  color: var(--paper);
+}
+
+.ftr-wordmark .wordmark-dot { color: var(--accent-dark); }
+
+@media (max-width: 768px) {
+  .ftr-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--space-32);
+  }
+  .ftr-grid > * { grid-column: auto !important; }
+}
+
+@media (max-width: 520px) {
+  .ftr-grid { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   Card / list-row hover vocabulary
+   -------------------------------------------------------------------------- */
+.toprule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--rule-weight);
+  background: var(--rule);
+  transition: height var(--dur-hover) ease, background var(--dur-hover) ease;
+}
+
+.on-deep .toprule { background: var(--rule-dark); }
+
+/* Cards and list rows: the ground lifts one step, the top rule thickens from
+   1px to 3px in accent, the arrow travels 6px. The card itself does not move.
+   The lift is a layer behind the content that bleeds --card-bleed past the
+   card on each side, so rows whose text sits flush to their edges still get
+   air. The bleed always stays inside the gutter. */
+.card {
+  position: relative;
+  display: block;
+  isolation: isolate;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(var(--card-bleed, 0px) * -1);
+  z-index: -1;
+  background: transparent;
+  transition: background var(--dur-hover) ease;
+}
+
+.servicerow,
+.case-more-card,
+.svc-proof-card,
+.ins-featured,
+.art-related-card {
+  --card-bleed: var(--space-16);
+}
+
+@media (hover: hover) {
+  .card:hover .toprule {
+    height: var(--rule-weight-thick);
+    background: var(--accent);
+  }
+
+  .on-deep .card:hover .toprule { background: var(--accent-dark); }
+
+  .on-paper .card:hover::before { background: var(--sand); }
+  .on-sand .card:hover::before  { background: var(--paper); }
+  .on-slate .card:hover::before { background: var(--paper); }
+  .on-deep .card:hover::before  { background: var(--deep-step); }
+
+  .card:hover .arrow { transform: translateX(6px); }
+}
+
+.card:focus-within .toprule {
+  height: var(--rule-weight-thick);
+  background: var(--accent);
+}
+
+.on-deep .card:focus-within .toprule { background: var(--accent-dark); }
+
+.on-paper .card:focus-within::before { background: var(--sand); }
+.on-sand .card:focus-within::before  { background: var(--paper); }
+.on-slate .card:focus-within::before { background: var(--paper); }
+.on-deep .card:focus-within::before  { background: var(--deep-step); }
+
+.card:focus-within .arrow { transform: translateX(6px); }
+
+/* Repeated card arrows are peers: ink at rest, accent on hover, keeping the 6px
+   travel. One red arrow among three identical cards reads as a fault, not a
+   hierarchy. Inline text links are singular and keep the accent. */
+.card .arrow { color: var(--ink); }
+.on-deep .card .arrow { color: var(--paper); }
+
+@media (hover: hover) {
+  .card:hover .arrow { color: var(--accent); }
+  .on-deep .card:hover .arrow { color: var(--accent-dark); }
+}
+
+.card:focus-within .arrow { color: var(--accent); }
+.on-deep .card:focus-within .arrow { color: var(--accent-dark); }
+
+/* --------------------------------------------------------------------------
+   Texture 2 of 2: on --deep bands only, a hairline grid aligned to the content
+   grid. Above 1024 a line sits on the left edge of each of the 12 columns and
+   on the right edge of the last, so every column start lands on a hairline.
+   At 1024 and below the grid is one column, and so are the lines.
+   -------------------------------------------------------------------------- */
+.band.g-deep {
+  position: relative;
+}
+
+.band.g-deep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: calc(min(100%, var(--wrapper)) - 2 * var(--gutter));
+  transform: translateX(-50%);
+  pointer-events: none;
+  background-image: linear-gradient(
+    to right,
+    var(--grid-on-deep) 0,
+    var(--grid-on-deep) var(--rule-weight),
+    transparent var(--rule-weight)
+  );
+  background-size: calc((100% + var(--grid-gap)) / 12) 100%;
+  background-repeat: repeat-x;
+  border-right: var(--rule-weight) solid var(--grid-on-deep);
+}
+
+.band.g-deep > .wrap {
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .band.g-deep::before {
+    background-size: 100% 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Snapshot panel (case studies)
+   -------------------------------------------------------------------------- */
+.snap-item { padding: 0 var(--space-28); }
+.snap-item:first-child { padding-left: 0; }
+.snap-item:last-child { padding-right: 0; }
+.snap-value { margin-top: var(--space-12); color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   Contents index (case study + article)
+   -------------------------------------------------------------------------- */
+.idx {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.idx-link {
+  display: block;
+  padding: var(--space-10) 0 0 var(--space-12);
+  border-top: var(--rule-weight) solid var(--rule);
+  border-left: 2px solid transparent;
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+  color: var(--muted);
+  transition: color var(--dur-nav) ease, border-color var(--dur-nav) ease;
+}
+
+.idx-link[aria-current='true'],
+.idx-link:hover,
+.idx-link:focus-visible {
+  border-left-color: var(--accent);
+  color: var(--ink);
+}
+
+@media (max-width: 1024px) {
+  .idx-wrap { display: none; }
+}
+
+/* Anchored blocks land clear of the fixed header. */
+[data-block],
+[data-body-block] {
+  scroll-margin-top: var(--sticky-top);
+}
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+.field {
+  display: block;
+  margin-top: var(--space-24);
+}
+
+.field-label {
+  display: block;
+  margin-bottom: var(--space-10);
+}
+
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  font-family: var(--font-text);
+  /* Standing rule 7: inputs are 16px minimum on mobile. */
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--rule-weight) solid var(--rule);
+  padding: var(--space-14) var(--space-16);
+  min-height: var(--tap-min);
+  transition: border-color var(--dur-nav) ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.textarea { resize: vertical; }
+
+.namerow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--grid-gap);
+}
+
+@media (max-width: 768px) {
+  .namerow {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .form-submit .btn { width: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+   Data table — the one permitted horizontal scroll (standing rule 6).
+   -------------------------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body);
+}
+
+.dtable th,
+.dtable td {
+  text-align: left;
+  padding: var(--space-16) var(--space-20) var(--space-16) 0;
+  border-bottom: var(--rule-weight) solid var(--rule);
+  vertical-align: top;
+}
+
+.dtable th {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dtable td { color: var(--body); }
+
+/* Below 768 the table may scroll inside its wrapper; the right edge fades so
+   the scroll reads. The mask only sets opacity, so its colour is immaterial. */
+@media (max-width: 768px) {
+  .table-wrap {
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - var(--space-32)), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - var(--space-32)), transparent);
+  }
+
+  .dtable th:last-child,
+  .dtable td:last-child {
+    padding-right: var(--space-32);
+  }
+}
+.dtable tbody td:first-child { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   Header over a dark section: a KalPay red bar (the token is set on .hdr in
+   tokens.css) with a white pill for the call to action.
+   -------------------------------------------------------------------------- */
+.hdr .btn { border-radius: 999px; }
+
+.hdr[data-over='dark'] .btn {
+  color: var(--accent);
+  background: var(--on-accent);
+  outline: 0;
+}
+
+.hdr[data-over='dark'] .btn::before { background: var(--accent-pressed); }
+.hdr[data-over='dark'] .btn:hover,
+.hdr[data-over='dark'] .btn:focus-visible { color: var(--on-accent); }
+.hdr[data-over='dark'] .wordmark-dot { color: var(--on-accent); }
+.hdr[data-over='dark'] .nav-link {
+  background-image: linear-gradient(var(--on-accent), var(--on-accent));
+}

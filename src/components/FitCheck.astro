@@ -1,0 +1,63 @@
+---
+// THE FIT CHECK.
+// Without JavaScript this is the list it always was: a heading and a column of
+// statements between hairlines. With JavaScript each statement carries a real
+// checkbox, a meter beside the list fills one segment per ticked statement and
+// reads "n of N", and the primary call to action appears once all but one are
+// ticked. The checkboxes, meter and call to action are controls, not content,
+// so they are absent without JavaScript; the page's closing band still carries
+// the same call to action.
+//
+// Beneath it, the counter-list — who it is not for — in muted type, as one row.
+import fit from '../data/fit.json';
+import MiniChart from './MiniChart.astro';
+
+interface Props {
+  which: 'services' | 'diagnostic';
+  id: string;
+}
+
+const { which, id } = Astro.props;
+const set = fit[which];
+const n = set.items.length;
+const threshold = n - 1;
+---
+
+<div class="fit" data-fit data-fit-threshold={threshold} id={id}>
+  <div class="fit-main">
+    <div class="fit-listcol">
+      <h3 class="t-h3" id={`${id}-title`}>{set.title}</h3>
+      <ul class="fit-list" aria-labelledby={`${id}-title`}>
+        {
+          set.items.map((text) => (
+            <li class="fit-row">
+              <label class="fit-label">
+                <input class="fit-box" type="checkbox" data-fit-box data-js-control />
+                <span class="t-body fit-text">{text}</span>
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="fit-side" data-fit-side data-js-control>
+      <div class="fit-side-inner">
+        <MiniChart type="meter" segments={n} filled={0} class="fit-meter" />
+        <p class="t-body fit-count" aria-live="polite">
+          <span data-fit-n>0</span> of {n}
+        </p>
+        <p class="fit-cta" data-fit-cta>
+          <a class="btn" href={fit.cta.href}><span>{fit.cta.label}</span></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fit-not">
+    <h3 class="t-h3 fit-not-title">{set.notTitle}</h3>
+    <ul class="fit-not-list">
+      {set.not.map((text) => <li class="t-body fit-not-item" style={`--len:${text.length}`}>{text}</li>)}
+    </ul>
+  </div>
+</div>

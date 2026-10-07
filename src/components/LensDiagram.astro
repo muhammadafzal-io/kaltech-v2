@@ -1,0 +1,85 @@
+---
+// THE LENS DIAGRAMS (Diagnostic, under each lens's numeral).
+//   process  one input, two operators, two different outputs
+//   data     two systems reporting different numbers for the same entity; the
+//            numbers are illustrative and captioned so
+//   economics  the break-even chart (MiniChart cross)
+// Fixed 240-unit geometry drawn at up to 240px, so its 12px labels never
+// shrink. One mark per diagram is red: the output or number that disagrees.
+// These three are the page's signature and the only drawn elements among the
+// lens blocks.
+import lenses from '../data/lenses.json';
+import MiniChart from './MiniChart.astro';
+
+interface Props {
+  kind: 'process' | 'data' | 'economics';
+}
+
+const { kind } = Astro.props;
+const p = lenses.process;
+const d = lenses.data;
+---
+
+{
+  kind === 'process' && (
+    <figure class="lensd">
+      <svg
+        class="m-draw"
+        viewBox="0 0 240 150"
+        width="100%"
+        role="img"
+        aria-labelledby="lensd-process-title"
+        aria-describedby="lensd-process-desc"
+      >
+        <title id="lensd-process-title">{`Process: ${[p.input, p.operators, p.outputs].join(', ').toLowerCase()}`}</title>
+        <desc id="lensd-process-desc">One input passes through two operators and comes out as two different outputs.</desc>
+        <path class="lensd-line" pathLength="1" d="M18 70 H64" />
+        <path class="lensd-line" pathLength="1" d="M64 70 V32 H104" />
+        <path class="lensd-line" pathLength="1" d="M64 70 V108 H104" />
+        <path class="lensd-line" pathLength="1" d="M116 32 H192" />
+        <path class="lensd-line" pathLength="1" d="M116 108 H190" />
+        <rect class="lensd-node" x="6" y="64" width="12" height="12" />
+        <rect class="lensd-node" x="104" y="26" width="12" height="12" />
+        <rect class="lensd-node" x="104" y="102" width="12" height="12" />
+        <rect class="lensd-node" x="192" y="26" width="12" height="12" />
+        <rect class="svg-accent-fill" x="192" y="100" width="12" height="12" transform="rotate(45 198 106)" />
+        <text class="lensd-label" x="6" y="96">{p.input}</text>
+        <text class="lensd-label" x="110" y="74" text-anchor="middle">{p.operators}</text>
+        <text class="lensd-label" x="234" y="74" text-anchor="end">{p.outputs}</text>
+      </svg>
+    </figure>
+  )
+}
+
+{
+  kind === 'data' && (
+    <figure class="lensd">
+      <svg
+        class="m-draw"
+        viewBox="0 0 240 98"
+        width="100%"
+        role="img"
+        aria-labelledby="lensd-data-title"
+        aria-describedby="lensd-data-desc"
+      >
+        <title id="lensd-data-title">{`Data: ${d.systems[0].label} and ${d.systems[1].label}`}</title>
+        <desc id="lensd-data-desc">{`Illustrative: ${d.systems[0].label} reports ${d.systems[0].value} ${d.entity.toLowerCase()}, ${d.systems[1].label} reports ${d.systems[1].value}.`}</desc>
+        <path class="lensd-line" pathLength="1" d="M1 1 H111 V95 H1 Z" />
+        <path class="lensd-line" pathLength="1" d="M129 1 H239 V95 H129 Z" />
+        <text class="lensd-label" x="12" y="22">{d.systems[0].label}</text>
+        <text class="lensd-label" x="140" y="22">{d.systems[1].label}</text>
+        <text class="lensd-label" x="12" y="48">{d.entity}</text>
+        <text class="lensd-label" x="140" y="48">{d.entity}</text>
+        <text class="lensd-num lensd-num-ink" x="12" y="80">{d.systems[0].value}</text>
+        <text class="lensd-num lensd-num-accent" x="140" y="80">{d.systems[1].value}</text>
+      </svg>
+      <figcaption class="t-meta lensd-caption">{lenses.caption}</figcaption>
+    </figure>
+  )
+}
+
+{
+  kind === 'economics' && (
+    <MiniChart type="cross" class="lensd" caption={lenses.economics.caption} />
+  )
+}

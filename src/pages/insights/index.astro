@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import HomeHeader from '../../components/home/HomeHeader.astro';
+import HomeFooter from '../../components/home/HomeFooter.astro';
+import HomeCta from '../../components/home/HomeCta.astro';
+import Chart3D from '../../components/art/Chart3D.astro';
+
+// The index lists the featured article and nothing else. Unwritten entries stay
+// in src/content/insights with `published: false`: a title that does not open
+// undermines a page arguing for rigour.
+const featured = (await getCollection('insights')).find((i) => i.data.featured && i.data.published)!;
+const d = featured.data;
+const at = d.titleAccent ? d.title.indexOf(d.titleAccent) : -1;
+---
+
+<Base
+  title="Insights on frontier work and what held | KalTech"
+  description="Frontier work moves faster than any delivery cycle. We track it, test the parts that claim a production benefit, and publish what held. Most of it does not."
+  breadcrumb={[{ name: 'Insights', path: '/insights' }]}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark" id="top" data-fx-hero>
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+      <span class="h-orb h-orb-b"></span>
+    </div>
+
+    <div class="h-wrap h-hero-inner">
+      <div class="h-hero-copy">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>Insights</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">We read the <em class="h-mark">research</em></span>
+          <span class="h-line">so a build does not</span>
+          <span class="h-line">have to discover it.</span>
+        </h1>
+        <p class="h-lead m-reveal">
+          Frontier work moves faster than any delivery cycle. We track it, test the parts that
+          claim a production benefit, and publish what held. Most of it does not. The value is
+          knowing which.
+        </p>
+      </div>
+
+      <!-- The picture, in three depth layers: the documents (back), the beam
+           (middle) and the chip (front). Decorative. -->
+      <div class="h-hero-viz">
+        <Chart3D label="A benchmark: glass bars on a grid with a scan plane sweeping across them; one bar, the one that held, is lit." />
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone" id="featured">
+    <div class="h-wrap">
+      <a class="h-feature m-reveal" href={`/insights/${featured.id}`}>
+        <div class="h-feature-art" role="img" aria-label={d.imageCaption}>
+          <span class="h-shot-square" aria-hidden="true"></span>
+          <span class="h-shot-caption" aria-hidden="true">{d.imageCaption}</span>
+          <span class="h-feature-rings" aria-hidden="true"></span>
+        </div>
+        <div class="h-feature-body">
+          <h2 class="h-feature-title">
+            {at === -1 ? d.title : <>{d.title.slice(0, at)}<span class="h-accent">{d.titleAccent}</span>{d.title.slice(at + d.titleAccent!.length)}</>}
+          </h2>
+          <p class="h-feature-kicker">{d.kicker}</p>
+          <p class="h-body">{d.standfirst}</p>
+          <p class="h-feature-meta">
+            <span>{d.readingTime}</span>
+            <span class="h-link"><span>Read the article</span><span class="h-link-arrow" aria-hidden="true">&#8594;</span></span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <HomeCta />
+  <HomeFooter />
+</Base>

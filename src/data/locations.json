@@ -1,0 +1,90 @@
+{
+  "_about": "The About footprint map and the working-hours strip. Operating markers sit on the centroid of their countries, not on a city, so the map never implies an office. The delivery marker is Lahore itself. The strip is built but not rendered until `showOverlap` is true: the hours below are standard office hours, not the delivery team's real hours.",
+  "markers": [
+    {
+      "id": "us",
+      "label": "US",
+      "role": "operating",
+      "countries": [
+        "United States of America"
+      ],
+      "side": "left"
+    },
+    {
+      "id": "uk",
+      "label": "UK",
+      "role": "operating",
+      "countries": [
+        "United Kingdom"
+      ],
+      "side": "left"
+    },
+    {
+      "id": "gcc",
+      "label": "GCC",
+      "role": "operating",
+      "countries": [
+        "Saudi Arabia",
+        "United Arab Emirates",
+        "Qatar",
+        "Kuwait",
+        "Oman"
+      ],
+      "_note": "Bahrain is below Natural Earth 110m resolution and cannot be placed; its weight on this centroid would be negligible.",
+      "side": "left"
+    },
+    {
+      "id": "lahore",
+      "label": "Lahore",
+      "role": "delivery",
+      "lon": 74.3587,
+      "lat": 31.5204
+    }
+  ],
+  "arcs": [
+    {
+      "from": "lahore",
+      "to": "us"
+    },
+    {
+      "from": "lahore",
+      "to": "uk"
+    },
+    {
+      "from": "lahore",
+      "to": "gcc"
+    }
+  ],
+  "showOverlap": false,
+  "overlap": {
+    "title": "Working hours, UTC",
+    "_note": "Standard time, no daylight saving. GCC at UTC+4 (UAE and Oman); Saudi Arabia, Qatar, Kuwait and Bahrain are UTC+3. `delivery` marks the row every other row's overlap is measured against.",
+    "rows": [
+      {
+        "label": "US East",
+        "utcOffset": -5,
+        "start": 9,
+        "end": 17
+      },
+      {
+        "label": "UK",
+        "utcOffset": 0,
+        "start": 9,
+        "end": 17
+      },
+      {
+        "label": "GCC",
+        "utcOffset": 4,
+        "start": 9,
+        "end": 17
+      },
+      {
+        "label": "Lahore",
+        "utcOffset": 5,
+        "start": 9,
+        "end": 17,
+        "delivery": true
+      }
+    ]
+  }
+}

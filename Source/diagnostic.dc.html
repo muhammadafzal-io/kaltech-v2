@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="responsive.css">
+<style>
+html{background:#FAF9F5;}
+html,body{margin:0;padding:0;color:#4A5457;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:#171F21;text-decoration:none;cursor:pointer;}
+a:hover{color:#171F21;}
+::selection{background:#BE263B;color:#FAF9F5;}
+:focus-visible{outline:2px solid #BE263B;outline-offset:2px;}
+.dx-cellhead{display:none;}
+@media (max-width:1024px){
+.dx-gut{padding-left:48px !important;padding-right:48px !important;}
+.dx-lens{grid-template-columns:1fr !important;}
+.dx-lens > *{grid-column:1/-1 !important;}
+.dx-2col{grid-template-columns:1fr !important;row-gap:40px !important;}
+.dx-2col > *{grid-column:1/-1 !important;}
+.dx-sticky{position:static !important;}
+.dx-facswrap{grid-template-columns:1fr !important;}
+.dx-facs{width:100% !important;max-width:420px !important;}
+.dx-heropanel{margin-top:40px !important;max-width:420px;}
+}
+@media (max-width:768px){
+.dx-gut{padding-left:32px !important;padding-right:32px !important;}
+.dx-rail{grid-template-columns:1fr !important;}
+.dx-rail > *{border-left:0 !important;padding:24px 0 !important;}
+.dx-railrule{display:none !important;}
+.dx-inct{grid-template-columns:1fr !important;row-gap:10px !important;}
+.dx-incthead{display:none !important;}
+.dx-cellhead{display:block !important;}
+}
+@media (max-width:520px){
+.dx-gut{padding-left:20px !important;padding-right:20px !important;}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#FAF9F5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#FAF9F5"></rect><text x="60" y="74" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="38" fill="#171F21">K<tspan fill="#BE263B">.</tspan></text></svg></template>
+<div style="background:#FAF9F5;">
+
+<dc-import name="Site Header" bg="{{ hdrBg }}" border-color="{{ hdrBorder }}" nav-color="{{ hdrNav }}" hint-size="100%,88px"></dc-import>
+
+<section id="top" data-screen-label="01 Hero" style="background:#FAF9F5;padding:calc(var(--header-h) + clamp(72px,8vw,120px)) 0 clamp(56px,7vw,96px);">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">The diagnostic</p>
+    <div class="dx-2col" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 9;">
+        <h1 style="margin:24px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-3px;color:#171F21;text-wrap:balance;">Every engagement begins with a <span style="color:#BE263B;">diagnostic</span>.</h1>
+        <p style="margin:24px 0 0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:pretty;">It runs against three lenses and ends in a written finding with a scope priced against it. Companies that proceed to a build do so with the constraint already established. Companies that do not proceed keep the finding.</p>
+        <p style="margin:40px 0 0;"><a href="contact.dc.html" style="display:inline-block;font-size:14px;font-weight:500;color:#FFFFFF;background:#BE263B;padding:17px 30px;transition:background 240ms ease;" style-hover="background:#93182B;color:#FFFFFF;">Get an AI Strategy Consult</a></p>
+      </div>
+      <aside class="dx-heropanel" style="grid-column:10/span 3;margin-top:calc(var(--header-h) + 32px);background:#EFEAE0;border:1px solid #DBD4C6;padding:28px;">
+        <div style="padding-bottom:18px;">
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Duration</p>
+          <p style="margin:8px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">[PLACEHOLDER]</p>
+        </div>
+        <div style="padding:18px 0;border-top:1px solid #DBD4C6;">
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Fee</p>
+          <p style="margin:8px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">[PLACEHOLDER]</p>
+        </div>
+        <div style="padding-top:18px;border-top:1px solid #DBD4C6;">
+          <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Deliverable</p>
+          <p style="margin:8px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.5;color:#171F21;">A written finding</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 Why it exists" style="background:#1F292B;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#E8616A;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Why it exists</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h2 style="grid-column:1/span 8;margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#FAF9F5;text-wrap:balance;">A firm that builds should not be trusted to say what needs building.</h2>
+    </div>
+    <div class="dx-2col" style="margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 6;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">That is the honest form of the objection, and we do not answer it by promising to be careful. We answer it by charging for the finding as a document rather than as the opening phase of a build, which means the diagnostic covers its own cost whatever it concludes. Where the work recommends less than the client came in asking for, or nothing at all, we have already been paid for the work that established it.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">The alternative arrangement, where the assessment is free and the revenue sits entirely in what follows, has one predictable output. Free assessments recommend builds. Not because the people writing them are dishonest, but because a firm that has absorbed the cost of the analysis has an interest in a particular conclusion, and interests are more reliable than intentions.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">The diagnostic fee is not credited against a subsequent build. Crediting it would reintroduce the incentive the fee exists to remove.</p>
+      </div>
+      <div style="grid-column:8/span 5;">
+        <div class="dx-inct dx-incthead" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;column-gap:20px;padding-bottom:14px;">
+          <span></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Free assessment</span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Paid finding</span>
+        </div>
+        <div class="dx-inct" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;column-gap:20px;padding:14px 0;border-top:1px solid rgba(250,249,245,0.14);">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Who absorbs the cost</span>
+          <span style="font-size:16px;line-height:1.5;color:#9AA5A7;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Free assessment</span>The firm</span>
+          <span style="font-size:16px;line-height:1.5;color:#FAF9F5;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Paid finding</span>The client</span>
+        </div>
+        <div class="dx-inct" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;column-gap:20px;padding:14px 0;border-top:1px solid rgba(250,249,245,0.14);">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">What pays for it</span>
+          <span style="font-size:16px;line-height:1.5;color:#9AA5A7;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Free assessment</span>The build that follows</span>
+          <span style="font-size:16px;line-height:1.5;color:#FAF9F5;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Paid finding</span>The document itself</span>
+        </div>
+        <div class="dx-inct" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;column-gap:20px;padding:14px 0;border-top:1px solid rgba(250,249,245,0.14);">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">What a no costs the firm</span>
+          <span style="font-size:16px;line-height:1.5;color:#9AA5A7;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Free assessment</span>The entire engagement</span>
+          <span style="font-size:16px;line-height:1.5;color:#FAF9F5;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Paid finding</span>Nothing</span>
+        </div>
+        <div class="dx-inct" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;column-gap:20px;padding:14px 0;border-top:1px solid rgba(250,249,245,0.14);border-bottom:1px solid rgba(250,249,245,0.14);">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Likely conclusion</span>
+          <span style="font-size:16px;line-height:1.5;color:#9AA5A7;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#9AA5A7;">Free assessment</span>Build something</span>
+          <span style="font-size:16px;line-height:1.5;color:#FAF9F5;"><span class="dx-cellhead" style="font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">Paid finding</span>Whatever the evidence supports</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 The three lenses" style="background:#FAF9F5;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">The three lenses</p>
+    <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#171F21;text-wrap:balance;">Process, data, unit economics.</h2>
+    <p style="margin:24px 0 0;max-width:1100px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:pretty;">One of the three is usually binding. The diagnostic establishes which, what it costs to leave in place, and what it would take to move. The three are examined in this order because a data problem examined before a process problem returns an answer that is technically correct and operationally useless.</p>
+
+    <div data-gate style="margin-top:56px;">
+      <svg viewBox="0 0 1320 300" width="100%" style="display:block;">
+        <text data-gnode x="8" y="132" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">BRIEF</text>
+        <rect data-gnode x="8" y="144" width="12" height="12" fill="none" stroke="#61696A" stroke-width="1"></rect>
+        <path data-gdraw d="M20 150 H480" fill="none" stroke="#61696A" stroke-width="1"></path>
+        <path data-gdraw d="M480 60 V240" fill="none" stroke="#61696A" stroke-width="1"></path>
+        <path data-gdraw d="M480 60 H920" fill="none" stroke="#61696A" stroke-width="1"></path>
+        <path data-gdraw d="M480 150 H920" fill="none" stroke="#61696A" stroke-width="1"></path>
+        <path data-gdraw d="M480 240 H920" fill="none" stroke="#61696A" stroke-width="1"></path>
+        <text data-gnode x="500" y="48" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">01 PROCESS</text>
+        <text data-gnode x="500" y="138" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">02 DATA</text>
+        <text data-gnode x="500" y="228" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">03 UNIT ECONOMICS</text>
+        <rect data-gbind x="920" y="54" width="12" height="12" fill="#BE263B"></rect>
+        <text data-gbind x="944" y="64" fill="#BE263B" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">BINDING</text>
+        <text data-gbind x="944" y="86" fill="#BE263B" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">&#8592; THE CONSTRAINT</text>
+        <rect data-gnode x="920" y="144" width="12" height="12" fill="none" stroke="#61696A" stroke-width="1"></rect>
+        <text data-gnode x="944" y="154" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">CLEAR</text>
+        <rect data-gnode x="920" y="234" width="12" height="12" fill="none" stroke="#61696A" stroke-width="1"></rect>
+        <text data-gnode x="944" y="244" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="12" letter-spacing="1.2">CLEAR</text>
+      </svg>
+      <p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#61696A;">An illustration. Which lens is binding is what the diagnostic establishes, and it is not the same one twice running.</p>
+    </div>
+
+    <div class="dx-lens" style="margin-top:64px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:28px;padding:64px 0;border-top:1px solid #D8D5CD;">
+      <div style="grid-column:1/span 2;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">01</p>
+        <p style="margin:14px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Process</p>
+      </div>
+      <div style="grid-column:3/span 5;">
+        <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Is this a process, or a habit?</h3>
+        <p style="margin:14px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Software applied to undefined work produces an unreadable result. It encodes one person's version of the job, presents it as the standard, and removes the discretion that was quietly holding the operation together. We establish whether the work, and the systems it currently runs through, are specified tightly enough to be encoded before anything is scoped.</p>
+      </div>
+      <div style="grid-column:9/span 4;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What we examine</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">How the work is performed rather than how it is documented. Where the variation between operators sits, which steps carry judgment that has never been written down, and what the people doing the work do when the documented path does not fit the case in front of them.</p>
+        <p style="margin:20px 0 0;padding-top:16px;border-top:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">When this lens is binding</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">The same input produces materially different outputs depending on who handled it, and nobody in the operation can say with confidence which output was correct.</p>
+      </div>
+      <p style="grid-column:1/-1;margin:8px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.35;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;"><span style="color:#BE263B;">We ask:</span> Could two people perform this work and produce the same result?</p>
+    </div>
+
+    <div class="dx-lens" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:28px;padding:64px 0;border-top:1px solid #D8D5CD;">
+      <div style="grid-column:1/span 2;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">02</p>
+        <p style="margin:14px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Data</p>
+      </div>
+      <div style="grid-column:3/span 5;">
+        <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Would two systems agree on this number?</h3>
+        <p style="margin:14px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Most integration failures are definitional rather than technical. The business holds more than one definition of a customer, an order or a case, no integration reconciles a disagreement that was never settled before the systems were connected, and the disagreement surfaces as a reporting problem long after it became an operating one.</p>
+      </div>
+      <div style="grid-column:9/span 4;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What we examine</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">Where the same entity is defined in more than one place, what reconciles those definitions today and how often, and how long a disagreement survives before anyone notices it.</p>
+        <p style="margin:20px 0 0;padding-top:16px;border-top:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">When this lens is binding</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">A question about the business has more than one defensible answer, and which answer gets used depends on which system was opened first.</p>
+      </div>
+      <p style="grid-column:1/-1;margin:8px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.35;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;"><span style="color:#BE263B;">We ask:</span> Could two systems answer the same question and return the same number?</p>
+    </div>
+
+    <div class="dx-lens" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:28px;padding:64px 0;border-top:1px solid #D8D5CD;border-bottom:1px solid #D8D5CD;">
+      <div style="grid-column:1/span 2;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">03</p>
+        <p style="margin:14px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Unit economics</p>
+      </div>
+      <div style="grid-column:3/span 5;">
+        <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;">Does the build clear its own cost at this volume?</h3>
+        <p style="margin:14px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">A system carries a running cost that is rarely priced at scoping. Inference and infrastructure, monitoring, the human review that stays in the loop longer than anyone planned, and the engineering time that maintenance consumes for as long as the system exists. We establish the volume at which the build pays for itself, and whether the business currently operates above that line or below it.</p>
+      </div>
+      <div style="grid-column:9/span 4;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What we examine</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">Today's volumes rather than forecast ones, the cost of the operation as it currently runs, and what the system would cost to keep running in a year when nobody is excited about it any more.</p>
+        <p style="margin:20px 0 0;padding-top:16px;border-top:1px solid #D8D5CD;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">When this lens is binding</p>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#4A5457;">The system works and still does not pay. This is the most expensive of the three failures because it passes every test at launch and only becomes visible in year two, by which point the budget that would have caught it has been spent.</p>
+        <div data-chart style="margin-top:24px;padding-top:20px;border-top:1px solid #D8D5CD;">
+          <svg viewBox="0 0 320 180" width="100%" style="display:block;max-width:320px;">
+            <path d="M8 8 V164 H312" fill="none" stroke="#D8D5CD" stroke-width="1"></path>
+            <path data-cdraw d="M8 70 H300" fill="none" stroke="#61696A" stroke-width="1"></path>
+            <path data-cdraw d="M8 150 L300 30" fill="none" stroke="#BE263B" stroke-width="1"></path>
+            <path data-cnode d="M203 70 V164" fill="none" stroke="#BE263B" stroke-width="1" stroke-dasharray="3 3"></path>
+            <circle data-cnode cx="203" cy="70" r="4" fill="#BE263B"></circle>
+            <text x="14" y="60" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="10" letter-spacing="1.2">RUN COST</text>
+            <text x="170" y="26" fill="#BE263B" font-family="Instrument Sans, sans-serif" font-size="10" letter-spacing="1.2">VALUE RETURNED</text>
+            <text data-cnode x="203" y="177" text-anchor="middle" fill="#61696A" font-family="Instrument Sans, sans-serif" font-size="9" letter-spacing="1.2">BREAK-EVEN VOLUME</text>
+          </svg>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.5;color:#61696A;">Illustrative. The volume is what the diagnostic calculates.</p>
+        </div>
+      </div>
+      <p style="grid-column:1/-1;margin:8px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.35;letter-spacing:-0.6px;color:#171F21;text-wrap:balance;"><span style="color:#BE263B;">We ask:</span> What does this cost to run in year two, and at what volume does it clear it?</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 How it runs" style="background:#EFEAE0;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">How it runs</p>
+    <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#171F21;text-wrap:balance;">What the [PLACEHOLDER] weeks actually consist of.</h2>
+    <p style="margin:24px 0 0;max-width:1100px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#4A5457;text-wrap:pretty;">The diagnostic is run by the engineers who would build against it, which is the reason it can be short. There is no discovery team assembling context for a delivery team that has not been hired yet, and no phase in which the work is explained a second time to the people who will actually do it.</p>
+
+    <div style="margin-top:48px;">
+      <div class="dx-railrule" data-railrule style="height:1px;background:#BE263B;transform-origin:left center;"></div>
+      <div class="dx-rail" style="margin:0 -28px;display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div data-phase style="padding:32px 28px 0;">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">01</p>
+          <h3 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;">Access and interviews</h3>
+          <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">We sit with the operators who run the work rather than with the sponsors who described it. The gap between those two accounts is frequently where the constraint is.</p>
+        </div>
+        <div data-phase style="padding:32px 28px 0;border-left:1px solid #DBD4C6;">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">02</p>
+          <h3 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;">Evidence</h3>
+          <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">We pull the numbers ourselves rather than accepting the reported ones. Where a figure cannot be reconstructed from something we can see, it does not go in the finding.</p>
+        </div>
+        <div data-phase style="padding:32px 28px 0;border-left:1px solid #DBD4C6;">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-1.5px;color:#BE263B;font-variant-numeric:tabular-nums;">03</p>
+          <h3 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;">The finding</h3>
+          <p style="margin:12px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Written, delivered, and walked through with whoever has to act on it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dx-2col" style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;column-gap:28px;align-items:stretch;">
+      <div style="background:#FAF9F5;border:1px solid #DBD4C6;padding:32px;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What we need from you</p>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
+          <p style="margin:0;display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#BE263B;font-variant-numeric:tabular-nums;">01</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">Read access to the relevant systems.</span></p>
+          <p style="margin:0;display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#BE263B;font-variant-numeric:tabular-nums;">02</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">[PLACEHOLDER] hours across the people who perform the work.</span></p>
+          <p style="margin:0;display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#BE263B;font-variant-numeric:tabular-nums;">03</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">Whatever has already been written internally about the problem.</span></p>
+        </div>
+      </div>
+      <div style="background:#FAF9F5;border:1px solid #DBD4C6;padding:32px;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What we do not need</p>
+        <p style="margin:18px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#61696A;">A brief, a requirements document, or a vendor evaluation. If one exists we will read it, but the diagnostic does not start from it, and where the finding disagrees with it we will say so.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 What it returns" style="background:#FAF9F5;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div class="dx-2col" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div class="dx-sticky" style="grid-column:1/span 4;position:sticky;top:calc(var(--header-h) + 32px);align-self:start;">
+        <div style="width:40px;height:3px;background:#BE263B;"></div>
+        <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What it returns</p>
+        <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.15;letter-spacing:-1.2px;color:#171F21;text-wrap:balance;">What it returns.</h2>
+      </div>
+      <div style="grid-column:6/span 7;">
+        <div class="dx-facswrap" style="display:grid;grid-template-columns:1fr minmax(300px,400px);column-gap:28px;row-gap:40px;align-items:start;">
+          <div>
+            <div style="padding-bottom:28px;border-bottom:1px solid #D8D5CD;">
+              <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:19px;color:#BE263B;font-variant-numeric:tabular-nums;">01</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;font-weight:500;">The constraint that is binding.</span></p>
+              <p style="margin:8px 0 0;padding-left:37px;font-size:15px;line-height:1.6;color:#4A5457;">Stated plainly, with the evidence for it, in terms the operators who work inside it will recognise.</p>
+            </div>
+            <div style="padding:28px 0;border-bottom:1px solid #D8D5CD;">
+              <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:19px;color:#BE263B;font-variant-numeric:tabular-nums;">02</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;font-weight:500;">What that constraint currently costs.</span></p>
+              <p style="margin:8px 0 0;padding-left:37px;font-size:15px;line-height:1.6;color:#4A5457;">Quantified against the operation as it runs today, not against a projection.</p>
+            </div>
+            <div style="padding:28px 0;border-bottom:1px solid #D8D5CD;">
+              <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:19px;color:#BE263B;font-variant-numeric:tabular-nums;">03</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;font-weight:500;">What can be built against it.</span></p>
+              <p style="margin:8px 0 0;padding-left:37px;font-size:15px;line-height:1.6;color:#4A5457;">Sequenced by payback rather than ambition, with the work that pays first placed first.</p>
+            </div>
+            <div style="padding-top:28px;">
+              <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:19px;color:#BE263B;font-variant-numeric:tabular-nums;">04</span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;font-weight:500;">The line in the P&amp;L it moves.</span></p>
+              <p style="margin:8px 0 0;padding-left:37px;font-size:15px;line-height:1.6;color:#4A5457;">Named explicitly, with the volume at which the build clears its own running cost.</p>
+            </div>
+          </div>
+          <div class="dx-facs" style="aspect-ratio:1/1.414;max-width:520px;width:100%;background:#FAF9F5;border:1px solid #D8D5CD;padding:40px;box-sizing:border-box;display:flex;flex-direction:column;">
+            <p style="margin:0;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">KalTech Diagnostic Finding</p>
+            <div style="margin-top:16px;height:1px;background:#D8D5CD;"></div>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px;">
+              <p style="margin:0;display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#BE263B;font-variant-numeric:tabular-nums;">01</span><span style="font-size:15px;color:#171F21;white-space:nowrap;">The binding constraint</span><span style="flex:1;border-bottom:1px dotted #C9C4B8;"></span><span style="font-size:12px;color:#61696A;">[PLACEHOLDER]</span></p>
+              <p style="margin:0;display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#BE263B;font-variant-numeric:tabular-nums;">02</span><span style="font-size:15px;color:#171F21;white-space:nowrap;">What it costs</span><span style="flex:1;border-bottom:1px dotted #C9C4B8;"></span><span style="font-size:12px;color:#61696A;">[PLACEHOLDER]</span></p>
+              <p style="margin:0;display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#BE263B;font-variant-numeric:tabular-nums;">03</span><span style="font-size:15px;color:#171F21;white-space:nowrap;">What can be built</span><span style="flex:1;border-bottom:1px dotted #C9C4B8;"></span><span style="font-size:12px;color:#61696A;">[PLACEHOLDER]</span></p>
+              <p style="margin:0;display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#BE263B;font-variant-numeric:tabular-nums;">04</span><span style="font-size:15px;color:#171F21;white-space:nowrap;">The P&amp;L line and the volume</span><span style="flex:1;border-bottom:1px dotted #C9C4B8;"></span><span style="font-size:12px;color:#61696A;">[PLACEHOLDER]</span></p>
+            </div>
+            <div style="margin-top:24px;height:1px;background:#D8D5CD;"></div>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
+              <div style="height:6px;width:88%;background:#E3DFD3;"></div>
+              <div style="height:6px;width:72%;background:#E3DFD3;"></div>
+              <div style="height:6px;width:55%;background:#E3DFD3;"></div>
+            </div>
+            <p style="margin:auto 0 0;padding-top:20px;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">[PLACEHOLDER] pages</p>
+          </div>
+        </div>
+        <p style="margin:48px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The finding runs to roughly [PLACEHOLDER] pages and is written to be read by someone who was not in the interviews. Clients take it to boards, to lenders and to their own technology teams, and it is written on the assumption that they will. Every figure in it is traceable to something we saw rather than something we were told, which is also why some of the numbers in it are smaller than the ones the business currently reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 What it costs" style="background:#E4E8E7;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#BE263B;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What it costs</p>
+    <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#171F21;text-wrap:balance;">A fixed fee, agreed before the work starts.</h2>
+    <div class="dx-2col" style="margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:stretch;">
+      <div style="grid-column:1/span 6;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;min-width:0;">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-3.5px;color:#BE263B;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;">[PLACEHOLDER]</p>
+        <p style="margin:20px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Fixed fee, agreed in advance</p>
+      </div>
+      <div style="grid-column:8/span 5;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Fixed at the outset and not adjusted by what the work finds, which means the fee is identical whether the finding recommends a build, a smaller build than the one you came in with, or no build at all.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">The scope that follows is priced separately and by the team that would deliver it, so the estimate is written by the people who have to meet it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="07 What it is not" style="background:#FAF9F5;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <p style="grid-column:1/span 9;margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,44px);line-height:1.25;letter-spacing:-1.4px;color:#171F21;border-left:3px solid #BE263B;padding-left:32px;text-wrap:balance;">Sometimes the finding is that nothing should be built. We deliver that as readily as any other.</p>
+    </div>
+    <div style="margin-top:56px;height:1px;background:#D8D5CD;"></div>
+    <div class="dx-2col" style="margin-top:56px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 5;">
+        <p style="margin:0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">What it is not</p>
+        <p style="margin:18px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">This is not a sales document. We are not pitching you a service at the end of it.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#4A5457;">Often the answer is that the thing you asked for should not be built, or that the real problem is somewhere else entirely. We tell you that plainly, in writing, and you keep the finding either way.</p>
+      </div>
+      <div style="grid-column:7/span 6;">
+        <div class="dx-2col" style="display:grid;grid-template-columns:1fr 1fr;column-gap:28px;">
+          <div style="min-width:0;">
+            <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-2.4px;color:#BE263B;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;">[PLACEHOLDER]</p>
+            <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Of the last [PLACEHOLDER] diagnostics recommended less than the client asked for</p>
+          </div>
+          <div style="min-width:0;padding-left:28px;border-left:1px solid #D8D5CD;">
+            <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-2.4px;color:#BE263B;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;">[PLACEHOLDER]</p>
+            <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#61696A;">Recommended nothing be built</p>
+          </div>
+        </div>
+        <p style="margin:32px 0 0;font-size:14px;line-height:1.5;color:#61696A;">Figures cover [PLACEHOLDER].</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="08 Useful when" style="background:#FAF9F5;padding:0 0 clamp(56px,7vw,96px);">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div class="dx-2col" style="background:#EFEAE0;border:1px solid #DBD4C6;padding:48px;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;">
+      <div style="padding-right:48px;">
+        <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;">It is useful when</h3>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:16px;">
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">You are considering a build and want the constraint established before it is scoped</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">A previous pilot worked in demo and did not survive contact with the operation</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">Two parts of the business report different numbers for the same thing</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">A vendor has quoted you for a system and you want the quote tested against the problem rather than against its own specification</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">A system already shipped and the saving it was meant to produce has not appeared in the numbers</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#BE263B;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#171F21;">Budget is allocated to technology and there is no settled view internally on where it should land</span></p>
+        </div>
+      </div>
+      <div style="padding-left:48px;border-left:1px solid #DBD4C6;">
+        <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.3;letter-spacing:-0.6px;color:#171F21;">It is not useful when</h3>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:16px;">
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#61696A;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#61696A;">The brief is fixed and the constraint is not open to question</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#61696A;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#61696A;">The decision has already been made and what is wanted is a document that supports it</span></p>
+          <p style="margin:0;display:flex;gap:14px;align-items:baseline;"><span style="flex:none;width:6px;height:6px;background:#61696A;position:relative;top:-2px;"></span><span style="font-size:clamp(16px,1.2vw,17px);line-height:1.6;color:#61696A;">The operation the system would run inside does not exist yet, because there is nothing to examine and the answer would be a forecast rather than a finding</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="09 A worked example" style="background:#1F292B;padding:clamp(56px,7vw,96px) 0;">
+  <div class="dx-gut" style="max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div style="width:40px;height:3px;background:#E8616A;"></div>
+    <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#E8616A;">A worked example</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;">
+      <h2 style="grid-column:1/span 8;margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,44px);line-height:1.12;letter-spacing:-1.8px;color:#FAF9F5;text-wrap:balance;">What the finding changed.</h2>
+    </div>
+    <div class="dx-2col" style="margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:start;">
+      <div style="grid-column:1/span 6;">
+        <p style="margin:0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">[PLACEHOLDER &#8212; KALPAY, PENDING CONSTRAINT CONFIRMATION] came in asking for a scoring model to shorten lending decisions. The brief named the model, the vendor shortlist and the launch quarter.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">The diagnostic ran all three lenses. The binding one was [PLACEHOLDER].</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">The finding said the brief as written addressed a symptom rather than the constraint, and set out what had to be settled before a model could return a result anyone could defend.</p>
+        <p style="margin:20px 0 0;font-size:clamp(16px,1.2vw,17px);line-height:1.65;color:#A8B4B6;">What was built was smaller than the brief. The system that removed the constraint came first, and the model followed once the inputs it depended on could be trusted.</p>
+      </div>
+      <div style="grid-column:8/span 5;">
+        <div>
+          <div data-bar="100" style="width:100%;height:48px;background:#9AA5A7;display:flex;align-items:center;">
+            <span style="padding-left:16px;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#1F292B;white-space:nowrap;">Scope requested &#183; [PLACEHOLDER]</span>
+          </div>
+          <div data-bar="46" style="margin-top:24px;width:46%;height:48px;background:#E8616A;display:flex;align-items:center;">
+            <span style="padding-left:16px;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#1F292B;white-space:nowrap;">Scope delivered &#183; [PLACEHOLDER]</span>
+          </div>
+        </div>
+        <p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#9AA5A7;">The difference is what the diagnostic found.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" data-screen-label="10 Close" style="position:relative;background:#BE263B;padding:clamp(64px,8vw,120px) 0;">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 110px);background-position:calc(50% - 660px) 0;"></div>
+  <div class="dx-gut" style="position:relative;max-width:1464px;margin:0 auto;padding:0 clamp(20px,5vw,72px);box-sizing:border-box;">
+    <div class="dx-2col" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;align-items:stretch;">
+      <div style="grid-column:1/span 6;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;">
+        <div>
+          <div style="width:40px;height:3px;background:#FFFFFF;"></div>
+          <p style="margin:16px 0 0;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">Start Here</p>
+          <h2 style="margin:16px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,3.5vw,50px);line-height:1.1;letter-spacing:-2px;color:#FFFFFF;text-wrap:balance;">Start with the question, not the brief.</h2>
+        </div>
+        <p style="margin:48px 0 0;font-size:14px;line-height:1.6;color:#FFFFFF;">For companies operating above $1M in revenue with a specific commercial problem.</p>
+      </div>
+      <div style="grid-column:8/span 5;display:flex;flex-direction:column;justify-content:space-between;height:100%;box-sizing:border-box;padding-top:73px;">
+        <div>
+          <p style="margin:0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:rgba(255,255,255,0.88);text-wrap:pretty;">A thirty minute call, no fee and no deck. You describe what you are considering building, and we tell you which of the three lenses we would run it through first, and whether the diagnostic is worth your money at all.</p>
+          <p style="margin:32px 0 0;"><a href="contact.dc.html" style="display:inline-block;font-size:14px;font-weight:500;color:#BE263B;background:#FFFFFF;padding:17px 30px;transition:background 240ms ease;" style-hover="background:#FAF9F5;color:#93182B;">Get an AI Strategy Consult</a></p>
+        </div>
+        <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.3);display:flex;justify-content:space-between;">
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">01</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">30 Minutes</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">02</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Fee</span></span>
+          <span style="display:flex;align-items:baseline;gap:10px;"><span style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(16px,1.2vw,17px);color:#FFFFFF;font-variant-numeric:tabular-nums;">03</span><span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;">No Deck</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hdrBg: 'transparent', hdrBorder: 'transparent', hdrNav: '#171F21' };
+  renderVals() {
+    return { hdrBg: this.state.hdrBg, hdrBorder: this.state.hdrBorder, hdrNav: this.state.hdrNav };
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  componentDidMount() {
+    const doc = document;
+    const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+    const $$ = s => Array.from(doc.querySelectorAll(s));
+
+    // Header sync (dark over --deep sections and the footer)
+    const overDark = () => $$('[data-screen-label="02 Why it exists"], [data-screen-label="09 A worked example"], footer').some(el => {
+      const r = el.getBoundingClientRect();
+      return r.top <= 88 && r.bottom >= 0;
+    });
+    const syncHeader = () => {
+      const dark = overDark();
+      const on = (window.scrollY || 0) > 24;
+      const next = dark
+        ? { hdrBg: '#1F292B', hdrBorder: 'rgba(250,249,245,0.14)', hdrNav: '#FAF9F5' }
+        : { hdrBg: on ? '#FAF9F5' : 'transparent', hdrBorder: on ? '#D8D5CD' : 'transparent', hdrNav: '#171F21' };
+      this.setState(prev => (prev.hdrBg === next.hdrBg && prev.hdrBorder === next.hdrBorder && prev.hdrNav === next.hdrNav) ? null : next);
+    };
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    let last = 0;
+    const tick = ts => {
+      this._raf = requestAnimationFrame(tick);
+      if (document.visibilityState !== 'visible' || ts - last < 100) return;
+      last = ts;
+      syncHeader();
+    };
+    this._raf = requestAnimationFrame(tick);
+
+    // Entry animations: progressive enhancement only. All content is authored
+    // fully visible; on entry we snap to a start state and animate to the
+    // authored one in the same frame pair, once.
+    if (rm || !('IntersectionObserver' in window)) return;
+    const once = (el, fn) => {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        fn();
+      }), { threshold: 0.35 });
+      io.observe(el);
+    };
+
+    const drawPaths = (paths, dur) => paths.forEach(p => {
+      const len = p.getTotalLength();
+      p.style.transition = 'none';
+      p.style.strokeDasharray = len + ' ' + len;
+      p.style.strokeDashoffset = len;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        p.style.transition = 'stroke-dashoffset ' + dur + 'ms ' + ease;
+        p.style.strokeDashoffset = '0';
+      }));
+    });
+    const fadeIn = (els, base, step) => els.forEach((n, i) => {
+      n.style.transition = 'none';
+      n.style.opacity = '0';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        n.style.transition = 'opacity 500ms ease ' + (base + i * step) + 'ms';
+        n.style.opacity = '1';
+      }));
+    });
+
+    // Constraint gate
+    const gate = doc.querySelector('[data-gate]');
+    if (gate) once(gate, () => {
+      drawPaths(Array.from(gate.querySelectorAll('[data-gdraw]')), 1400);
+      fadeIn(Array.from(gate.querySelectorAll('[data-gnode]')), 400, 200);
+      fadeIn(Array.from(gate.querySelectorAll('[data-gbind]')), 1400, 120);
+    });
+
+    // Break-even chart
+    const chart = doc.querySelector('[data-chart]');
+    if (chart) once(chart, () => {
+      drawPaths(Array.from(chart.querySelectorAll('[data-cdraw]')), 1200);
+      fadeIn(Array.from(chart.querySelectorAll('[data-cnode]')), 1200, 100);
+    });
+
+    // Phase rail
+    const rail = doc.querySelector('[data-railrule]');
+    if (rail) once(rail, () => {
+      rail.style.transition = 'none';
+      rail.style.transform = 'scaleX(0)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        rail.style.transition = 'transform 900ms ' + ease;
+        rail.style.transform = 'scaleX(1)';
+      }));
+      fadeIn($$('[data-phase]'), 200, 140);
+    });
+
+    // Scope delta bars
+    const bars = $$('[data-bar]');
+    if (bars.length) once(bars[0].parentElement, () => bars.forEach((b, i) => {
+      const target = b.dataset.bar + '%';
+      b.style.transition = 'none';
+      b.style.width = '0%';
+      b.style.overflow = 'hidden';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        b.style.transition = 'width 900ms ' + ease + ' ' + (i * 200) + 'ms';
+        b.style.width = target;
+      }));
+    }));
+  }
+}
+</script>
+</body>
+</html>

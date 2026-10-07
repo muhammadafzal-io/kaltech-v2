@@ -1,0 +1,29 @@
+---
+// ABOUT: "Same team throughout, no handover." One unbroken loop with four
+// stations around a central team core; a light travels the loop without a break.
+interface Props { stations: string[]; label: string }
+const { stations, label } = Astro.props;
+const angles = [225, 315, 45, 135];
+---
+
+<figure class="x3 lp" aria-label={label}>
+  <div class="x3-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="x3-scene lp-scene">
+      <span class="lp-floor"></span>
+      <span class="lp-ring"></span>
+      <span class="lp-ring lp-ring-inner"></span>
+      <span class="lp-runner-track"><span class="lp-runner"></span></span>
+      {angles.map((a) => <span class="lp-spoke" style={`--a:${a}deg`}></span>)}
+      <div class="lp-core"><span></span></div>
+      {
+        stations.map((name, i) => (
+          <div class="lp-station" style={`--a:${angles[i]}deg`}>
+            <span class="lp-node"></span>
+            <span class="lp-tag">{name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</figure>

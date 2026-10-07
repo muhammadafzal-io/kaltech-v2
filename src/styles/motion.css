@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Motion.
+
+   The invariant: every element's resting CSS is its FINAL state. Starting
+   states exist only under html.m-armed, which src/scripts/motion.js adds when
+   JavaScript runs and the reader has not asked for reduced motion. With
+   JavaScript off, with reduced motion, or in print, nothing below applies and
+   nothing is hidden.
+
+   motion.js releases an element by adding .m-in, and sets --m-delay for the
+   90ms sibling stagger. Clip-paths return to `none` at .m-done.
+   ========================================================================== */
+
+@media screen {
+  /* ---- .m-reveal --------------------------------------------------------- */
+  html.m-armed .m-reveal {
+    transition:
+      opacity var(--dur-reveal) var(--ease-out-expo) var(--m-delay, 0ms),
+      transform var(--dur-reveal) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+
+  html.m-armed .m-reveal:not(.m-in) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* ---- .m-rule ------------------------------------------------------------ */
+  html.m-armed .m-rule {
+    transform-origin: left center;
+    transition: transform var(--dur-rule) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+
+  html.m-armed .m-rule:not(.m-in) {
+    transform: scaleX(0);
+  }
+
+  /* The same primitive on a vertical rule: it draws downward. */
+  html.m-armed .m-rule.m-rule-y {
+    transform-origin: center top;
+  }
+
+  html.m-armed .m-rule.m-rule-y:not(.m-in) {
+    transform: scaleY(0);
+  }
+
+  /* ---- .m-count ----------------------------------------------------------
+     The authored value stays hidden only until counting starts, so it never
+     flashes before dropping to zero. */
+  html.m-armed .m-count:not(.m-in) {
+    visibility: hidden;
+  }
+
+  /* ---- .m-draw ------------------------------------------------------------
+     Drawn strokes carry pathLength="1", so one dash covers the whole path. */
+  html.m-armed .m-draw:not(.m-done) :is(path, line, polyline):not(.m-node) {
+    stroke-dasharray: 1;
+    transition: stroke-dashoffset var(--dur-draw) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+
+  html.m-armed .m-draw:not(.m-in) :is(path, line, polyline):not(.m-node) {
+    stroke-dashoffset: 1;
+  }
+
+  html.m-armed .m-draw :is(rect, circle, text, .m-node) {
+    transition: opacity var(--dur-node) ease calc(var(--m-delay, 0ms) + var(--dur-node-lag));
+  }
+
+  html.m-armed .m-draw:not(.m-in) :is(rect, circle, text, .m-node) {
+    opacity: 0;
+  }
+
+  /* ---- .m-band ------------------------------------------------------------ */
+  html.m-armed .m-band {
+    transition: clip-path var(--dur-band) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+
+  html.m-armed .m-band:not(.m-in) {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  html.m-armed .m-band.m-in:not(.m-done) {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* ---- .m-image ----------------------------------------------------------- */
+  html.m-armed .m-image {
+    transition: clip-path var(--dur-image) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+
+  html.m-armed .m-image:not(.m-in) {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  html.m-armed .m-image.m-in:not(.m-done) {
+    clip-path: inset(0 0 0 0);
+  }
+
+  html.m-armed .m-image:not(.m-in) .slot-inner {
+    transform: scale(1.06);
+  }
+
+  html.m-armed .m-image.m-in:not(.m-done) .slot-inner {
+    transition: transform var(--dur-image) var(--ease-out-expo) var(--m-delay, 0ms);
+  }
+}
+
+/* ---- Route crossfade ------------------------------------------------------
+   The browser's own cross-document View Transitions. No script is involved, so
+   nothing here ships as a module and nothing breaks when it is unsupported: a
+   browser without it simply navigates. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--dur-route);
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* ==========================================================================
+   Home: depth and rhythm. CSS only, no script, no new colour or overlay.
+
+   Both effects are progressive enhancement. The resting state of every
+   element is its final state: the headline lines animate from a start state
+   to it with `both` fill, so they always end visible, and the parallax
+   keyframes are identity at scroll 0. Browsers without scroll-driven
+   animations simply show the static layout.
+   ========================================================================== */
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* The headline rises line by line, 90ms apart, once on load. */
+  html.m-armed .hero-line {
+    animation: hero-line-in var(--dur-reveal) var(--ease-out-expo) both;
+  }
+  html.m-armed .hero-line:nth-child(2) { animation-delay: 90ms; }
+  html.m-armed .hero-line:nth-child(3) { animation-delay: 180ms; }
+
+  @keyframes hero-line-in {
+    from { opacity: 0; transform: translateY(0.4em); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* Below 769 the lines are inline, where transform does not apply: opacity only. */
+@media screen and (prefers-reduced-motion: no-preference) and (max-width: 768px) {
+  @keyframes hero-line-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) and (min-width: 1025px) {
+    /* The constraint gate drifts down slower than the page: a second depth
+       plane behind the headline. Identity at the top of the page. */
+    .home-hero-gate {
+      animation: depth-gate linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90vh;
+    }
+
+    @keyframes depth-gate {
+      to { transform: translateY(56px); }
+    }
+
+    /* Inside their frames, image slots move against the scroll. `translate`
+       is its own property, so the hover scale on `transform` still works. */
+    .workrow .slot-inner,
+    .insight-feature .slot-inner {
+      animation: depth-slot linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    @keyframes depth-slot {
+      from { translate: 0 -14px; }
+      to   { translate: 0 14px; }
+    }
+  }
+}
+
+/* Variants of the reveal, so sections do not all enter the same way. They only
+   change the starting state; the release is the same .m-in. */
+@media screen {
+  html.m-armed .m-reveal.rv-left:not(.m-in) { transform: translateX(-32px); }
+  html.m-armed .m-reveal.rv-scale:not(.m-in) { transform: scale(0.96) translateY(16px); }
+  html.m-armed .m-reveal.rv-up:not(.m-in) { transform: translateY(48px); }
+}

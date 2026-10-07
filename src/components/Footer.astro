@@ -1,0 +1,69 @@
+---
+// Permitted copy change 1: Careers and How we work removed — both pointed at
+// /about and were dead links.
+// Permitted copy change 2: Privacy and Terms are now real pages; Security removed.
+import org from '../data/organization.json';
+
+const company = [
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const services = [
+  { href: '/services', label: 'Consulting' },
+  { href: '/services', label: 'Development' },
+  { href: '/services', label: 'Strategy & transformation' },
+  { href: '/diagnostic', label: 'The diagnostic' },
+];
+
+const work = [
+  { href: '/work/kalpay', label: 'KalPay' },
+  { href: '/work/ahw-global', label: 'AHW Global' },
+  { href: '/work/becs', label: 'BECS' },
+  { href: '/work', label: 'All case studies' },
+];
+
+const legal = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+];
+---
+
+<footer class="ftr on-deep">
+  <div class="wrap">
+    <div class="grid12 ftr-grid">
+      <div class="c1-4">
+        <p class="ftr-wordmark">KalTech</p>
+        <p class="ftr-blurb">
+          A senior-led applied AI and software firm for established mid-market companies.
+        </p>
+      </div>
+
+      <div class="ftr-col c6-2">
+        <p class="t-label ftr-head">Company</p>
+        {company.map((i) => <a class="ftr-link" href={i.href}>{i.label}</a>)}
+      </div>
+
+      <div class="ftr-col c8-2">
+        <p class="t-label ftr-head">Services</p>
+        {services.map((i) => <a class="ftr-link" href={i.href}>{i.label}</a>)}
+      </div>
+
+      <div class="ftr-col c10-2">
+        <p class="t-label ftr-head">Work</p>
+        {work.map((i) => <a class="ftr-link" href={i.href}>{i.label}</a>)}
+      </div>
+
+      <div class="ftr-col c12-1">
+        <p class="t-label ftr-head">Legal</p>
+        {legal.map((i) => <a class="ftr-link" href={i.href}>{i.label}</a>)}
+      </div>
+    </div>
+
+    <div class="ftr-base">
+      <a class="ftr-base-item" href="mailto:info@kaltech.online">info@kaltech.online</a>
+      <a class="ftr-base-item" href={org.linkedin} rel="noopener">LinkedIn</a>
+      <span class="ftr-base-item">&#169; 2026 KalTech</span>
+    </div>
+  </div>
+</footer>

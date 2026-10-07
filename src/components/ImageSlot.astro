@@ -1,0 +1,54 @@
+---
+// The designed placeholder, built to ship.
+//
+// A ground block that contrasts with the section it sits in, a 32px outlined
+// square top left, and a caption in label style bottom left naming the intended
+// shot. When a real image arrives, pass `src`: the image replaces the block and
+// the caption becomes its alt text.
+interface Props {
+  caption: string;
+  /** The ground of the section the slot sits in. Picks a contrasting block. */
+  on?: 'paper' | 'sand' | 'slate' | 'deep';
+  /** Explicit block ground. Ignored when it would match `on`. */
+  ground?: 'paper' | 'sand' | 'slate' | 'deep';
+  ratio?: '3-2' | '3-4' | '16-9';
+  src?: string | null;
+  motion?: boolean;
+  class?: string;
+}
+
+const {
+  caption,
+  on = 'paper',
+  ground,
+  ratio = '3-2',
+  src = null,
+  motion = true,
+  class: extra = '',
+} = Astro.props;
+
+// One step away from the section ground, so the block never reads as a gap.
+const CONTRAST = { paper: 'sand', sand: 'slate', slate: 'sand', deep: 'sand' } as const;
+const block = ground && ground !== on ? ground : CONTRAST[on];
+
+const cls = ['slot', `slot-${block}`, `slot-${ratio}`, motion ? 'm-image' : '', extra]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{
+  src ? (
+    <div class={cls}>
+      <img class="slot-img" src={src} alt={caption} loading="lazy" decoding="async" />
+    </div>
+  ) : (
+    <div class={cls} role="img" aria-label={caption}>
+      <div class="slot-inner">
+        <span class="slot-square" aria-hidden="true" />
+        <span class="slot-caption" aria-hidden="true">
+          {caption}
+        </span>
+      </div>
+    </div>
+  )
+}

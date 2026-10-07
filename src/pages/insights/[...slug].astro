@@ -1,0 +1,136 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import HomeHeader from '../../components/home/HomeHeader.astro';
+import HomeFooter from '../../components/home/HomeFooter.astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getCollection('insights');
+  // Only written entries get a route.
+  const published = all.filter((e) => e.data.published);
+  return published.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, all },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry, all } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+// The Article node matches the page: the byline's author as a Person working
+// for KalTech. No datePublished: the export carries no date and inventing one
+// is not on.
+const article = {
+  headline: d.title,
+  description: d.standfirst,
+  section: d.kicker,
+  author: { person: d.author, slug: d.author.toLowerCase().replace(/[^a-z0-9]+/g, '-') },
+};
+
+const related = all
+  .filter((e) => e.id !== entry.id && e.data.published)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const at = d.titleAccent ? d.title.indexOf(d.titleAccent) : -1;
+---
+
+<Base
+  title={d.seo!.title}
+  description={d.seo!.description}
+  ogType="article"
+  breadcrumb={[
+    { name: 'Insights', path: '/insights' },
+    { name: d.seo!.title.replace(/ \| KalTech$/, ''), path: `/insights/${entry.id}` },
+  ]}
+  article={article}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark" id="top">
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+    </div>
+
+    <div class="h-wrap h-hero-inner h-hero-solo">
+      <div class="h-hero-copy">
+        <p class="ar-crumb">
+          <a class="h-hlink" href="/insights">Insights</a> <span aria-hidden="true">/</span> {d.kicker}
+        </p>
+        <h1 class="h-h1 ar-title">
+          {at === -1 ? d.title : <>{d.title.slice(0, at)}<em class="h-mark">{d.titleAccent}</em>{d.title.slice(at + d.titleAccent!.length)}</>}
+        </h1>
+        <p class="h-lead m-reveal">{d.standfirst}</p>
+        <p class="ar-byline art-byline m-reveal">{d.author} &#183; {d.readingTime}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-bone ar-main">
+    <div class="h-wrap">
+      <div class="ar-cover" role="img" aria-label={d.imageCaption}>
+        <span class="h-shot-square" aria-hidden="true"></span>
+        <span class="h-shot-caption" aria-hidden="true">{d.imageCaption}</span>
+      </div>
+
+      <div class="ar-grid">
+        <nav class="ar-idx" aria-label="Contents">
+          <p class="sv-label">Contents</p>
+          <div class="idx">
+            {
+              d.contents.map((c, i) => (
+                <a class="idx-link" href={`#${c.id}`} data-idx={c.id} aria-current={i === 0 ? 'true' : undefined}>
+                  {c.label}
+                </a>
+              ))
+            }
+          </div>
+        </nav>
+
+        <div class="ar-body">
+          <Content />
+
+          {
+            d.closing && (
+              <div class="ar-closing">
+                {d.closing.paras.map((p) => <p>{p}</p>)}
+                <p>
+                  <a class="h-btn h-btn-primary" href={d.closing.ctaHref}>
+                    <span>{d.closing.ctaLabel}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span>
+                  </a>
+                </p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    related.length > 0 && (
+      <section class="h-sec h-white">
+        <div class="h-wrap">
+          <p class="h-eyebrow">More from Insights</p>
+          <div class="ar-related">
+            {
+              related.map((r) => (
+                <a class="ar-related-card" href={`/insights/${r.id}`}>
+                  <p class="sv-label">{r.data.kicker}</p>
+                  <h3 class="h-h3">{r.data.title}</h3>
+                  <p class="ar-related-time">{r.data.readingTime}</p>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <HomeFooter />
+</Base>

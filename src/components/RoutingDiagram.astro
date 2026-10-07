@@ -1,0 +1,33 @@
+---
+// THE ROUTING DIAGRAM (Services hero).
+// One entry, the first conversation, branching to the three service lines. It
+// draws the page's argument: nobody arrives knowing which line they need. The
+// branches are parallel, not a sequence, so they carry no numerals here.
+// HTML with 1px lines, drawn via .m-rule; ink only.
+import services from '../data/services.json';
+
+const branches = services.lines.map((l) => l.title);
+---
+
+<figure
+  class="route"
+  aria-label={`The first conversation routes to one of three lines: ${branches.join(', ')}.`}
+>
+  <div class="route-entry">
+    <span class="route-node" aria-hidden="true"></span>
+    <p class="route-name">{services.routingEntry}</p>
+  </div>
+  <span class="route-trunk m-rule" aria-hidden="true"></span>
+  <span class="route-spine m-rule m-rule-y" aria-hidden="true"></span>
+  <ul class="route-branches">
+    {
+      branches.map((b) => (
+        <li class="route-branch">
+          <span class="route-arm m-rule" aria-hidden="true"></span>
+          <span class="route-node" aria-hidden="true"></span>
+          <span class="route-name">{b}</span>
+        </li>
+      ))
+    }
+  </ul>
+</figure>

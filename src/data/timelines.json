@@ -1,0 +1,34 @@
+{
+  "_about": "Every width here is illustrative, not measured, and every timeline renders with the caption 'Illustrative proportions'. Widths are percentages of the timeline. States: solid, outline, open (a hatch fading right) and gap.",
+  "caption": "Illustrative proportions",
+  "engage": {
+    "gateAfter": 0,
+    "gateLabel": "Nothing past this point is scoped without a finding",
+    "segments": [
+      { "key": "diagnostic", "width": 15, "state": "solid", "accent": true },
+      { "key": "scope", "width": 15, "state": "outline" },
+      { "key": "build", "width": 40, "state": "solid" },
+      { "key": "retainer", "width": 30, "state": "open" }
+    ]
+  },
+  "serviceLines": {
+    "01": [
+      { "width": 15, "state": "solid" }
+    ],
+    "02": [
+      { "width": 18, "state": "solid" },
+      { "width": 2, "state": "gap" },
+      { "width": 18, "state": "solid" },
+      { "width": 2, "state": "gap" },
+      { "width": 18, "state": "solid" }
+    ],
+    "03": [
+      { "width": 100, "state": "open" }
+    ]
+  },
+  "diagnosticPhases": [
+    { "key": "01", "width": 35, "state": "solid" },
+    { "key": "02", "width": 45, "state": "solid" },
+    { "key": "03", "width": 20, "state": "solid" }
+  ]
+}

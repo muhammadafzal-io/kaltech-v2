@@ -1,0 +1,18 @@
+---
+// "Read the case study →" — appears on six pages.
+// Pass the label as children instead of `label` when part of it is for screen
+// readers only, so links with the same visible label still have distinct names:
+// Read the <span class="visually-hidden">KalPay </span>case study.
+interface Props {
+  href: string;
+  label?: string;
+  class?: string;
+}
+
+const { href, label = '', class: extra = '' } = Astro.props;
+---
+
+<a class={`arrowlink ${extra}`.trim()} href={href}>
+  <span class="arrowlink-label">{Astro.slots.has('default') ? <slot /> : label}</span>{' '}
+  <span class="arrow" aria-hidden="true">&#8594;</span>
+</a>

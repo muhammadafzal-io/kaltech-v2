@@ -1,0 +1,155 @@
+---
+// THE DOTTED WORLD MAP.
+// Land is a grid of 1.5px square dots in --muted, generated at build time from
+// Natural Earth 110m (scripts/make-geo.mjs); nothing about the map runs in the
+// browser. Two grids share one projection and one aspect ratio: `wide` above
+// 768, `narrow` below, so the dots stay separate at phone width. Markers and
+// their labels are HTML laid over both, positioned in percent, so they stay
+// 8px and 12px at any width. Arcs are the only drawn strokes and draw via
+// .m-draw.
+//
+// A marker is placed by `lon`/`lat`, or by `countries`: the area-weighted
+// centroid of each country's largest polygon, so a marker sits on a mainland and
+// never on a city it would imply an office in. An unknown country name fails the
+// build rather than dropping a marker silently.
+import dots from '../data/land-dots.json';
+import centroids from '../data/country-centroids.json';
+
+interface Marker {
+  id?: string;
+  label: string;
+  role: 'client' | 'operating' | 'delivery';
+  countries?: string[];
+  lon?: number;
+  lat?: number;
+  /** Which side of the square the label sits. */
+  side?: 'right' | 'left';
+}
+
+interface Props {
+  markers: Marker[];
+  arcs?: { from: string; to: string }[];
+  /** What the map shows, for readers who cannot see it. */
+  label: string;
+  on?: 'light' | 'dark';
+  /** Labels in a key beneath the map instead of beside each marker. For
+   *  client countries, which can cluster (the UAE and Saudi Arabia sit 20px
+   *  apart at 1440) and run past the edge at phone width. */
+  keyed?: boolean;
+  /** Prefix for the <title>/<desc> ids; unique per page. */
+  id?: string;
+  class?: string;
+}
+
+const { markers, arcs = [], label, on = 'light', keyed = false, id = 'wmap', class: extra = '' } = Astro.props;
+const table = centroids as Record<string, { lon: number; lat: number; area: number }>;
+
+function place(m: Marker) {
+  if (typeof m.lon === 'number' && typeof m.lat === 'number') return { lon: m.lon, lat: m.lat };
+  const found = (m.countries ?? []).map((name) => {
+    const c = table[name];
+    if (!c) throw new Error(`WorldMap: "${name}" is not a Natural Earth country name (src/data/country-centroids.json).`);
+    return c;
+  });
+  if (!found.length) throw new Error(`WorldMap: marker "${m.label}" has no position.`);
+  const total = found.reduce((s, c) => s + c.area, 0);
+  return {
+    lon: found.reduce((s, c) => s + c.lon * c.area, 0) / total,
+    lat: found.reduce((s, c) => s + c.lat * c.area, 0) / total,
+  };
+}
+
+const span = dots.north - dots.south;
+const placed = markers.map((m) => {
+  const p = place(m);
+  return {
+    ...m,
+    ...p,
+    x: ((p.lon + 180) / 360) * 100,
+    y: ((dots.north - p.lat) / span) * 100,
+  };
+});
+const byId = new Map(placed.map((m) => [m.id ?? m.label, m]));
+
+// One quadratic curve per arc, bowed away from the equator, in a grid's units.
+function arcPath(a: { lon: number; lat: number }, b: { lon: number; lat: number }, k: number) {
+  const x1 = (a.lon + 180) * k;
+  const y1 = (dots.north - a.lat) * k;
+  const x2 = (b.lon + 180) * k;
+  const y2 = (dots.north - b.lat) * k;
+  const dist = Math.hypot(x2 - x1, y2 - y1);
+  const cx = (x1 + x2) / 2;
+  const cy = Math.min(y1, y2) - dist * 0.22;
+  const r = (v: number) => Math.round(v * 10) / 10;
+  return `M${r(x1)} ${r(y1)} Q${r(cx)} ${r(cy)} ${r(x2)} ${r(y2)}`;
+}
+
+const lines = arcs.map((a) => {
+  const from = byId.get(a.from);
+  const to = byId.get(a.to);
+  if (!from || !to) throw new Error(`WorldMap: arc ${a.from} → ${a.to} names a marker that does not exist.`);
+  return { wide: arcPath(from, to, dots.wide.k), narrow: arcPath(from, to, dots.narrow.k) };
+});
+---
+
+<figure class={`wmap wmap-${on} ${extra}`.trim()}>
+  <div class="wmap-frame">
+    <svg
+      class="wmap-svg wmap-wide m-draw"
+      viewBox={`0 0 ${dots.wide.width} ${dots.wide.height}`}
+      width="100%"
+      role="img"
+      aria-labelledby={`${id}-wide-title`}
+      aria-describedby={`${id}-wide-desc`}
+      data-responsive-alt
+    >
+      <title id={`${id}-wide-title`}>{label}</title>
+      <desc id={`${id}-wide-desc`}>{placed.map((m) => m.label).join(', ')}</desc>
+      <path class="wmap-dots m-node" d={dots.wide.d} />
+      {lines.map((l) => <path class="wmap-arc" pathLength="1" d={l.wide} />)}
+    </svg>
+    <svg
+      class="wmap-svg wmap-narrow m-draw"
+      viewBox={`0 0 ${dots.narrow.width} ${dots.narrow.height}`}
+      width="100%"
+      role="img"
+      aria-labelledby={`${id}-narrow-title`}
+      aria-describedby={`${id}-narrow-desc`}
+      data-responsive-alt
+    >
+      <title id={`${id}-narrow-title`}>{label}</title>
+      <desc id={`${id}-narrow-desc`}>{placed.map((m) => m.label).join(', ')}</desc>
+      <path class="wmap-dots m-node" d={dots.narrow.d} />
+      {lines.map((l) => <path class="wmap-arc wmap-arc-narrow" pathLength="1" d={l.narrow} />)}
+    </svg>
+
+    <ul class="wmap-markers">
+      {
+        placed.map((m) => (
+          <li
+            class={`wmap-marker wmap-${m.role} wmap-side-${m.side ?? 'right'}`}
+            style={`--x:${m.x.toFixed(2)}%;--y:${m.y.toFixed(2)}%`}
+          >
+            <span class="wmap-sq" aria-hidden="true" />
+            <span class={keyed ? 'visually-hidden' : 'wmap-label'}>{m.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  {
+    keyed && (
+      <ul class="wmap-key" aria-hidden="true">
+        {[...placed]
+          .sort((a, b) => a.lon - b.lon)
+          .map((m) => (
+            <li class={`wmap-key-item wmap-${m.role}`}>
+              <span class="wmap-sq" />
+              <span class="wmap-label">{m.label}</span>
+            </li>
+          ))}
+      </ul>
+    )
+  }
+  <slot />
+</figure>

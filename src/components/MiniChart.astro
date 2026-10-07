@@ -1,0 +1,81 @@
+---
+// THE SMALL CHART VOCABULARY.
+//   cross  two lines crossing: a flat run cost and a rising value returned, the
+//          break-even volume marked where they meet. SVG, fixed geometry,
+//          drawn via .m-draw. Illustrative, and captioned so.
+//   bar    one horizontal bar at a share of its track, 0 to 1. A full bar and an
+//          empty one side by side read as a pair. HTML, drawn via .m-rule.
+//   meter  a row of equal segments, some filled. HTML; FitCheck drives it.
+// 1px strokes, no gridlines, no ticks, labels in body type.
+interface Props {
+  type: 'cross' | 'bar' | 'meter';
+  /** bar: the share filled, 0 to 1. */
+  value?: number;
+  /** meter: how many segments, and how many start filled. */
+  segments?: number;
+  filled?: number;
+  caption?: string | null;
+  label?: string;
+  class?: string;
+}
+
+const {
+  type,
+  value = 0,
+  segments = 5,
+  filled = 0,
+  caption = null,
+  label = '',
+  class: extra = '',
+} = Astro.props;
+---
+
+{
+  type === 'cross' && (
+    <figure class={`mc mc-cross ${extra}`.trim()}>
+      <svg
+        class="m-draw"
+        viewBox="0 0 240 172"
+        width="100%"
+        role="img"
+        aria-labelledby="mc-cross-title"
+        aria-describedby="mc-cross-desc"
+      >
+        <title id="mc-cross-title">Run cost, value returned, break-even volume</title>
+        <desc id="mc-cross-desc">{label || 'Illustrative chart: run cost is flat while value returned rises and crosses it at a break-even volume.'}</desc>
+        <path class="svg-rule" pathLength="1" d="M6 6 V148 H234" />
+        <path class="svg-line" pathLength="1" d="M6 70 H226" />
+        <path class="svg-accent-line" pathLength="1" d="M6 138 L226 26" />
+        <path class="svg-line mc-tick m-node" d="M140 70 V148" />
+        <circle class="svg-accent-fill" cx="140" cy="70" r="4" />
+        <text class="svg-label mc-label" x="10" y="62">RUN COST</text>
+        <text class="svg-label-ink mc-label" x="226" y="16" text-anchor="end">VALUE RETURNED</text>
+        <text class="svg-label mc-label" x="140" y="166" text-anchor="middle">BREAK-EVEN VOLUME</text>
+      </svg>
+      {caption && <figcaption class="t-meta mc-caption">{caption}</figcaption>}
+    </figure>
+  )
+}
+
+{
+  type === 'bar' && (
+    <span
+      class={`mc mc-bar ${value === 0 ? 'mc-bar-empty' : ''} ${extra}`.trim()}
+      role={label ? 'img' : undefined}
+      aria-label={label || undefined}
+      aria-hidden={label ? undefined : 'true'}
+    >
+      {value > 0 && <span class="mc-bar-fill m-rule" style={`--mc-v:${Math.round(value * 100)}%`} />}
+    </span>
+  )
+}
+
+{
+  type === 'meter' && (
+    <span class={`mc mc-meter ${extra}`.trim()} aria-hidden="true">
+      {Array.from({ length: segments }, (_, i) => (
+        <span class={i < filled ? 'mc-seg is-on' : 'mc-seg'} />
+      ))}
+    </span>
+  )
+}

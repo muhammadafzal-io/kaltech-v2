@@ -1,0 +1,92 @@
+---
+// No closing red band: the closing band is on every page except Contact and articles.
+import Base from '../layouts/Base.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
+import org from '../data/organization.json';
+
+const nextSteps = [
+  { num: '01', body: 'We read what you sent and reply within two working days.' },
+  { num: '02', body: 'A thirty minute call, no fee, no deck. You describe what you are considering.' },
+  { num: '03', body: 'If it is a fit, we scope a diagnostic. If it is not, we say so.' },
+];
+
+const notes = [
+  'For companies operating above $1M in revenue with a specific commercial problem.',
+  'If we are not the right firm for the work, we will say so and tell you who might be.',
+  'What you send stays with the people who would run the engagement. If you would rather describe the problem in full, we will sign an NDA before the call.',
+];
+
+const details = [
+  { label: 'Email', value: 'info@kaltech.online', href: 'mailto:info@kaltech.online' },
+  { label: 'Registered', value: 'AajKal Inc., Delaware, United States', href: null },
+  { label: 'Operating', value: 'United States, United Kingdom, GCC. Delivery team in Lahore.', href: null },
+];
+---
+
+<Base
+  title="Contact us to start with a 30-minute call | KalTech"
+  description="Tell us what you are considering building. We will tell you which of the three lenses we would run it through first, and whether we are the right firm for it."
+  breadcrumb={[{ name: 'Contact', path: '/contact' }]}
+  chrome="own"
+>
+  <HomeHeader />
+
+  <section class="h-hero h-hero-sm h-dark ct-hero" id="top">
+    <div class="h-hero-bg" aria-hidden="true">
+      <span class="h-hero-grid"></span>
+      <span class="h-orb h-orb-a"></span>
+    </div>
+    <div class="h-wrap ct-wrap">
+      <div class="ct-main">
+        <p class="h-badge m-reveal"><span class="h-badge-dot" aria-hidden="true"></span>Get an AI Strategy Consult</p>
+        <h1 class="h-h1 h-lines">
+          <span class="h-line">Start with the <em class="h-mark">question</em>,</span>
+          <span class="h-line">not the brief.</span>
+        </h1>
+        <p class="h-lead m-reveal">
+          Tell us what you are considering building. We will tell you which of the three lenses we would
+          run it through first, and whether we are the right firm for it.
+        </p>
+
+        <form class="ct-form m-reveal" data-contactform method="post" action="/api/contact">
+          <p class="sv-label ct-formhead">Tell us what you are considering</p>
+          <div class="ct-row">
+            <label class="ct-field"><span class="sv-label">Name</span><input class="ct-input" type="text" name="name" autocomplete="name" required /></label>
+            <label class="ct-field"><span class="sv-label">Work email</span><input class="ct-input" type="email" name="email" autocomplete="email" required /></label>
+          </div>
+          <label class="ct-field"><span class="sv-label">Company</span><input class="ct-input" type="text" name="company" autocomplete="organization" /></label>
+          <label class="ct-field"><span class="sv-label">What are you considering building?</span><textarea class="ct-input ct-area" name="brief" rows="6"></textarea></label>
+          <p class="ct-submit"><button class="h-btn h-btn-light" type="submit"><span>Send</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></button></p>
+        </form>
+
+        <div class="ct-notes">{notes.map((n) => <p>{n}</p>)}</div>
+      </div>
+
+      <aside class="ct-side">
+        <div class="ct-card m-reveal">
+          <p class="sv-label">What happens next</p>
+          <ol class="ct-steps">
+            {nextSteps.map((s) => <li><span class="ct-step-num">{s.num}</span><span>{s.body}</span></li>)}
+          </ol>
+        </div>
+        <div class="ct-card m-reveal">
+          {
+            details.map((d) => (
+              <div class="ct-detail">
+                <p class="sv-label">{d.label}</p>
+                <p>{d.href ? <a class="h-hlink" href={d.href}>{d.value}</a> : d.value}</p>
+              </div>
+            ))
+          }
+          <div class="ct-detail">
+            <p class="sv-label">LinkedIn</p>
+            <p><a class="h-link" href={org.linkedin}><span>KalTech on LinkedIn</span><span class="h-link-arrow" aria-hidden="true">&#8594;</span></a></p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <HomeFooter />
+</Base>

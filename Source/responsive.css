@@ -1,0 +1,30 @@
+/* KalTech shared responsive system — 1024 / 768 / 520.
+   [style*] selectors use the browser-serialized form: space after colons and commas, 0 -> 0px. */
+html{--header-h:88px;}
+body{overflow-x:hidden;}
+@media (max-width:1024px){
+  html{--header-h:64px;}
+  [style*="grid-template-columns: repeat(12, 1fr)"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(12, 1fr)"] > *{grid-column:1/-1 !important;}
+  [style*="position: sticky"]{position:static !important;}
+  [style*="height: 100%"]{height:auto !important;}
+  [style*="flex-direction: column"][style*="justify-content: space-between"]{justify-content:flex-start !important;}
+  [style*="padding-top: 73px"]{padding-top:0 !important;}
+  [style*="grid-template-columns: repeat(6, 1fr)"]{grid-template-columns:repeat(4,1fr) !important;}
+  [style*="margin: 48px -21px 0px"],[style*="margin: 48px -28px 0px"]{grid-template-columns:1fr !important;row-gap:48px;}
+  [style*="margin: 48px -21px 0px"] > *,[style*="margin: 48px -28px 0px"] > *{border-left:0 !important;}
+}
+@media (max-width:768px){
+  [style*="grid-template-columns: repeat(6, 1fr)"]{grid-template-columns:repeat(3,1fr) !important;}
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"]{grid-template-columns:1fr !important;row-gap:32px;}
+  [style*="grid-template-columns: 1fr 1fr 1fr"]:not([style*="1fr 1fr 1fr 1fr"]){grid-template-columns:1fr !important;row-gap:32px;}
+  [style*="grid-template-columns: 1fr 1fr"]:not([style*="1fr 1fr 1fr"]){grid-template-columns:1fr !important;row-gap:32px;}
+  [style*="grid-template-columns: 1fr minmax"]{grid-template-columns:1fr !important;row-gap:32px;}
+  [style*="border-left: 1px solid rgb(216, 213, 205)"],[style*="border-left: 1px solid #D8D5CD"],[style*="border-left: 1px solid rgb(219, 212, 198)"],[style*="border-left: 1px solid #DBD4C6"],[style*="border-left: 1px solid rgb(210, 214, 213)"],[style*="border-left: 1px solid #D2D6D5"]{border-left:0 !important;border-top:1px solid #D8D5CD !important;padding-left:0 !important;padding-right:0 !important;padding-top:24px !important;}
+  [style*="border-left: 1px solid rgba(250, 249, 245, 0.14)"]{border-left:0 !important;border-top:1px solid rgba(250,249,245,0.14) !important;padding-left:0 !important;padding-right:0 !important;padding-top:24px !important;}
+  [style*="min-height: 480px"]{min-height:320px !important;}
+}
+@media (max-width:520px){
+  [style*="grid-template-columns: repeat(6, 1fr)"]{grid-template-columns:repeat(2,1fr) !important;}
+  [data-contactform] button{width:100%;}
+}
