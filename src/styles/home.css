@@ -4262,3 +4262,48 @@ html[data-theme='dark'] .lgm-item::after { background: var(--h-border); }
   .lgm-item:nth-child(2) .lg-img { height: 32px; }
   .lgm-item:nth-child(5) .lg-img { height: 34px; }
 }
+
+/* Testimonials: no offset shape behind the cards. */
+.tc-shape { display: none; }
+
+/* ==========================================================================
+   Diagnostic flow, refined: three numbered steps in one row, arrows between
+   them, the four returns as an even 2x2 grid, the exits as a fork.
+   ========================================================================== */
+.h-diag .h-flow.fl {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) 48px minmax(0, 1.35fr) 48px minmax(0, 0.9fr);
+  align-items: stretch;
+  column-gap: 0;
+  padding: clamp(26px, 2.8vw, 40px);
+}
+.fl .fl-step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 0; border: 0 !important; }
+.fl .fl-step::before { display: none; }
+.fl-num { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 13px; letter-spacing: 0.08em; color: var(--h-cobalt-light); }
+.fl .h-flow-name { font-size: 21px; }
+.fl .h-flow-note { margin-top: 0; max-width: 28ch; }
+
+.fl-returns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.fl-returns li { display: flex; align-items: center; min-height: 44px; padding: 10px 14px; font-size: 14px; line-height: 1.3; color: var(--h-white); background: var(--h-glass); border: 1px solid var(--h-glass-line); border-radius: var(--h-r-sm); }
+
+/* Arrows: a line with a head, centred on the step row. */
+.fl-arrow { position: relative; align-self: center; height: 2px; margin: 0 8px; background: linear-gradient(90deg, var(--h-glass-line), var(--h-cobalt-light)); }
+.fl-arrow::after { content: ''; position: absolute; right: -1px; top: 50%; width: 9px; height: 9px; border-top: 2px solid var(--h-cobalt-light); border-right: 2px solid var(--h-cobalt-light); transform: translateY(-50%) rotate(45deg); }
+
+.fl-exits { justify-content: flex-start; }
+.fl-exit { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: var(--h-night); border: 1px solid var(--h-glass-line); border-radius: var(--h-r-md); }
+.fl-exit-go { border-color: var(--h-cobalt-light); box-shadow: 0 0 0 1px var(--h-glow-soft), 0 10px 30px -14px var(--h-glow-cobalt); }
+.fl-exit .h-flow-name { font-size: 18px; }
+
+.h-diag .h-pull-wide { margin-top: clamp(24px, 3vw, 44px); }
+
+html[data-theme='dark'] .fl-exit { background: var(--h-surface-2); border-color: var(--h-border); }
+html[data-theme='dark'] .fl-exit-go { border-color: var(--h-red-bright); }
+html[data-theme='dark'] .fl-returns li { background: var(--h-surface-2); border-color: var(--h-border); }
+
+@media (max-width: 1024px) {
+  .h-diag .h-flow.fl { grid-template-columns: 1fr; row-gap: 0; }
+  .fl-arrow { justify-self: start; width: 2px; height: 32px; margin: 10px 0 10px 4px; background: linear-gradient(var(--h-glass-line), var(--h-cobalt-light)); }
+  .fl-arrow::after { right: auto; left: 50%; top: auto; bottom: -1px; transform: translateX(-50%) rotate(135deg); }
+}
+@media (max-width: 520px) { .fl-returns { grid-template-columns: 1fr; } }

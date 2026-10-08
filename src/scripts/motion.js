@@ -49,7 +49,8 @@
      Without JavaScript no attribute is set and the page is the light theme.
      ------------------------------------------------------------------------ */
   var THEME_KEY = 'kaltech-theme';
-  var themed = true;
+  // Dark theme switched off for now: no attribute is set, so every page is light.
+  var themed = false;
 
   function readTheme() {
     var saved = null;

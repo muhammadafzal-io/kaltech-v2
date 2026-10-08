@@ -214,7 +214,6 @@ const clientLogos = [
               const pos = [0, 1, -1][i];
               return (
                 <article class="tc-card" style={`--pos:${pos}`} data-tc-card={i}>
-                  <span class="tc-shape" aria-hidden="true"></span>
                   <div class="tc-face">
                     <span class="tc-avatar" aria-hidden="true">{c.data.title.charAt(0)}</span>
                     <p class="tc-co">{q.source.split(', ').slice(1).join(', ')}</p>
@@ -316,28 +315,27 @@ const clientLogos = [
       </div>
 
       <figure
-        class="h-flow"
+        class="h-flow fl"
         aria-label="The diagnostic leads to a written finding, and the finding forks into two exits: a scope, or nothing built."
       >
-        <div class="h-flow-step m-reveal">
-          <span class="h-flow-node" aria-hidden="true"></span>
-          <div>
-            <p class="h-flow-name">{fork.entry}</p>
-            <p class="h-flow-note">{fork.entryNote}</p>
-          </div>
+        <div class="fl-step m-reveal">
+          <p class="fl-num">01</p>
+          <p class="h-flow-name">{fork.entry}</p>
+          <p class="h-flow-note">{fork.entryNote}</p>
         </div>
-        <div class="h-flow-step h-flow-step-lg m-reveal">
-          <span class="h-flow-node" aria-hidden="true"></span>
-          <div>
-            <p class="h-flow-name">{fork.finding}</p>
-            <ul class="h-flow-returns">
-              {returns.map((r) => <li>{r}</li>)}
-            </ul>
-          </div>
+        <span class="fl-arrow" aria-hidden="true"></span>
+        <div class="fl-step fl-step-mid m-reveal">
+          <p class="fl-num">02</p>
+          <p class="h-flow-name">{fork.finding}</p>
+          <ul class="fl-returns">
+            {returns.map((r) => <li>{r}</li>)}
+          </ul>
         </div>
-        <div class="h-flow-exits m-reveal">
-          <div class="h-flow-exit"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p></div>
-          <div class="h-flow-exit"><span class="h-flow-node h-flow-node-hollow" aria-hidden="true"></span><p class="h-flow-name">{fork.nothing}</p></div>
+        <span class="fl-arrow fl-arrow-fork" aria-hidden="true"></span>
+        <div class="fl-step fl-exits m-reveal">
+          <p class="fl-num">03</p>
+          <div class="fl-exit fl-exit-go"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p></div>
+          <div class="fl-exit"><span class="h-flow-node h-flow-node-hollow" aria-hidden="true"></span><p class="h-flow-name">{fork.nothing}</p></div>
         </div>
       </figure>
       <blockquote class="h-pull h-pull-wide m-reveal">{fork.quote}</blockquote>

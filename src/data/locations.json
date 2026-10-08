@@ -1,5 +1,5 @@
 {
-  "_about": "The About footprint map and the working-hours strip. Operating markers sit on the centroid of their countries, not on a city, so the map never implies an office. The delivery marker is Lahore itself. The strip is built but not rendered until `showOverlap` is true: the hours below are standard office hours, not the delivery team's real hours.",
+  "_about": "The About footprint map and the working-hours strip. Operating markers sit on the centroid of their countries, not on a city, so the map never implies an office. The delivery marker sits on Germany's centroid. The strip is built but not rendered until `showOverlap` is true: the hours below are standard office hours, not the delivery team's real hours.",
   "markers": [
     {
       "id": "us",
@@ -34,24 +34,26 @@
       "side": "left"
     },
     {
-      "id": "lahore",
-      "label": "Lahore",
+      "id": "germany",
+      "label": "Germany",
       "role": "delivery",
-      "lon": 74.3587,
-      "lat": 31.5204
+      "countries": [
+        "Germany"
+      ],
+      "side": "right"
     }
   ],
   "arcs": [
     {
-      "from": "lahore",
+      "from": "germany",
       "to": "us"
     },
     {
-      "from": "lahore",
+      "from": "germany",
       "to": "uk"
     },
     {
-      "from": "lahore",
+      "from": "germany",
       "to": "gcc"
     }
   ],
