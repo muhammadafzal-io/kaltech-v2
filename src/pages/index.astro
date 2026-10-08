@@ -315,26 +315,25 @@ const clientLogos = [
       </div>
 
       <figure
-        class="h-flow fl"
+        class="fl2"
         aria-label="The diagnostic leads to a written finding, and the finding forks into two exits: a scope, or nothing built."
       >
-        <div class="fl-step m-reveal">
-          <p class="fl-num">01</p>
+        <span class="fl-rail" aria-hidden="true"><i></i></span>
+        <div class="fl-card m-reveal">
+          <span class="fl-badge">01</span>
           <p class="h-flow-name">{fork.entry}</p>
           <p class="h-flow-note">{fork.entryNote}</p>
         </div>
-        <span class="fl-arrow" aria-hidden="true"></span>
-        <div class="fl-step fl-step-mid m-reveal">
-          <p class="fl-num">02</p>
+        <div class="fl-card fl-card-mid m-reveal">
+          <span class="fl-badge">02</span>
           <p class="h-flow-name">{fork.finding}</p>
           <ul class="fl-returns">
-            {returns.map((r) => <li>{r}</li>)}
+            {returns.map((r) => <li><span class="fl-tick" aria-hidden="true"></span>{r}</li>)}
           </ul>
         </div>
-        <span class="fl-arrow fl-arrow-fork" aria-hidden="true"></span>
-        <div class="fl-step fl-exits m-reveal">
-          <p class="fl-num">03</p>
-          <div class="fl-exit fl-exit-go"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p></div>
+        <div class="fl-card fl-card-exits m-reveal">
+          <span class="fl-badge">03</span>
+          <div class="fl-exit fl-exit-go"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p><span class="fl-go" aria-hidden="true">&#8594;</span></div>
           <div class="fl-exit"><span class="h-flow-node h-flow-node-hollow" aria-hidden="true"></span><p class="h-flow-name">{fork.nothing}</p></div>
         </div>
       </figure>
