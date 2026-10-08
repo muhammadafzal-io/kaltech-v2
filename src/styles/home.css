@@ -4384,3 +4384,121 @@ html[data-theme='dark'] .fl-card { background: var(--h-surface); border-color: v
 .fl-rail { z-index: 1; }
 .fl-badge { z-index: 2; }
 .fl2 .fl-card > :not(.fl-badge) { position: relative; z-index: 2; }
+
+/* Diagnostic: air above and below the laptop scene. */
+@media (min-width: 1025px) {
+  .h-diag-visual { margin: 40px -8% 56px -4%; }
+}
+@media (max-width: 1024px) {
+  .h-diag-visual { margin: 32px -4% 40px; }
+}
+
+/* Flow, reshaped: balanced widths, compact equal-height cards. */
+@media (min-width: 1025px) { .h-diag .fl2 { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) minmax(0, 0.9fr); } }
+.fl-card { padding: 64px 24px 24px; justify-content: flex-start; }
+.fl2 .fl-returns li { min-height: 52px; }
+.fl-card:first-of-type .h-flow-note { max-width: 24ch; }
+.fl-card-exits { justify-content: flex-start; }
+.fl2 .fl-exit { min-height: 52px; }
+@media (max-width: 1024px) { .fl-card { padding: 20px 20px 20px 72px; } }
+.h-diag .fl2 { align-items: start; }
+
+@media (max-width: 1024px) {
+  .h-diag .fl2 { grid-template-columns: 1fr; order: 4; }
+  .h-diag .h-diag-visual { order: 3; }
+  .h-diag .h-pull-wide { order: 5; }
+}
+@media (max-width: 1024px) {
+  .h-diag .h-diag-visual { width: 100%; max-width: 600px; justify-self: center; margin: 24px auto 48px; }
+}
+@media (max-width: 1024px) { .h-diag .h-diag-visual { padding-bottom: 32px; } }
+
+/* ==========================================================================
+   Diagnostic flow, v4: a journey on one glass panel. Big outline numerals,
+   a link from 01 to 02, then a drawn fork from 02 to the two exits.
+   ========================================================================== */
+.h-diag .jr {
+  grid-column: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) 64px minmax(0, 1.25fr) 80px minmax(0, 0.95fr);
+  align-items: center;
+  margin: 0;
+  padding: clamp(32px, 3.4vw, 52px) clamp(28px, 3.4vw, 56px);
+  background:
+    radial-gradient(60% 120% at 100% 0%, var(--h-glow-soft), transparent 70%),
+    var(--h-glass);
+  border: 1px solid var(--h-glass-line);
+  border-radius: clamp(24px, 2.6vw, 36px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.jr-num {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(48px, 4.6vw, 72px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1.4px var(--h-cobalt-light);
+}
+
+.jr-step,
+.jr-exits { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.jr-name { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: clamp(20px, 1.7vw, 24px); letter-spacing: -0.025em; color: var(--h-white); }
+.jr-note { font-size: 15px; line-height: 1.55; color: var(--h-text-dark); max-width: 28ch; }
+
+.jr-list { display: grid; gap: 10px; margin: 2px 0 0; padding: 0; list-style: none; }
+.jr-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.35; color: var(--h-white); }
+.jr-list svg { flex: none; padding: 4px; width: 24px; height: 24px; color: var(--h-white); background: var(--h-cobalt); border-radius: 50%; }
+
+/* 01 -> 02: a line with a travelling light and an arrowhead. */
+.jr-link { position: relative; height: 2px; margin: 0 10px; background: linear-gradient(90deg, var(--h-glass-line), var(--h-cobalt-light)); }
+.jr-link::after { content: ''; position: absolute; right: -1px; top: 50%; width: 9px; height: 9px; border-top: 2px solid var(--h-cobalt-light); border-right: 2px solid var(--h-cobalt-light); transform: translateY(-50%) rotate(45deg); }
+.jr-link i { position: absolute; top: 50%; left: 0; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: var(--h-white); box-shadow: 0 0 12px var(--h-white); }
+
+/* 02 -> exits: the fork. */
+.jr-fork { width: 100%; height: 200px; align-self: center; overflow: visible; }
+.jr-fork path { fill: none; vector-effect: non-scaling-stroke; }
+.jr-fork-base { stroke: var(--h-glass-line); stroke-width: 2; }
+.jr-fork-hot { stroke: var(--h-cobalt-light); stroke-width: 2.5; stroke-dasharray: 14 200; filter: drop-shadow(0 0 4px var(--h-cobalt-light)); }
+
+.jr-exits { gap: 12px; }
+.jr-exit { display: flex; align-items: center; gap: 14px; min-height: 60px; padding: 14px 18px; background: var(--h-night); border: 1px solid var(--h-glass-line); border-radius: var(--h-r-md); transition: translate var(--dur-hover) var(--ease-soft); }
+.jr-exit .jr-name { font-size: 19px; }
+.jr-exit-go { background: var(--h-cobalt); border-color: var(--h-cobalt); box-shadow: 0 18px 40px -18px var(--h-glow-cobalt); }
+.jr-exit-mark { flex: none; width: 14px; height: 14px; background: var(--h-white); border-radius: 3px; }
+.jr-exit-mark-hollow { background: transparent; border: 2px solid var(--h-text-dark); }
+.jr-exit-arrow { margin-left: auto; font-size: 18px; color: var(--h-white); }
+@media (hover: hover) { .jr-exit:hover { translate: 4px 0; } }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .jr-link i { animation: jr-run 2.8s cubic-bezier(.6,0,.4,1) infinite; }
+  .jr-fork-hot { animation: jr-fork 2.8s linear infinite; animation-delay: 1.4s; }
+  @keyframes jr-run { 0% { left: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; } }
+  @keyframes jr-fork { from { stroke-dashoffset: 14; } to { stroke-dashoffset: -110; } }
+}
+
+html[data-theme='dark'] .h-diag .jr { background: var(--h-surface); border-color: var(--h-border); }
+html[data-theme='dark'] .jr-exit { background: var(--h-surface-2); border-color: var(--h-border); }
+
+/* Tablet and phone: one column, the links turn vertical, the fork becomes two short arms. */
+@media (max-width: 1024px) {
+  .h-diag .jr { grid-template-columns: 1fr; row-gap: 0; padding: 28px 24px; }
+  .jr-link { justify-self: start; width: 2px; height: 40px; margin: 16px 0 16px 18px; background: linear-gradient(var(--h-glass-line), var(--h-cobalt-light)); }
+  .jr-link::after { right: auto; left: 50%; top: auto; bottom: -1px; transform: translateX(-50%) rotate(135deg); }
+  .jr-link i { display: none; }
+  .jr-fork { justify-self: start; width: 40px; height: 56px; margin: 8px 0 8px 18px; transform: rotate(90deg); transform-origin: left top; translate: 28px 0; }
+  .jr-num { font-size: 48px; }
+}
+@media (max-width: 1024px) { .jr-fork { display: none; } .jr-exits { padding-top: 24px; margin-top: 16px; border-top: 1px solid var(--h-glass-line); } }
+
+@media (min-width: 1025px) {
+  .h-diag .jr { align-items: start; }
+  .jr-num { height: 66px; font-size: 72px; line-height: 66px; }
+  /* Link sits level with the step names; fork meets the centres of the two exits. */
+  .jr-link { margin-top: 98px; }
+  .jr-fork { height: 122px; margin-top: 36px; }
+}
+@media (max-width: 1024px) { .h-diag .jr { order: 4; } }

@@ -315,26 +315,44 @@ const clientLogos = [
       </div>
 
       <figure
-        class="fl2"
+        class="jr"
         aria-label="The diagnostic leads to a written finding, and the finding forks into two exits: a scope, or nothing built."
       >
-        <span class="fl-rail" aria-hidden="true"><i></i></span>
-        <div class="fl-card m-reveal">
-          <span class="fl-badge">01</span>
-          <p class="h-flow-name">{fork.entry}</p>
-          <p class="h-flow-note">{fork.entryNote}</p>
+        <div class="jr-step m-reveal">
+          <p class="jr-num">01</p>
+          <p class="jr-name">{fork.entry}</p>
+          <p class="jr-note">{fork.entryNote}</p>
         </div>
-        <div class="fl-card fl-card-mid m-reveal">
-          <span class="fl-badge">02</span>
-          <p class="h-flow-name">{fork.finding}</p>
-          <ul class="fl-returns">
-            {returns.map((r) => <li><span class="fl-tick" aria-hidden="true"></span>{r}</li>)}
+
+        <span class="jr-link" aria-hidden="true"><i></i></span>
+
+        <div class="jr-step jr-step-mid m-reveal">
+          <p class="jr-num">02</p>
+          <p class="jr-name">{fork.finding}</p>
+          <ul class="jr-list">
+            {returns.map((r) => (
+              <li><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>{r}</li>
+            ))}
           </ul>
         </div>
-        <div class="fl-card fl-card-exits m-reveal">
-          <span class="fl-badge">03</span>
-          <div class="fl-exit fl-exit-go"><span class="h-flow-node" aria-hidden="true"></span><p class="h-flow-name">{fork.scope}</p><span class="fl-go" aria-hidden="true">&#8594;</span></div>
-          <div class="fl-exit"><span class="h-flow-node h-flow-node-hollow" aria-hidden="true"></span><p class="h-flow-name">{fork.nothing}</p></div>
+
+        <svg class="jr-fork" viewBox="0 0 80 120" preserveAspectRatio="none" aria-hidden="true">
+          <path class="jr-fork-base" d="M0 60 H26 C46 60 40 24 60 24 H80" />
+          <path class="jr-fork-base" d="M0 60 H26 C46 60 40 96 60 96 H80" />
+          <path class="jr-fork-hot" d="M0 60 H26 C46 60 40 24 60 24 H80" />
+        </svg>
+
+        <div class="jr-exits m-reveal">
+          <p class="jr-num">03</p>
+          <div class="jr-exit jr-exit-go">
+            <span class="jr-exit-mark" aria-hidden="true"></span>
+            <p class="jr-name">{fork.scope}</p>
+            <span class="jr-exit-arrow" aria-hidden="true">&#8594;</span>
+          </div>
+          <div class="jr-exit">
+            <span class="jr-exit-mark jr-exit-mark-hollow" aria-hidden="true"></span>
+            <p class="jr-name">{fork.nothing}</p>
+          </div>
         </div>
       </figure>
       <blockquote class="h-pull h-pull-wide m-reveal">{fork.quote}</blockquote>
