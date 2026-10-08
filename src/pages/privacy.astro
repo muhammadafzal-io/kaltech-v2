@@ -1,13 +1,116 @@
 ---
-// Placeholder page: the text wants legal review rather than drafting here.
+// Drafted policy text. Have it reviewed by counsel before launch.
 import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
 import HomeFooter from '../components/home/HomeFooter.astro';
+import LegalDoc from '../components/home/LegalDoc.astro';
+
+const sections = [
+  {
+    id: 'who',
+    title: 'Who we are',
+    paras: [
+      'KalTech is a senior-led applied AI and software firm, incorporated in Delaware and operating across the United States, United Kingdom, Germany, and GCC. This policy explains what personal data we collect through kaltech.online, why, and what you can ask us to do with it.',
+      'For personal data collected through this site, KalTech is the controller. You can reach us about anything in this policy at info@kaltech.online.',
+    ],
+  },
+  {
+    id: 'collect',
+    title: 'What we collect',
+    paras: ['We collect only what you give us and what is needed to run the site.'],
+    list: [
+      'What you send through the contact form: your name, work email, company, and what you are considering building.',
+      'What you send us by email, and anything you share with us in a first call.',
+      'Technical data recorded by our hosting provider when a page is requested, such as IP address, browser type and the pages requested. It is used to deliver the site and keep it secure.',
+    ],
+    after: [
+      'The site sets no cookies and runs no analytics, advertising or tracking scripts. It may keep a display preference in your browser’s local storage, which never leaves your device.',
+    ],
+  },
+  {
+    id: 'use',
+    title: 'How we use it',
+    paras: [],
+    list: [
+      'To reply to your enquiry and arrange a first conversation.',
+      'To scope, deliver and invoice an engagement if one follows.',
+      'To keep the site secure and working.',
+      'To meet our legal, tax and accounting obligations.',
+    ],
+    after: [
+      'We do not sell personal data, and we do not add you to a mailing list unless you ask us to.',
+    ],
+  },
+  {
+    id: 'basis',
+    title: 'Legal basis',
+    paras: [
+      'Where UK or EU data protection law applies, we rely on our legitimate interest in responding to people who contact us and in running a secure website; on taking steps at your request before entering into a contract; on legal obligation where the law requires us to keep records; and on your consent where we ask for it, which you can withdraw at any time.',
+    ],
+  },
+  {
+    id: 'share',
+    title: 'Who we share it with',
+    paras: [
+      'We share personal data only with service providers who help us run the business, such as our hosting and email providers, and only under contracts that limit their use of it to providing that service. We may also share it with professional advisers, or where the law requires us to.',
+    ],
+  },
+  {
+    id: 'transfers',
+    title: 'International transfers',
+    paras: [
+      'We work across several countries, so your data may be processed outside the country you are in, including in the United States. Where data leaves the UK or the European Economic Area, we rely on recognised safeguards such as the Standard Contractual Clauses.',
+    ],
+  },
+  {
+    id: 'retention',
+    title: 'How long we keep it',
+    paras: [
+      'We keep enquiries for as long as we need them to respond and to follow up on that conversation, and delete those that do not lead to an engagement once they are no longer needed. Client records are kept for as long as the engagement runs and afterwards for as long as the law requires.',
+    ],
+  },
+  {
+    id: 'rights',
+    title: 'Your rights',
+    paras: ['Depending on where you live, you can ask us to:'],
+    list: [
+      'Give you a copy of the personal data we hold about you.',
+      'Correct it, or delete it.',
+      'Restrict or object to how we use it.',
+      'Send it to you, or to someone else, in a portable format.',
+    ],
+    after: [
+      'Write to info@kaltech.online and we will respond within the time the law allows. If you are in the UK or the EU, you can also complain to your data protection authority, which in the UK is the Information Commissioner’s Office. Residents of US states with privacy laws have equivalent rights, and we do not sell or share personal data for targeted advertising.',
+    ],
+  },
+  {
+    id: 'security',
+    title: 'Security',
+    paras: [
+      'The site is served over HTTPS with a strict content security policy, and access to enquiries and client data is limited to the people who need it. No system is perfectly secure, and if a breach affects your data we will tell you as the law requires.',
+    ],
+  },
+  {
+    id: 'children',
+    title: 'Children',
+    paras: ['This site is for businesses. It is not directed at children, and we do not knowingly collect their data.'],
+  },
+  {
+    id: 'changes',
+    title: 'Changes to this policy',
+    paras: ['If we change this policy, we will update it here and change the date at the top of this page.'],
+  },
+  {
+    id: 'contact',
+    title: 'Contact',
+    paras: ['Questions about this policy or your data go to info@kaltech.online.'],
+  },
+];
 ---
 
 <Base
   title="Privacy policy | KalTech"
-  description="Privacy policy for kaltech.online, the site of KalTech, a senior-led applied AI and software firm incorporated in Delaware, operating across the US, UK and GCC."
+  description="Privacy policy for kaltech.online by KalTech, a senior-led applied AI and software firm incorporated in Delaware, operating across the US, UK, Germany and GCC."
   breadcrumb={[{ name: 'Privacy', path: '/privacy' }]}
   chrome="own"
 >
@@ -18,9 +121,13 @@ import HomeFooter from '../components/home/HomeFooter.astro';
       <div class="h-hero-copy">
         <p class="h-badge"><span class="h-badge-dot" aria-hidden="true"></span>Privacy</p>
         <h1 class="h-h1"><em class="h-mark">Privacy</em> policy</h1>
-        <p class="h-lead lg-body">[PLACEHOLDER]</p>
+        <p class="h-lead lg-body">
+          What we collect through this site, why, and what you can ask us to do with it. The short version:
+          only what you send us, no cookies, and no tracking.
+        </p>
       </div>
     </div>
   </section>
+  <LegalDoc updated="8 October 2026" sections={sections} />
   <HomeFooter />
 </Base>

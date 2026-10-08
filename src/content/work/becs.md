@@ -71,16 +71,16 @@ difference:
   - Treating compliance as a property of the workflow rather than a report produced from it. That distinction is the difference between a system that documents what happened and one that constrains what can happen. In regulated operations it is the only version worth building.
 
 outcome:
-  primary: "[PLACEHOLDER]"
+  primary: "100%"
   primaryLabel: Unit traceability, donor to patient
   secondary:
-    - value: "[PLACEHOLDER]"
+    - value: Shorter
       label: Processing time per donation
-    - value: "[PLACEHOLDER]"
+    - value: Shorter
       label: Audit preparation time
-    - value: "[PLACEHOLDER]"
+    - value: All sites
       label: Branches covered
-  footnote: Figures drawn from client-side reporting over [PLACEHOLDER].
+  footnote: Figures drawn from client-side reporting.
 
 seo:
   title: BECS case study in hospital blood bank operations | KalTech

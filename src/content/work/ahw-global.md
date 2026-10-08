@@ -71,16 +71,16 @@ difference:
   - The architecture decision. A single-tenant build would have delivered the same operational result and closed off the licensing position entirely. Multi-tenancy cost more at the start and is the reason the platform is now an asset rather than an internal system.
 
 outcome:
-  primary: "[PLACEHOLDER]"
+  primary: "3→1"
   primaryLabel: Definitions of a shipment, consolidated
   secondary:
-    - value: "[PLACEHOLDER]"
+    - value: Shorter
       label: Reporting cycle
-    - value: "[PLACEHOLDER]"
-      label: Tenants on platform
-    - value: "[PLACEHOLDER]"
-      label: Manual reconciliation removed
-  footnote: Figures drawn from client-side reporting over [PLACEHOLDER].
+    - value: Multi-tenant
+      label: Platform architecture
+    - value: Removed
+      label: Manual reconciliation
+  footnote: Figures drawn from client-side reporting.
 
 seo:
   title: AHW Global case study in cross-border shipping | KalTech

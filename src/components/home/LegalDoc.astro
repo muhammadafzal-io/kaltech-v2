@@ -1,0 +1,45 @@
+---
+// The body of a legal page: a contents list beside numbered sections. Each
+// section is a heading plus paragraphs and, optionally, a list.
+interface Section {
+  id: string;
+  title: string;
+  paras: string[];
+  list?: string[];
+  after?: string[];
+}
+interface Props {
+  updated: string;
+  sections: Section[];
+}
+const { updated, sections } = Astro.props;
+const pad = (n: number) => String(n + 1).padStart(2, '0');
+---
+
+<section class="h-sec h-white" id="document">
+  <div class="h-wrap lg-doc">
+    <nav class="lg-toc" aria-label="Contents">
+      <p class="sv-label">Contents</p>
+      <ol class="lg-toc-list">
+        {sections.map((s, i) => (
+          <li><a class="lg-toc-link" href={`#${s.id}`}><span class="lg-toc-num">{pad(i)}</span>{s.title}</a></li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="lg-main">
+      <p class="sv-label lg-updated">Last updated {updated}</p>
+      {sections.map((s, i) => (
+        <section class="lg-sec" id={s.id} aria-labelledby={`${s.id}-h`}>
+          <p class="lg-num" aria-hidden="true">{pad(i)}</p>
+          <div>
+            <h2 class="h-h3" id={`${s.id}-h`}>{s.title}</h2>
+            {s.paras.map((p) => <p class="h-body">{p}</p>)}
+            {s.list && <ul class="lg-list">{s.list.map((l) => <li class="h-body">{l}</li>)}</ul>}
+            {s.after?.map((p) => <p class="h-body">{p}</p>)}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>

@@ -34,7 +34,7 @@
         },
         {
           "head": "What an engagement looks like",
-          "body": "Scoped against a diagnostic finding and delivered in stages, typically [PLACEHOLDER], with the existing operation live throughout and a working system in production before the final stage."
+          "body": "Scoped against a diagnostic finding and delivered in stages, with the existing operation live throughout and a working system in production before the final stage."
         },
         {
           "head": "What it is not",
@@ -54,7 +54,7 @@
         },
         {
           "head": "What an engagement looks like",
-          "body": "A retainer, because the work outlasts a single build. Reviewed at [PLACEHOLDER] intervals against what it has moved, rather than renewed by default."
+          "body": "A retainer, because the work outlasts a single build. Reviewed at agreed intervals against what it has moved, rather than renewed by default."
         },
         {
           "head": "What it is not",

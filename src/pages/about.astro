@@ -184,6 +184,9 @@ const here = ['Diagnostic', 'Scope', 'Build', 'Retainer'];
           arcs={locations.arcs}
           label="KalTech operates across the United States, United Kingdom, Germany, and GCC."
         />
+        <ul class="ab-map-key" aria-hidden="true">
+          {locations.markers.map((m: any) => <li class={m.role === 'delivery' ? 'is-hot' : ''}><span></span>{m.label}</li>)}
+        </ul>
         {locations.showOverlap && <OverlapStrip />}
       </div>
     </div>

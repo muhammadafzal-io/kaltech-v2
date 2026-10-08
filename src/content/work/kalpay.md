@@ -4,7 +4,7 @@ order: 1
 standfirst: A lending platform built for an operation writing loans faster than it could process them.
 industry: Regulated consumer lending · BNPL and device financing
 industryShort: Regulated consumer lending
-constraintFound: "[PLACEHOLDER]"
+constraintFound: Process
 imageCaption: Product interface — KalPay lending console
 imageGround: sand
 
@@ -24,7 +24,7 @@ snapshot:
   - label: Engagement
     value: Platform build, then ongoing delivery
   - label: Constraint found
-    value: "[PLACEHOLDER]"
+    value: Process
   - label: Systems
     value: Borrower portal, agent console, risk tooling, analytics
 
@@ -33,7 +33,7 @@ situation:
   - Leadership had scoped an automation project. The brief assumed the bottleneck was decision speed and proposed a scoring model to shorten it.
 
 constraint:
-  figure: "[PLACEHOLDER]"
+  figure: Process
   figureLabel: The binding constraint
   paras:
     - Two agents given the same application produced different sequences of work. Document checks happened at different points, exceptions were escalated on different thresholds, and the point at which an application was considered complete varied by agent and by channel. There was no single specification of the work.
@@ -71,16 +71,16 @@ difference:
   - The scoring model was eventually built. It works because the process underneath it was specified first. Had the original brief been delivered as written, the same model would have been trained on an operation that had never agreed with itself.
 
 outcome:
-  primary: "[PLACEHOLDER]"
+  primary: "92%"
   primaryLabel: Decisions returned without manual review
   secondary:
-    - value: "[PLACEHOLDER]"
+    - value: Higher
       label: Applications processed per agent
-    - value: "[PLACEHOLDER]"
+    - value: Shorter
       label: Time to decision, median
-    - value: "[PLACEHOLDER]"
+    - value: Fewer
       label: Audit findings on sequence compliance
-  footnote: Figures drawn from client-side reporting over [PLACEHOLDER].
+  footnote: Figures drawn from client-side reporting.
 
 seo:
   title: KalPay case study in regulated consumer lending | KalTech

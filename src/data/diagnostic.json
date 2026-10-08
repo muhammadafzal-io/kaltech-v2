@@ -1,7 +1,5 @@
 {
-  "_about": "The Diagnostic page copy that feeds a visual, and the homepage fork. `weeks` is one value used by the How it runs heading and its timeline scale. `findingPages` is the finding's length, used by the facsimile foot and the note beneath it. `returns[].short` labels the facsimile on /diagnostic and the fork on the homepage; `returns[].page` is each contents line's page number.",
-  "weeks": "[PLACEHOLDER]",
-  "findingPages": "[PLACEHOLDER]",
+  "_about": "The Diagnostic page copy that feeds a visual, and the homepage fork. `returns[].short` labels the facsimile on /diagnostic and the fork on the homepage;",
   "incentive": [
     {
       "key": "Who absorbs the cost",
@@ -79,7 +77,7 @@
   ],
   "needs": [
     "Read access to the relevant systems.",
-    "[PLACEHOLDER] hours across the people who perform the work.",
+    "A few hours from the people who perform the work.",
     "Whatever has already been written internally about the problem."
   ],
   "returns": [
@@ -87,29 +85,25 @@
       "num": "01",
       "head": "The constraint that is binding.",
       "body": "Stated plainly, with the evidence for it, in terms the operators who work inside it will recognise.",
-      "short": "The binding constraint",
-      "page": "[PLACEHOLDER]"
+      "short": "The binding constraint"
     },
     {
       "num": "02",
       "head": "What that constraint currently costs.",
       "body": "Quantified against the operation as it runs today, not against a projection.",
-      "short": "What it costs",
-      "page": "[PLACEHOLDER]"
+      "short": "What it costs"
     },
     {
       "num": "03",
       "head": "What can be built against it.",
       "body": "Sequenced by payback rather than ambition, with the work that pays first placed first.",
-      "short": "What can be built",
-      "page": "[PLACEHOLDER]"
+      "short": "What can be built"
     },
     {
       "num": "04",
       "head": "The line in the P&L it moves.",
       "body": "Named explicitly, with the volume at which the build clears its own running cost.",
-      "short": "The P&L line and the volume",
-      "page": "[PLACEHOLDER]"
+      "short": "The P&L line and the volume"
     }
   ],
   "fork": {

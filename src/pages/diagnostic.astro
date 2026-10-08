@@ -10,13 +10,13 @@ import diagnostic from '../data/diagnostic.json';
 import timelines from '../data/timelines.json';
 import fit from '../data/fit.json';
 
-const { incentive, lenses, phases, needs, returns, weeks, findingPages } = diagnostic;
+const { incentive, lenses, phases, needs, returns } = diagnostic;
 const set = fit.diagnostic;
 const need = set.items.length - 1;
 
 const heroPanel = [
-  { label: 'Duration', value: '[PLACEHOLDER]' },
-  { label: 'Fee', value: '[PLACEHOLDER]' },
+  { label: 'Duration', value: 'Weeks, not months' },
+  { label: 'Fee', value: 'Fixed, agreed upfront' },
   { label: 'Deliverable', value: 'A written finding' },
 ];
 ---
@@ -45,9 +45,8 @@ const heroPanel = [
           <span class="h-line"><em class="h-mark">diagnostic</em>.</span>
         </h1>
         <p class="h-lead m-reveal">
-          It runs against three lenses and ends in a written finding with a scope priced against it.
-          Companies that proceed to a build do so with the constraint already established. Companies
-          that do not proceed keep the finding.
+          Three lenses, one written finding, and a scope priced against it. Proceed or not, you keep
+          the finding.
         </p>
         <div class="h-actions m-reveal">
           <a class="h-btn h-btn-primary" href="/contact" data-magnetic>
@@ -75,21 +74,12 @@ const heroPanel = [
         <p class="h-eyebrow m-reveal">Why it exists</p>
         <h2 class="h-h2 m-reveal">A firm that builds should not be <span class="h-accent">trusted</span> to say what needs building.</h2>
         <p class="h-body dg-p m-reveal">
-          That is the honest form of the objection, and we do not answer it by promising to be careful.
-          We answer it by charging for the finding as a document rather than as the opening phase of a
-          build, which means the diagnostic covers its own cost whatever it concludes. Where the work
-          recommends less than the client came in asking for, or nothing at all, we have already been
-          paid for the work that established it.
+          So we charge for the finding as a document, not as the opening phase of a build. The fee covers
+          the work whatever it concludes, including less than you asked for, or nothing at all.
         </p>
         <p class="h-body dg-p m-reveal">
-          The alternative arrangement, where the assessment is free and the revenue sits entirely in what
-          follows, has one predictable output. Free assessments recommend builds. Not because the people
-          writing them are dishonest, but because a firm that has absorbed the cost of the analysis has an
-          interest in a particular conclusion, and interests are more reliable than intentions.
-        </p>
-        <p class="h-body dg-p m-reveal">
-          The diagnostic fee is not credited against a subsequent build. Crediting it would reintroduce the
-          incentive the fee exists to remove.
+          Free assessments recommend builds. The fee is not credited against one, because that would bring
+          the incentive back.
         </p>
       </div>
 
@@ -118,10 +108,8 @@ const heroPanel = [
           <h2 class="h-h2 m-reveal">Process, data, unit economics.</h2>
         </div>
         <p class="h-sub m-reveal">
-          One of the three is usually binding. The diagnostic establishes which, what it costs to leave in
-          place, and what it would take to move. The three are examined in this order because a data problem
-          examined before a process problem returns an answer that is technically correct and operationally
-          useless.
+          One of the three is usually binding. The diagnostic establishes which, what it costs, and what it
+          would take to move.
         </p>
       </div>
 
@@ -136,20 +124,13 @@ const heroPanel = [
               </div>
               <h3 class="h-h3">{l.heading}</h3>
               <p class="h-body">{l.body}</p>
-              <div class="dg-lens-aside">
-                <p class="sv-label">What we examine</p>
-                <p class="h-body">{l.examine}</p>
-                <p class="sv-label">When this lens is binding</p>
-                <p class="h-body">{l.binding}</p>
-              </div>
               <p class="h-lens-ask"><strong>We ask:</strong> {l.ask}</p>
             </article>
           ))
         }
       </div>
       <p class="sv-cap m-reveal">
-        An illustration. Which lens is binding is what the diagnostic establishes, and it is not the same
-        one twice running.
+        An illustration. Which lens binds is what the diagnostic establishes.
       </p>
     </div>
   </section>
@@ -160,20 +141,18 @@ const heroPanel = [
       <div class="h-head">
         <div class="h-head-main">
           <p class="h-eyebrow m-reveal">How it runs</p>
-          <h2 class="h-h2 m-reveal">What the {weeks} <span class="h-accent">weeks</span> actually consist of.</h2>
+          <h2 class="h-h2 m-reveal">What the <span class="h-accent">weeks</span> actually consist of.</h2>
         </div>
         <p class="h-sub m-reveal">
-          The diagnostic is run by the engineers who would build against it, which is the reason it can be
-          short. There is no discovery team assembling context for a delivery team that has not been hired
-          yet, and no phase in which the work is explained a second time to the people who will actually do
-          it.
+          Run by the engineers who would build against it, which is why it can be short. No discovery team,
+          no second explanation.
         </p>
       </div>
 
       <div class="sv-bar m-reveal" role="img" aria-label="Access and interviews, then evidence, the longest phase, then the finding.">
         {timelines.diagnosticPhases.map((s) => <span class="sv-seg sv-seg-solid" style={`flex:${s.width}`}></span>)}
       </div>
-      <p class="sv-gate m-reveal"><span class="sv-gate-mark" aria-hidden="true"></span>{weeks} weeks</p>
+      <p class="sv-gate m-reveal"><span class="sv-gate-mark" aria-hidden="true"></span>Three phases, one finding</p>
 
       <ol class="sv-steps dg-phases">
         {
@@ -196,8 +175,8 @@ const heroPanel = [
         <div>
           <p class="sv-label">What we do not need</p>
           <p class="h-body">
-            A brief, a requirements document, or a vendor evaluation. If one exists we will read it, but the
-            diagnostic does not start from it, and where the finding disagrees with it we will say so.
+            A brief, a requirements document, or a vendor evaluation. If one exists we will read it, and say
+            where the finding disagrees.
           </p>
         </div>
       </div>
@@ -217,14 +196,12 @@ const heroPanel = [
                 <p class="dg-facs-line">
                   <span class="dg-facs-num">{r.num}</span>
                   <span class="dg-facs-label">{r.short}</span>
-                  <span class="dg-facs-lead"></span>
-                  <span class="dg-facs-page">{r.page}</span>
                 </p>
               ))
             }
           </div>
           <div class="dg-facs-greek"><i></i><i></i><i class="s"></i></div>
-          <p class="sv-label">{findingPages} pages</p>
+          <p class="sv-label">Written finding</p>
         </div>
       </div>
 
@@ -241,11 +218,9 @@ const heroPanel = [
           ))
         }
         <p class="h-body dg-ret-note">
-          The finding runs to roughly {findingPages} pages and is written to be read by someone who was not
-          in the interviews. Clients take it to boards, to lenders and to their own technology teams, and it
-          is written on the assumption that they will. Every figure in it is traceable to something we saw
-          rather than something we were told, which is also why some of the numbers in it are smaller than
-          the ones the business currently reports.
+          Short, and written for someone who was not in the interviews. Clients take it to boards, lenders
+          and their own technology teams. Every figure in it traces to something we saw, not something we
+          were told.
         </p>
       </div>
     </div>
@@ -262,57 +237,24 @@ const heroPanel = [
       </div>
       <div class="dg-cols">
         <div class="dg-big m-reveal">
-          <p class="dg-big-fig">[PLACEHOLDER]</p>
-          <p class="sv-label">Fixed fee, agreed in advance</p>
+          <p class="dg-big-fig">Fixed.</p>
+          <p class="sv-label">Quoted after the first call, agreed before work starts</p>
         </div>
         <div>
           <p class="h-body dg-p">
-            Fixed at the outset and not adjusted by what the work finds, which means the fee is identical
-            whether the finding recommends a build, a smaller build than the one you came in with, or no
-            build at all.
+            Not adjusted by what the work finds. The fee is the same whether the finding recommends a build, a
+            smaller one, or none at all.
           </p>
           <p class="h-body dg-p">
-            The scope that follows is priced separately and by the team that would deliver it, so the
-            estimate is written by the people who have to meet it.
+            The scope that follows is priced separately, by the team that would deliver it.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What it is not -->
-  <section class="h-sec h-bone" id="isnot">
-    <div class="h-wrap">
-      <blockquote class="h-pull h-pull-light m-reveal">
-        Sometimes the finding is that nothing should be built. We deliver that as readily as any other.
-      </blockquote>
-      <div class="dg-cols dg-cols-top">
-        <div>
-          <p class="sv-label">What it is not</p>
-          <p class="h-body dg-p">This is not a sales document. We are not pitching you a service at the end of it.</p>
-          <p class="h-body dg-p">
-            Often the answer is that the thing you asked for should not be built, or that the real problem
-            is somewhere else entirely. We tell you that plainly, in writing, and you keep the finding
-            either way.
-          </p>
-        </div>
-        <div class="dg-pair">
-          <div class="dg-big m-reveal">
-            <p class="dg-big-fig dg-big-sm">[PLACEHOLDER]</p>
-            <p class="sv-label">Of the last [PLACEHOLDER] diagnostics recommended less than the client asked for</p>
-          </div>
-          <div class="dg-big m-reveal">
-            <p class="dg-big-fig dg-big-sm">[PLACEHOLDER]</p>
-            <p class="sv-label">Recommended nothing be built</p>
-          </div>
-          <p class="sv-cap">Figures cover [PLACEHOLDER].</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Useful when -->
-  <section class="h-sec h-white" id="fit">
+  <section class="h-sec h-bone" id="fit">
     <div class="h-wrap">
       <div class="sv-fit" data-fit data-fit-threshold={need}>
         <div class="sv-fit-main">
@@ -357,26 +299,22 @@ const heroPanel = [
       <div class="dg-cols dg-cols-top">
         <div>
           <p class="h-body dg-p">
-            [PLACEHOLDER] came in asking for a scoring model to shorten lending decisions. The brief named
+            A consumer lender came in asking for a scoring model to shorten lending decisions. The brief named
             the model, the vendor shortlist and the launch quarter.
           </p>
-          <p class="h-body dg-p">The diagnostic ran all three lenses. The binding one was [PLACEHOLDER].</p>
+          <p class="h-body dg-p">The diagnostic ran all three lenses. The binding one was process: two agents worked the same application in different orders.</p>
           <p class="h-body dg-p">
-            The finding said the brief as written addressed a symptom rather than the constraint, and set
-            out what had to be settled before a model could return a result anyone could defend.
-          </p>
-          <p class="h-body dg-p">
-            What was built was smaller than the brief. The system that removed the constraint came first,
+            The brief addressed a symptom. What was built was smaller than the brief. The system that removed the constraint came first,
             and the model followed once the inputs it depended on could be trusted.
           </p>
         </div>
         <div class="dg-delta m-reveal">
           <div class="dg-delta-row">
-            <span class="sv-label">Scope requested &#183; [PLACEHOLDER]</span>
+            <span class="sv-label">Scope requested &#183; Scoring model</span>
             <span class="dg-delta-bar"><i style="width:100%"></i></span>
           </div>
           <div class="dg-delta-row">
-            <span class="sv-label">Scope delivered &#183; [PLACEHOLDER]</span>
+            <span class="sv-label">Scope delivered &#183; Process first, model second</span>
             <span class="dg-delta-bar dg-delta-hot"><i style="width:46%"></i></span>
           </div>
           <p class="sv-cap">The difference is what the diagnostic found.</p>

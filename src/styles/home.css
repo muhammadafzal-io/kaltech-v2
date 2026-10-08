@@ -4502,3 +4502,158 @@ html[data-theme='dark'] .jr-exit { background: var(--h-surface-2); border-color:
   .jr-fork { height: 122px; margin-top: 36px; }
 }
 @media (max-width: 1024px) { .h-diag .jr { order: 4; } }
+
+/* ==========================================================================
+   Responsive pass: touch targets. Every interactive element gets at least a
+   44px hit area without changing how it looks (padding, not size).
+   ========================================================================== */
+.hh-logo { display: inline-flex; align-items: center; min-height: 44px; }
+.hf-col { gap: 0; }
+.hf-head { margin-bottom: 6px; }
+.hf-link { display: inline-flex; align-items: center; min-height: 44px; }
+.hf-base { gap: 0 32px; }
+
+.h-link,
+.wk-link,
+.tc-link,
+.h-hlink[href]:not(h2 .h-hlink):not(h1 .h-hlink) { display: inline-flex; align-items: center; min-height: 44px; }
+.ar-crumb .h-hlink { display: inline; min-height: 0; }
+
+.ar-idx .idx-link,
+.idx-link { min-height: 44px; display: flex; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+.ar-idx .idx { gap: 2px; }
+
+.tc-dot { width: 44px; height: 44px; }
+.tc-dots { gap: 0; }
+
+/* Small phones: long button labels stay on one line. */
+@media (max-width: 380px) {
+  .h-btn { padding-left: 18px; padding-right: 18px; font-size: 14px; gap: 8px; }
+  .sh-btn { padding-left: 18px; padding-right: 18px; font-size: 15px; }
+}
+
+/* Small phones: one tighter padding for every card surface, so nested boxes
+   keep a readable measure. */
+@media (max-width: 520px) {
+  .sv-line, .h-lens, .dg-lens, .hs-card, .wk-row, .wk-more-card, .h-feature-body,
+  .in-feature, .sh-panel, .lg, .ct-card, .dg-panel, .ab-handover, .ab-light-card,
+  .sv-fit-side, .wk-snap, .dg-inct-row, .h-quote, .sv-step, .sv-exit-card { padding: 20px; }
+  .sv-line-eng, .wk-big, .h-lens-ask { padding: 16px; }
+  .sv-line { row-gap: 20px; }
+  .sv-line-intro { font-size: 18px; }
+  .dg-inct-row { padding: 14px 16px; }
+}
+
+/* Tablet and phone: the fit counter becomes a compact bar under the list. */
+@media (max-width: 1024px) {
+  .sv-fit-side { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 18px 22px; }
+  .sv-fit-count { font-size: 32px; }
+  .sv-fit-cta { margin-top: 0; }
+  .sv-fit-cta:not(.is-open) { display: none; }
+}
+
+/* The finding mock-up: no fixed portrait shape on small screens; labels get
+   the room, page numbers never wrap. */
+.dg-facs-label { flex: 0 1 auto; min-width: 0; }
+.dg-facs-page { flex: none; white-space: nowrap; }
+@media (max-width: 1024px) { .dg-facs { aspect-ratio: auto; max-width: 520px; } }
+@media (max-width: 520px) { .dg-facs { padding: 20px; } .dg-facs-line { flex-wrap: wrap; } .dg-facs-lead { display: none; } .dg-facs-page { margin-left: auto; } }
+
+/* About: structure blocks keep their padding at every width. */
+.ab-blocks .ab-block,
+.ab-blocks .ab-block + .ab-block { padding: 24px; border: 1px solid var(--h-line); border-left: 1px solid var(--h-line); }
+@media (max-width: 520px) { .ab-blocks .ab-block, .ab-blocks .ab-block + .ab-block { padding: 20px; } }
+html[data-theme='dark'] .ab-blocks .ab-block { border-color: var(--h-border); }
+
+/* About map on small screens: labels move into a key under the map. */
+.ab-map-key { display: none; }
+@media (max-width: 600px) {
+  .ab-map .wmap-label { display: none; }
+  .ab-map-key { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 0 0; padding: 14px 0 0; list-style: none; border-top: 1px solid var(--h-line); font-size: 12px; font-weight: var(--fw-medium); letter-spacing: 0.1em; text-transform: uppercase; color: var(--h-ink); }
+  .ab-map-key li { display: inline-flex; align-items: center; gap: 8px; }
+  .ab-map-key span { width: 8px; height: 8px; background: var(--h-ink); }
+  .ab-map-key .is-hot span { background: var(--h-cobalt); }
+}
+
+/* Work rows: the picture column can shrink with the card. */
+.wk-row > * { min-width: 0; }
+.wk-shot img { display: block; width: 100%; }
+
+/* Large figures scale with the screen and never split mid-word. */
+.wk-big-fig, .wk-out-fig, .dg-big-fig, .wk-out-val { word-break: normal; overflow-wrap: normal; }
+@media (max-width: 520px) {
+  .wk-big-fig { font-size: clamp(24px, 8.4vw, 40px); }
+  .wk-out-fig { font-size: clamp(26px, 9vw, 44px); }
+  .wk-out-val, .dg-big-fig { font-size: clamp(20px, 7.4vw, 30px); }
+}
+@media (max-width: 1024px) { .wk-shot { min-height: 0; width: 100%; } }
+
+/* Selected work, stacked (tablet/phone): each card is picture-then-text with
+   no stretched gap. */
+@media (max-width: 1024px) {
+  .h-case-2 .h-shot,
+  .h-case-3 .h-shot,
+  .h-case-1 .h-shot { flex: none; aspect-ratio: 16 / 9; min-height: 0; height: auto; }
+  .h-case-body { flex: none; }
+  .h-case-foot { margin-top: 20px; }
+}
+@media (min-width: 640px) and (max-width: 1024px) {
+  .h-case-2, .h-case-3 { flex-direction: row; align-items: stretch; }
+  .h-case-2 .h-shot, .h-case-3 .h-shot { flex: 0 0 44%; aspect-ratio: auto; }
+  .h-case-2 .h-case-body, .h-case-3 .h-case-body { flex: 1 1 auto; }
+}
+
+/* Diagnostic journey on tablets: use the width. */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .jr-list { grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .jr-exits { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .jr-exits .jr-num { grid-column: 1 / -1; }
+  .jr-note { max-width: 52ch; }
+}
+
+/* Legal pages (privacy, terms): contents beside numbered sections. */
+.lg-doc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); gap: clamp(32px, 5vw, 88px); align-items: start; }
+.lg-toc { position: sticky; top: 120px; align-self: start; }
+.lg-toc-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; }
+.lg-toc-link { display: flex; gap: 12px; align-items: baseline; min-height: 44px; padding: 11px 0; border-top: 1px solid var(--h-line); font-size: 15px; color: var(--h-muted); text-decoration: none; transition: color 0.2s ease; }
+.lg-toc-num { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: 12px; color: var(--h-cobalt); }
+@media (hover: hover) { .lg-toc-link:hover { color: var(--h-ink); } }
+.lg-main { max-width: 760px; }
+.lg-updated { color: var(--h-muted); }
+.lg-sec { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 8px 20px; padding: 32px 0; border-top: 1px solid var(--h-line); scroll-margin-top: 110px; }
+.lg-updated + .lg-sec { margin-top: 20px; }
+.lg-num { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 15px; letter-spacing: 0.04em; color: var(--h-cobalt); padding-top: 4px; }
+.lg-sec .h-h3 { margin-bottom: 12px; }
+.lg-sec .h-body + .h-body, .lg-sec .lg-list + .h-body { margin-top: 14px; }
+.lg-list { margin: 12px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.lg-list li::marker { color: var(--h-cobalt); }
+.lg-sec .h-body { overflow-wrap: anywhere; }
+@media (max-width: 1024px) {
+  .lg-doc { grid-template-columns: minmax(0, 1fr); }
+  .lg-toc { position: static; }
+  .lg-toc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+@media (max-width: 600px) {
+  .lg-toc-list { grid-template-columns: minmax(0, 1fr); }
+  .lg-sec { grid-template-columns: minmax(0, 1fr); padding: 26px 0; }
+}
+
+/* Diagnostic, stacked: space between the finding card and its list. */
+@media (max-width: 1024px) {
+  .dg-returns { row-gap: clamp(36px, 6vw, 56px); }
+  .dg-facs { margin-top: 28px; }
+}
+/* Tablet: the card and its contents sit side by side under the heading. */
+@media (min-width: 700px) and (max-width: 1024px) {
+  .dg-returns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 36px; }
+  .dg-ret-right { padding-top: calc(clamp(26px, 3.2vw, 44px) * 1.2 + 28px); }
+}
+
+/* Diagnostic hero facts on phones: one panel of equal rows, not three
+   chips of different widths. */
+@media (max-width: 600px) {
+  .dg-facts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; background: var(--h-glass-red); border: 1px solid var(--h-glass-red-line); border-radius: var(--h-r-md); overflow: visible; }
+  .dg-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 14px 18px; background: none; border: 0; border-radius: 0; }
+  .dg-facts > div + div { border-top: 1px solid var(--h-glass-red-line); }
+  .dg-facts dd { margin: 0; text-align: right; font-size: 15px; }
+}

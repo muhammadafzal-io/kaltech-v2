@@ -1,13 +1,104 @@
 ---
-// Placeholder page: the text wants legal review rather than drafting here.
+// Drafted terms. Have them reviewed by counsel before launch.
 import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
 import HomeFooter from '../components/home/HomeFooter.astro';
+import LegalDoc from '../components/home/LegalDoc.astro';
+
+const sections = [
+  {
+    id: 'about',
+    title: 'About these terms',
+    paras: [
+      'These terms govern your use of kaltech.online, the website of KalTech, incorporated in Delaware and operating across the United States, United Kingdom, Germany, and GCC. By using the site you accept them. If you do not, please do not use it.',
+    ],
+  },
+  {
+    id: 'engagements',
+    title: 'The site and our engagements',
+    paras: [
+      'The site describes how we work. It is not an offer to provide services. Every engagement, including a diagnostic, is governed by a separate written agreement, and where that agreement and these terms differ, the agreement applies.',
+    ],
+  },
+  {
+    id: 'advice',
+    title: 'Information, not advice',
+    paras: [
+      'Articles, case studies and other content on the site are general information. They are not legal, financial or technical advice for your situation, and you should not act on them without advice that takes your circumstances into account.',
+    ],
+  },
+  {
+    id: 'results',
+    title: 'Case studies and results',
+    paras: [
+      'Case studies describe work for specific clients, and figures are drawn from those clients’ own reporting. Results depend on the business, its data and its operation, and past results do not guarantee similar outcomes.',
+    ],
+  },
+  {
+    id: 'ip',
+    title: 'Intellectual property',
+    paras: [
+      'The content, design, artwork and KalTech name on this site belong to KalTech or its licensors. You may view the site, and share links to it, for your own use. You may not copy, republish or adapt its content for commercial purposes without our written permission.',
+      'Client names and logos belong to their owners and appear with their permission. Their appearance is not an endorsement of anything beyond the work described.',
+    ],
+  },
+  {
+    id: 'use',
+    title: 'Acceptable use',
+    paras: ['When using the site, you agree not to:'],
+    list: [
+      'Use it for anything unlawful, or in a way that infringes anyone else’s rights.',
+      'Attempt to gain unauthorised access to it, or to probe, disrupt or overload it.',
+      'Scrape or harvest its content by automated means beyond ordinary search indexing.',
+      'Send malicious code, spam or misleading information through the contact form.',
+    ],
+  },
+  {
+    id: 'links',
+    title: 'Links to other sites',
+    paras: [
+      'The site links to services we do not control, such as LinkedIn. We are not responsible for their content or their privacy practices.',
+    ],
+  },
+  {
+    id: 'warranty',
+    title: 'No warranty',
+    paras: [
+      'We work to keep the site accurate and available, but it is provided as it is. We do not promise that it will be uninterrupted, free of errors, or that its content will always be current.',
+    ],
+  },
+  {
+    id: 'liability',
+    title: 'Limitation of liability',
+    paras: [
+      'To the extent the law allows, KalTech is not liable for any loss arising from your use of the site or your reliance on its content. Nothing in these terms limits liability that cannot be limited by law.',
+    ],
+  },
+  {
+    id: 'privacy',
+    title: 'Privacy',
+    paras: ['How we handle personal data is set out in our privacy policy at kaltech.online/privacy.'],
+  },
+  {
+    id: 'law',
+    title: 'Governing law',
+    paras: [
+      'These terms are governed by the laws of the State of Delaware, and disputes about them go to the courts of Delaware. If you are a consumer, this does not remove any protection the law of your own country gives you.',
+    ],
+  },
+  {
+    id: 'changes',
+    title: 'Changes and contact',
+    paras: [
+      'We may update these terms. The current version is always the one on this page, with its date at the top. Questions go to info@kaltech.online.',
+    ],
+  },
+];
 ---
 
 <Base
   title="Terms of use | KalTech"
-  description="Terms of use for kaltech.online, the site of KalTech, a senior-led applied AI and software firm incorporated in Delaware, operating across the US, UK and GCC."
+  description="Terms of use for kaltech.online, from KalTech, a senior-led applied AI and software firm incorporated in Delaware, operating across the US, UK, Germany and GCC."
   breadcrumb={[{ name: 'Terms', path: '/terms' }]}
   chrome="own"
 >
@@ -18,9 +109,13 @@ import HomeFooter from '../components/home/HomeFooter.astro';
       <div class="h-hero-copy">
         <p class="h-badge"><span class="h-badge-dot" aria-hidden="true"></span>Terms</p>
         <h1 class="h-h1"><em class="h-mark">Terms</em> of use</h1>
-        <p class="h-lead lg-body">[PLACEHOLDER]</p>
+        <p class="h-lead lg-body">
+          The terms for using this website. Engagements with KalTech are governed by their own written
+          agreement.
+        </p>
       </div>
     </div>
   </section>
+  <LegalDoc updated="8 October 2026" sections={sections} />
   <HomeFooter />
 </Base>

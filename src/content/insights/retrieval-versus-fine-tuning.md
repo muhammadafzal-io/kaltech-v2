@@ -63,10 +63,10 @@ Tuning earns its cost in a narrow band: high query volume against a corpus that 
 <tr><th>Measure</th><th>Retrieval</th><th>Fine tuned</th></tr>
 </thead>
 <tbody>
-<tr><td>Attributable accuracy</td><td>[PLACEHOLDER]</td><td>[PLACEHOLDER]</td></tr>
-<tr><td>Cost per query at volume</td><td>[PLACEHOLDER]</td><td>[PLACEHOLDER]</td></tr>
-<tr><td>Time to reflect a change</td><td>[PLACEHOLDER]</td><td>[PLACEHOLDER]</td></tr>
-<tr><td>Volume at which cost clears</td><td>[PLACEHOLDER]</td><td>[PLACEHOLDER]</td></tr>
+<tr><td>Attributable accuracy</td><td>Close, and every answer cites its passage</td><td>Close, with no passage to cite</td></tr>
+<tr><td>Cost per query at volume</td><td>Close at this volume</td><td>Lower only at high volume</td></tr>
+<tr><td>Time to reflect a change</td><td>When the document is indexed</td><td>When the model is tuned again</td></tr>
+<tr><td>Volume at which cost clears</td><td>Low, little to recover upfront</td><td>High, on a corpus that rarely changes</td></tr>
 </tbody>
 </table>
 </div>
