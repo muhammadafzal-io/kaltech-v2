@@ -19,6 +19,12 @@ const heroPanel = [
   { label: 'Fee', value: 'Fixed, agreed upfront' },
   { label: 'Deliverable', value: 'A written finding' },
 ];
+// A line icon per phase (decorative): interviews, evidence, the finding.
+const phaseIcons = [
+  '<path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/>',
+  '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 13l2 2 4-4"/>',
+];
 ---
 
 <Base
@@ -157,7 +163,8 @@ const heroPanel = [
       <ol class="sv-steps dg-phases">
         {
           phases.map((ph) => (
-            <li class="sv-step m-reveal" data-spotlight>
+            <li class="sv-step dg-phase m-reveal">
+              <svg class="dg-phase-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={phaseIcons[Number(ph.num) - 1]} />
               <p class="sv-step-num">{ph.num}</p>
               <h3 class="h-h3">{ph.title}</h3>
               <p class="h-body">{ph.body}</p>
@@ -272,8 +279,11 @@ const heroPanel = [
             }
           </ul>
         </div>
-        <aside class="sv-fit-side" data-js-control>
-          <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+        <aside class="sv-fit-side" data-js-control style={`--n:${set.items.length}`}>
+          <div class="sv-fit-ring">
+            <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+            <span class="sv-fit-meter" aria-hidden="true">{set.items.map(() => <i class="mc-seg"></i>)}</span>
+          </div>
           <p class="sv-fit-cta" data-fit-cta>
             <a class="h-btn h-btn-primary" href={fit.cta.href}><span>{fit.cta.label}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></a>
           </p>
@@ -281,7 +291,7 @@ const heroPanel = [
       </div>
       <div class="sv-not">
         <h3 class="h-h3">{set.notTitle}</h3>
-        <ul class="sv-not-list">{set.not.map((t) => <li class="h-body">{t}</li>)}</ul>
+        <ul class="sv-not-list">{set.not.map((t) => <li class="h-body"><span class="sv-not-mark" aria-hidden="true"></span>{t}</li>)}</ul>
       </div>
     </div>
   </section>

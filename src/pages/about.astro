@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
 import HomeFooter from '../components/home/HomeFooter.astro';
 import HomeCta from '../components/home/HomeCta.astro';
-import Loop3D from '../components/art/Loop3D.astro';
-import OrgShape from '../components/OrgShape.astro';
+import Integrate3D from '../components/art/Integrate3D.astro';
+import SeniorRing from '../components/home/SeniorRing.astro';
 import WorldMap from '../components/WorldMap.astro';
 import OverlapStrip from '../components/OverlapStrip.astro';
 import about from '../data/about.json';
@@ -20,6 +20,13 @@ const structure = [
   { head: 'No junior tier', body: 'The engineers who scope the work are the engineers who build it.' },
   { head: 'No handover', body: 'Strategy and delivery are the same engagement, not two contracts.' },
   { head: 'Limited capacity', body: 'We hold a small number of engagements at a time, by design.' },
+];
+
+// A line icon per delivery fact (decorative): one level, one line, a limit.
+const structureIcons = [
+  '<circle cx="12" cy="7" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/>',
+  '<path d="M3 12h18"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>',
+  '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8"/>',
 ];
 
 const usual = ['Strategy firm', 'Scope', 'Handover', 'Delivery firm', 'Build'];
@@ -52,74 +59,52 @@ const here = ['Diagnostic', 'Scope', 'Build', 'Retainer'];
         </p>
       </div>
       <div class="h-hero-viz">
-        <Loop3D stations={here} label="One unbroken loop with four stations, diagnostic, scope, build and retainer, around one team: the same team throughout." />
+        <Integrate3D label="An AI chip at the centre of four existing systems, each joined to it by a circuit, with data running in along every connection." />
       </div>
     </div>
   </section>
 
-  <section class="h-sec h-bone" id="firm">
-    <div class="h-wrap ab-two">
-      <div>
-        <p class="h-eyebrow m-reveal">The firm</p>
-        <h2 class="h-h2 m-reveal">What we actually do.</h2>
-      </div>
-      <div class="ab-prose">
-        <p class="h-body m-reveal">
-          We are not a venture studio, not a staff augmentation shop, and not an agency that ships a
-          prototype and invoices for the learning. We diagnose the constraint a business is operating
-          under, scope the work against it, and build the system that moves it. The same people do all three.
-        </p>
-        <p class="h-body m-reveal">
-          Most of what we build sits in environments where failure is expensive. Regulated lending,
-          cross-border logistics, hospital operations. That is the work we are best at, and it is the
-          reason our first question is always about the process rather than the model.
-        </p>
-
-        <figure class="ab-handover m-reveal" aria-label="The usual arrangement runs strategy firm, scope, then a break marked handover, then delivery firm and build. Here it runs diagnostic, scope, build and retainer on one unbroken line with the same team throughout.">
-          <p class="sv-label">The usual arrangement</p>
-          <ol class="ab-chain">
-            {usual.map((u) => <li class={u === 'Handover' ? 'is-break' : ''}>{u}</li>)}
-          </ol>
-          <p class="sv-label ab-here">Here</p>
-          <ol class="ab-chain ab-chain-hot">
-            {here.map((u) => <li>{u}</li>)}
-          </ol>
-          <p class="sv-label">Same team throughout</p>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <section class="h-sec h-white" id="delivery">
     <div class="h-wrap">
-      <div class="h-head">
-        <div class="h-head-main">
-          <p class="h-eyebrow m-reveal">Delivery</p>
-          <h2 class="h-h2 m-reveal">The person who sells the work <span class="h-accent">runs</span> the work.</h2>
-        </div>
-      </div>
-      <div class="ab-two ab-two-top">
-        <div class="ab-prose">
-          <p class="h-body m-reveal">
-            Senior-led delivery, meaning there is no pyramid underneath, no account manager between you
-            and the engineers, and no discovery phase staffed by people who will not be there for the build.
-          </p>
-          <p class="h-body m-reveal">
-            This constrains how many engagements we can hold at once. That is a deliberate trade. It is
-            also why the diagnostic exists, because it is the only honest way to decide which work we take.
-          </p>
-        </div>
-        <div class="ab-light-card m-reveal"><OrgShape /></div>
-      </div>
-      <div class="ab-blocks">
-        {
-          structure.map((b) => (
-            <div class="ab-block m-reveal" data-spotlight>
-              <p class="sv-label sv-label-ink">{b.head}</p>
-              <p class="h-body">{b.body}</p>
+      <div class="dl-box">
+      <div class="dl-grid">
+        <div class="dl-copy">
+          <div class="h-head">
+            <div class="h-head-main">
+              <p class="h-eyebrow m-reveal">Delivery</p>
+              <h2 class="h-h2 m-reveal">The person who sells the work <span class="h-accent">runs</span> the work.</h2>
             </div>
+          </div>
+          <div class="ab-prose">
+            <p class="h-body m-reveal">
+              Senior-led delivery, meaning there is no pyramid underneath, no account manager between you
+              and the engineers, and no discovery phase staffed by people who will not be there for the build.
+            </p>
+            <p class="h-body m-reveal">
+              This constrains how many engagements we can hold at once. That is a deliberate trade. It is
+              also why the diagnostic exists, because it is the only honest way to decide which work we take.
+            </p>
+          </div>
+        </div>
+        <div class="dl-ring m-reveal"><SeniorRing stages={here} /></div>
+      </div>
+      <ul class="dl-facts">
+        {
+          structure.map((b, i) => (
+            <li class="dl-fact m-reveal">
+              <span class="dl-fact-rule m-rule" aria-hidden="true"></span>
+              <span class="dl-fact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={structureIcons[i]} />
+              </span>
+              <div>
+                <p class="dl-fact-head">{b.head}</p>
+                <p class="dl-fact-body">{b.body}</p>
+              </div>
+            </li>
           ))
         }
+      </ul>
       </div>
     </div>
   </section>
@@ -168,6 +153,39 @@ const here = ['Diagnostic', 'Scope', 'Build', 'Retainer'];
         <p class="sv-label">Not counted</p>
         <ul>{about.notCounted.map((t) => <li class="h-body">{t}</li>)}</ul>
         <p class="ab-nc-note">{about.sourceNote}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec h-white" id="firm">
+    <div class="h-wrap ab-two">
+      <div>
+        <p class="h-eyebrow m-reveal">The firm</p>
+        <h2 class="h-h2 m-reveal">What we actually do.</h2>
+        <figure class="ab-handover m-reveal" aria-label="The usual arrangement runs strategy firm, scope, then a break marked handover, then delivery firm and build. Here it runs diagnostic, scope, build and retainer on one unbroken line with the same team throughout.">
+          <p class="sv-label">The usual arrangement</p>
+          <ol class="ab-chain">
+            {usual.map((u) => <li class={u === 'Handover' ? 'is-break' : ''}>{u}</li>)}
+          </ol>
+          <p class="sv-label ab-here">Here</p>
+          <ol class="ab-chain ab-chain-hot">
+            {here.map((u) => <li>{u}</li>)}
+          </ol>
+          <p class="sv-label">Same team throughout</p>
+        </figure>
+      </div>
+      <div class="ab-prose">
+        <p class="h-body m-reveal">
+          We are not a venture studio, not a staff augmentation shop, and not an agency that ships a
+          prototype and invoices for the learning. We diagnose the constraint a business is operating
+          under, scope the work against it, and build the system that moves it. The same people do all three.
+        </p>
+        <p class="h-body m-reveal">
+          Most of what we build sits in environments where failure is expensive. Regulated lending,
+          cross-border logistics, hospital operations. That is the work we are best at, and it is the
+          reason our first question is always about the process rather than the model.
+        </p>
+
       </div>
     </div>
   </section>

@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <!-- BECS: blood component inventory. Illustrative interface, sample data. -->
+  <rect width="720" height="560" fill="#0E0E10"/>
+
+  <!-- Sidebar -->
+  <rect width="64" height="560" fill="#141416"/>
+  <rect x="64" width="1" height="560" fill="#232326"/>
+  <rect x="18" y="20" width="28" height="28" rx="7" fill="#F2F2F2"/>
+  <path d="M32 26 c4 6 7 9 7 13 a7 7 0 0 1 -14 0 c0 -4 3 -7 7 -13z" fill="#0E0E10"/>
+  <rect x="20" y="88" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="18" y="130" width="28" height="28" rx="7" fill="#2A1316"/>
+  <rect x="25" y="137" width="14" height="14" rx="3" fill="none" stroke="#F0505C" stroke-width="2"/>
+  <rect x="20" y="176" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="20" y="220" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="20" y="264" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="92" y="50" font-size="22" font-weight="700" fill="#F2F2F2">Component inventory</text>
+  <text x="92" y="71" font-size="12" fill="#7A7A82">Hospital blood bank · ISBT 128</text>
+  <rect x="566" y="30" width="126" height="34" rx="8" fill="#E5384A"/>
+  <text x="629" y="52" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Receive units</text>
+
+  <!-- Tabs -->
+  <text x="92" y="108" font-size="13" font-weight="600" fill="#F2F2F2">All units</text>
+  <text x="150" y="108" font-size="12" fill="#7A7A82">2,416</text>
+  <text x="208" y="108" font-size="13" fill="#9A9AA2">Red cells</text>
+  <text x="270" y="108" font-size="12" fill="#7A7A82">1,180</text>
+  <text x="322" y="108" font-size="13" fill="#9A9AA2">Platelets</text>
+  <text x="381" y="108" font-size="12" fill="#7A7A82">214</text>
+  <text x="420" y="108" font-size="13" fill="#9A9AA2">Plasma</text>
+  <text x="469" y="108" font-size="12" fill="#7A7A82">1,010</text>
+  <text x="520" y="108" font-size="13" fill="#9A9AA2">Quarantine</text>
+  <rect x="594" y="95" width="24" height="17" rx="8.5" fill="#E5384A"/>
+  <text x="606" y="108" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">12</text>
+  <rect x="92" y="122" width="600" height="1" fill="#232326"/>
+  <rect x="92" y="121" width="102" height="2" fill="#E5384A"/>
+
+  <!-- Search and filters -->
+  <rect x="92" y="140" width="330" height="36" rx="8" fill="#141416" stroke="#2A2A2E"/>
+  <rect x="104" y="150" width="14" height="14" rx="2" fill="none" stroke="#6A6A72" stroke-width="1.5"/>
+  <path d="M107 153 v8 M110 153 v8 M113 153 v8 M115 153 v8" stroke="#6A6A72" stroke-width="1"/>
+  <text x="128" y="162" font-size="12.5" fill="#6A6A72">Scan or enter unit number</text>
+  <path d="M440 152 h14 M443 158 h8 M446 164 h2" stroke="#4C8DF6" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="462" y="162" font-size="13" fill="#4C8DF6">Add filter</text>
+
+  <g font-size="12">
+    <rect x="92" y="190" width="124" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="104" y="208" fill="#7A7A82">Group</text>
+    <text x="144" y="208" fill="#4C8DF6">O Neg</text>
+    <text x="200" y="208" fill="#6A6A72">×</text>
+    <rect x="224" y="190" width="146" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="236" y="208" fill="#7A7A82">Expiry</text>
+    <text x="278" y="208" fill="#4C8DF6">&lt; 7 days</text>
+    <text x="354" y="208" fill="#6A6A72">×</text>
+    <rect x="378" y="190" width="138" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="390" y="208" fill="#7A7A82">Site</text>
+    <text x="418" y="208" fill="#4C8DF6">Main bank</text>
+    <text x="500" y="208" fill="#6A6A72">×</text>
+  </g>
+
+  <!-- Table header -->
+  <rect x="92" y="236" width="600" height="32" rx="6" fill="#161618"/>
+  <g font-size="11.5" fill="#8A8A92" font-weight="600">
+    <text x="104" y="256">Unit number</text>
+    <text x="226" y="256">Status</text>
+    <text x="328" y="256">Component</text>
+    <text x="468" y="256">Group</text>
+    <text x="522" y="256">Expires</text>
+    <text x="600" y="256">Location</text>
+  </g>
+
+  <!-- Rows -->
+  <g font-size="12.5">
+    <!-- selected row -->
+    <rect x="92" y="270" width="600" height="38" fill="#1A1315"/>
+    <rect x="92" y="270" width="2" height="38" fill="#E5384A"/>
+
+    <text x="104" y="294" fill="#F2F2F2">W0412 26 018734</text>
+    <rect x="224" y="279" width="80" height="20" rx="10" fill="#13261A"/>
+    <text x="264" y="293" font-size="11" fill="#5BD98A" text-anchor="middle">Available</text>
+    <text x="328" y="294" fill="#C9C9CF">Red cells, LR</text>
+    <text x="468" y="294" fill="#F2F2F2" font-weight="600">O−</text>
+    <text x="522" y="294" fill="#C9C9CF">21 Oct</text>
+    <text x="600" y="294" fill="#9A9AA2">Fridge A3</text>
+    <rect x="92" y="308" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="332" fill="#E4E4E8">W0412 26 018729</text>
+    <rect x="224" y="317" width="80" height="20" rx="10" fill="#16233A"/>
+    <text x="264" y="331" font-size="11" fill="#6FA8FF" text-anchor="middle">Reserved</text>
+    <text x="328" y="332" fill="#C9C9CF">Platelets, pooled</text>
+    <text x="468" y="332" fill="#F2F2F2" font-weight="600">A+</text>
+    <text x="522" y="332" fill="#C9C9CF">12 Oct</text>
+    <text x="600" y="332" fill="#9A9AA2">Agitator 2</text>
+    <rect x="92" y="346" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="370" fill="#E4E4E8">W0412 26 018721</text>
+    <rect x="224" y="355" width="80" height="20" rx="10" fill="#2A2112"/>
+    <text x="264" y="369" font-size="11" fill="#F6BE4F" text-anchor="middle">Expiring</text>
+    <text x="328" y="370" fill="#C9C9CF">Red cells, LR</text>
+    <text x="468" y="370" fill="#F2F2F2" font-weight="600">B+</text>
+    <text x="522" y="370" fill="#F6BE4F">10 Oct</text>
+    <text x="600" y="370" fill="#9A9AA2">Fridge A1</text>
+    <rect x="92" y="384" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="408" fill="#E4E4E8">W0412 26 018716</text>
+    <rect x="224" y="393" width="80" height="20" rx="10" fill="#13261A"/>
+    <text x="264" y="407" font-size="11" fill="#5BD98A" text-anchor="middle">Available</text>
+    <text x="328" y="408" fill="#C9C9CF">Plasma, FFP</text>
+    <text x="468" y="408" fill="#F2F2F2" font-weight="600">AB+</text>
+    <text x="522" y="408" fill="#C9C9CF">03 Mar</text>
+    <text x="600" y="408" fill="#9A9AA2">Freezer F1</text>
+    <rect x="92" y="422" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="446" fill="#E4E4E8">W0412 26 018702</text>
+    <rect x="224" y="431" width="80" height="20" rx="10" fill="#2C1416"/>
+    <text x="264" y="445" font-size="11" fill="#F27C84" text-anchor="middle">Quarantine</text>
+    <text x="328" y="446" fill="#C9C9CF">Red cells, LR</text>
+    <text x="468" y="446" fill="#F2F2F2" font-weight="600">O+</text>
+    <text x="522" y="446" fill="#C9C9CF">24 Oct</text>
+    <text x="600" y="446" fill="#9A9AA2">Hold Q1</text>
+    <rect x="92" y="460" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="484" fill="#E4E4E8">W0412 26 018698</text>
+    <rect x="224" y="469" width="80" height="20" rx="10" fill="#1F1F22"/>
+    <text x="264" y="483" font-size="11" fill="#9A9AA2" text-anchor="middle">Issued</text>
+    <text x="328" y="484" fill="#C9C9CF">Platelets, apheresis</text>
+    <text x="468" y="484" fill="#F2F2F2" font-weight="600">O−</text>
+    <text x="522" y="484" fill="#C9C9CF">11 Oct</text>
+    <text x="600" y="484" fill="#9A9AA2">Theatre 4</text>
+    <rect x="92" y="498" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="522" fill="#E4E4E8">W0412 26 018690</text>
+    <rect x="224" y="507" width="80" height="20" rx="10" fill="#13261A"/>
+    <text x="264" y="521" font-size="11" fill="#5BD98A" text-anchor="middle">Available</text>
+    <text x="328" y="522" fill="#C9C9CF">Plasma, FFP</text>
+    <text x="468" y="522" fill="#F2F2F2" font-weight="600">A−</text>
+    <text x="522" y="522" fill="#C9C9CF">18 Feb</text>
+    <text x="600" y="522" fill="#9A9AA2">Freezer F2</text>
+  </g>
+</svg>

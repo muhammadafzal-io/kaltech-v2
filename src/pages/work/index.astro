@@ -5,12 +5,14 @@ import HomeHeader from '../../components/home/HomeHeader.astro';
 import HomeFooter from '../../components/home/HomeFooter.astro';
 import HomeCta from '../../components/home/HomeCta.astro';
 import Screens3D from '../../components/art/Screens3D.astro';
+import ImageWheel from '../../components/home/ImageWheel.astro';
 
 const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = (await getCollection('insights')).find((i) => i.data.featured && i.data.published)!;
 const shots: Record<string, string> = {
-  kalpay: '/work/kalpay-leads.jpg',
-  'ahw-global': '/work/ahw-global-shipments.svg',
-  becs: '/work/becs-inventory.svg',
+  kalpay: '/work/kalpay-ui.svg',
+  'ahw-global': '/work/ahw-global-shipments-ui.svg',
+  becs: '/work/becs-inventory-ui.svg',
 };
 ---
 
@@ -70,39 +72,45 @@ const shots: Record<string, string> = {
   </section>
 
   <section class="h-sec h-bone" id="cases">
-    <div class="h-wrap wk-rows">
-      {
-        cases.map((c, i) => (
-          <article class="wk-row m-reveal" id={c.id} data-spotlight>
-            <div class={`wk-shot wk-shot-${i + 1}`}>
-              <img src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
-            </div>
-            <div class="wk-body">
-              <p class="h-case-pill wk-pill">Constraint found &#8212; {c.data.constraintFound}</p>
-              <h2 class="wk-title">{c.data.title}</h2>
-              <p class="wk-industry">{c.data.industry}</p>
-              {c.data.cardParas.map((p) => <p class="h-body">{p}</p>)}
-              <div class="wk-foot">
-                <div>
-                  <p class="wk-fig">
-                    <span
-                      class={c.data.cardCount !== null ? 'm-count' : undefined}
-                      data-count={c.data.cardCount ?? undefined}
-                      data-suffix={c.data.cardSuffix || undefined}
-                      data-final={c.data.cardFigure}
-                    >{c.data.cardFigure}</span>
-                  </p>
-                  <p class="sv-label">{c.data.cardFigureLabel}</p>
-                </div>
-                <a class="h-link wk-link" href={`/work/${c.id}`}>
-                  <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
-                  <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
-                </a>
+    <div class="h-wrap">
+      <div class="h-work-wheel">
+        <ImageWheel cases={cases} featured={featured} />
+      </div>
+
+      <div class="h-bento">
+        {
+          cases.map((c, i) => (
+            <article class={`h-case h-case-${i + 1} m-reveal`} id={c.id}>
+              <div class="h-shot">
+                <img class="h-shot-img" src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
-            </div>
-          </article>
-        ))
-      }
+              <div class="h-case-body">
+                <p class="h-case-pill">Constraint found &#8212; {c.data.constraintFound}</p>
+                <h2 class="h-case-title">{c.data.title}</h2>
+                <p class="h-case-industry">{c.data.industry}</p>
+                {c.data.cardParas.map((p) => <p class="h-case-text">{p}</p>)}
+                <div class="h-case-foot">
+                  <div>
+                    <p class="h-case-fig">
+                      <span
+                        class={c.data.cardCount !== null ? 'm-count' : undefined}
+                        data-count={c.data.cardCount ?? undefined}
+                        data-suffix={c.data.cardSuffix || undefined}
+                        data-final={c.data.cardFigure}
+                      >{c.data.cardFigure}</span>
+                    </p>
+                    <p class="h-case-figlabel">{c.data.cardFigureLabel}</p>
+                  </div>
+                  <a class="h-case-link" href={`/work/${c.id}`}>
+                    <span>Read the <span class="visually-hidden">{c.data.title} </span>case study</span>
+                    <span class="h-link-arrow" aria-hidden="true">&#8594;</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
 
       <blockquote class="h-pull h-pull-light m-reveal">
         Every engagement on this page began with a finding that contradicted the brief.

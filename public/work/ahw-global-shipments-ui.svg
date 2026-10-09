@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <!-- AHW Global: shipments console. Illustrative interface, sample data. -->
+  <rect width="720" height="560" fill="#0E0E10"/>
+
+  <!-- Sidebar -->
+  <rect width="64" height="560" fill="#141416"/>
+  <rect x="64" width="1" height="560" fill="#232326"/>
+  <rect x="18" y="20" width="28" height="28" rx="7" fill="#F2F2F2"/>
+  <rect x="27" y="29" width="10" height="10" rx="2" fill="#0E0E10"/>
+  <rect x="18" y="84" width="28" height="28" rx="7" fill="#2A1316"/>
+  <path d="M25 103 l7 -7 l7 7" fill="none" stroke="#F0505C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="20" y="132" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="20" y="176" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="20" y="220" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+  <rect x="20" y="264" width="24" height="24" rx="6" fill="none" stroke="#3A3A40" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="92" y="50" font-size="22" font-weight="700" fill="#F2F2F2">Shipments</text>
+  <text x="92" y="71" font-size="12" fill="#7A7A82">AHW Global · US operation</text>
+  <rect x="566" y="30" width="126" height="34" rx="8" fill="#E5384A"/>
+  <text x="629" y="52" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">New shipment</text>
+
+  <!-- Tabs -->
+  <text x="92" y="108" font-size="13" font-weight="600" fill="#F2F2F2">All</text>
+  <text x="116" y="108" font-size="12" fill="#7A7A82">1,284</text>
+  <text x="182" y="108" font-size="13" fill="#9A9AA2">In transit</text>
+  <text x="246" y="108" font-size="12" fill="#7A7A82">312</text>
+  <text x="290" y="108" font-size="13" fill="#9A9AA2">Customs</text>
+  <text x="349" y="108" font-size="12" fill="#7A7A82">46</text>
+  <text x="386" y="108" font-size="13" fill="#9A9AA2">Exceptions</text>
+  <rect x="458" y="95" width="20" height="17" rx="8.5" fill="#E5384A"/>
+  <text x="468" y="108" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">7</text>
+  <rect x="92" y="122" width="600" height="1" fill="#232326"/>
+  <rect x="92" y="121" width="70" height="2" fill="#E5384A"/>
+
+  <!-- Search and filters -->
+  <rect x="92" y="140" width="330" height="36" rx="8" fill="#141416" stroke="#2A2A2E"/>
+  <circle cx="111" cy="157" r="6" fill="none" stroke="#6A6A72" stroke-width="1.6"/>
+  <path d="M116 162 l4 4" stroke="#6A6A72" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="128" y="162" font-size="12.5" fill="#6A6A72">Search shipment, order or customer</text>
+  <path d="M440 152 h14 M443 158 h8 M446 164 h2" stroke="#4C8DF6" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="462" y="162" font-size="13" fill="#4C8DF6">Add filter</text>
+
+  <g font-size="12">
+    <rect x="92" y="190" width="120" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="104" y="208" fill="#7A7A82">Mode</text>
+    <text x="142" y="208" fill="#4C8DF6">Ocean</text>
+    <text x="196" y="208" fill="#6A6A72">×</text>
+    <rect x="220" y="190" width="148" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="232" y="208" fill="#7A7A82">Lane</text>
+    <text x="264" y="208" fill="#4C8DF6">CN → US</text>
+    <text x="352" y="208" fill="#6A6A72">×</text>
+    <rect x="376" y="190" width="134" height="28" rx="7" fill="none" stroke="#2A2A2E"/>
+    <text x="388" y="208" fill="#7A7A82">Status</text>
+    <text x="430" y="208" fill="#4C8DF6">Active</text>
+    <text x="494" y="208" fill="#6A6A72">×</text>
+  </g>
+
+  <!-- Table header -->
+  <rect x="92" y="236" width="600" height="32" rx="6" fill="#161618"/>
+  <g font-size="11.5" fill="#8A8A92" font-weight="600">
+    <text x="104" y="256">Shipment</text>
+    <text x="214" y="256">Status</text>
+    <text x="320" y="256">Lane</text>
+    <text x="500" y="256">ETA</text>
+    <text x="566" y="256">Customer</text>
+  </g>
+
+  <!-- Rows -->
+  <g font-size="12.5">
+    <!-- selected row -->
+    <rect x="92" y="270" width="600" height="38" fill="#1A1315"/>
+    <rect x="92" y="270" width="2" height="38" fill="#E5384A"/>
+
+    <text x="104" y="294" fill="#F2F2F2">SHP-240918</text>
+    <rect x="212" y="279" width="76" height="20" rx="10" fill="#16233A"/>
+    <text x="250" y="293" font-size="11" fill="#6FA8FF" text-anchor="middle">In transit</text>
+    <text x="320" y="294" fill="#C9C9CF">Shenzhen → Los Angeles</text>
+    <text x="500" y="294" fill="#C9C9CF">14 Oct</text>
+    <text x="566" y="294" fill="#9A9AA2">Northwind Retail</text>
+    <rect x="92" y="308" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="332" fill="#E4E4E8">SHP-240917</text>
+    <rect x="212" y="317" width="76" height="20" rx="10" fill="#2A2112"/>
+    <text x="250" y="331" font-size="11" fill="#F6BE4F" text-anchor="middle">Customs</text>
+    <text x="320" y="332" fill="#C9C9CF">Ningbo → Long Beach</text>
+    <text x="500" y="332" fill="#C9C9CF">12 Oct</text>
+    <text x="566" y="332" fill="#9A9AA2">Brightline Home</text>
+    <rect x="92" y="346" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="370" fill="#E4E4E8">SHP-240915</text>
+    <rect x="212" y="355" width="76" height="20" rx="10" fill="#16233A"/>
+    <text x="250" y="369" font-size="11" fill="#6FA8FF" text-anchor="middle">In transit</text>
+    <text x="320" y="370" fill="#C9C9CF">Shanghai → Savannah</text>
+    <text x="500" y="370" fill="#C9C9CF">19 Oct</text>
+    <text x="566" y="370" fill="#9A9AA2">Atlas Outdoor</text>
+    <rect x="92" y="384" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="408" fill="#E4E4E8">SHP-240912</text>
+    <rect x="212" y="393" width="76" height="20" rx="10" fill="#13261A"/>
+    <text x="250" y="407" font-size="11" fill="#5BD98A" text-anchor="middle">Delivered</text>
+    <text x="320" y="408" fill="#C9C9CF">Yantian → Oakland</text>
+    <text x="500" y="408" fill="#C9C9CF">06 Oct</text>
+    <text x="566" y="408" fill="#9A9AA2">Kestrel Supply</text>
+    <rect x="92" y="422" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="446" fill="#E4E4E8">SHP-240911</text>
+    <rect x="212" y="431" width="76" height="20" rx="10" fill="#2C1416"/>
+    <text x="250" y="445" font-size="11" fill="#F27C84" text-anchor="middle">Exception</text>
+    <text x="320" y="446" fill="#C9C9CF">Qingdao → Seattle</text>
+    <text x="500" y="446" fill="#C9C9CF">09 Oct</text>
+    <text x="566" y="446" fill="#9A9AA2">Harbor &amp; Pine</text>
+    <rect x="92" y="460" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="484" fill="#E4E4E8">SHP-240908</text>
+    <rect x="212" y="469" width="76" height="20" rx="10" fill="#13261A"/>
+    <text x="250" y="483" font-size="11" fill="#5BD98A" text-anchor="middle">Delivered</text>
+    <text x="320" y="484" fill="#C9C9CF">Xiamen → Houston</text>
+    <text x="500" y="484" fill="#C9C9CF">04 Oct</text>
+    <text x="566" y="484" fill="#9A9AA2">Northwind Retail</text>
+    <rect x="92" y="498" width="600" height="1" fill="#1F1F22"/>
+
+    <text x="104" y="522" fill="#E4E4E8">SHP-240906</text>
+    <rect x="212" y="507" width="76" height="20" rx="10" fill="#16233A"/>
+    <text x="250" y="521" font-size="11" fill="#6FA8FF" text-anchor="middle">In transit</text>
+    <text x="320" y="522" fill="#C9C9CF">Shenzhen → New York</text>
+    <text x="500" y="522" fill="#C9C9CF">22 Oct</text>
+    <text x="566" y="522" fill="#9A9AA2">Meridian Goods</text>
+  </g>
+</svg>

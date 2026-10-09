@@ -1,0 +1,54 @@
+---
+// SENIOR-LED, drawn as a circle. You at the centre; the senior engineers on
+// one ring, each joined to you directly, signals running both ways along the
+// spokes. The engagement stages sit on the outer ring: the same team through
+// every one of them. Labels come from the page and about.json (no new copy).
+import about from '../../data/about.json';
+
+interface Props { stages: string[] }
+const { stages } = Astro.props;
+const { right, node, caption } = about.org;
+
+const C = 130;
+const N = 5;
+const R = 72;
+const pts = Array.from({ length: N }, (_, i) => {
+  const a = (-90 + (360 / N) * i) * (Math.PI / 180);
+  return [C + R * Math.cos(a), C + R * Math.sin(a)];
+});
+const OR = 112;
+const tags = stages.map((label, i) => {
+  const a = (-135 + (360 / stages.length) * i) * (Math.PI / 180);
+  return { label, x: C + OR * Math.cos(a), y: C + OR * Math.sin(a) };
+});
+const person = (x: number, y: number) =>
+  `M${(x - 4).toFixed(1)} ${(y + 4.5).toFixed(1)}a4 4 0 0 1 8 0M${x.toFixed(1)} ${(y - 3.6).toFixed(1)}m-2.2 0a2.2 2.2 0 1 0 4.4 0a2.2 2.2 0 1 0 -4.4 0`;
+---
+
+<figure class="sring">
+  <svg class="m-draw" viewBox="0 0 260 260" width="100%" role="img" aria-label={`${right}: ${N} senior engineers, each connected to KalTech directly, the same team through ${stages.join(', ')}. ${caption}.`}>
+    <circle class="sring-orbit" cx={C} cy={C} r={OR} />
+    <circle class="sring-ring" cx={C} cy={C} r={R + 14} />
+    {pts.map(([x, y]) => <path class="sring-spoke" pathLength="1" d={`M${x.toFixed(1)} ${y.toFixed(1)} L${C} ${C}`} />)}
+    {pts.map(([x, y], i) => <path class={`sring-signal sring-signal-${i} m-node`} pathLength="1" d={`M${x.toFixed(1)} ${y.toFixed(1)} L${C} ${C}`} />)}
+    {pts.map(([x, y]) => (
+      <g class="sring-person">
+        <circle cx={x.toFixed(1)} cy={y.toFixed(1)} r="11" />
+        <path d={person(x, y)} />
+      </g>
+    ))}
+    <circle class="sring-halo" cx={C} cy={C} r="30" />
+    <circle class="sring-you" cx={C} cy={C} r="23" />
+    <text class="sring-you-label" x={C} y={C + 3.2} text-anchor="middle">KalTech.</text>
+    {tags.map((t) => (
+      <g class="sring-tag">
+        <rect x={(t.x - t.label.length * 2.9 - 8).toFixed(1)} y={(t.y - 9).toFixed(1)} width={(t.label.length * 5.8 + 16).toFixed(1)} height="18" rx="9" />
+        <text x={t.x.toFixed(1)} y={(t.y + 3.4).toFixed(1)} text-anchor="middle">{t.label}</text>
+      </g>
+    ))}
+  </svg>
+  <figcaption class="sring-cap">
+    <span class="sring-name">{right}</span>
+    <span class="sring-note">{caption}</span>
+  </figcaption>
+</figure>

@@ -1,125 +1,45 @@
 ---
-// THE AI SCENE. An original isometric drawing of AI development: a platform,
-// a laptop with code on its screen, a beam rising from it into a neural network
-// that thinks (signals travel its connections, nodes light in turn), data cubes
-// feeding it, and a stack of files. One node is amber: the binding constraint. Geometry is projected here from (x, y, z)
-// units; colour and motion live in home.css. Decorative.
-const OX = 372, OY = 236;
-const P = (x: number, y: number, z: number) => [(x - y) * 0.866 + OX, (x + y) * 0.5 - z + OY];
-const poly = (pts: number[][]) => pts.map(([x, y, z]) => P(x, y, z).map((n) => n.toFixed(1)).join(',')).join(' ');
-// A vertical plane facing the viewer's left (constant y): local u along x, v up.
-const plane = (x: number, y: number, z: number) => {
-  const [sx, sy] = P(x, y, z);
-  return `matrix(0.866 0.5 0 -1 ${sx.toFixed(1)} ${sy.toFixed(1)})`;
-};
-
-const S = 400, T = 18;
-const grid = Array.from({ length: 9 }, (_, i) => (i + 1) * 40);
-
-// Laptop
-const L = { x0: 70, x1: 290, y0: 50, y1: 230, h: 10, sh: 180 };
-const keys: number[][][] = [];
-for (let r = 0; r < 5; r++) for (let c = 0; c < 9; c++) {
-  const x = L.x0 + 22 + c * 21, y = L.y0 + 70 + r * 19;
-  keys.push([[x, y, L.h], [x + 16, y, L.h], [x + 16, y + 14, L.h], [x, y + 14, L.h]]);
-}
-
-// Neural network, in screen space above the laptop: three layers.
-const NX = 420, NY = 20;
-const layers = [
-  [-160, [-75, -25, 25, 75]],
-  [0, [-100, -50, 0, 50, 100]],
-  [160, [-50, 0, 50]],
-].map(([dx, ys]) => (ys as number[]).map((dy) => [NX + (dx as number), NY + (dy as number) * 0.9 + (dx as number) * -0.12]));
-const edges: number[][] = [];
-for (let l = 0; l < layers.length - 1; l++)
-  for (const a of layers[l]) for (const b of layers[l + 1]) edges.push([a[0], a[1], b[0], b[1]]);
-const HOT = [1, 2]; // layer, index
-
-// Data cubes on the platform (x, y, size).
-const cubes = [[40, 300, 26], [92, 340, 20], [320, 70, 22]];
-const cube = (x: number, y: number, s: number) => ({
-  top: poly([[x, y, s], [x + s, y, s], [x + s, y + s, s], [x, y + s, s]]),
-  left: poly([[x, y + s, 0], [x + s, y + s, 0], [x + s, y + s, s], [x, y + s, s]]),
-  right: poly([[x + s, y, 0], [x + s, y + s, 0], [x + s, y + s, s], [x + s, y, s]]),
-});
-
-// File stack (front right).
-const files = [0, 12, 24].map((z, i) => ({ z, top: i === 2 }));
-const F = { x0: 262, x1: 382, y0: 272, y1: 372, t: 9 };
-
-const motes = [[250, 120], [590, 110], [230, 0], [610, -20], [470, 170], [330, -60]];
+// THE DIAGNOSTIC, in 3D. The business is a clear glass cylinder on a ringed
+// platform; the constraint is an amber orb held inside it, visible only
+// through the glass. A scanner ring travels up and down the cylinder, like a
+// CT scan; as it passes the orb, the orb flares and target rings pulse out on
+// the floor beneath it. Beside it, the written finding stands up and writes
+// itself. Same stage as the other page artwork (.x3). No text: the parent is
+// aria-hidden. Colour and motion live in home.css (.dg3-*).
+const SIDES = 18;
+const faces = Array.from({ length: SIDES }, (_, i) => (360 / SIDES) * i);
 ---
 
-<svg class="da" viewBox="20 -110 704 650" role="img" aria-label="Illustration: AI development, a laptop feeding a neural network, one node marked as the binding constraint.">
-  <!-- Platform -->
-  <g class="da-platform">
-    <polygon class="da-plat-left" points={poly([[0, S, 0], [S, S, 0], [S, S, -T], [0, S, -T]])} />
-    <polygon class="da-plat-right" points={poly([[S, 0, 0], [S, S, 0], [S, S, -T], [S, 0, -T]])} />
-    <polygon class="da-plat-top" points={poly([[0, 0, 0], [S, 0, 0], [S, S, 0], [0, S, 0]])} />
-    {grid.map((g) => <polyline class="da-grid" points={poly([[g, 0, 0], [g, S, 0]])} />)}
-    {grid.map((g) => <polyline class="da-grid" points={poly([[0, g, 0], [S, g, 0]])} />)}
-    <polyline class="da-edge" points={poly([[0, S, 0], [S, S, 0], [S, 0, 0]])} />
-  </g>
+<figure class="x3 dg3">
+  <div class="x3-stage">
+    <span class="dg3-bloom"></span>
+    <div class="x3-scene dg3-scene">
+      <span class="dg3-floor"></span>
+      <span class="dg3-target"><i></i><i></i><i></i></span>
 
-  <!-- Laptop -->
-  <g class="da-laptop">
-    <polygon class="da-lap-shadow" points={poly([[L.x0 - 6, L.y0 + 10, 0], [L.x1 + 12, L.y0 + 10, 0], [L.x1 + 12, L.y1 + 14, 0], [L.x0 - 6, L.y1 + 14, 0]])} />
-    <polygon class="da-lap-side" points={poly([[L.x0, L.y1, 0], [L.x1, L.y1, 0], [L.x1, L.y1, L.h], [L.x0, L.y1, L.h]])} />
-    <polygon class="da-lap-side2" points={poly([[L.x1, L.y0, 0], [L.x1, L.y1, 0], [L.x1, L.y1, L.h], [L.x1, L.y0, L.h]])} />
-    <polygon class="da-lap-top" points={poly([[L.x0, L.y0, L.h], [L.x1, L.y0, L.h], [L.x1, L.y1, L.h], [L.x0, L.y1, L.h]])} />
-    {keys.map((k) => <polygon class="da-key" points={poly(k)} />)}
-    <polygon class="da-pad" points={poly([[L.x0 + 80, L.y1 - 46, L.h], [L.x1 - 80, L.y1 - 46, L.h], [L.x1 - 80, L.y1 - 14, L.h], [L.x0 + 80, L.y1 - 14, L.h]])} />
-    <g transform={plane(L.x0, L.y0, L.h)}>
-      <rect class="da-screen" x="0" y="0" width={L.x1 - L.x0} height={L.sh} rx="10" />
-      <rect class="da-screen-in" x="10" y="10" width={L.x1 - L.x0 - 20} height={L.sh - 20} rx="6" />
-      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-        <rect class={i % 3 === 1 ? 'da-code da-code-hot' : 'da-code'} x={26 + [0, 14, 28, 14, 0, 14, 28, 0][i]} y={L.sh - 32 - i * 17} width={[70, 96, 54, 120, 60, 88, 40, 76][i]} height="6" rx="3" />
-      ))}
-      <rect class="da-caret" x="26" y="20" width="10" height="8" rx="1" />
-    </g>
-  </g>
+      <span class="dg3-orb"><i></i></span>
 
-  <!-- File stack -->
-  <g class="da-files">
-    {files.map((f) => (
-      <g class={f.top ? 'da-file da-file-top' : 'da-file'}>
-        <polygon class="da-file-left" points={poly([[F.x0, F.y1, f.z], [F.x1, F.y1, f.z], [F.x1, F.y1, f.z + F.t], [F.x0, F.y1, f.z + F.t]])} />
-        <polygon class="da-file-right" points={poly([[F.x1, F.y0, f.z], [F.x1, F.y1, f.z], [F.x1, F.y1, f.z + F.t], [F.x1, F.y0, f.z + F.t]])} />
-        <polygon class="da-file-face" points={poly([[F.x0, F.y0, f.z + F.t], [F.x1, F.y0, f.z + F.t], [F.x1, F.y1, f.z + F.t], [F.x0, F.y1, f.z + F.t]])} />
-        <polygon class="da-file-tab" points={poly([[F.x0, F.y0 + 10, f.z + F.t], [F.x0 + 40, F.y0 + 10, f.z + F.t], [F.x0 + 40, F.y0 + 44, f.z + F.t], [F.x0, F.y0 + 44, f.z + F.t]])} />
-      </g>
-    ))}
-  </g>
+      <div class="dg3-cyl" style={`--n:${SIDES}`}>
+        {faces.map((a) => <span class="dg3-face" style={`--a:${a}deg`}></span>)}
+        <span class="dg3-cap"></span>
+        <span class="dg3-cap dg3-cap-base"></span>
+      </div>
 
-  <!-- Data cubes -->
-  {cubes.map(([x, y, z], i) => {
-    const c = cube(x, y, z);
-    return (
-      <g class={`da-cube da-cube-${i}`}>
-        <polygon class="da-cube-left" points={c.left} />
-        <polygon class="da-cube-right" points={c.right} />
-        <polygon class="da-cube-top" points={c.top} />
-      </g>
-    );
-  })}
+      <span class="dg3-scanner"></span>
 
-  <!-- Beam from the screen up into the network -->
-  <polygon class="da-beam" points={`${P(140, 50, 185).join(',')} ${P(230, 50, 185).join(',')} ${NX + 60},${NY + 90} ${NX - 60},${NY + 90}`} />
+      <div class="dg3-sheet-slot">
+        <div class="dg3-sheet">
+          <span class="dg3-line dg3-line-hot"></span>
+          <span class="dg3-line"></span>
+          <span class="dg3-line"></span>
+          <span class="dg3-line dg3-line-short"></span>
+          <span class="dg3-tick">&#10003;</span>
+        </div>
+      </div>
 
-  <!-- Neural network -->
-  <g class="da-net">
-    <ellipse class="da-net-glow" cx={NX} cy={NY} rx="230" ry="140" />
-    {edges.map(([x1, y1, x2, y2], i) => <line class="da-edge" x1={x1} y1={y1} x2={x2} y2={y2} />)}
-    {edges.map(([x1, y1, x2, y2], i) => (i % 3 === 0 ? <line class={`da-pulse da-pulse-${i % 6}`} x1={x1} y1={y1} x2={x2} y2={y2} pathLength="1" /> : null))}
-    {layers.map((layer, l) => layer.map(([x, y], k) => (
-      <g class={l === HOT[0] && k === HOT[1] ? 'da-node is-hot' : `da-node da-node-${(l * 3 + k) % 5}`}>
-        <circle class="da-node-halo" cx={x} cy={y} r="13" />
-        <circle class="da-node-core" cx={x} cy={y} r="7" />
-      </g>
-    )))}
-  </g>
-
-  <!-- Motes -->
-  {motes.map(([x, y], i) => <rect class={`da-mote da-mote-${i}`} x={x} y={y} width="6" height="6" rx="1.5" />)}
-</svg>
+      <span class="dg3-spark dg3-spark-1"></span>
+      <span class="dg3-spark dg3-spark-2"></span>
+      <span class="dg3-spark dg3-spark-3"></span>
+    </div>
+  </div>
+</figure>

@@ -1,7 +1,10 @@
 ---
-// The site header. Transparent over the hero (every page opens on a dark or red
-// hero); once scrolled, a compact frosted bar. motion.js sets data-scrolled.
-// Logo left, the nav as a centred segmented pill, actions right.
+// The site header: one editorial bar with the logo, the nav and the call to
+// action. Transparent over the hero (every page opens on a dark or red hero);
+// once scrolled (motion.js sets data-scrolled) it tightens and sits on solid
+// deep wine with a hairline.
+import org from '../../data/organization.json';
+
 const nav = [
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
@@ -15,32 +18,37 @@ const on = (href: string) => here === href || here.startsWith(href + '/');
 
 <header class="hh" data-hdr slot="header">
   <div class="hh-bar">
-    <a class="hh-logo" href="/" aria-label="KalTech, home">KalTech</a>
+    <div class="hh-in hh-bar-in">
+      <a class="hh-logo" href="/" aria-label="KalTech, home"><span class="hh-logo-word">KalTech<span class="logo-dot" aria-hidden="true"></span></span></a>
 
-    <nav class="hh-nav" aria-label="Primary">
-      <span class="hh-nav-glow" aria-hidden="true"></span>
-      {nav.map((i) => <a class="hh-link" href={i.href} aria-current={on(i.href) ? 'page' : undefined}>{i.label}</a>)}
-    </nav>
+      <nav class="hh-nav" aria-label="Primary">
+        {nav.map((i) => <a class="hh-link" href={i.href} aria-current={on(i.href) ? 'page' : undefined}><span>{i.label}</span></a>)}
+      </nav>
 
-    <div class="hh-actions">
+      <div class="hh-actions">
+        <a class="hh-cta" href="/contact">
+          <span>Get an AI Strategy Consult</span>
+          <span class="hh-cta-arrow" aria-hidden="true">&#8594;</span>
+        </a>
 
-    <a class="hh-cta" href="/contact" data-magnetic>
-      <span>Get an AI Strategy Consult</span>
-      <span class="hh-cta-arrow" aria-hidden="true">&#8599;</span>
-    </a>
-
-    <details class="hh-menu" data-menu>
-      <summary aria-label="Menu">
-        <span class="hh-menu-open">Menu</span>
-        <span class="hh-menu-close">Close</span>
-      </summary>
-      <div class="hh-panel">
-        <nav class="hh-panel-nav" aria-label="Menu">
-          {nav.map((i) => <a class="hh-panel-link" href={i.href} aria-current={on(i.href) ? 'page' : undefined}>{i.label}</a>)}
-        </nav>
-        <a class="h-btn h-btn-primary hh-panel-cta" href="/contact"><span>Get an AI Strategy Consult</span></a>
+        <details class="hh-menu" data-menu>
+          <summary aria-label="Menu">
+            <span class="hh-menu-icon" aria-hidden="true"><i></i><i></i></span>
+            <span class="hh-menu-open">Menu</span>
+            <span class="hh-menu-close">Close</span>
+          </summary>
+          <div class="hh-panel">
+            <nav class="hh-panel-nav" aria-label="Menu">
+              {nav.map((i) => <a class="hh-panel-link" href={i.href} aria-current={on(i.href) ? 'page' : undefined}>{i.label}</a>)}
+            </nav>
+            <a class="h-btn h-btn-primary hh-panel-cta" href="/contact"><span>Get an AI Strategy Consult</span></a>
+            <p class="hh-panel-contact">
+              <a href={`mailto:${org.email}`}>{org.email}</a>
+              <a href={org.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </p>
+          </div>
+        </details>
       </div>
-    </details>
     </div>
   </div>
 </header>

@@ -4657,3 +4657,1880 @@ html[data-theme='dark'] .ab-blocks .ab-block { border-color: var(--h-border); }
   .dg-facts > div + div { border-top: 1px solid var(--h-glass-red-line); }
   .dg-facts dd { margin: 0; text-align: right; font-size: 15px; }
 }
+
+/* ==========================================================================
+   Home hero, refined. Same layout, same type, same 3D scene, same motion, same
+   amber signal colour. The ground is the parent red (--h-cobalt, #BC263A),
+   deepening toward the left; the texture is a dot field rather than a square grid; and the scene's
+   white glow is held back so the panels read as glass, not light. Scoped to
+   .h-hero-home, so the Services and Diagnostic heroes are untouched.
+   ========================================================================== */
+/* Every page's hero: deeper on the left, behind the copy; the parent red
+   holds the right. The ground, texture, badge and button rules below apply to
+   all heroes; the 3D-scene and tablet rules stay on .h-hero-home. */
+html:not([data-theme='dark']) .h-hero {
+  background: linear-gradient(90deg, var(--h-wine-900) 0%, var(--h-wine-900) 22%, var(--h-wine-800) 42%, var(--h-cobalt-deep) 64%, var(--h-cobalt) 88%, var(--h-cobalt) 100%);
+}
+
+/* Texture: a dot field, absent behind the copy, fuller toward the right. The
+   pointer parallax on .h-hero-grid is unchanged. */
+html:not([data-theme='dark']) .h-hero .h-hero-grid {
+  background-image: radial-gradient(circle, var(--h-lit-3) 1.2px, transparent 1.8px);
+  background-size: 22px 22px;
+  opacity: 0.7;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 46%, black 82%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 46%, black 82%);
+}
+
+/* Badge: a hairline label; the amber pulse is kept. */
+html:not([data-theme='dark']) .h-hero .h-badge {
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  background: transparent;
+  border-color: var(--h-glass-red-line);
+}
+
+.h-hero-home .h-lead { max-width: 50ch; line-height: 1.65; }
+
+/* Buttons: same pills and magnetic pull, a flatter shadow. */
+html:not([data-theme='dark']) .h-hero .h-btn-primary { box-shadow: 0 12px 28px -16px var(--h-wine-900); }
+
+/* Figures: the glass cards and their amber marks stay, on a slightly deeper glass. */
+html:not([data-theme='dark']) .h-hero-home .h-stats .h-stat,
+html:not([data-theme='dark']) .h-hero-home .h-stats .h-stat + .h-stat {
+  background: var(--h-ink-glass);
+  border-color: var(--h-glass-red-line);
+}
+.h-hero-home .h-stat-idx { color: var(--h-on-red); }
+html:not([data-theme='dark']) .h-hero-home .h-stat-label { color: var(--h-on-red); }
+
+/* The 3D scene: every animation kept, the white glow reduced throughout. */
+.h-hero-home .hx-bloom { opacity: 0.28; }
+.h-hero-home .hx-floor {
+  background:
+    radial-gradient(circle, var(--h-lit-1), transparent 62%),
+    repeating-radial-gradient(circle, transparent 0 3.2cqw, var(--h-lit-1) 3.2cqw calc(3.2cqw + 1px));
+  border-color: var(--h-lit-3);
+  box-shadow: 0 0 3cqw var(--h-lit-1);
+}
+.h-hero-home .hx-orbit { border-color: var(--h-lit-3); box-shadow: none; }
+.h-hero-home .hx-orbit-2 { border-color: var(--h-lit-4); }
+.h-hero-home .hx-orbit i { box-shadow: 0 0 1.2cqw var(--h-sun); }
+.h-hero-home .hx-orbit-2 i { box-shadow: 0 0 1.2cqw var(--h-lit-4); }
+.h-hero-home .hx-beam { background: linear-gradient(var(--h-lit-6), var(--h-lit-2)); box-shadow: 0 0 0.8cqw var(--h-lit-3); }
+.h-hero-home .hx-beam i { box-shadow: 0 0 1.2cqw var(--h-lit-5); }
+.h-hero-home .hx-core .bx-f { background: linear-gradient(135deg, var(--h-lit-7), var(--h-lit-3)); border-color: var(--h-lit-6); box-shadow: 0 0 2cqw var(--h-lit-3); }
+.h-hero-home .hx-panel {
+  background: linear-gradient(160deg, var(--h-lit-3), var(--h-lit-1) 55%, var(--h-lit-2)), var(--h-glass-red);
+  border-color: var(--h-lit-5);
+  box-shadow: 0 0 2.4cqw var(--h-lit-1), inset 0 0 1.6cqw var(--h-lit-1);
+}
+.h-hero-home .is-hot .hx-panel { border-color: var(--h-sun); box-shadow: 0 0 4cqw var(--h-sun-ring), 0 0 1cqw var(--h-sun), inset 0 0 1.6cqw var(--h-lit-1); }
+.h-hero-home .hx-spark { box-shadow: 0 0 1cqw var(--h-lit-4); }
+.h-hero-home .hx-spark:nth-of-type(odd) { box-shadow: 0 0 1cqw var(--h-sun); }
+
+/* Tablet: the scene sits centred under the copy, without the dead band below. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .h-hero-home .hx-col { width: min(100%, 680px); margin: -12px auto -96px; }
+}
+
+/* The wordmark's period: a square on the baseline, as in the brand mark and
+   the favicon. The header and footer always sit on a dark ground, so it takes
+   the favicon's red (--accent-dark) rather than the brand red, which would
+   disappear against the red hero. */
+.logo-dot {
+  display: inline-block;
+  width: 0.15em;
+  height: 0.15em;
+  margin-left: 0.1em;
+  background: var(--accent-dark);
+}
+
+/* Client logos ("Teams we have built and shipped for"): dark, not faded.
+   Full strength on hover. */
+.lgm .lg-img { opacity: 0.85; }
+@media (hover: hover) { .lgm-item:hover .lg-img { opacity: 1; } }
+
+/* ==========================================================================
+   Our Method: hexagonal cards. Points left and right, flat top and bottom,
+   so text keeps its natural edges and the three read as a chain. A border
+   can't follow the diagonals, so the hairline is traced around the real shape
+   by drop-shadows on the row. Everything else (numerals, "We ask", reveal,
+   lift, top rule, spotlight) is the original. Scoped to #method.
+   ========================================================================== */
+#method {
+  --hex-tip: 30px;
+  --hex-pad: calc(var(--hex-tip) + clamp(18px, 1.6vw, 26px));
+}
+
+#method .h-lenses {
+  gap: 14px;
+  filter:
+    drop-shadow(1px 0 0 var(--h-line)) drop-shadow(-1px 0 0 var(--h-line))
+    drop-shadow(0 1px 0 var(--h-line)) drop-shadow(0 -1px 0 var(--h-line));
+}
+
+#method .h-lens {
+  padding: clamp(32px, 3vw, 44px) var(--hex-pad);
+  border: 0;
+  border-radius: 0;
+  /* A mask, not a clip-path: the reveal check reads clip-path as an
+     unfinished animation. The tips scale with the card (about 30px). */
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon points='7.5,0 92.5,0 100,50 92.5,100 7.5,100 0,50' fill='black'/></svg>") 0 0 / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon points='7.5,0 92.5,0 100,50 92.5,100 7.5,100 0,50' fill='black'/></svg>") 0 0 / 100% 100% no-repeat;
+}
+
+/* The hover rule sits along the flat top edge. */
+#method .h-lens::before { left: var(--hex-tip); right: var(--hex-tip); top: 0; }
+
+/* Shadows can't show through a clip; the lift and the white ground carry it. */
+@media (hover: hover) {
+  #method .h-lens:hover { box-shadow: none; }
+}
+
+@media (max-width: 520px) {
+  #method { --hex-tip: 18px; --hex-pad: calc(var(--hex-tip) + 18px); }
+}
+
+/* ==========================================================================
+   Diagnostic: a background picture. The AI-head image, recoloured from blue
+   into the brand red (the same recipe as .in-img), held low and faded out
+   toward the copy so the text keeps its ground. Behind the existing glow,
+   art and flow; nothing in front of it changes.
+   ========================================================================== */
+#diagnostic .h-dark-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* The head (about 49% across the picture) sits behind the readout. */
+  --w: min(1500px, 112vw);
+  left: calc(73% - var(--w) * 0.494);
+  width: var(--w);
+  background: url('/work/ai-head.jpg') center top / 100% auto no-repeat;
+  filter: grayscale(1) sepia(1) hue-rotate(-42deg) saturate(3.4) brightness(1.05) contrast(1.05);
+  /* The picture's black ground drops out; only its linework and light remain. */
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(90deg, transparent 26%, black 44%), linear-gradient(180deg, black 34%, transparent 62%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 26%, black 44%), linear-gradient(180deg, black 34%, transparent 62%);
+  mask-composite: intersect;
+}
+
+@media (max-width: 1024px) {
+  #diagnostic .h-dark-bg::before {
+    left: 0;
+    width: 100%;
+    background-position: left 45% top 300px;
+    background-size: 220% auto;
+    opacity: 0.45;
+    -webkit-mask-image: linear-gradient(180deg, transparent 12%, black 22%, black 38%, transparent 52%);
+    mask-image: linear-gradient(180deg, transparent 12%, black 22%, black 38%, transparent 52%);
+  }
+}
+
+/* ==========================================================================
+   Diagnostic, compact. The copy and the pull quote stack on the left beside
+   a live readout (src/components/home/DiagArt.astro); the journey card runs
+   underneath, tightened to match. Desktop only; tablet and phone keep their
+   single column with the readout in place of the old scene.
+   ========================================================================== */
+@media (min-width: 1025px) {
+  #diagnostic .h-diag {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'copy visual' 'quote visual' 'jr jr';
+    column-gap: clamp(40px, 5vw, 88px);
+    row-gap: 0;
+    align-items: start;
+  }
+  #diagnostic .h-diag-copy { grid-area: copy; gap: 22px; }
+  #diagnostic .h-diag-visual { grid-area: visual; align-self: center; margin: 0; }
+  #diagnostic .h-pull-wide { grid-area: quote; align-self: end; margin-top: 36px; max-width: 26ch; font-size: clamp(20px, 1.8vw, 26px); }
+  #diagnostic .h-diag .jr { grid-area: jr; margin-top: clamp(40px, 4vw, 56px); }
+}
+
+@media (max-width: 1024px) {
+  #diagnostic .h-diag-visual { margin: 0 auto; width: min(100%, 520px); }
+}
+
+/* ---- The 3D scene (DiagArt.astro) --------------------------------------
+   The business as a clear glass cylinder, the constraint as an amber orb
+   inside it, a scanner ring travelling the cylinder, target rings on the floor, and the
+   written finding standing beside it. Shares .x3 / .bx with the page art. */
+.dg3 .x3-stage { margin: 0; }
+.dg3-bloom {
+  position: absolute;
+  inset: 0 -4%;
+  background: radial-gradient(42% 40% at 50% 56%, var(--h-glow-cobalt), transparent 72%);
+  opacity: 0.55;
+}
+
+.dg3-floor {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--h-lit-1), transparent 64%),
+    repeating-radial-gradient(circle, transparent 0 3.4cqw, var(--h-lit-1) 3.4cqw calc(3.4cqw + 1px));
+  border: 1.5px solid var(--h-lit-3);
+}
+
+/* Target rings under the core. */
+.dg3-target { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.dg3-target i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22cqw;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border: 2px solid var(--h-sun);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.dg3-target i:nth-child(2) { width: 34cqw; opacity: 0.3; }
+.dg3-target i:nth-child(3) { width: 46cqw; opacity: 0.16; }
+
+/* The business: a clear glass cylinder, eighteen upright panels and two
+   rims, centred on the floor. */
+.dg3-cyl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  --r: 15cqw;
+  --ch: 34cqw;
+}
+.dg3-face {
+  position: absolute;
+  left: -2.75cqw;
+  top: 0;
+  width: 5.5cqw;
+  height: var(--ch);
+  background: linear-gradient(180deg, var(--h-lit-3), var(--h-lit-1) 55%, var(--h-lit-2));
+  border-left: 1px solid var(--h-lit-1);
+  transform-origin: 50% 0;
+  transform: rotateZ(var(--a)) translateY(var(--r)) rotateX(90deg);
+}
+.dg3-cap {
+  position: absolute;
+  left: calc(var(--r) * -1);
+  top: calc(var(--r) * -1);
+  width: calc(var(--r) * 2);
+  height: calc(var(--r) * 2);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--h-lit-1), var(--h-lit-2));
+  border: 1.5px solid var(--h-lit-6);
+  box-shadow: 0 0 2cqw var(--h-lit-3);
+  transform: translateZ(var(--ch));
+}
+.dg3-cap-base { background: none; border-color: var(--h-lit-4); transform: none; }
+
+/* The constraint: an amber orb mid-cylinder, always facing the viewer. */
+.dg3-orb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(16cqw) rotateZ(40deg) rotateX(-60deg);
+}
+.dg3-orb i {
+  position: absolute;
+  left: -5cqw;
+  top: -5cqw;
+  width: 10cqw;
+  height: 10cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, var(--h-white), var(--h-sun-soft) 16%, var(--h-sun) 52%, var(--h-cobalt-deep) 100%);
+  box-shadow: 0 0 3cqw var(--h-sun-ring);
+}
+
+/* The scanner: a ring of light around the cylinder, resting at the orb
+   without motion. */
+.dg3-scanner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40cqw;
+  height: 40cqw;
+  margin: -20cqw 0 0 -20cqw;
+  border: 0.7cqw solid var(--h-lit-7);
+  border-radius: 50%;
+  box-shadow: 0 0 2.4cqw var(--h-lit-5), inset 0 0 2cqw var(--h-lit-4);
+  transform: translateZ(16cqw);
+}
+
+/* The written finding, stood up beside the cylinder, turned toward the viewer. */
+.dg3-sheet-slot {
+  position: absolute;
+  left: 70%;
+  top: 84%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotateZ(32deg);
+}
+.dg3-sheet {
+  position: absolute;
+  left: -9cqw;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5cqw;
+  width: 16cqw;
+  height: 21cqw;
+  padding: 2.6cqw 2.2cqw;
+  background: var(--h-white);
+  border-radius: 1.6cqw;
+  box-shadow: 0 0 4cqw var(--h-lit-3);
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+}
+.dg3-line { height: 0.9cqw; background: var(--h-line); border-radius: 1cqw; transform-origin: left center; }
+.dg3-line-hot { width: 70%; background: var(--h-cobalt); }
+.dg3-line-short { width: 56%; }
+.dg3-tick {
+  display: grid;
+  place-items: center;
+  align-self: flex-end;
+  width: 5cqw;
+  height: 5cqw;
+  margin-top: auto;
+  font-size: 2.8cqw;
+  color: var(--h-white);
+  background: var(--h-cobalt);
+  border-radius: 50%;
+}
+
+.dg3-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.2cqw;
+  height: 1.2cqw;
+  border-radius: 0.3cqw;
+  background: var(--h-sun);
+  box-shadow: 0 0 1.2cqw var(--h-sun);
+  transform: translateZ(30cqw);
+}
+.dg3-spark-2 { left: 47%; top: 54%; }
+.dg3-spark-3 { left: 54%; top: 47%; }
+
+/* Motion: the scanner ring travels the cylinder (three seconds each way).
+   As it crosses the orb, the orb flares and the target rings ping out; the
+   finding writes itself on every pass. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .dg3-scanner { animation: dg3-scan 3s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate; }
+  .dg3-orb i { animation: dg3-flare 3s ease-in-out infinite alternate; }
+  .dg3-target i { animation: dg3-ping 3s ease-out infinite alternate; }
+  .dg3-target i:nth-child(2) { animation-delay: 0.12s; }
+  .dg3-target i:nth-child(3) { animation-delay: 0.24s; }
+  .dg3-sheet-slot { animation: dg3-float 6s ease-in-out infinite alternate; }
+  .dg3-line { animation: dg3-write 6s var(--ease-out-expo) infinite; }
+  .dg3-line:nth-child(2) { animation-delay: 0.15s; }
+  .dg3-line:nth-child(3) { animation-delay: 0.3s; }
+  .dg3-line:nth-child(4) { animation-delay: 0.45s; }
+  .dg3-tick { animation: dg3-tick 6s var(--ease-out-expo) infinite; }
+  html.m-js .dg3-spark { animation: dg3-rise 4s linear infinite; }
+  .dg3-spark-2 { animation-delay: -1.3s; }
+  .dg3-spark-3 { animation-delay: -2.6s; }
+
+  @keyframes dg3-scan { from { transform: translateZ(1cqw); } to { transform: translateZ(35cqw); } }
+  @keyframes dg3-flare {
+    0%, 30% { box-shadow: 0 0 2cqw var(--h-sun-ring); filter: brightness(0.92); }
+    46% { box-shadow: 0 0 7cqw var(--h-sun), 0 0 2cqw var(--h-sun); filter: brightness(1.15); }
+    64%, 100% { box-shadow: 0 0 2cqw var(--h-sun-ring); filter: brightness(0.92); }
+  }
+  @keyframes dg3-ping {
+    0%, 40% { transform: scale(0.4); opacity: 0; }
+    46% { opacity: 0.6; }
+    75%, 100% { transform: scale(1.15); opacity: 0; }
+  }
+  @keyframes dg3-float { from { translate: 0 0 0; } to { translate: 0 0 2.4cqw; } }
+  @keyframes dg3-write {
+    0%, 8% { transform: scaleX(0); }
+    26%, 100% { transform: scaleX(1); }
+  }
+  @keyframes dg3-tick {
+    0%, 30% { transform: scale(0); }
+    40%, 100% { transform: scale(1); }
+  }
+  @keyframes dg3-rise {
+    from { transform: translateZ(14cqw); opacity: 0; }
+    25% { opacity: 1; }
+    to { transform: translateZ(52cqw); opacity: 0; }
+  }
+}
+
+/* ---- The journey card, compact ------------------------------------------ */
+@media (min-width: 1025px) {
+  #diagnostic .h-diag .jr {
+    grid-template-columns: minmax(0, 0.9fr) 48px minmax(0, 1.4fr) 64px minmax(0, 0.95fr);
+    padding: clamp(24px, 2.4vw, 34px) clamp(26px, 3vw, 44px);
+  }
+  #diagnostic .jr-step,
+  #diagnostic .jr-exits { gap: 12px; }
+  #diagnostic .jr-num { height: 44px; font-size: 48px; line-height: 44px; }
+  #diagnostic .jr-name { font-size: clamp(18px, 1.5vw, 21px); }
+  #diagnostic .jr-note { font-size: 14px; }
+  #diagnostic .jr-list { grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+  #diagnostic .jr-list li { font-size: 14px; }
+  #diagnostic .jr-list svg { width: 20px; height: 20px; padding: 3px; }
+  #diagnostic .jr-exits { gap: 10px; }
+  #diagnostic .jr-exit { min-height: 50px; padding: 10px 16px; }
+  #diagnostic .jr-exit .jr-name { font-size: 17px; }
+  /* Link level with the step names; the fork meets the centres of the exits. */
+  #diagnostic .jr-link { margin-top: 67px; }
+  #diagnostic .jr-fork { height: 100px; margin-top: 56px; }
+}
+
+@media (max-width: 1024px) {
+  #diagnostic .jr-num { font-size: 40px; }
+  #diagnostic .h-diag .jr { padding: 24px 22px; }
+}
+
+/* Stacked: the scene's empty foreground is trimmed. */
+@media (max-width: 1024px) {
+  #diagnostic .dg3 .x3-stage { margin: -6% 0 -16%; }
+}
+
+/* ==========================================================================
+   Selected work, lighter. All three cases take one light treatment (white
+   card, hairline, neutral tag, red figure) instead of red, wine and white, so they
+   read as peers and the product screens carry the colour. The screens sit in
+   a dark frame that matches the interfaces themselves. Hover keeps the lift
+   and the picture zoom, with a softer shadow. Scoped to the home section
+   (#work) and the Work page's case list (#cases).
+   ========================================================================== */
+:is(#work, #cases) .h-case,
+:is(#work, #cases) .h-case-cobalt,
+:is(#work, #cases) .h-case-ink,
+:is(#work, #cases) .h-case-sun {
+  color: var(--h-text);
+  background: var(--h-white);
+  box-shadow: inset 0 0 0 1px var(--h-line);
+}
+
+:is(#work, #cases) .h-case .h-shot { background-color: var(--h-surface); box-shadow: inset 0 0 0 1px var(--h-line); }
+:is(#work, #cases) .h-case-title { color: var(--h-ink); }
+:is(#work, #cases) .h-case-industry { color: var(--h-muted); opacity: 1; }
+:is(#work, #cases) .h-case-text { color: var(--h-text); opacity: 1; }
+:is(#work, #cases) .h-case-pill { color: var(--h-text); border-color: var(--h-line); background: var(--h-bone); }
+:is(#work, #cases) .h-case-fig { color: var(--h-cobalt); }
+:is(#work, #cases) .h-case-figlabel { color: var(--h-muted); opacity: 1; }
+:is(#work, #cases) .h-case-link { color: var(--h-ink); }
+
+@media (hover: hover) {
+  :is(#work, #cases) .h-case:hover,
+  :is(#work, #cases) .h-case-cobalt:hover,
+  :is(#work, #cases) .h-case-ink:hover,
+  :is(#work, #cases) .h-case-sun:hover {
+    translate: 0 -6px;
+    box-shadow: inset 0 0 0 1px var(--h-line), var(--h-shadow-card);
+  }
+}
+
+/* Selected work as alternating rows: three equal full-width rows, the screen
+   left, right, left. Every screen has the interfaces' own proportions (720 x
+   560), so it shows whole and every row is the same height. */
+:is(#work, #cases) .h-bento { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+
+:is(#work, #cases) .h-case,
+:is(#work, #cases) .h-case-1,
+:is(#work, #cases) .h-case-2,
+:is(#work, #cases) .h-case-3 {
+  grid-column: 1 / -1;
+  grid-row: auto;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(28px, 4vw, 64px);
+}
+
+:is(#work, #cases) .h-case:nth-child(even) { flex-direction: row-reverse; }
+
+:is(#work, #cases) .h-case .h-shot,
+:is(#work, #cases) .h-case-1 .h-shot,
+:is(#work, #cases) .h-case-2 .h-shot,
+:is(#work, #cases) .h-case-3 .h-shot {
+  flex: 0 0 46%;
+  aspect-ratio: 720 / 560;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+}
+
+:is(#work, #cases) .h-case .h-shot-img { object-position: left top; }
+
+:is(#work, #cases) .h-case-body,
+:is(#work, #cases) .h-case-1 .h-case-body { flex: 1 1 auto; padding: 8px clamp(4px, 1.6vw, 28px); }
+
+:is(#work, #cases) .h-case-foot { margin-top: 28px; }
+
+@media (max-width: 768px) {
+  :is(#work, #cases) .h-case,
+  :is(#work, #cases) .h-case:nth-child(even),
+  :is(#work, #cases) .h-case-1,
+  :is(#work, #cases) .h-case-2,
+  :is(#work, #cases) .h-case-3 { flex-direction: column; align-items: stretch; gap: 22px; }
+  :is(#work, #cases) .h-case .h-shot,
+  :is(#work, #cases) .h-case-1 .h-shot,
+  :is(#work, #cases) .h-case-2 .h-shot,
+  :is(#work, #cases) .h-case-3 .h-shot { flex: none; width: 100%; }
+  :is(#work, #cases) .h-case-body,
+  :is(#work, #cases) .h-case-1 .h-case-body { padding: 0 4px 6px; }
+}
+
+/* ==========================================================================
+   Services: the slab stacks in the parent red. The top cap is --h-cobalt
+   (#BC263A) with a lighter red highlight; the layers beneath step darker into
+   the deep red, so each stack reads as one brand-red object with depth. The
+   amber blend is gone. Scoped to #services.
+   ========================================================================== */
+#services .hs-slab {
+  background: linear-gradient(135deg, var(--h-cobalt), var(--h-cobalt-deep));
+  border: 1px solid var(--h-cobalt-soft);
+  opacity: 1;
+}
+#services .hs-slab:not(:last-child) {
+  background: linear-gradient(135deg, var(--h-cobalt-deep), var(--h-wine-700));
+  border-color: var(--h-cobalt-light);
+  opacity: 0.85;
+}
+#services .hs-slab:last-child {
+  background: linear-gradient(135deg, var(--h-cobalt-light) 0%, var(--h-cobalt) 55%, var(--h-cobalt-deep) 100%);
+  border-color: var(--h-white);
+  box-shadow: 0 6px 14px -6px var(--h-glow-cobalt);
+}
+
+/* ==========================================================================
+   Header, editorial. Every page. One full-width bar (logo, nav, CTA) with its
+   content on the page's own column. Transparent over the hero; once scrolled
+   (data-scrolled, set by motion.js) it tightens and sits on solid deep wine. Links underline rather than sit in pills; the current page
+   carries an amber rule. Overrides the earlier header passes.
+   ========================================================================== */
+.hh {
+  top: 0;
+  padding: 0;
+  pointer-events: auto;
+  background: transparent;
+  transition: background 350ms ease;
+}
+
+.hh[data-scrolled='true'],
+.hh:has(.hh-menu[open]) { background: var(--h-ink); }
+
+.hh-in {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4.5vw, 64px);
+}
+
+/* ---- The main bar ---- */
+.hh-bar,
+.hh[data-scrolled='true'] .hh-bar {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--h-glass-line);
+  border-radius: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.hh-bar-in {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 40px;
+  height: 76px;
+  transition: height 450ms var(--ease-out-expo);
+}
+
+.hh[data-scrolled='true'] .hh-bar-in { height: 64px; }
+
+.hh-logo { font-size: 24px; }
+
+/* Nav: plain links with an underline that draws in; the current page holds
+   an amber rule. */
+.hh-nav {
+  justify-self: center;
+  display: flex;
+  gap: clamp(20px, 2.6vw, 40px);
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.hh-link,
+.hh-link:hover,
+.hh-link:focus-visible,
+.hh-link[aria-current='page'] { background: none; box-shadow: none; border-radius: 0; }
+
+.hh-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  font-size: 14.5px;
+  font-weight: var(--fw-medium);
+  color: var(--h-on-red);
+}
+
+.hh-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 380ms var(--ease-out-expo);
+}
+
+.hh-link:hover,
+.hh-link:focus-visible { color: var(--h-white); }
+.hh-link:hover::after,
+.hh-link:focus-visible::after { transform: scaleX(1); transform-origin: left center; }
+
+.hh-link[aria-current='page'] { color: var(--h-white); }
+.hh-link[aria-current='page']::after { transform: scaleX(1); background: var(--h-sun); }
+
+/* CTA: a squared white button; the arrow travels on hover. */
+.hh-cta,
+.hh[data-scrolled='true'] .hh-cta {
+  min-height: 44px;
+  padding: 0 18px 0 20px;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--h-ink);
+  background: var(--h-white);
+  border-radius: 6px;
+  translate: none;
+  transition: background var(--dur-hover) ease, color var(--dur-hover) ease;
+}
+
+.hh-cta-arrow,
+.hh-cta:hover .hh-cta-arrow {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  font-size: 16px;
+  color: var(--h-cobalt);
+  background: none;
+  border-radius: 0;
+  transform: none;
+  transition: transform var(--dur-hover) var(--ease-soft), color var(--dur-hover) ease;
+}
+
+.hh-cta:hover { color: var(--h-white); background: var(--h-cobalt); }
+.hh-cta:hover .hh-cta-arrow { color: var(--h-white); transform: translateX(4px); }
+
+/* ---- Menu (tablet and phone) ---- */
+.hh-menu > summary {
+  gap: 10px;
+  padding: 0 14px;
+  background: none;
+  border: 1px solid var(--h-glass-line);
+  border-radius: 6px;
+}
+
+.hh-menu-icon { display: grid; gap: 5px; width: 16px; }
+.hh-menu-icon i { display: block; height: 1.5px; background: var(--h-white); transition: transform 300ms var(--ease-out-expo); }
+.hh-menu[open] .hh-menu-icon i:first-child { transform: translateY(3.25px) rotate(45deg); }
+.hh-menu[open] .hh-menu-icon i:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+.hh-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: calc(100svh - 64px);
+  overflow-y: auto;
+  padding: 8px clamp(20px, 4.5vw, 64px) 28px;
+  background: var(--h-ink);
+  border: 0;
+  border-bottom: 1px solid var(--h-glass-line);
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.hh-panel-link { min-height: 60px; font-size: 28px; }
+.hh-panel-link[aria-current='page'] { color: var(--h-cobalt-light); }
+.hh-panel-cta { margin-top: 24px; }
+.hh-panel-contact { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 20px 0 0; font-size: 14px; }
+.hh-panel-contact a { display: inline-flex; align-items: center; min-height: 44px; color: var(--h-text-dark); }
+
+@media (max-width: 1024px) {
+  .hh-bar-in,
+  .hh[data-scrolled='true'] .hh-bar-in { grid-template-columns: 1fr auto; height: 64px; }
+  .hh-nav,
+  .hh-cta,
+  .hh[data-scrolled='true'] .hh-cta { display: none; }
+  .hh-menu { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hh,
+  .hh-bar-in,
+  .hh-link::after,
+  .hh-menu-icon i { transition: none; }
+}
+
+/* Work page: the case list keeps its anchors clear of the fixed header, and
+   cards whose text runs longer than the screen align to the top. */
+#cases .h-case { scroll-margin-top: 96px; }
+#cases .h-case-text + .h-case-text { margin-top: 12px; }
+#cases .h-bento + .h-pull { margin-top: clamp(48px, 6vw, 88px); }
+
+/* Closing band ("Start Here"), every page: no doubled gap above it. On the
+   same bone ground as the band, the previous section's own bottom padding is
+   the only gap; after a white or dark section the band keeps a short margin
+   of its own, so the panel still reads as set on the page. */
+.sh { padding-top: clamp(24px, 3vw, 44px); }
+.h-bone + .sh { padding-top: 0; }
+
+/* ==========================================================================
+   "Start Here", every page: the hero's ground. Deep wine on the left behind
+   the copy, the parent red on the right; the hero's dot texture, absent on
+   the left; and the AI-chip picture, recoloured into the red and screened in
+   behind the dial so only its light and linework show.
+   ========================================================================== */
+html:not([data-theme='dark']) .sh-panel {
+  background: linear-gradient(90deg, var(--h-wine-900) 0%, var(--h-wine-900) 18%, var(--h-wine-800) 38%, var(--h-cobalt-deep) 60%, var(--h-cobalt) 86%, var(--h-cobalt) 100%);
+}
+
+/* The picture. */
+.sh-bg::before {
+  content: '';
+  position: absolute;
+  /* A box at the top right of the panel; the chip is centred in the picture,
+     so `cover` puts it in the middle of this box. */
+  top: -24%;
+  right: -6%;
+  width: 60%;
+  height: 100%;
+  background: url('/work/ai-chip.jpg') center 30% / cover no-repeat;
+  filter: grayscale(1) sepia(1) hue-rotate(-42deg) saturate(3.4) brightness(1.2) contrast(1.1) drop-shadow(0 0 18px var(--h-glow-cobalt));
+  opacity: 0.85;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 34%), linear-gradient(180deg, black 55%, transparent 92%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, black 34%), linear-gradient(180deg, black 55%, transparent 92%);
+  mask-composite: intersect;
+}
+
+/* The whole background layer screens onto the panel, so the picture's black
+   ground (and the texture's gaps) drop out and only light remains. */
+.sh-bg { mix-blend-mode: screen; }
+
+/* The hero's dot texture, replacing the square grid. */
+.sh-grid {
+  background-image: radial-gradient(circle, var(--h-lit-3) 1.2px, transparent 1.8px);
+  background-size: 22px 22px;
+  opacity: 0.7;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 46%, black 82%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 46%, black 82%);
+}
+
+/* The glow stays on the right only, and quieter. */
+.sh-glow { opacity: 0.6; }
+
+/* Stacked (dial above the copy): the picture and texture sit behind the dial
+   at the top and fade before the text. */
+@media (max-width: 900px) {
+  html:not([data-theme='dark']) .sh-panel {
+    background: linear-gradient(180deg, var(--h-cobalt) 0%, var(--h-cobalt-deep) 30%, var(--h-wine-800) 52%, var(--h-wine-900) 78%);
+  }
+  .sh-bg::before {
+    top: -4%;
+    right: -14%;
+    width: 90%;
+    height: 42%;
+    background-position: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 30%), linear-gradient(180deg, black 50%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 30%), linear-gradient(180deg, black 50%, transparent 100%);
+  }
+  .sh-grid {
+    -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 44%);
+    mask-image: linear-gradient(180deg, black 0%, transparent 44%);
+  }
+}
+
+/* ==========================================================================
+   Services, "How we engage": the timeline and the stages as one figure. Each
+   stage card sits under its own segment; the columns follow the segments'
+   proportions (--cols, built from timelines.json in the markup), with a floor so the short
+   stages stay readable. The gate is a red line dropped between the diagnostic
+   and the scope, labelled where it falls. Stacked, it becomes a vertical
+   timeline with each segment down the left of its card.
+   ========================================================================== */
+.sv-flow {
+  grid-template-columns: var(--cols);
+  gap: 0 20px;
+  padding-top: 40px;
+}
+
+.sv-stage,
+.sv-stage:hover { position: relative; display: flex; flex-direction: column; padding: 0; background: none; border: 0; border-radius: 0; translate: none; }
+
+/* The segment above each card, in the timeline's own vocabulary. */
+.sv-rail { display: block; height: 12px; border-radius: 6px; }
+.sv-stage-solid .sv-rail { background: var(--h-ink); }
+.sv-stage-solid.is-first .sv-rail { background: var(--h-cobalt); }
+.sv-stage-outline .sv-rail { box-shadow: inset 0 0 0 2px var(--h-ink); }
+.sv-stage-open .sv-rail {
+  background: repeating-linear-gradient(135deg, var(--h-ink) 0 2px, transparent 2px 8px);
+  -webkit-mask-image: linear-gradient(to right, black, transparent);
+  mask-image: linear-gradient(to right, black, transparent);
+}
+
+.sv-stage-card {
+  flex: 1;
+  margin-top: 14px;
+  padding: 24px;
+  background: var(--h-bone);
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-r-md);
+  transition: translate var(--dur-hover-slow) var(--ease-soft), background var(--dur-hover) ease, border-color var(--dur-hover) ease;
+}
+.sv-stage.is-first .sv-stage-card { background: var(--h-white); border-color: var(--h-cobalt); }
+.sv-stage-card .h-h3 { margin-top: 14px; }
+.sv-stage-card .h-body { margin-top: 10px; }
+
+@media (hover: hover) {
+  .sv-stage:hover .sv-stage-card { translate: 0 -4px; background: var(--h-white); border-color: var(--h-cobalt); }
+}
+
+/* The gate: a red line in the gutter before Scope, from above the rails to
+   the foot of the cards, its label beside it. */
+.sv-stage:nth-child(2)::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: -40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--h-cobalt);
+}
+.sv-flow .sv-gate {
+  position: absolute;
+  left: 4px;
+  top: -40px;
+  margin: 0;
+  white-space: nowrap;
+  font-weight: var(--fw-medium);
+}
+
+/* Stacked: a vertical timeline. Each segment runs down the left of its card;
+   the gate becomes a red rule with its label between Diagnostic and Scope. */
+@media (max-width: 1024px) {
+  .sv-flow { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: 0; }
+  .sv-stage,
+  .sv-stage:hover { flex-direction: row; gap: 14px; }
+  .sv-rail { flex: none; width: 10px; height: auto; border-radius: 5px; }
+  .sv-stage-open .sv-rail {
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+    mask-image: linear-gradient(to bottom, black, transparent);
+  }
+  .sv-stage-card { margin-top: 0; }
+  .sv-stage:nth-child(2) { flex-wrap: wrap; }
+  .sv-stage:nth-child(2)::before { display: none; }
+  .sv-flow .sv-gate {
+    position: static;
+    flex: 0 0 100%;
+    margin: 4px 0 2px;
+    white-space: normal;
+  }
+  .sv-flow .sv-gate-mark { display: block; }
+}
+
+/* "How we engage", alive. A light travels the timeline every eight seconds;
+   each stage wakes as it passes (lift, red outline, its segment glows) and the
+   gate pulses as it crosses. A line icon per stage; only the retainer's loop
+   turns, slowly, because it is the stage with no end. Static under reduced
+   motion. --at is when the light reaches each stage. */
+.sv-flow { position: relative; }
+
+.sv-stage-card { position: relative; }
+.sv-stage-icon {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  color: var(--h-cobalt);
+  opacity: 0.85;
+}
+.sv-stage-card .sv-step-num { padding-right: 40px; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .sv-stage .sv-stage-card { animation: sv-wake 8s ease-out infinite; animation-delay: var(--at); }
+  .sv-stage .sv-rail { animation: sv-rail 8s ease-out infinite; animation-delay: var(--at); }
+  .sv-stage-open .sv-stage-icon { animation: sv-loop 14s linear infinite; }
+
+  @keyframes sv-wake {
+    0% { translate: 0 0; border-color: var(--h-line); }
+    6% { translate: 0 -4px; border-color: var(--h-cobalt); }
+    22%, 100% { translate: 0 0; border-color: var(--h-line); }
+  }
+  /* filter, not box-shadow: the outlined segment is drawn with an inset shadow. */
+  @keyframes sv-rail {
+    0%, 22%, 100% { filter: drop-shadow(0 0 0 transparent); }
+    6% { filter: drop-shadow(0 0 8px var(--h-glow-cobalt)); }
+  }
+  @keyframes sv-loop { to { rotate: 360deg; } }
+}
+
+/* The first stage keeps its white, red-outlined card between passes. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .sv-stage.is-first .sv-stage-card { animation-name: sv-wake-first; }
+  @keyframes sv-wake-first {
+    0%, 22%, 100% { translate: 0 0; }
+    6% { translate: 0 -4px; }
+  }
+}
+
+/* Stacked: the stages wake in the same order. */
+@media (max-width: 1024px) {
+  .sv-stage .sv-stage-card,
+  .sv-stage .sv-rail { animation-delay: calc(var(--at) * 1.1); }
+}
+
+
+/* Services, the three lines: each card's own picture behind its heading,
+   light and fading into white before the text, so everything after the
+   heading sits on pure white. The middle card is mirrored (heading right).
+   The engagement note is a light red outline, not a filled box. */
+.sv-line-bg { isolation: isolate; overflow: hidden; }
+.sv-line-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  z-index: -1;
+  /* One tint for all three, built from blend layers (bottom up): the picture,
+     drained to grey (saturation with white), inverted so its dark ground is
+     white (difference with white), then lifted to the brand red (lighten):
+     white stays white, the linework turns red. Multiply drops the white. */
+  background:
+    linear-gradient(var(--h-cobalt), var(--h-cobalt)),
+    linear-gradient(var(--h-white), var(--h-white)),
+    linear-gradient(var(--h-white), var(--h-white)),
+    var(--bg) 70% center / cover no-repeat;
+  background-blend-mode: lighten, difference, saturation, normal;
+  mix-blend-mode: multiply;
+  opacity: 0.58;
+  -webkit-mask-image: linear-gradient(90deg, black 45%, transparent 100%), linear-gradient(180deg, black 50%, transparent 85%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, black 45%, transparent 100%), linear-gradient(180deg, black 50%, transparent 85%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+/* The middle card, mirrored. */
+.sv-line-bg:nth-child(2) { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-areas: 'intro head' 'subs eng'; }
+.sv-line-bg:nth-child(2)::before {
+  left: auto;
+  right: 0;
+  -webkit-mask-image: linear-gradient(270deg, black 45%, transparent 100%), linear-gradient(180deg, black 50%, transparent 85%);
+  mask-image: linear-gradient(270deg, black 45%, transparent 100%), linear-gradient(180deg, black 50%, transparent 85%);
+}
+
+/* The engagement note: outline only. */
+.sv-line-bg .sv-line-eng {
+  background: var(--h-white);
+  border: 1px solid var(--h-cobalt-soft);
+  box-shadow: inset 3px 0 0 var(--h-cobalt);
+}
+
+@media (max-width: 1024px) {
+  .sv-line-bg:nth-child(2) { grid-template-columns: 1fr; grid-template-areas: 'head' 'intro' 'eng' 'subs'; }
+  .sv-line-bg::before,
+  .sv-line-bg:nth-child(2)::before {
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 300px;
+    bottom: auto;
+    background-position: 0 0, 0 0, 0 0, 75% center;
+    opacity: 0.45;
+    /* Kept to the top-right corner on narrow screens, clear of the copy. */
+    -webkit-mask-image: linear-gradient(180deg, black 15%, transparent 60%), linear-gradient(90deg, transparent 35%, black 80%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(180deg, black 15%, transparent 60%), linear-gradient(90deg, transparent 35%, black 80%);
+    mask-composite: intersect;
+  }
+}
+
+/* "How we engage": a broad sweeping line behind the stages, pale brand red,
+   with a brighter segment travelling it from start to end. Static (the whole
+   line, no runner) without JavaScript or with reduced motion. */
+#engage { isolation: isolate; }
+#engage > .h-wrap { position: relative; z-index: 1; }
+
+.sv-swoosh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.sv-swoosh svg { width: 100%; height: 100%; }
+.sv-swoosh path { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.sv-swoosh-base { stroke: var(--h-cobalt-soft); stroke-width: 18; }
+/* At rest: a short segment sitting at the start of the line. */
+.sv-swoosh-run { stroke: var(--h-cobalt); stroke-width: 3; opacity: 0.55; stroke-dasharray: 0.16 1; stroke-dashoffset: 0; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .sv-swoosh-base { stroke-dasharray: 1; animation: sv-swoosh-draw 2.4s var(--ease-out-expo) both; }
+  html.m-js .sv-swoosh-run {
+    animation: sv-swoosh-run 9s linear infinite;
+    animation-delay: 1.2s;
+  }
+  @keyframes sv-swoosh-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes sv-swoosh-run { from { stroke-dashoffset: 0.16; } to { stroke-dashoffset: -1; } }
+}
+
+@media (max-width: 768px) {
+  .sv-swoosh-base { stroke-width: 12; }
+  /* Narrow and tall: the drawing at its own proportions, wider than the
+     screen, set behind the stages rather than cropped by the section. */
+  .sv-swoosh svg { position: absolute; top: 28%; left: -70%; width: 240%; height: auto; aspect-ratio: 1440 / 900; }
+}
+
+/* "How we engage": four equal stages, same width and height. */
+@media (min-width: 1025px) {
+  .sv-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
+}
+
+/* "How we engage": no vertical gate line; the gate's label stays above Scope. */
+.sv-stage:nth-child(2)::before { display: none; }
+
+/* "How we engage": all four stage cards white with a light border, no
+   automatic sequence; a light hover only (a small lift and a soft red edge). */
+.sv-stage .sv-stage-card,
+.sv-stage.is-first .sv-stage-card {
+  background: var(--h-white);
+  border-color: var(--h-line);
+  animation: none;
+  transition: translate var(--dur-hover-slow) var(--ease-soft), border-color var(--dur-hover) ease, box-shadow var(--dur-hover-slow) ease;
+}
+.sv-stage .sv-rail { animation: none; }
+.sv-stage-open .sv-stage-icon { animation: none; }
+
+@media (hover: hover) {
+  .sv-stage:hover .sv-stage-card {
+    translate: 0 -3px;
+    background: var(--h-white);
+    border-color: var(--h-cobalt-soft);
+    box-shadow: 0 14px 30px -22px var(--h-glow-cobalt);
+  }
+}
+
+/* ==========================================================================
+   Services, "The work", clean. One background: the network lines
+   (public/hero-network.svg) flowing across the lower half behind the cards,
+   faded at the edges. The cards are plain: a hairline, no fill, the figure
+   on one shared line. Hover lifts the card and warms its edge.
+   ========================================================================== */
+.sv-proof-net {
+  background: url('/hero-network.svg') center bottom / cover no-repeat;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(180deg, transparent 15%, black 55%, black 85%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 15%, black 55%, black 85%, transparent 100%);
+}
+#proof > .h-wrap { position: relative; }
+
+#proof .sv-proof-card {
+  background: var(--h-ink-glass);
+  border: 1px solid var(--h-glass-line);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+#proof .sv-proof-pill { padding: 0; border: 0; border-radius: 0; color: var(--h-muted-dark); }
+@media (hover: hover) {
+  #proof .sv-proof-card:hover { translate: 0 -4px; border-color: var(--h-cobalt-light); }
+}
+
+/* Two lines for every figure label, so the three figures share a line. */
+@media (min-width: 1025px) { .sv-proof-figlabel { min-height: 2.8em; } }
+
+/* "The work", compact: tighter section padding, head and cards. */
+#proof.h-sec { padding-top: clamp(40px, 4.4vw, 64px); padding-bottom: clamp(40px, 4.4vw, 64px); }
+#proof .h-head { margin-bottom: clamp(24px, 2.6vw, 36px); }
+#proof .sv-proof-card { padding: clamp(20px, 2vw, 28px); }
+#proof .sv-proof-pill { margin-top: 10px; }
+#proof .sv-proof-name { margin-top: 10px; font-size: clamp(24px, 2vw, 30px); }
+#proof .sv-proof-fig { padding-top: 18px; font-size: clamp(44px, 4vw, 64px); }
+#proof .sv-proof-figlabel { margin-top: 8px; }
+#proof .sv-proof-link { margin-top: 14px; }
+/* "The work", tighter still; the network lines sit higher, behind the head. */
+#proof.h-sec { padding-top: clamp(32px, 3.4vw, 48px); padding-bottom: clamp(32px, 3.4vw, 48px); }
+#proof .h-head { margin-bottom: 20px; }
+#proof .h-h2 { font-size: clamp(26px, 2.8vw, 40px); }
+#proof .sv-proof-card { padding: 20px 22px; }
+#proof .sv-proof-name { margin-top: 6px; font-size: clamp(22px, 1.8vw, 26px); }
+#proof .sv-proof-industry { margin-top: 4px; }
+#proof .sv-proof-fig { padding-top: 12px; font-size: clamp(38px, 3.4vw, 54px); }
+#proof .sv-proof-link { margin-top: 10px; }
+.sv-proof-net {
+  background-position: center 20%;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 70%, transparent 100%);
+}
+/* The network lines higher still: the picture's band of lines (about 70% down
+   its height) lifted to sit behind the heading. */
+.sv-proof-net {
+  background-position: center 100%;
+  background-size: 100% auto;
+  inset: -55% 0 auto 0;
+  height: 155%;
+  -webkit-mask-image: linear-gradient(180deg, transparent 30%, black 50%, black 75%, transparent 92%);
+  mask-image: linear-gradient(180deg, transparent 30%, black 50%, black 75%, transparent 92%);
+}
+#proof { overflow: hidden; }
+@media (max-width: 768px) {
+  /* Narrow: the lines at a readable scale across the top, behind the head. */
+  .sv-proof-net {
+    inset: 0 0 auto 0;
+    height: 520px;
+    background-size: auto 900px;
+    background-position: 40% -470px;
+    -webkit-mask-image: linear-gradient(180deg, black 30%, transparent 100%);
+    mask-image: linear-gradient(180deg, black 30%, transparent 100%);
+  }
+}
+
+/* ==========================================================================
+   Services, "We are not the right firm for everyone." Clean pass: the list
+   rows highlight when ticked; square checkboxes with a drawn tick; the
+   counter is a white card with a light border and a five-step meter that
+   fills as boxes are ticked (motion.js already toggles .mc-seg.is-on); the
+   "not for" items each carry a small cross.
+   ========================================================================== */
+#fit .sv-fit-row { transition: background var(--dur-hover) ease; }
+#fit .sv-fit-label { padding: 18px 14px; margin: 0 -14px; border-radius: 10px; transition: background var(--dur-hover) ease; }
+@media (hover: hover) { html.m-js #fit .sv-fit-label:hover { background: var(--h-bone); } }
+#fit .sv-fit-row:has(.sv-fit-box:checked) .sv-fit-label { background: var(--h-white); }
+#fit .sv-fit-row:has(.sv-fit-box:checked) .h-body { color: var(--h-ink); }
+
+#fit .sv-fit-box {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--h-line);
+  border-radius: 6px;
+  background: var(--h-white);
+  transition: background var(--dur-hover) ease, border-color var(--dur-hover) ease;
+}
+#fit .sv-fit-label:hover .sv-fit-box { border-color: var(--h-cobalt); }
+#fit .sv-fit-box:checked { background: var(--h-cobalt); border-color: var(--h-cobalt); box-shadow: none; }
+#fit .sv-fit-box:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid var(--h-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* The counter. */
+#fit .sv-fit-side {
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  box-shadow: 0 20px 44px -34px var(--h-wine-900);
+}
+#fit .sv-fit-count { font-weight: var(--fw-semibold); font-size: clamp(36px, 3.4vw, 52px); }
+#fit .sv-fit-count span { color: var(--h-cobalt); }
+
+.sv-fit-meter { display: flex; gap: 6px; margin-top: 18px; }
+.sv-fit-meter .mc-seg {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--h-line);
+  transition: background 300ms ease;
+}
+.sv-fit-meter .mc-seg.is-on { background: var(--h-cobalt); }
+
+/* Not for: a small muted cross before each item. */
+#fit .sv-not-list li { position: relative; padding-top: 44px; }
+.sv-not-mark {
+  position: absolute;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--h-line);
+  border-radius: 50%;
+}
+.sv-not-mark::before,
+.sv-not-mark::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 1.2px;
+  margin: -0.6px 0 0 -4px;
+  background: var(--h-muted);
+  transform: rotate(45deg);
+}
+.sv-not-mark::after { transform: rotate(-45deg); }
+
+@media (max-width: 1024px) {
+  #fit .sv-fit-meter { flex: 1 0 100%; order: 3; margin-top: 4px; }
+}
+@media (max-width: 768px) {
+  #fit .sv-not-list li { padding-top: 16px; padding-left: 30px; }
+  .sv-not-mark { left: 0; top: 18px; }
+}
+.sv-fit-meter .mc-seg { border: 0; box-shadow: none; outline: 0; }
+
+/* Fit counter, centred and compact: number, meter and (once open) the
+   button share one centred column; the button's slot no longer leaves a gap
+   while closed. */
+@media (min-width: 1025px) {
+  #fit .sv-fit-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px 32px;
+  }
+  #fit .sv-fit-count { line-height: 1; }
+  #fit .sv-fit-meter { width: 100%; max-width: 280px; margin-top: 16px; }
+  #fit .sv-fit-cta { display: grid; grid-template-rows: 0fr; margin-top: 0; transition: grid-template-rows 500ms var(--ease-out-expo), opacity var(--dur-reveal) var(--ease-out-expo), visibility 0s linear var(--dur-reveal); }
+  #fit .sv-fit-cta.is-open { grid-template-rows: 1fr; margin-top: 20px; transition: grid-template-rows 500ms var(--ease-out-expo), opacity var(--dur-reveal) var(--ease-out-expo), visibility 0s; }
+  #fit .sv-fit-cta > a { min-height: 0; overflow: hidden; }
+  #fit .sv-fit-cta.is-open > a { min-height: 52px; }
+}
+@media (max-width: 1024px) {
+  #fit .sv-fit-side { justify-content: center; text-align: center; }
+  #fit .sv-fit-count { flex: 1 0 100%; }
+}
+@media (max-width: 1024px) {
+  #fit .sv-fit-side { flex-direction: column; align-items: center; gap: 14px; }
+  #fit .sv-fit-count { flex: none; }
+  #fit .sv-fit-meter { order: 0; flex: none; width: 100%; max-width: 280px; margin-top: 0; }
+  #fit .sv-fit-cta { order: 1; }
+}
+
+/* ==========================================================================
+   Fit counter as a ring. Five arcs round the count; the ring fills as boxes
+   are ticked. The script still toggles .mc-seg.is-on (in order), so the
+   highest lit segment gives the count (--p) without any script change; the
+   segments themselves are not drawn. --fill animates via @property.
+   ========================================================================== */
+@property --fill { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+
+#fit .sv-fit-side,
+#fit .sv-fit-side { --p: 0; --seg: calc(360deg / var(--n, 5)); --fill: calc(var(--p) * var(--seg)); transition: --fill 600ms var(--ease-out-expo); }
+#fit .sv-fit-side:has(.mc-seg:nth-child(1).is-on) { --p: 1; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(2).is-on) { --p: 2; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(3).is-on) { --p: 3; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(4).is-on) { --p: 4; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(5).is-on) { --p: 5; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(6).is-on) { --p: 6; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(7).is-on) { --p: 7; }
+#fit .sv-fit-side:has(.mc-seg:nth-child(8).is-on) { --p: 8; }
+
+.sv-fit-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 168px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+/* The ring: filled arc over a pale track, cut into five by a mask. */
+.sv-fit-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--h-cobalt) 0 var(--fill), var(--h-line) var(--fill) 360deg);
+  -webkit-mask-image:
+    repeating-conic-gradient(from -2deg, transparent 0 4deg, black 4deg var(--seg)),
+    radial-gradient(closest-side, transparent calc(100% - 15px), black calc(100% - 14px));
+  -webkit-mask-composite: source-in;
+  mask-image:
+    repeating-conic-gradient(from -2deg, transparent 0 4deg, black 4deg var(--seg)),
+    radial-gradient(closest-side, transparent calc(100% - 15px), black calc(100% - 14px));
+  mask-composite: intersect;
+}
+#fit .sv-fit-ring .sv-fit-count { position: relative; margin: 0; font-size: 32px; }
+#fit .sv-fit-ring .sv-fit-meter { display: none; }
+
+/* Card and section spacing. */
+#fit.h-sec { padding-top: clamp(48px, 5vw, 72px); padding-bottom: clamp(48px, 5vw, 72px); }
+#fit .h-head { margin-bottom: clamp(24px, 3vw, 40px); }
+#fit .sv-not { margin-top: clamp(32px, 3.6vw, 52px); }
+@media (min-width: 1025px) {
+  #fit .sv-fit-side { padding: 28px; }
+}
+@media (max-width: 1024px) {
+  #fit .sv-fit-side { padding: 24px; }
+  .sv-fit-ring { width: 150px; }
+  #fit .sv-fit-ring .sv-fit-count { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { #fit .sv-fit-side { transition: none; } }
+#fit.h-sec { padding-top: clamp(72px, 7vw, 112px); }
+
+/* The counter card sits level with the first row of the list. */
+@media (min-width: 1025px) { #fit .sv-fit-side { margin-top: 80px; } }
+@media (max-width: 1024px) { #fit .sv-fit-side { margin-top: 28px; } }
+
+/* ==========================================================================
+   Services, "Every stage has an exit." Each stage is one white card of equal
+   height: number, stage, a hairline, then what you hold if you stop there. A
+   small exit mark (an open door arrow) sits top right; the retainer, which
+   has no exit, has a dashed border and a loop mark instead. Light hover only.
+   The three commitments below sit on white too, in one ruled panel.
+   ========================================================================== */
+#arrangement .sv-exits { align-items: stretch; gap: 16px; }
+
+#arrangement .sv-exit {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px 24px;
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  border-top: 1px solid var(--h-line);
+  border-radius: var(--h-r-lg);
+  transition: translate var(--dur-hover-slow) var(--ease-soft), border-color var(--dur-hover) ease, box-shadow var(--dur-hover-slow) ease;
+}
+#arrangement .sv-exit.is-ongoing { border: 1.5px dashed var(--h-cobalt); border-color: color-mix(in srgb, var(--h-cobalt) 45%, transparent); }
+
+#arrangement .sv-exit-num { font-weight: var(--fw-semibold); font-size: clamp(28px, 2.4vw, 36px); line-height: 1; color: var(--h-cobalt); }
+#arrangement .sv-exit > .sv-label { margin-top: 10px; color: var(--h-ink); }
+
+#arrangement .sv-exit-card {
+  flex: 1;
+  margin-top: 18px;
+  padding: 18px 0 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--h-line);
+  border-radius: 0;
+  box-shadow: none;
+  translate: none;
+}
+#arrangement .sv-exit-card .sv-label { color: var(--h-muted); }
+
+/* The exit mark: a door frame with an arrow leaving it. */
+.sv-exit-door {
+  position: absolute;
+  top: 24px;
+  right: 22px;
+  width: 26px;
+  height: 26px;
+  background: var(--h-cobalt);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 4H5v16h5'/><path d='M14 8l4 4-4 4'/><path d='M9 12h9'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M10 4H5v16h5'/><path d='M14 8l4 4-4 4'/><path d='M9 12h9'/></svg>") center / contain no-repeat;
+  opacity: 0.85;
+}
+.sv-exit.is-ongoing .sv-exit-door {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 12a8 8 0 1 1-2.34-5.66'/><path d='M20 4v4.5h-4.5'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 12a8 8 0 1 1-2.34-5.66'/><path d='M20 4v4.5h-4.5'/></svg>");
+}
+
+@media (hover: hover) {
+  #arrangement .sv-exit:hover { translate: 0 -3px; border-color: var(--h-cobalt-soft); box-shadow: 0 14px 30px -22px var(--h-glow-cobalt); }
+  #arrangement .sv-exit:hover .sv-exit-card { translate: none; }
+}
+
+/* Commitments: one white ruled panel. */
+#arrangement .sv-commit {
+  margin-top: clamp(28px, 3vw, 40px);
+  padding: 8px 0;
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-r-lg);
+}
+#arrangement .sv-commit-item,
+#arrangement .sv-commit-item + .sv-commit-item { padding: 28px 32px; }
+#arrangement .sv-commit-item .h-h3 { display: flex; align-items: center; gap: 10px; }
+#arrangement .sv-commit-item .h-h3::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--h-cobalt); }
+
+@media (max-width: 768px) {
+  #arrangement .sv-commit-item,
+  #arrangement .sv-commit-item + .sv-commit-item { padding: 22px 22px; margin-top: 0; }
+}
+
+/* ==========================================================================
+   Diagnostic page, clean pass.
+   ========================================================================== */
+/* The three lenses: solid numbers, one neutral card treatment (the binding
+   lens keeps its amber flag, not an amber frame), and a subgrid so the
+   heading, body and "We ask" line up across the three. */
+#lenses .dg-lenses { grid-template-rows: repeat(3, auto); align-items: stretch; }
+#lenses .dg-lens {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 16px;
+  box-shadow: none;
+  transition: translate var(--dur-hover-slow) var(--ease-soft), border-color var(--dur-hover) ease, box-shadow var(--dur-hover-slow) ease;
+}
+#lenses .dg-lens.is-binding { border-color: var(--h-line); box-shadow: inset 0 3px 0 var(--h-sun); }
+#lenses .dg-lens-num { font-weight: var(--fw-semibold); font-size: clamp(28px, 2.4vw, 36px); letter-spacing: -0.04em; color: var(--h-cobalt); -webkit-text-stroke: 0; }
+#lenses .dg-lens .h-lens-ask { align-self: end; margin-top: 8px; background: none; border-top: 1px solid var(--h-line); border-radius: 0; padding: 16px 0 0; }
+@media (hover: hover) {
+  #lenses .dg-lens:hover { translate: 0 -3px; border-color: var(--h-cobalt-soft); box-shadow: 0 14px 30px -22px var(--h-glow-cobalt); }
+  #lenses .dg-lens.is-binding:hover { box-shadow: inset 0 3px 0 var(--h-sun), 0 14px 30px -22px var(--h-glow-cobalt); }
+}
+@media (max-width: 1024px) { #lenses .dg-lens { display: flex; grid-row: auto; } }
+
+/* How it runs: the bar marks the finding in red; phase cards white with a
+   light border, an icon each, light hover. */
+#runs .sv-bar .sv-seg:last-child { background: var(--h-cobalt); }
+#runs .dg-phase {
+  position: relative;
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  transition: translate var(--dur-hover-slow) var(--ease-soft), border-color var(--dur-hover) ease, box-shadow var(--dur-hover-slow) ease;
+}
+.dg-phase-icon { position: absolute; top: 22px; right: 22px; color: var(--h-cobalt); opacity: 0.85; }
+@media (hover: hover) {
+  #runs .dg-phase:hover { translate: 0 -3px; background: var(--h-white); border-color: var(--h-cobalt-soft); box-shadow: 0 14px 30px -22px var(--h-glow-cobalt); }
+}
+#runs .dg-needs { padding: 28px 32px; background: var(--h-bone); border: 0; border-radius: var(--h-r-lg); }
+
+/* What it returns: the finding mock-up at its content height, the empty page
+   filled with a few more text lines and a figure block. */
+#returns .dg-facs { aspect-ratio: auto; box-shadow: 0 24px 50px -36px var(--h-wine-900); }
+#returns .dg-facs-greek { margin-bottom: 0; }
+#returns .dg-facs-greek::after {
+  content: '';
+  display: block;
+  height: 64px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background:
+    linear-gradient(var(--h-cobalt), var(--h-cobalt)) 14px 100% / 10px 70% no-repeat,
+    linear-gradient(var(--h-cobalt-soft), var(--h-cobalt-soft)) 32px 100% / 10px 45% no-repeat,
+    linear-gradient(var(--h-cobalt-soft), var(--h-cobalt-soft)) 50px 100% / 10px 30% no-repeat,
+    var(--h-bone);
+}
+#returns .dg-facs .sv-label:last-child { margin-top: 18px; }
+
+/* Labels on the dark grounds use the dark-ground muted tone (AA). */
+.h-dark .sv-label { color: var(--h-muted-dark); }
+
+/* ==========================================================================
+   About, clean pass.
+   ========================================================================== */
+/* The firm: the comparison sits under the heading, filling the left column. */
+#firm .ab-handover { margin-top: clamp(28px, 3vw, 40px); box-shadow: none; }
+#firm .ab-two { align-items: start; }
+
+/* Delivery: the three facts on white with a light border and a red marker. */
+#delivery .ab-blocks .ab-block,
+#delivery .ab-blocks .ab-block + .ab-block {
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  transition: translate var(--dur-hover-slow) var(--ease-soft), border-color var(--dur-hover) ease, box-shadow var(--dur-hover-slow) ease;
+}
+#delivery .ab-block .sv-label { display: flex; align-items: center; gap: 10px; }
+#delivery .ab-block .sv-label::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--h-cobalt); }
+@media (hover: hover) {
+  #delivery .ab-block:hover { translate: 0 -3px; border-color: var(--h-cobalt-soft); box-shadow: 0 14px 30px -22px var(--h-glow-cobalt); }
+}
+#delivery .ab-light-card { background: var(--h-bone); }
+
+/* Where: the map card on white, a hairline only. */
+#where .ab-map { background: var(--h-white); }
+
+/* ==========================================================================
+   About, Delivery: the org diagram, alive. The pyramid assembles a row at a
+   time (one, three, nine) and its long way round to you draws in slowly; the
+   senior-led side is the brand red, draws straight to you, and you pulse.
+   Built on the existing .m-draw reveal, so it is final with JavaScript off
+   or reduced motion; the pulse needs motion and JavaScript.
+   ========================================================================== */
+#delivery .org-flat .org-line { stroke: var(--h-cobalt); stroke-width: 1.4; }
+#delivery .org-flat .org-dot,
+#delivery .org-flat .org-node { fill: var(--h-cobalt); }
+#delivery .org-node-label-ink,
+#delivery .org-flat .org-name { color: var(--h-cobalt); }
+#delivery .org-pyramid .org-line-muted { stroke-dasharray: 3 3; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* Pyramid rows in sequence. */
+  html.m-armed #delivery .org-pyramid rect { transition: opacity 400ms ease; }
+  html.m-armed #delivery .org-pyramid rect:nth-of-type(1) { transition-delay: 100ms; }
+  html.m-armed #delivery .org-pyramid rect:nth-of-type(n+2):nth-of-type(-n+4) { transition-delay: 300ms; }
+  html.m-armed #delivery .org-pyramid rect:nth-of-type(n+5):nth-of-type(-n+13) { transition-delay: 500ms; }
+  html.m-armed #delivery .org-pyramid rect:nth-of-type(14) { transition-delay: 1300ms; }
+  /* The long way round: a slow draw after the rows are in. */
+  html.m-armed #delivery .org-pyramid .m-draw:not(.m-done) path { transition: stroke-dashoffset 1000ms ease-in-out 600ms; }
+  html.m-armed #delivery .org-pyramid .org-line-muted { stroke-dasharray: 1; }
+  html.m-armed #delivery .org-pyramid .m-done .org-line-muted { stroke-dasharray: 3 3; }
+
+  /* Senior-led: quick, direct, then you pulse. */
+  html.m-armed #delivery .org-flat .m-draw:not(.m-done) path { transition: stroke-dashoffset 700ms var(--ease-out-expo) 300ms; }
+  html.m-js #delivery .org-flat .org-node {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: org-pulse 2.6s ease-in-out infinite 1.6s;
+  }
+  @keyframes org-pulse {
+    0%, 100% { filter: drop-shadow(0 0 0 transparent); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 6px var(--h-glow-cobalt)); transform: scale(1.15); }
+  }
+}
+
+/* ==========================================================================
+   About, Delivery, redesigned. Two columns under the heading: the copy and
+   three fact rows (icon, title, line) on the left; the animated org diagram
+   in a tall white card on the right, sticky while the copy scrolls.
+   ========================================================================== */
+#delivery .h-head { margin-bottom: clamp(28px, 3vw, 44px); }
+
+.dl-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.dl-copy .ab-prose .h-body + .h-body { margin-top: 16px; }
+
+.dl-facts {
+  margin: clamp(28px, 3vw, 40px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--h-line);
+}
+
+.dl-fact {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--h-line);
+}
+
+.dl-fact-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--h-cobalt);
+  background: var(--h-cobalt-soft);
+  border-radius: 12px;
+  transition: background var(--dur-hover) ease, color var(--dur-hover) ease;
+}
+@media (hover: hover) {
+  .dl-fact:hover .dl-fact-icon { color: var(--h-white); background: var(--h-cobalt); }
+}
+
+.dl-fact-head {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--h-ink);
+}
+.dl-fact-body { margin-top: 4px; font-size: 15.5px; line-height: 1.55; color: var(--h-text); }
+
+.dl-figure {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 440px;
+  padding: clamp(28px, 3vw, 44px);
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-r-lg);
+  box-shadow: 0 30px 60px -48px var(--h-wine-900);
+}
+.dl-figure .org-name { color: var(--h-ink); }
+.dl-figure .org-flat .org-name { color: var(--h-cobalt); }
+
+@media (max-width: 1024px) {
+  .dl-grid { grid-template-columns: minmax(0, 1fr); }
+  .dl-figure { position: static; min-height: 0; order: -1; }
+}
+@media (max-width: 520px) {
+  .dl-fact { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
+  .dl-fact-icon { width: 40px; height: 40px; }
+}
+
+/* ==========================================================================
+   About, Delivery, final. White ground. The copy and a small diagram share
+   one row (no heavy card); the three facts follow as a ruled row of three
+   columns, each opened by a red line that draws in, a small outline icon,
+   the title and its line. No boxes.
+   ========================================================================== */
+#delivery .dl-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
+#delivery .dl-figure,
+#delivery .dl-figure:hover {
+  position: relative;
+  top: auto;
+  order: 0;
+  min-height: 0;
+  max-width: 420px;
+  justify-self: end;
+  width: 100%;
+  padding: 24px 28px;
+  background: var(--h-bone);
+  border: 0;
+  border-radius: var(--h-r-lg);
+  box-shadow: none;
+}
+#delivery .dl-figure .org-caption { margin-top: 12px; }
+
+#delivery .dl-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 48px);
+  margin: clamp(40px, 4.4vw, 64px) 0 0;
+  border: 0;
+}
+#delivery .dl-fact {
+  position: relative;
+  display: block;
+  padding: 26px 0 0;
+  border: 0;
+  border-top: 1px solid var(--h-line);
+}
+.dl-fact-rule {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 56px;
+  height: 2px;
+  background: var(--h-cobalt);
+}
+#delivery .dl-fact-icon {
+  width: auto;
+  height: auto;
+  margin-bottom: 14px;
+  color: var(--h-cobalt);
+  background: none;
+  border-radius: 0;
+  justify-items: start;
+}
+#delivery .dl-fact-head { font-size: 19px; }
+#delivery .dl-fact-body { margin-top: 6px; }
+@media (hover: hover) {
+  #delivery .dl-fact .dl-fact-rule { transition: width 500ms var(--ease-out-expo); }
+  #delivery .dl-fact:hover .dl-fact-rule { width: 100%; }
+  #delivery .dl-fact:hover .dl-fact-icon { color: var(--h-cobalt); background: none; }
+}
+
+@media (max-width: 1024px) {
+  #delivery .dl-grid { grid-template-columns: minmax(0, 1fr); }
+  #delivery .dl-figure { justify-self: start; order: 0; }
+}
+@media (max-width: 768px) {
+  #delivery .dl-facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  #delivery .dl-fact { padding: 20px 0; }
+}
+
+/* About, Delivery: the senior-led circle (SeniorRing.astro), no card. */
+.dl-ring { justify-self: center; width: 100%; max-width: 380px; }
+.sring { margin: 0; }
+.sring svg { display: block; overflow: visible; }
+.sring-orbit { fill: none; stroke: var(--h-line); stroke-width: 1; stroke-dasharray: 2 5; }
+.sring-ring { fill: var(--h-bone); stroke: var(--h-line); stroke-width: 1; }
+.sring-spoke { fill: none; stroke: var(--h-cobalt-soft); stroke-width: 1.4; }
+.sring-signal { fill: none; stroke: var(--h-cobalt); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.18 0.82; stroke-dashoffset: 0; }
+.sring-person circle { fill: var(--h-white); stroke: var(--h-cobalt); stroke-width: 1.6; }
+.sring-person path { fill: none; stroke: var(--h-cobalt); stroke-width: 1.3; stroke-linecap: round; }
+.sring-halo { fill: var(--h-cobalt-soft); }
+.sring-you { fill: var(--h-cobalt); }
+.sring-you-label { font-family: var(--font-text); font-size: 9.5px; font-weight: 600; fill: var(--h-white); }
+.sring-tag rect { fill: var(--h-white); stroke: var(--h-line); stroke-width: 1; }
+.sring-tag text { font-family: var(--font-text); font-size: 8.6px; font-weight: 500; letter-spacing: 0.04em; fill: var(--h-ink); }
+.sring-cap { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 14px; }
+.sring-name { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: 18px; color: var(--h-cobalt); }
+.sring-note { font-size: 13px; color: var(--h-muted); }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .sring-orbit { transform-origin: 130px 130px; animation: sring-turn 50s linear infinite; }
+  html.m-js .sring-halo { transform-origin: 130px 130px; animation: sring-pulse 2.8s ease-in-out infinite; }
+  html.m-js .sring-signal { animation: sring-signal 3.2s ease-in-out infinite; }
+  html.m-js .sring-signal-1 { animation-delay: -0.6s; animation-direction: reverse; }
+  html.m-js .sring-signal-2 { animation-delay: -1.3s; }
+  html.m-js .sring-signal-3 { animation-delay: -1.9s; animation-direction: reverse; }
+  html.m-js .sring-signal-4 { animation-delay: -2.5s; }
+  @keyframes sring-turn { to { transform: rotate(360deg); } }
+  @keyframes sring-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+  @keyframes sring-signal { from { stroke-dashoffset: 0.18; } to { stroke-dashoffset: -1; } }
+}
+@media (max-width: 1024px) { .dl-ring { max-width: 320px; } }
+
+/* Delivery spacing: copy starts right under the heading; tighter rhythm. */
+#delivery .h-head { margin-bottom: 24px; }
+#delivery .dl-grid { align-items: start; row-gap: 32px; }
+#delivery .dl-copy .ab-prose .h-body + .h-body { margin-top: 14px; }
+#delivery .dl-facts { margin-top: clamp(32px, 3.4vw, 48px); }
+@media (min-width: 1025px) { #delivery .dl-ring { margin-top: -40px; } }
+
+/* ==========================================================================
+   About hero: applied AI, integrated (Integrate3D.astro). A glowing AI chip
+   with pins, four stacked systems on its four sides, circuit traces between
+   them and data pulses running in. White light, amber chip, red traces.
+   ========================================================================== */
+.ig-floor {
+  position: absolute; left: 6%; top: 6%; width: 88%; height: 88%; border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--h-lit-2), transparent 62%),
+    repeating-radial-gradient(circle, transparent 0 3.4cqw, var(--h-lit-1) 3.4cqw calc(3.4cqw + 1px));
+  border: 1.5px solid var(--h-lit-3);
+}
+
+/* Traces: from the chip edge to each system, on the floor. */
+.ig-trace { position: absolute; background: var(--h-lit-4); border-radius: 1px; overflow: hidden; }
+.ig-trace-n { left: calc(50% - 1px); top: 14%; width: 2px; height: 24%; }
+.ig-trace-s { left: calc(50% - 1px); top: 62%; width: 2px; height: 24%; }
+.ig-trace-e { top: calc(50% - 1px); left: 62%; height: 2px; width: 24%; }
+.ig-trace-w { top: calc(50% - 1px); left: 14%; height: 2px; width: 24%; }
+.ig-trace i { position: absolute; display: block; background: var(--h-white); box-shadow: 0 0 1.4cqw var(--h-white); border-radius: 2px; }
+.ig-trace-n i, .ig-trace-s i { left: 0; width: 100%; height: 22%; }
+.ig-trace-e i, .ig-trace-w i { top: 0; height: 100%; width: 22%; }
+.ig-trace-n i { top: 0; }
+.ig-trace-s i { bottom: 0; }
+.ig-trace-e i { right: 0; }
+.ig-trace-w i { left: 0; }
+
+/* Systems: stacked glass slabs. */
+.ig-sys { width: 13%; height: 13%; transform: translateZ(var(--z)); }
+.ig-sys .bx-f { background: linear-gradient(135deg, var(--h-lit-4), var(--h-lit-1)), var(--h-glass-red); border: 1.5px solid var(--h-lit-6); box-shadow: 0 0 1.6cqw var(--h-lit-2); }
+.ig-sys .bx-top { border-radius: 14%; }
+
+/* The chip. */
+.ig-chip { left: 38%; top: 38%; width: 24%; height: 24%; }
+.ig-chip .bx-f { background: linear-gradient(135deg, var(--h-lit-6), var(--h-lit-2)), var(--h-glass-red); border: 2px solid var(--h-white); box-shadow: 0 0 3cqw var(--h-lit-3); }
+.ig-chip .bx-top { border-radius: 10%; }
+.ig-chip-core {
+  position: absolute; left: 22%; top: 22%; width: 56%; height: 56%;
+  transform: translateZ(calc(var(--h) + 0.2cqw));
+  border-radius: 12%;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 1.6cqw, var(--h-lit-3) 1.6cqw calc(1.6cqw + 1px)),
+    repeating-linear-gradient(90deg, transparent 0 1.6cqw, var(--h-lit-3) 1.6cqw calc(1.6cqw + 1px)),
+    linear-gradient(135deg, var(--h-sun), var(--h-sun-soft));
+  box-shadow: 0 0 3cqw var(--h-sun-ring);
+}
+.ig-tag {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%) translateZ(calc(var(--h) + 6cqw)) rotateZ(40deg) rotateX(-60deg);
+  padding: 0.6cqw 1.8cqw;
+  font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 2.4cqw; letter-spacing: 0.1em;
+  color: var(--h-ink); background: var(--h-white); border-radius: 999px;
+}
+
+/* Pins along the chip's four edges. */
+.ig-pin { position: absolute; width: 1.2%; height: 2.6%; background: var(--h-lit-6); border-radius: 1px; }
+.ig-pin-n { left: calc(41% + var(--p) * 4.2%); top: 35.2%; }
+.ig-pin-s { left: calc(41% + var(--p) * 4.2%); top: 62.2%; }
+.ig-pin-e { width: 2.6%; height: 1.2%; top: calc(41% + var(--p) * 4.2%); left: 62.2%; }
+.ig-pin-w { width: 2.6%; height: 1.2%; top: calc(41% + var(--p) * 4.2%); left: 35.2%; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .ig-trace-n i { animation: ig-in-n 2.6s cubic-bezier(.5,0,.5,1) infinite; }
+  html.m-js .ig-trace-s i { animation: ig-in-s 2.6s cubic-bezier(.5,0,.5,1) infinite -0.65s; }
+  html.m-js .ig-trace-e i { animation: ig-in-e 2.6s cubic-bezier(.5,0,.5,1) infinite -1.3s; }
+  html.m-js .ig-trace-w i { animation: ig-in-w 2.6s cubic-bezier(.5,0,.5,1) infinite -1.95s; }
+  html.m-js .ig-chip-core { animation: ig-glow 2.6s ease-in-out infinite alternate; }
+  html.m-js .ig-scene { animation: ig-sway 16s ease-in-out infinite alternate; }
+  @keyframes ig-in-n { from { transform: translateY(0); } to { transform: translateY(360%); } }
+  @keyframes ig-in-s { from { transform: translateY(0); } to { transform: translateY(-360%); } }
+  @keyframes ig-in-e { from { transform: translateX(0); } to { transform: translateX(-360%); } }
+  @keyframes ig-in-w { from { transform: translateX(0); } to { transform: translateX(360%); } }
+  @keyframes ig-glow { from { box-shadow: 0 0 1.6cqw var(--h-sun-ring); } to { box-shadow: 0 0 5cqw var(--h-sun), 0 0 1.4cqw var(--h-sun); } }
+  @keyframes ig-sway { from { transform: rotateX(60deg) rotateZ(-46deg); } to { transform: rotateX(58deg) rotateZ(-34deg); } }
+}
+
+/* ==========================================================================
+   About, Delivery: inside a thin rounded border; the heading moves into the
+   left column so the circle sits at the top right beside it.
+   ========================================================================== */
+.dl-box {
+  padding: clamp(28px, 3.6vw, 56px);
+  border: 1px solid var(--h-line);
+  border-radius: clamp(24px, 2.6vw, 36px);
+}
+#delivery .dl-copy .h-head { margin-bottom: 20px; }
+#delivery .dl-copy .h-head-main .h-h2 { max-width: 16ch; }
+@media (min-width: 1025px) { #delivery .dl-ring { margin-top: 0; } }
+#delivery .dl-grid { align-items: start; }
+#delivery .dl-facts { margin-top: clamp(28px, 3vw, 40px); }
+#delivery .sring-you-label { font-size: 8.6px; letter-spacing: -0.01em; }
+@media (max-width: 520px) { .dl-box { padding: 24px 20px; } }
+
+/* About hero, more AI: a neural network floating above the chip (upright,
+   facing the viewer), a beam rising from the chip into it, signals running
+   through its connections, sparks, and an orbit ring round the platform. */
+.ig-orbit { position: absolute; left: 14%; top: 14%; width: 72%; height: 72%; border-radius: 50%; border: 2px dashed var(--h-lit-6); }
+.ig-orbit i { position: absolute; left: 50%; top: -1cqw; width: 2cqw; height: 2cqw; margin-left: -1cqw; border-radius: 50%; background: var(--h-sun); box-shadow: 0 0 2cqw var(--h-sun); }
+
+.ig-beam {
+  position: absolute; left: 50%; top: 50%; width: 1.6cqw; height: 26cqw; margin-left: -0.8cqw;
+  transform-origin: top center;
+  transform: translateZ(4cqw) rotateX(-90deg);
+  background: linear-gradient(var(--h-white), transparent);
+  filter: blur(0.4cqw);
+  opacity: 0.75;
+}
+
+.ig-spark { position: absolute; width: 1cqw; height: 1cqw; border-radius: 0.3cqw; background: var(--h-white); box-shadow: 0 0 1.4cqw var(--h-white); transform: translateZ(8cqw); }
+.ig-spark:nth-of-type(odd) { background: var(--h-sun); box-shadow: 0 0 1.4cqw var(--h-sun); }
+
+.ig-net-slot {
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(34cqw) rotateZ(40deg) rotateX(-60deg);
+}
+.ig-net { position: absolute; left: -24cqw; top: -14.4cqw; width: 48cqw; max-width: none; height: 28.8cqw; overflow: visible; }
+.ig-edge { stroke: var(--h-lit-3); stroke-width: 0.8; }
+.ig-sig { stroke: var(--h-white); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 0.16 0.84; stroke-dashoffset: 0.16; filter: drop-shadow(0 0 2px var(--h-white)); }
+.ig-node { fill: var(--h-wine-800); stroke: var(--h-lit-7); stroke-width: 1.4; }
+.ig-node-2 { fill: var(--h-sun); stroke: var(--h-sun); }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .ig-orbit { animation: ig-turn 22s linear infinite; }
+  html.m-js .ig-sig { animation: ig-sig 2.4s linear infinite; }
+  html.m-js .ig-sig-1 { animation-delay: -0.3s; } html.m-js .ig-sig-2 { animation-delay: -0.6s; }
+  html.m-js .ig-sig-3 { animation-delay: -0.9s; } html.m-js .ig-sig-4 { animation-delay: -1.2s; }
+  html.m-js .ig-sig-5 { animation-delay: -1.5s; } html.m-js .ig-sig-6 { animation-delay: -1.8s; }
+  html.m-js .ig-sig-7 { animation-delay: -2.1s; }
+  html.m-js .ig-node { transform-box: fill-box; transform-origin: center; animation: ig-think 3s ease-in-out infinite; }
+  html.m-js .ig-node-1 { animation-delay: -0.5s; } html.m-js .ig-node-2 { animation-delay: -1s; }
+  html.m-js .ig-node-3 { animation-delay: -1.5s; } html.m-js .ig-node-4 { animation-delay: -2s; } html.m-js .ig-node-5 { animation-delay: -2.5s; }
+  html.m-js .ig-net-slot { animation: ig-float 6s ease-in-out infinite alternate; }
+  html.m-js .ig-beam { animation: ig-beam 2.2s ease-in-out infinite alternate; }
+  html.m-js .ig-spark { animation: ig-rise 4.2s linear infinite; }
+  html.m-js .ig-spark-1 { animation-delay: -0.8s; } html.m-js .ig-spark-2 { animation-delay: -1.6s; }
+  html.m-js .ig-spark-3 { animation-delay: -2.4s; } html.m-js .ig-spark-4 { animation-delay: -3.2s; }
+  @keyframes ig-turn { to { transform: rotate(360deg); } }
+  @keyframes ig-sig { from { stroke-dashoffset: 0.16; } to { stroke-dashoffset: -1; } }
+  @keyframes ig-think { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  @keyframes ig-float { from { translate: 0 0 -1cqw; } to { translate: 0 0 2cqw; } }
+  @keyframes ig-beam { from { opacity: 0.45; } to { opacity: 0.9; } }
+  @keyframes ig-rise { from { transform: translateZ(6cqw); } to { transform: translateZ(34cqw); } }
+}

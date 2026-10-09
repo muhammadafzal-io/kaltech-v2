@@ -85,9 +85,9 @@ const fork = diagnostic.fork;
 const returns = diagnostic.returns.map((r) => r.short);
 const tone = ['cobalt', 'ink', 'sun'];
 const shots: Record<string, string> = {
-  kalpay: '/work/kalpay-leads.jpg',
-  'ahw-global': '/work/ahw-global-shipments.svg',
-  becs: '/work/becs-inventory.svg',
+  kalpay: '/work/kalpay-ui.svg',
+  'ahw-global': '/work/ahw-global-shipments-ui.svg',
+  becs: '/work/becs-inventory-ui.svg',
 };
 const caseById = Object.fromEntries(cases.map((c) => [c.id, c]));
 
@@ -115,7 +115,7 @@ const clientLogos = [
   <HomeHeader />
 
   <!-- 01 Hero -->
-  <section class="h-hero h-dark" id="top" data-fx-hero>
+  <section class="h-hero h-hero-home h-dark" id="top" data-fx-hero>
     <div class="h-hero-bg" aria-hidden="true">
       <span class="h-hero-grid"></span>
       <span class="h-orb h-orb-a"></span>

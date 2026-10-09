@@ -40,6 +40,14 @@ const proof = [
 const set = fit.services;
 const need = set.items.length - 1;
 const segs = timelines.engage.segments;
+// A line icon per stage (decorative): scan, blueprint, build, loop.
+const stageIcons = [
+  '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M7.5 10.5h6"/>',
+  '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 13h5M13 16.5h3"/>',
+  '<path d="M3 15l9 4.5 9-4.5"/><path d="M3 11l9 4.5 9-4.5"/><path d="M3 7l9-4.5L21 7l-9 4.5z"/>',
+  '<path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/>',
+];
+
 ---
 
 <Base
@@ -103,7 +111,7 @@ const segs = timelines.engage.segments;
             const rest = l.subs.filter((x) => x.head !== ENGAGEMENT);
             const at = l.title.indexOf(l.accent);
             return (
-              <article class="sv-line m-reveal" data-spotlight>
+              <article class="sv-line sv-line-bg m-reveal" data-spotlight style={`--bg:url('/services/${l.accent}.webp');--hue:${{ consulting: 168, development: 140, transformation: 128 }[l.accent] ?? 140}deg`}>
                 <div class="sv-line-head">
                   <p class="sv-line-num">{l.num}</p>
                   <h2 class="sv-line-title">
@@ -135,6 +143,14 @@ const segs = timelines.engage.segments;
 
   <!-- How we engage -->
   <section class="h-sec h-white" id="engage">
+    <!-- A sweeping line behind the stages; a brighter segment travels it from
+         start to end. Decorative. -->
+    <div class="sv-swoosh" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <path class="sv-swoosh-base" pathLength="1" d="M-80 700 C 200 640, 420 380, 760 330 C 1100 280, 1400 420, 1320 600 C 1240 780, 900 800, 820 640 C 740 480, 1000 220, 1540 170" />
+        <path class="sv-swoosh-run" pathLength="1" d="M-80 700 C 200 640, 420 380, 760 330 C 1100 280, 1400 420, 1320 600 C 1240 780, 900 800, 820 640 C 740 480, 1000 220, 1540 170" />
+      </svg>
+    </div>
     <div class="h-wrap">
       <div class="h-head">
         <div class="h-head-main">
@@ -148,20 +164,24 @@ const segs = timelines.engage.segments;
         </p>
       </div>
 
-      <div class="sv-bar m-reveal" role="img" aria-label="Diagnostic and scope are short, the build is the longest stage, and the retainer has no fixed end. Nothing past the diagnostic is scoped without a finding.">
-        {segs.map((s, i) => <span class={`sv-seg sv-seg-${s.state}${i === 0 ? ' is-first' : ''}`} style={`flex:${s.width}`}></span>)}
-      </div>
-      <p class="sv-gate m-reveal"><span class="sv-gate-mark" aria-hidden="true"></span>{timelines.engage.gateLabel}</p>
-
-      <ol class="sv-steps">
+      <!-- The timeline and the stages as one figure: each stage sits under its
+           own segment, the columns follow the segments' proportions, and the
+           gate drops between the diagnostic and everything after it. -->
+      <p class="visually-hidden">Diagnostic and scope are short, the build is the longest stage, and the retainer has no fixed end. Nothing past the diagnostic is scoped without a finding.</p>
+      <ol class="sv-steps sv-flow" style={`--cols:${segs.map((sg, i) => (i < 2 ? `minmax(220px, ${sg.width}fr)` : `minmax(0, ${sg.width}fr)`)).join(' ')}`}>
         {
-          steps.map((st) => (
-            <li class="sv-step m-reveal" data-spotlight>
-              <p class="sv-step-num">{st.num}</p>
-              <h3 class="h-h3">
-                {st.href ? <a class="h-hlink" href={st.href}>{st.title}</a> : st.title}
-              </h3>
-              <p class="h-body">{st.body}</p>
+          steps.map((st, i) => (
+            <li class={`sv-step sv-stage sv-stage-${segs[i].state}${i === 0 ? ' is-first' : ''} m-reveal`} style={`--at:${[0, 1.2, 2.4, 4.4][i]}s`}>
+              {i === 1 && <p class="sv-gate"><span class="sv-gate-mark" aria-hidden="true"></span>{timelines.engage.gateLabel}</p>}
+              <span class="sv-rail" aria-hidden="true"></span>
+              <div class="sv-stage-card">
+                <svg class="sv-stage-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={stageIcons[i]} />
+                <p class="sv-step-num">{st.num}</p>
+                <h3 class="h-h3">
+                  {st.href ? <a class="h-hlink" href={st.href}>{st.title}</a> : st.title}
+                </h3>
+                <p class="h-body">{st.body}</p>
+              </div>
             </li>
           ))
         }
@@ -188,7 +208,8 @@ const segs = timelines.engage.segments;
       <ol class="sv-exits">
         {
           exits.map((e) => (
-            <li class="sv-exit m-reveal" data-spotlight>
+            <li class={`sv-exit m-reveal${e.num === '04' ? ' is-ongoing' : ''}`}>
+              <span class="sv-exit-door" aria-hidden="true"></span>
               <p class="sv-exit-num">{e.num}</p>
               <p class="sv-label">{e.stage}</p>
               <div class="sv-exit-card">
@@ -215,7 +236,7 @@ const segs = timelines.engage.segments;
 
   <!-- The work -->
   <section class="h-sec h-dark" id="proof">
-    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-dark-bg sv-proof-net" aria-hidden="true"></div>
     <div class="h-wrap">
       <div class="h-head">
         <div class="h-head-main">
@@ -283,8 +304,11 @@ const segs = timelines.engage.segments;
           </ul>
         </div>
 
-        <aside class="sv-fit-side" data-js-control>
-          <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+        <aside class="sv-fit-side" data-js-control style={`--n:${set.items.length}`}>
+          <div class="sv-fit-ring">
+            <p class="sv-fit-count" aria-live="polite"><span data-fit-n>0</span> of {set.items.length}</p>
+            <span class="sv-fit-meter" aria-hidden="true">{set.items.map(() => <i class="mc-seg"></i>)}</span>
+          </div>
           <p class="sv-fit-cta" data-fit-cta>
             <a class="h-btn h-btn-primary" href={fit.cta.href}><span>{fit.cta.label}</span><span class="h-btn-arrow" aria-hidden="true">&#8594;</span></a>
           </p>
@@ -294,7 +318,7 @@ const segs = timelines.engage.segments;
       <div class="sv-not">
         <h3 class="h-h3">{set.notTitle}</h3>
         <ul class="sv-not-list">
-          {set.not.map((t) => <li class="h-body">{t}</li>)}
+          {set.not.map((t) => <li class="h-body"><span class="sv-not-mark" aria-hidden="true"></span>{t}</li>)}
         </ul>
       </div>
     </div>

@@ -1,0 +1,72 @@
+---
+// ABOUT: applied AI, integrated. An AI chip at the centre of a ringed
+// platform; four existing systems on its four sides, each joined to the chip
+// by a circuit trace, with data pulses running in along every trace. Same
+// stage and glass material as the other page artwork (.x3, .bx).
+interface Props { label: string }
+const { label } = Astro.props;
+const faces = ['front', 'back', 'left', 'right', 'top'];
+// System blocks: left/top in %, layers stacked.
+const systems = [
+  { x: 43, y: 4, layers: 3 },
+  { x: 82, y: 43, layers: 2 },
+  { x: 43, y: 82, layers: 3 },
+  { x: 4, y: 43, layers: 2 },
+];
+const pins = [0, 1, 2, 3, 4];
+// A small neural network (three layers) floating above the chip, facing the
+// viewer: node positions in an SVG of 200 x 120.
+const layers = [[20, 46, 74, 100], [20, 40, 60, 80, 100], [36, 60, 84]].map((ys, l) =>
+  ys.map((y) => [30 + l * 70, y])
+);
+const edges: number[][] = [];
+for (let l = 0; l < layers.length - 1; l++)
+  for (const a of layers[l]) for (const b of layers[l + 1]) edges.push([a[0], a[1], b[0], b[1]]);
+const hot = [0, 5, 9, 14, 18, 23, 27, 31];
+const sparks = [[46, 44], [56, 40], [52, 58], [44, 54], [60, 50]];
+
+---
+
+<figure class="x3 ig" aria-label={label}>
+  <div class="x3-stage" aria-hidden="true">
+    <span class="sv3-halo"></span>
+    <div class="x3-scene ig-scene">
+      <span class="ig-floor"></span>
+      <span class="ig-orbit"><i></i></span>
+
+      <span class="ig-trace ig-trace-n"><i></i></span>
+      <span class="ig-trace ig-trace-e"><i></i></span>
+      <span class="ig-trace ig-trace-s"><i></i></span>
+      <span class="ig-trace ig-trace-w"><i></i></span>
+
+      {
+        systems.map((s, i) =>
+          Array.from({ length: s.layers }, (_, k) => (
+            <div class={`bx ig-sys ig-sys-${i}`} style={`left:${s.x}%;top:${s.y}%;--h:2.2cqw;--z:${k * 3}cqw`}>
+              {faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}
+            </div>
+          ))
+        )
+      }
+
+      <div class="bx ig-chip" style="--h:4cqw">
+        {faces.map((f) => <span class={`bx-f bx-${f}`}></span>)}
+        <span class="ig-chip-core"></span>
+        <span class="ig-tag">AI</span>
+      </div>
+      <span class="ig-beam"></span>
+      {sparks.map(([x, y], i) => <span class={`ig-spark ig-spark-${i}`} style={`left:${x}%;top:${y}%`}></span>)}
+      <div class="ig-net-slot">
+        <svg class="ig-net" viewBox="0 0 200 120">
+          {edges.map(([x1, y1, x2, y2]) => <line class="ig-edge" x1={x1} y1={y1} x2={x2} y2={y2} />)}
+          {edges.map(([x1, y1, x2, y2], i) => hot.includes(i) && <line class={`ig-sig ig-sig-${hot.indexOf(i)}`} x1={x1} y1={y1} x2={x2} y2={y2} pathLength="1" />)}
+          {layers.flat().map(([x, y], i) => <circle class={`ig-node ig-node-${i % 6}`} cx={x} cy={y} r="5" />)}
+        </svg>
+      </div>
+      {pins.map((p) => <span class="ig-pin ig-pin-n" style={`--p:${p}`}></span>)}
+      {pins.map((p) => <span class="ig-pin ig-pin-s" style={`--p:${p}`}></span>)}
+      {pins.map((p) => <span class="ig-pin ig-pin-e" style={`--p:${p}`}></span>)}
+      {pins.map((p) => <span class="ig-pin ig-pin-w" style={`--p:${p}`}></span>)}
+    </div>
+  </div>
+</figure>
