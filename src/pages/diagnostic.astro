@@ -217,16 +217,22 @@ const phaseIcons = [
         </p>
       </div>
 
-      <div class="dg-inct">
-        <div class="dg-inct-row dg-inct-head m-reveal">
-          <span></span><span class="sv-label">Free assessment</span><span class="sv-label">Paid finding</span>
-        </div>
+      <div class="dg-circles">
         {
-          incentive.map((r) => (
-            <div class="dg-inct-row m-reveal">
-              <span class="dg-inct-key">{r.key}</span>
-              <span class="dg-inct-free"><span class="dg-inct-cell">Free assessment</span>{r.free}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.free * 100)}%`}></span></span>}</span>
-              <span class="dg-inct-paid"><span class="dg-inct-cell">Paid finding</span>{r.paid}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.paid * 100)}%`}></span></span>}</span>
+          [
+            { key: 'free', title: 'Free assessment' },
+            { key: 'paid', title: 'Paid finding' },
+          ].map((side) => (
+            <div class={`dg-circ is-${side.key} m-reveal`}>
+              <p class="dg-circ-title">{side.title}</p>
+              <ul class="dg-circ-list">
+                {incentive.map((r) => (
+                  <li>
+                    <span class="dg-circ-q">{r.key}</span>
+                    <span class="dg-circ-a">{side.key === 'free' ? r.free : r.paid}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))
         }

@@ -6611,3 +6611,48 @@ html:not([data-theme='dark']) .sh-panel {
   @keyframes rf-run { from { stroke-dashoffset: 0.12; } to { stroke-dashoffset: -1; } }
 }
 @media (max-width: 1024px) { .rf { width: 100%; opacity: 0.6; } }
+
+/* "Why it exists": the comparison as two overlapping glass circles. Free
+   assessment dim on the left, paid finding glowing red on the right. */
+.dg-circles { position: relative; display: flex; align-items: center; justify-content: center; }
+.dg-circ {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(260px, 22vw, 320px);
+  aspect-ratio: 1;
+  padding: 36px;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.dg-circ.is-free { background: var(--h-ink-glass); border: 1px solid var(--h-glass-line); }
+.dg-circ.is-paid {
+  margin-left: -44px;
+  background: radial-gradient(circle at 50% 35%, var(--h-glass-red), var(--h-ink-glass) 70%);
+  border: 1.5px solid var(--h-cobalt-light);
+  box-shadow: 0 0 60px -10px var(--h-glow-cobalt), inset 0 0 40px -10px var(--h-glow-cobalt);
+}
+.dg-circ-title { font-size: 11px; font-weight: var(--fw-medium); letter-spacing: 0.16em; text-transform: uppercase; color: var(--h-muted-dark); }
+.dg-circ.is-paid .dg-circ-title { color: var(--h-cobalt-light); }
+.dg-circ-list { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; }
+.dg-circ-list li { display: flex; flex-direction: column; gap: 1px; }
+.dg-circ-q { font-size: 10.5px; letter-spacing: 0.04em; color: var(--h-muted-dark); }
+.dg-circ-a { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: 14.5px; line-height: 1.25; color: var(--h-text-dark); }
+.dg-circ.is-paid .dg-circ-a { color: var(--h-white); }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .dg-circ.is-paid { animation: dg-circ-glow 4s ease-in-out infinite alternate; }
+  @keyframes dg-circ-glow { from { box-shadow: 0 0 40px -14px var(--h-glow-cobalt), inset 0 0 30px -14px var(--h-glow-cobalt); } to { box-shadow: 0 0 80px -6px var(--h-glow-cobalt), inset 0 0 50px -8px var(--h-glow-cobalt); } }
+}
+
+@media (max-width: 1024px) { .dg-circles { margin-top: 32px; } }
+@media (max-width: 640px) {
+  .dg-circles { flex-direction: column; }
+  .dg-circ { width: min(300px, 86vw); }
+  .dg-circ.is-paid { margin-left: 0; margin-top: -24px; }
+}
