@@ -18,8 +18,8 @@ const token = (name) => {
   return m[1].trim();
 };
 
-// The icon follows the redesigned site: white K and a square brand-red
-// period on the deep wine ground, in a rounded tile.
+// The icon is the full wordmark, KalTech with its square brand-red period,
+// in the deep wine on a transparent ground.
 const ground = token('h-ink');
 const letter = token('h-white');
 const dot = token('h-cobalt');
@@ -42,18 +42,16 @@ const SIZES = [
 const browser = await chromium.launch();
 for (const { file, px } of SIZES) {
   const page = await browser.newPage({ viewport: { width: px, height: px }, deviceScaleFactor: 1 });
+  // The full wordmark, fitted to the square, on a transparent ground.
   await page.setContent(`<!doctype html><meta charset="utf-8"><style>
     @font-face { font-family: Sora; src: url('${fontUrl}') format('woff2'); font-weight: 700; }
     html, body { margin: 0; width: ${px}px; height: ${px}px; background: transparent; }
     body { display: flex; align-items: center; justify-content: center; }
-    .tile { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-      background: ${ground}; border-radius: ${file === 'apple-touch-icon.png' ? 0 : Math.round(px * 0.22)}px; }
-    span { position: relative; font-family: Sora; font-weight: 700; font-size: ${Math.round(px * 0.6)}px;
-      letter-spacing: -0.04em; color: ${letter}; line-height: 1;
-      transform: translate(${(-px * 0.04).toFixed(2)}px, ${(-px * 0.01).toFixed(2)}px); }
-    i { position: absolute; right: ${(-px * (px <= 32 ? 0.17 : 0.14)).toFixed(2)}px; bottom: ${(px * 0.085).toFixed(2)}px;
-      width: ${(px * (px <= 32 ? 0.16 : 0.12)).toFixed(2)}px; height: ${(px * (px <= 32 ? 0.16 : 0.12)).toFixed(2)}px; background: ${px <= 32 ? dotSmall : dot}; }
-  </style><div class="tile"><span>K<i></i></span></div>`);
+    span { position: relative; font-family: Sora; font-weight: 700; font-size: ${(px * 0.232).toFixed(2)}px;
+      letter-spacing: -0.05em; color: ${ground}; line-height: 1; white-space: nowrap;
+      transform: translateX(${(-px * 0.03).toFixed(2)}px); }
+    i { position: absolute; right: -0.2em; bottom: 0.1em; width: 0.16em; height: 0.16em; background: ${px <= 32 ? dotSmall : dot}; }
+  </style><span>KalTech<i></i></span>`);
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: join(ROOT, 'public', file), omitBackground: true });
   await page.close();
