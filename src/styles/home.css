@@ -6722,3 +6722,34 @@ html:not([data-theme='dark']) .sh-panel {
     mask-image: linear-gradient(180deg, transparent 0%, black 35%, black 80%, transparent 100%);
   }
 }
+
+/* Insights, featured card: the bench test drawn on the art panel. Three
+   measures, retrieval (red) against fine tuned (light); the third row, the
+   one that decided it, is marked. Bars grow in on reveal. */
+.h-feature-art { display: flex; align-items: center; }
+.bt { position: relative; z-index: 1; width: 100%; padding: clamp(24px, 3vw, 44px); }
+.bt-head { display: flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: var(--fw-medium); letter-spacing: 0.16em; text-transform: uppercase; color: var(--h-on-red); }
+.bt-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--h-sun); }
+.bt-key { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; color: var(--h-text-dark); }
+.bt-sw { width: 14px; height: 6px; border-radius: 3px; }
+.bt-sw-r { background: var(--h-cobalt-light); }
+.bt-sw-f { margin-left: 14px; background: var(--h-lit-5); }
+.bt-row { margin-top: 26px; padding: 16px 18px; border-radius: 16px; background: var(--h-ink-glass); border: 1px solid var(--h-glass-line); }
+.bt-row.is-decided { border-color: var(--h-sun); box-shadow: 0 0 30px -12px var(--h-sun-ring); }
+.bt-row + .bt-row { margin-top: 12px; }
+.bt-label { font-size: 13.5px; font-weight: var(--fw-medium); color: var(--h-white); margin-bottom: 10px; }
+.bt-bar { display: block; height: 8px; border-radius: 4px; background: var(--h-ink-glass); overflow: hidden; }
+.bt-bar + .bt-bar { margin-top: 6px; }
+.bt-bar i { display: block; height: 100%; width: calc(var(--w) * 100%); border-radius: inherit; transform-origin: left center; }
+.bt-bar-r i { background: var(--h-cobalt-light); }
+.bt-bar-f i { background: var(--h-lit-5); }
+.bt-row.is-decided .bt-bar-r i { background: var(--h-sun); }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .bt-bar i { animation: bt-grow 1.4s var(--ease-out-expo) both; }
+  html.m-js .bt-row:nth-of-type(2) .bt-bar i { animation-delay: 0.2s; }
+  html.m-js .bt-row:nth-of-type(3) .bt-bar i { animation-delay: 0.4s; }
+  html.m-js .bt-row.is-decided { animation: bt-mark 2.8s ease-in-out infinite alternate 1.6s; }
+  @keyframes bt-grow { from { transform: scaleX(0); } }
+  @keyframes bt-mark { from { box-shadow: 0 0 20px -14px var(--h-sun-ring); } to { box-shadow: 0 0 44px -8px var(--h-sun-ring); } }
+}

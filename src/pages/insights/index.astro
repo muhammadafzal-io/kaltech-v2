@@ -12,6 +12,14 @@ import Chart3D from '../../components/art/Chart3D.astro';
 const featured = (await getCollection('insights')).find((i) => i.data.featured && i.data.published)!;
 const d = featured.data;
 const at = d.titleAccent ? d.title.indexOf(d.titleAccent) : -1;
+// The bench test as drawn on the feature card: labels from the article's
+// table; bar lengths are qualitative (close, close, not close), not figures.
+// For time to reflect a change, shorter is better.
+const bench = [
+  { label: 'Attributable accuracy', r: 0.82, f: 0.78, decided: false },
+  { label: 'Cost per query at volume', r: 0.6, f: 0.56, decided: false },
+  { label: 'Time to reflect a change', r: 0.14, f: 0.92, decided: true },
+];
 ---
 
 <Base
@@ -56,9 +64,19 @@ const at = d.titleAccent ? d.title.indexOf(d.titleAccent) : -1;
     <div class="h-wrap">
       <a class="h-feature m-reveal" href={`/insights/${featured.id}`}>
         <div class="h-feature-art" role="img" aria-label={d.imageCaption}>
-          <span class="h-shot-square" aria-hidden="true"></span>
-          <span class="h-shot-caption" aria-hidden="true">{d.imageCaption}</span>
-          <span class="h-feature-rings" aria-hidden="true"></span>
+          <div class="bt" aria-hidden="true">
+            <p class="bt-head"><span class="bt-dot"></span>{d.kicker}</p>
+            <p class="bt-key"><span class="bt-sw bt-sw-r"></span>Retrieval<span class="bt-sw bt-sw-f"></span>Fine tuned</p>
+            {
+              bench.map((m) => (
+                <div class={m.decided ? 'bt-row is-decided' : 'bt-row'}>
+                  <p class="bt-label">{m.label}</p>
+                  <span class="bt-bar bt-bar-r"><i style={`--w:${m.r}`}></i></span>
+                  <span class="bt-bar bt-bar-f"><i style={`--w:${m.f}`}></i></span>
+                </div>
+              ))
+            }
+          </div>
         </div>
         <div class="h-feature-body">
           <h2 class="h-feature-title">
