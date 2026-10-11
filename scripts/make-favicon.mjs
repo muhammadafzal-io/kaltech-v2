@@ -18,9 +18,14 @@ const token = (name) => {
   return m[1].trim();
 };
 
-const ground = token('deep');
-const letter = token('paper');
-const dot = token('accent-dark');
+// The icon follows the redesigned site: white K and a square brand-red
+// period on the deep wine ground, in a rounded tile.
+const ground = token('h-ink');
+const letter = token('h-white');
+const dot = token('h-cobalt');
+// At tab size the brand red sinks into the wine, so the 32px icon uses the
+// lighter red and a larger period.
+const dotSmall = token('h-cobalt-light');
 // Embedded rather than linked: a page built with setContent has no base URL,
 // so a file:// font never loads and the mark silently falls back to a serif.
 const fontData = await readFile(join(ROOT, 'node_modules/@fontsource/sora/files/sora-latin-700-normal.woff2'));
@@ -39,15 +44,18 @@ for (const { file, px } of SIZES) {
   const page = await browser.newPage({ viewport: { width: px, height: px }, deviceScaleFactor: 1 });
   await page.setContent(`<!doctype html><meta charset="utf-8"><style>
     @font-face { font-family: Sora; src: url('${fontUrl}') format('woff2'); font-weight: 700; }
-    html, body { margin: 0; width: ${px}px; height: ${px}px; }
-    body { background: ${ground}; display: flex; align-items: center; justify-content: center; }
-    span { font-family: Sora; font-weight: 700; font-size: ${Math.round(px * 0.56)}px;
-      letter-spacing: ${(-px * 0.02).toFixed(2)}px; color: ${letter}; line-height: 1;
-      transform: translateY(${(-px * 0.01).toFixed(2)}px); }
-    i { color: ${dot}; font-style: normal; }
-  </style><span>K<i>.</i></span>`);
+    html, body { margin: 0; width: ${px}px; height: ${px}px; background: transparent; }
+    body { display: flex; align-items: center; justify-content: center; }
+    .tile { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: ${ground}; border-radius: ${file === 'apple-touch-icon.png' ? 0 : Math.round(px * 0.22)}px; }
+    span { position: relative; font-family: Sora; font-weight: 700; font-size: ${Math.round(px * 0.6)}px;
+      letter-spacing: -0.04em; color: ${letter}; line-height: 1;
+      transform: translate(${(-px * 0.04).toFixed(2)}px, ${(-px * 0.01).toFixed(2)}px); }
+    i { position: absolute; right: ${(-px * (px <= 32 ? 0.17 : 0.14)).toFixed(2)}px; bottom: ${(px * 0.085).toFixed(2)}px;
+      width: ${(px * (px <= 32 ? 0.16 : 0.12)).toFixed(2)}px; height: ${(px * (px <= 32 ? 0.16 : 0.12)).toFixed(2)}px; background: ${px <= 32 ? dotSmall : dot}; }
+  </style><div class="tile"><span>K<i></i></span></div>`);
   await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: join(ROOT, 'public', file), omitBackground: false });
+  await page.screenshot({ path: join(ROOT, 'public', file), omitBackground: true });
   await page.close();
   console.log(`  public/${file}  ${px}×${px}`);
 }
