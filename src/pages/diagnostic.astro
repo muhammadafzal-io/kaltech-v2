@@ -72,40 +72,6 @@ const phaseIcons = [
     </div>
   </section>
 
-  <!-- Why it exists -->
-  <section class="h-sec h-dark" id="why">
-    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
-    <div class="h-wrap dg-why">
-      <div>
-        <p class="h-eyebrow m-reveal">Why it exists</p>
-        <h2 class="h-h2 m-reveal">A firm that builds should not be <span class="h-accent">trusted</span> to say what needs building.</h2>
-        <p class="h-body dg-p m-reveal">
-          So we charge for the finding as a document, not as the opening phase of a build. The fee covers
-          the work whatever it concludes, including less than you asked for, or nothing at all.
-        </p>
-        <p class="h-body dg-p m-reveal">
-          Free assessments recommend builds. The fee is not credited against one, because that would bring
-          the incentive back.
-        </p>
-      </div>
-
-      <div class="dg-inct">
-        <div class="dg-inct-row dg-inct-head m-reveal">
-          <span></span><span class="sv-label">Free assessment</span><span class="sv-label">Paid finding</span>
-        </div>
-        {
-          incentive.map((r) => (
-            <div class="dg-inct-row m-reveal">
-              <span class="dg-inct-key">{r.key}</span>
-              <span class="dg-inct-free"><span class="dg-inct-cell">Free assessment</span>{r.free}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.free * 100)}%`}></span></span>}</span>
-              <span class="dg-inct-paid"><span class="dg-inct-cell">Paid finding</span>{r.paid}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.paid * 100)}%`}></span></span>}</span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <!-- The three lenses -->
   <section class="h-sec h-bone" id="lenses">
     <div class="h-wrap">
@@ -229,6 +195,40 @@ const phaseIcons = [
           and their own technology teams. Every figure in it traces to something we saw, not something we
           were told.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it exists -->
+  <section class="h-sec h-dark" id="why">
+    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-wrap dg-why">
+      <div>
+        <p class="h-eyebrow m-reveal">Why it exists</p>
+        <h2 class="h-h2 m-reveal">A firm that builds should not be <span class="h-accent">trusted</span> to say what needs building.</h2>
+        <p class="h-body dg-p m-reveal">
+          So we charge for the finding as a document, not as the opening phase of a build. The fee covers
+          the work whatever it concludes, including less than you asked for, or nothing at all.
+        </p>
+        <p class="h-body dg-p m-reveal">
+          Free assessments recommend builds. The fee is not credited against one, because that would bring
+          the incentive back.
+        </p>
+      </div>
+
+      <div class="dg-inct">
+        <div class="dg-inct-row dg-inct-head m-reveal">
+          <span></span><span class="sv-label">Free assessment</span><span class="sv-label">Paid finding</span>
+        </div>
+        {
+          incentive.map((r) => (
+            <div class="dg-inct-row m-reveal">
+              <span class="dg-inct-key">{r.key}</span>
+              <span class="dg-inct-free"><span class="dg-inct-cell">Free assessment</span>{r.free}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.free * 100)}%`}></span></span>}</span>
+              <span class="dg-inct-paid"><span class="dg-inct-cell">Paid finding</span>{r.paid}{'bars' in r && r.bars && <span class="dg-bar"><span style={`width:${Math.round(r.bars.paid * 100)}%`}></span></span>}</span>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
