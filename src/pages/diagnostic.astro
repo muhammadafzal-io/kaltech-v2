@@ -1,6 +1,7 @@
 ---
 // Rebuilt in the homepage design system (home.css). Copy unchanged; values that
 // feed a diagram live in src/data/diagnostic.json.
+import RibbonField from '../components/art/RibbonField.astro';
 import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
 import HomeFooter from '../components/home/HomeFooter.astro';
@@ -201,7 +202,7 @@ const phaseIcons = [
 
   <!-- Why it exists -->
   <section class="h-sec h-dark" id="why">
-    <div class="h-dark-bg" aria-hidden="true"><span class="h-orb h-orb-c"></span></div>
+    <div class="h-dark-bg" aria-hidden="true"><RibbonField /></div>
     <div class="h-wrap dg-why">
       <div>
         <p class="h-eyebrow m-reveal">Why it exists</p>

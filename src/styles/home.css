@@ -6579,3 +6579,35 @@ html:not([data-theme='dark']) .sh-panel {
 #worked .dg-delta-row:first-child .dg-delta-bar i { background: repeating-linear-gradient(135deg, var(--h-glass-line) 0 6px, transparent 6px 12px); box-shadow: inset 0 0 0 1px var(--h-glass-line); }
 #worked .sv-cap { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--h-glass-line); color: var(--h-text-dark); }
 @media (max-width: 1024px) { #costs .dg-fee { min-height: 0; } }
+
+/* Diagnostic, "Why it exists": light ribbons (RibbonField.astro) on the
+   right; the comparison table becomes glass over them. */
+#why { overflow: hidden; }
+#why > .h-wrap { position: relative; }
+.rf {
+  position: absolute; top: 0; bottom: 0; right: 0; width: 72%;
+  color: var(--h-cobalt);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 30%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 30%);
+}
+.rf svg { width: 100%; height: 100%; max-width: none; }
+.rf path { fill: none; stroke: url(#rf-g); stroke-linecap: round; }
+.rf-glow path { stroke-width: 16; opacity: 0.7; }
+.rf-lines path { stroke-width: 2.2; opacity: 1; color: var(--h-cobalt-light); }
+.rf-lines path:nth-child(3n) { color: var(--h-sun-soft); }
+.rf-lines path.is-hot { stroke-width: 3; color: var(--h-white); }
+.rf-runs path { stroke: var(--h-white); stroke-width: 2.4; stroke-dasharray: 0.12 0.88; stroke-dashoffset: 0.12; opacity: 0.9; filter: drop-shadow(0 0 4px var(--h-white)); }
+
+#why .dg-inct {
+  background: var(--h-ink-glass);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .rf-lines, html.m-js .rf-glow { animation: rf-sway 9s ease-in-out infinite alternate; transform-origin: 20% 50%; }
+  html.m-js .rf-runs path { animation: rf-run 4.5s linear infinite; animation-delay: calc(var(--i) * -0.5s); }
+  @keyframes rf-sway { from { transform: rotate(-1.5deg) scaleY(0.97); } to { transform: rotate(1.5deg) scaleY(1.03); } }
+  @keyframes rf-run { from { stroke-dashoffset: 0.12; } to { stroke-dashoffset: -1; } }
+}
+@media (max-width: 1024px) { .rf { width: 100%; opacity: 0.6; } }
