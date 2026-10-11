@@ -1,6 +1,7 @@
 ---
 // Rebuilt in the homepage design system (home.css). Copy unchanged; values that
 // feed a diagram live in src/data/diagnostic.json.
+import LensSketch from '../components/art/LensSketch.astro';
 import RibbonField from '../components/art/RibbonField.astro';
 import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
@@ -95,6 +96,7 @@ const phaseIcons = [
                 <p class="sv-label">{l.label}</p>
                 <span class="dg-flag">{i === 0 ? diagnostic.gate.binding : diagnostic.gate.clear}</span>
               </div>
+              <div class="dg-lens-art"><LensSketch kind={(['process', 'data', 'economics'] as const)[i]} /></div>
               <h3 class="h-h3">{l.heading}</h3>
               <p class="h-body">{l.body}</p>
               <p class="h-lens-ask"><strong>We ask:</strong> {l.ask}</p>

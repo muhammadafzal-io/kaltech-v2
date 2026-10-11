@@ -6080,10 +6080,10 @@ html:not([data-theme='dark']) .sh-panel {
 /* The three lenses: solid numbers, one neutral card treatment (the binding
    lens keeps its amber flag, not an amber frame), and a subgrid so the
    heading, body and "We ask" line up across the three. */
-#lenses .dg-lenses { grid-template-rows: repeat(3, auto); align-items: stretch; }
+#lenses .dg-lenses { grid-template-rows: repeat(5, auto); align-items: stretch; }
 #lenses .dg-lens {
   display: grid;
-  grid-row: span 4;
+  grid-row: span 5;
   grid-template-rows: subgrid;
   row-gap: 16px;
   box-shadow: none;
@@ -6655,4 +6655,44 @@ html:not([data-theme='dark']) .sh-panel {
   .dg-circles { flex-direction: column; }
   .dg-circ { width: min(300px, 86vw); }
   .dg-circ.is-paid { margin-left: 0; margin-top: -24px; }
+}
+
+/* Lens diagrams (LensSketch.astro): one small animated drawing per lens. */
+.dg-lens-art {
+  display: grid;
+  place-items: center;
+  padding: 14px 10px;
+  background: var(--h-bone);
+  border-radius: 14px;
+}
+.ls { display: block; width: 100%; max-width: 240px; height: auto; overflow: visible; }
+.ls path, .ls ellipse { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ls-track { stroke: var(--h-line); stroke-width: 2; }
+.ls-run { stroke: var(--h-cobalt); stroke-width: 2.6; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ls-run-b { stroke: var(--h-muted); }
+.ls-node { fill: var(--h-cobalt); }
+.ls-end-a { fill: var(--h-white); stroke: var(--h-cobalt); stroke-width: 2; }
+.ls-end-b { fill: var(--h-white); stroke: var(--h-muted); stroke-width: 2; }
+.ls-db path, .ls-db ellipse { stroke: var(--h-ink); stroke-width: 1.8; fill: var(--h-white); }
+.ls-db path:last-child { fill: none; }
+.ls-bar-a { fill: var(--h-cobalt); }
+.ls-bar-b { fill: var(--h-muted); }
+.ls-neq path { stroke: var(--h-cobalt); stroke-width: 2.4; }
+.ls-axis { stroke: var(--h-line); stroke-width: 1.6; }
+.ls-cost { stroke: var(--h-muted); stroke-width: 1.6; stroke-dasharray: 5 5; }
+.ls-run-v { stroke: var(--h-cobalt); }
+.ls-cross { fill: var(--h-sun); stroke: var(--h-white); stroke-width: 2; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.m-js .ls-run { stroke-dashoffset: 1; animation: ls-draw 4.2s ease-in-out infinite; }
+  html.m-js .ls-run-b { animation-delay: 0.35s; }
+  html.m-js .ls-end-a, html.m-js .ls-end-b, html.m-js .ls-cross { transform-box: fill-box; transform-origin: center; animation: ls-pop 4.2s ease-in-out infinite; }
+  html.m-js .ls-end-b { animation-delay: 0.35s; }
+  html.m-js .ls-bar { transform-box: fill-box; transform-origin: bottom; animation: ls-bar 3.2s ease-in-out infinite alternate; }
+  html.m-js .ls-bar-b { animation-delay: -1.6s; }
+  html.m-js .ls-neq { transform-box: fill-box; transform-origin: center; animation: ls-neq 1.6s ease-in-out infinite alternate; }
+  @keyframes ls-draw { 0% { stroke-dashoffset: 1; } 45%, 80% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1; } }
+  @keyframes ls-pop { 0%, 40% { transform: scale(1); } 50% { transform: scale(1.3); } 60%, 100% { transform: scale(1); } }
+  @keyframes ls-bar { from { transform: scaleY(0.75); } to { transform: scaleY(1.05); } }
+  @keyframes ls-neq { from { transform: scale(0.9); } to { transform: scale(1.12); } }
 }
