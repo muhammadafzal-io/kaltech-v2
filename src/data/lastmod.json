@@ -2,16 +2,28 @@
   "_about": "Written by npm run lastmod. The sitemap uses a date only while the file still hashes to the value recorded with it. Unpublished articles are recorded too; they have no page, so no sitemap entry.",
   "files": {
     "src/content/work/ahw-global.md": {
-      "sha256": "93961e128e0b83c2f5c8cbea1a3f09fd36844c540359cafbd93f5f8dc84eef56",
-      "lastmod": "2026-09-24"
+      "sha256": "ffabf5c5dbd4d861bf590cd540aa903f1422d16dce62cda836e7beddf8f7deb0",
+      "lastmod": "2026-10-12"
     },
     "src/content/work/becs.md": {
-      "sha256": "a28e16cfc14c687150e5d8d678848e68d73ccbb23759374fbf66429ee32975b1",
-      "lastmod": "2026-09-24"
+      "sha256": "09daf4f4ee248d3cdf2140c028f1757cd53039e6bbe48490774aaa7e47647f07",
+      "lastmod": "2026-10-12"
+    },
+    "src/content/work/hasanah.md": {
+      "sha256": "326f2511d281cc599dfca02e2ff5bb444439a179849a98da4d11420447f7eb72",
+      "lastmod": "2026-10-12"
     },
     "src/content/work/kalpay.md": {
-      "sha256": "6674a7e3c21d8e33631d5943215f0b43f43f6bd50e08bab30d1e0b48a97eb94e",
-      "lastmod": "2026-09-24"
+      "sha256": "875bf1987fadd1fb791ece2d3559d6e345faf5c935b5e5d313a4fe60d4939740",
+      "lastmod": "2026-10-12"
+    },
+    "src/content/work/uae-property.md": {
+      "sha256": "fb161c7051ac6467ab4d500395d23102ba707771c6144fc1e1892578da84c3ad",
+      "lastmod": "2026-10-12"
+    },
+    "src/content/work/us-aesthetic-clinic.md": {
+      "sha256": "9ad46d604421c9a3634746d0854e6a87fdac055e375a1046e9796551be3ba492",
+      "lastmod": "2026-10-12"
     },
     "src/content/insights/benchmark-scores.md": {
       "sha256": "dc26b9fe5f7caa1adab82ea197e6ed1b781865600e7a6deec2230aeb67326fa9",
@@ -26,8 +38,8 @@
       "lastmod": "2026-09-15"
     },
     "src/content/insights/retrieval-versus-fine-tuning.md": {
-      "sha256": "9e3e5804126d153fdf146e02cabe30e789d38670592ae57c3a454ed8aa6222bb",
-      "lastmod": "2026-09-24"
+      "sha256": "68cc44e19c25757bdc6d764c70240a0dce2d0bf7c892672f48df36ce26056586",
+      "lastmod": "2026-10-08"
     },
     "src/content/insights/told-a-client-not-to-build-it.md": {
       "sha256": "eacd8562e9f1386faedaab7fea17ca6721e8588aada9428385ee51ab376ee98d",

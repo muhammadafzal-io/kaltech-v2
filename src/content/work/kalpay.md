@@ -11,9 +11,9 @@ imageGround: sand
 cardParas:
   - The business was writing consumer loans faster than its operation could process them. Leadership had scoped an automation project assuming the bottleneck was decision speed.
   - Two agents given the same application produced different sequences of work, so there was no single specification to encode. We said so before scoping anything.
-cardFigure: 92%
+cardFigure: 60%
 cardFigureLabel: Decisions returned without manual review
-cardCount: 92
+cardCount: 60
 cardSuffix: "%"
 
 snapshot:
@@ -71,7 +71,7 @@ difference:
   - The scoring model was eventually built. It works because the process underneath it was specified first. Had the original brief been delivered as written, the same model would have been trained on an operation that had never agreed with itself.
 
 outcome:
-  primary: "92%"
+  primary: "60%"
   primaryLabel: Decisions returned without manual review
   secondary:
     - value: Higher

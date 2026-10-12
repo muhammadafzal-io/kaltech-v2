@@ -11,8 +11,8 @@ imageGround: slate
 cardParas:
   - The brief was a full ERP replacement. The operation held more than one working definition of a shipment, a customer and an order, so an ERP built over it would have made every disagreement permanent.
   - We reconciled the definitions first, then migrated workflow by workflow with the existing platform live throughout.
-cardFigure: 3→1
-cardFigureLabel: Definitions of a shipment, consolidated
+cardFigure: 4–6 hrs
+cardFigureLabel: Processing time recovered daily
 cardCount: null
 cardSuffix: ""
 
@@ -71,8 +71,8 @@ difference:
   - The architecture decision. A single-tenant build would have delivered the same operational result and closed off the licensing position entirely. Multi-tenancy cost more at the start and is the reason the platform is now an asset rather than an internal system.
 
 outcome:
-  primary: "3→1"
-  primaryLabel: Definitions of a shipment, consolidated
+  primary: "4–6 hrs"
+  primaryLabel: Processing time recovered daily
   secondary:
     - value: Shorter
       label: Reporting cycle

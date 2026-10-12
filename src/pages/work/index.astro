@@ -43,7 +43,7 @@ const shots: Record<string, string> = {
 
       <div class="h-hero-viz">
         <Screens3D
-          cases={cases.map((c) => ({ title: c.data.title, figure: c.data.cardFigure }))}
+          cases={cases.slice(0, 3).map((c) => ({ title: c.data.title, figure: c.data.cardFigure }))}
           label="Three product screens in a fan, one per engagement, each showing its result."
         />
       </div>
@@ -82,7 +82,7 @@ const shots: Record<string, string> = {
           cases.map((c, i) => (
             <article class={`h-case h-case-${i + 1} m-reveal`} id={c.id}>
               <div class="h-shot">
-                <img class="h-shot-img" src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
+                <img class="h-shot-img" src={(shots[c.id] ?? '/work/case-placeholder.svg')} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
               <div class="h-case-body">
                 <p class="h-case-pill">Constraint found &#8212; {c.data.constraintFound}</p>

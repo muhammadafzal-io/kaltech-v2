@@ -37,8 +37,8 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const DIST = process.env.DIST ?? join(ROOT, 'dist');
 const SITE = 'https://kaltech.online';
 const APEX = 'kaltech.online';
-const ARTICLES = ['/work/kalpay', '/work/ahw-global', '/work/becs', '/insights/retrieval-versus-fine-tuning'];
-const CLIENTS = { '/work/kalpay': 'KalPay', '/work/ahw-global': 'AHW Global', '/work/becs': 'BECS' };
+const ARTICLES = ['/work/kalpay', '/work/ahw-global', '/work/uae-property', '/work/hasanah', '/work/becs', '/work/us-aesthetic-clinic', '/insights/retrieval-versus-fine-tuning'];
+const CLIENTS = { '/work/kalpay': 'KalPay', '/work/ahw-global': 'AHW Global', '/work/uae-property': 'UAE property platform', '/work/hasanah': 'Hasanah', '/work/becs': 'BECS', '/work/us-aesthetic-clinic': 'US aesthetic clinic' };
 
 const fileOf = (route) => join(DIST, route === '/' ? 'index.html' : route === '/404' ? '404.html' : route.slice(1) + '/index.html');
 const exists = (p) => access(p).then(() => true, () => false);

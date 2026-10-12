@@ -60,7 +60,7 @@ const shots: Record<string, string> = {
       </div>
       <div class="h-hero-viz">
         <div class="wk-hero-shot">
-          <img src={shots[entry.id]} alt={d.imageCaption} width="1200" height="900" decoding="async" fetchpriority="high" />
+          <img src={(shots[entry.id] ?? '/work/case-placeholder.svg')} alt={d.imageCaption} width="1200" height="900" decoding="async" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@ const shots: Record<string, string> = {
         {
           others.map((o) => (
             <a class="wk-more-card m-reveal" href={`/work/${o.id}`} data-spotlight>
-              <div class="wk-more-shot"><img src={shots[o.id]} alt={o.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" /></div>
+              <div class="wk-more-shot"><img src={(shots[o.id] ?? '/work/case-placeholder.svg')} alt={o.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" /></div>
               <p class="h-case-pill wk-pill">Constraint found &#8212; {o.data.constraintFound}</p>
               <h3 class="h-h3">{o.data.title}</h3>
               <p class="wk-industry">{o.data.industry}</p>

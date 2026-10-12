@@ -56,7 +56,7 @@ const REQUIRED = {
   ImageObject: ['url'],
 };
 const FORBIDDEN = ['FAQPage', 'Review', 'AggregateRating', 'LocalBusiness', 'ProfessionalService'];
-const ARTICLE_PAGES = ['/work/kalpay', '/work/ahw-global', '/work/becs', '/insights/retrieval-versus-fine-tuning'];
+const ARTICLE_PAGES = ['/work/kalpay', '/work/ahw-global', '/work/uae-property', '/work/hasanah', '/work/becs', '/work/us-aesthetic-clinic', '/insights/retrieval-versus-fine-tuning'];
 
 const file = (route) => join(DIST, route === '/' ? 'index.html' : route.slice(1) + '/index.html');
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');

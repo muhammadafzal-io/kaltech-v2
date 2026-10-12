@@ -291,61 +291,109 @@ Every unknown on the site is the literal string `[PLACEHOLDER]`. No other conven
 use. The list is generated from source, so file and line are exact.
 
 <!-- placeholders:start -->
-**57** occurrences of `[PLACEHOLDER]` in **12** source files, rendering as **56** in the built site (see the notes for lines that render more than once). Regenerate with `npm run placeholders` after a build.
+**101** occurrences of `[PLACEHOLDER]` in **5** source files, rendering as **144** in the built site (see the notes for lines that render more than once). Regenerate with `npm run placeholders` after a build.
 
 | # | Route | Source | n | Context | Note |
 |---|---|---|---|---|---|
-| 1 | `/insights/retrieval-versus-fine-tuning` | `src/content/insights/retrieval-versus-fine-tuning.md:66` | 2 | `Attributable accuracy [PLACEHOLDER] [PLACEHOLDER]` |  |
-| 2 | `/insights/retrieval-versus-fine-tuning` | `src/content/insights/retrieval-versus-fine-tuning.md:67` | 2 | `Cost per query at volume [PLACEHOLDER] [PLACEHOLDER]` |  |
-| 3 | `/insights/retrieval-versus-fine-tuning` | `src/content/insights/retrieval-versus-fine-tuning.md:68` | 2 | `Time to reflect a change [PLACEHOLDER] [PLACEHOLDER]` |  |
-| 4 | `/insights/retrieval-versus-fine-tuning` | `src/content/insights/retrieval-versus-fine-tuning.md:69` | 2 | `Volume at which cost clears [PLACEHOLDER] [PLACEHOLDER]` |  |
-| 5 | `/work/ahw-global` | `src/content/work/ahw-global.md:74` | 1 | `primary: "[PLACEHOLDER]"` |  |
-| 6 | `/work/ahw-global` | `src/content/work/ahw-global.md:77` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 7 | `/work/ahw-global` | `src/content/work/ahw-global.md:79` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 8 | `/work/ahw-global` | `src/content/work/ahw-global.md:81` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 9 | `/work/ahw-global` | `src/content/work/ahw-global.md:83` | 1 | `…: Figures drawn from client-side reporting over [PLACEHOLDER].` |  |
-| 10 | `/work/becs` | `src/content/work/becs.md:74` | 1 | `primary: "[PLACEHOLDER]"` |  |
-| 11 | `/work/becs` | `src/content/work/becs.md:77` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 12 | `/work/becs` | `src/content/work/becs.md:79` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 13 | `/work/becs` | `src/content/work/becs.md:81` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 14 | `/work/becs` | `src/content/work/becs.md:83` | 1 | `…: Figures drawn from client-side reporting over [PLACEHOLDER].` |  |
-| 15 | `/, /work, /work/ahw-global, /work/becs` | `src/content/work/kalpay.md:7` | 1 | `constraintFound: "[PLACEHOLDER]"` | KalPay constraint. Rendered by the case cards, not by the KalPay page itself. |
-| 16 | `/work/kalpay` | `src/content/work/kalpay.md:27` | 1 | `value: "[PLACEHOLDER]"` |  |
-| 17 | `/work/kalpay` | `src/content/work/kalpay.md:36` | 1 | `figure: "[PLACEHOLDER]"` |  |
-| 18 | `/work/kalpay` | `src/content/work/kalpay.md:74` | 1 | `primary: "[PLACEHOLDER]"` |  |
-| 19 | `/work/kalpay` | `src/content/work/kalpay.md:77` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 20 | `/work/kalpay` | `src/content/work/kalpay.md:79` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 21 | `/work/kalpay` | `src/content/work/kalpay.md:81` | 1 | `- value: "[PLACEHOLDER]"` |  |
-| 22 | `/work/kalpay` | `src/content/work/kalpay.md:83` | 1 | `…: Figures drawn from client-side reporting over [PLACEHOLDER].` |  |
-| 23 | `/about` | `src/data/about.json:22` | 1 | `…Figures verified against delivery records as at [PLACEHOLDER].",` | The date the record was verified. |
-| 24 | `/diagnostic` | `src/data/diagnostic.json:3` | 1 | `"weeks": "[PLACEHOLDER]",` | The diagnostic length in weeks. Renders twice: the How it runs heading and its timeline scale. |
-| 25 | `/diagnostic` | `src/data/diagnostic.json:4` | 1 | `"findingPages": "[PLACEHOLDER]",` | The finding length. Renders twice: the facsimile foot and the note beside it. |
-| 26 | `/diagnostic` | `src/data/diagnostic.json:82` | 1 | `"[PLACEHOLDER] hours across the people who perform the work.",` | The hours asked of the client's staff. |
-| 27 | `/diagnostic` | `src/data/diagnostic.json:91` | 1 | `"page": "[PLACEHOLDER]"` | One contents line of the finding facsimile: its page number. |
-| 28 | `/diagnostic` | `src/data/diagnostic.json:98` | 1 | `"page": "[PLACEHOLDER]"` | One contents line of the finding facsimile: its page number. |
-| 29 | `/diagnostic` | `src/data/diagnostic.json:105` | 1 | `"page": "[PLACEHOLDER]"` | One contents line of the finding facsimile: its page number. |
-| 30 | `/diagnostic` | `src/data/diagnostic.json:112` | 1 | `"page": "[PLACEHOLDER]"` | One contents line of the finding facsimile: its page number. |
-| 31 | `(not rendered)` | `src/data/footprint.json:24` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 32 | `(not rendered)` | `src/data/footprint.json:25` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 33 | `(not rendered)` | `src/data/footprint.json:26` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 34 | `(not rendered)` | `src/data/footprint.json:27` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 35 | `(not rendered)` | `src/data/footprint.json:28` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 36 | `(not rendered)` | `src/data/footprint.json:29` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 37 | `(not rendered)` | `src/data/footprint.json:30` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false }` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
-| 38 | `(data)` | `src/data/services.json:37` | 1 | `…stic finding and delivered in stages, typically [PLACEHOLDER], with the existing operation live throughout an…` | Was `[X to Y]` in the standalone Services copy. |
-| 39 | `(data)` | `src/data/services.json:57` | 1 | `…e the work outlasts a single build. Reviewed at [PLACEHOLDER] intervals against what it has moved, rather tha…` | Was `[X]` in the standalone Services copy. |
-| 40 | `/diagnostic` | `src/pages/diagnostic.astro:19` | 1 | `{ label: 'Duration', value: '[PLACEHOLDER]' },` |  |
-| 41 | `/diagnostic` | `src/pages/diagnostic.astro:20` | 1 | `{ label: 'Fee', value: '[PLACEHOLDER]' },` |  |
-| 42 | `/diagnostic` | `src/pages/diagnostic.astro:290` | 1 | `<Figure value="[PLACEHOLDER]" label="Fixed fee, agreed in advance" />` |  |
-| 43 | `/diagnostic` | `src/pages/diagnostic.astro:333` | 1 | `value="[PLACEHOLDER]"` |  |
-| 44 | `/diagnostic` | `src/pages/diagnostic.astro:334` | 1 | `label="Of the last [PLACEHOLDER] diagnostics recommended less than the client as…` |  |
-| 45 | `/diagnostic` | `src/pages/diagnostic.astro:338` | 1 | `<Figure value="[PLACEHOLDER]" label="Recommended nothing be built" size="md"…` |  |
-| 46 | `/diagnostic` | `src/pages/diagnostic.astro:341` | 1 | `Figures cover [PLACEHOLDER].` |  |
-| 47 | `/diagnostic` | `src/pages/diagnostic.astro:364` | 1 | `[PLACEHOLDER] came in asking for a` | Was `[PLACEHOLDER — KALPAY, PENDING CONSTRAINT CONFIRMATION]` in the export. |
-| 48 | `/diagnostic` | `src/pages/diagnostic.astro:369` | 1 | `…ostic ran all three lenses. The binding one was [PLACEHOLDER].` |  |
-| 49 | `/diagnostic` | `src/pages/diagnostic.astro:385` | 1 | `Scope requested · [PLACEHOLDER]` |  |
-| 50 | `/diagnostic` | `src/pages/diagnostic.astro:389` | 1 | `Scope delivered · [PLACEHOLDER]` |  |
-| 51 | `/privacy` | `src/pages/privacy.astro:19` | 1 | `[PLACEHOLDER]` |  |
-| 52 | `/services` | `src/pages/services.astro:51` | 1 | `constraint: '[PLACEHOLDER]',` | KalPay constraint. Was `[process]` in the standalone Services copy. |
-| 53 | `/terms` | `src/pages/terms.astro:19` | 1 | `[PLACEHOLDER]` |  |
+| 1 | `/work/hasanah` | `src/content/work/hasanah.md:4` | 1 | `standfirst: "[PLACEHOLDER]"` |  |
+| 2 | `/work/hasanah` | `src/content/work/hasanah.md:8` | 1 | `imageCaption: "[PLACEHOLDER]"` |  |
+| 3 | `/work/hasanah` | `src/content/work/hasanah.md:12` | 1 | `- "[PLACEHOLDER]"` |  |
+| 4 | `/work/hasanah` | `src/content/work/hasanah.md:13` | 1 | `- "[PLACEHOLDER]"` |  |
+| 5 | `/work/hasanah` | `src/content/work/hasanah.md:23` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 6 | `/work/hasanah` | `src/content/work/hasanah.md:25` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 7 | `/work/hasanah` | `src/content/work/hasanah.md:29` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 8 | `/work/hasanah` | `src/content/work/hasanah.md:32` | 1 | `- "[PLACEHOLDER]"` |  |
+| 9 | `/work/hasanah` | `src/content/work/hasanah.md:38` | 1 | `- "[PLACEHOLDER]"` |  |
+| 10 | `/work/hasanah` | `src/content/work/hasanah.md:41` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 11 | `/work/hasanah` | `src/content/work/hasanah.md:42` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 12 | `/work/hasanah` | `src/content/work/hasanah.md:43` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 13 | `/work/hasanah` | `src/content/work/hasanah.md:44` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 14 | `/work/hasanah` | `src/content/work/hasanah.md:45` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 15 | `/work/hasanah` | `src/content/work/hasanah.md:46` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 16 | `/work/hasanah` | `src/content/work/hasanah.md:51` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 17 | `/work/hasanah` | `src/content/work/hasanah.md:52` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 18 | `/work/hasanah` | `src/content/work/hasanah.md:54` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 19 | `/work/hasanah` | `src/content/work/hasanah.md:55` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 20 | `/work/hasanah` | `src/content/work/hasanah.md:57` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 21 | `/work/hasanah` | `src/content/work/hasanah.md:58` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 22 | `/work/hasanah` | `src/content/work/hasanah.md:61` | 1 | `- "[PLACEHOLDER]"` |  |
+| 23 | `/work/hasanah` | `src/content/work/hasanah.md:67` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 24 | `/work/hasanah` | `src/content/work/hasanah.md:68` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 25 | `/work/hasanah` | `src/content/work/hasanah.md:69` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 26 | `/work/hasanah` | `src/content/work/hasanah.md:70` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 27 | `/work/hasanah` | `src/content/work/hasanah.md:71` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 28 | `/work/hasanah` | `src/content/work/hasanah.md:72` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 29 | `/work/hasanah` | `src/content/work/hasanah.md:73` | 1 | `footnote: "[PLACEHOLDER]"` |  |
+| 30 | `/work/hasanah` | `src/content/work/hasanah.md:76` | 1 | `title: "Hasanah: [PLACEHOLDER] \| KalTech"` |  |
+| 31 | `/work/hasanah` | `src/content/work/hasanah.md:77` | 1 | `description: "[PLACEHOLDER]"` |  |
+| 32 | `/work/uae-property` | `src/content/work/uae-property.md:4` | 1 | `standfirst: "[PLACEHOLDER]"` |  |
+| 33 | `/work/uae-property` | `src/content/work/uae-property.md:8` | 1 | `imageCaption: "[PLACEHOLDER]"` |  |
+| 34 | `/work/uae-property` | `src/content/work/uae-property.md:12` | 1 | `- "[PLACEHOLDER]"` |  |
+| 35 | `/work/uae-property` | `src/content/work/uae-property.md:13` | 1 | `- "[PLACEHOLDER]"` |  |
+| 36 | `/work/uae-property` | `src/content/work/uae-property.md:23` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 37 | `/work/uae-property` | `src/content/work/uae-property.md:25` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 38 | `/work/uae-property` | `src/content/work/uae-property.md:29` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 39 | `/work/uae-property` | `src/content/work/uae-property.md:32` | 1 | `- "[PLACEHOLDER]"` |  |
+| 40 | `/work/uae-property` | `src/content/work/uae-property.md:38` | 1 | `- "[PLACEHOLDER]"` |  |
+| 41 | `/work/uae-property` | `src/content/work/uae-property.md:41` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 42 | `/work/uae-property` | `src/content/work/uae-property.md:42` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 43 | `/work/uae-property` | `src/content/work/uae-property.md:43` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 44 | `/work/uae-property` | `src/content/work/uae-property.md:44` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 45 | `/work/uae-property` | `src/content/work/uae-property.md:45` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 46 | `/work/uae-property` | `src/content/work/uae-property.md:46` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 47 | `/work/uae-property` | `src/content/work/uae-property.md:51` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 48 | `/work/uae-property` | `src/content/work/uae-property.md:52` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 49 | `/work/uae-property` | `src/content/work/uae-property.md:54` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 50 | `/work/uae-property` | `src/content/work/uae-property.md:55` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 51 | `/work/uae-property` | `src/content/work/uae-property.md:57` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 52 | `/work/uae-property` | `src/content/work/uae-property.md:58` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 53 | `/work/uae-property` | `src/content/work/uae-property.md:61` | 1 | `- "[PLACEHOLDER]"` |  |
+| 54 | `/work/uae-property` | `src/content/work/uae-property.md:67` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 55 | `/work/uae-property` | `src/content/work/uae-property.md:68` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 56 | `/work/uae-property` | `src/content/work/uae-property.md:69` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 57 | `/work/uae-property` | `src/content/work/uae-property.md:70` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 58 | `/work/uae-property` | `src/content/work/uae-property.md:71` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 59 | `/work/uae-property` | `src/content/work/uae-property.md:72` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 60 | `/work/uae-property` | `src/content/work/uae-property.md:73` | 1 | `footnote: "[PLACEHOLDER]"` |  |
+| 61 | `/work/uae-property` | `src/content/work/uae-property.md:76` | 1 | `title: "UAE property platform: [PLACEHOLDER] \| KalTech"` |  |
+| 62 | `/work/uae-property` | `src/content/work/uae-property.md:77` | 1 | `description: "[PLACEHOLDER]"` |  |
+| 63 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:4` | 1 | `standfirst: "[PLACEHOLDER]"` |  |
+| 64 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:8` | 1 | `imageCaption: "[PLACEHOLDER]"` |  |
+| 65 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:12` | 1 | `- "[PLACEHOLDER]"` |  |
+| 66 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:13` | 1 | `- "[PLACEHOLDER]"` |  |
+| 67 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:23` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 68 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:25` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 69 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:29` | 1 | `value: "[PLACEHOLDER]"` |  |
+| 70 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:32` | 1 | `- "[PLACEHOLDER]"` |  |
+| 71 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:38` | 1 | `- "[PLACEHOLDER]"` |  |
+| 72 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:41` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 73 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:42` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 74 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:43` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 75 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:44` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 76 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:45` | 1 | `- heading: "[PLACEHOLDER]"` |  |
+| 77 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:46` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 78 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:51` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 79 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:52` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 80 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:54` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 81 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:55` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 82 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:57` | 1 | `heading: "[PLACEHOLDER]"` |  |
+| 83 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:58` | 1 | `body: "[PLACEHOLDER]"` |  |
+| 84 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:61` | 1 | `- "[PLACEHOLDER]"` |  |
+| 85 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:67` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 86 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:68` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 87 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:69` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 88 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:70` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 89 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:71` | 1 | `- value: "[PLACEHOLDER]"` |  |
+| 90 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:72` | 1 | `label: "[PLACEHOLDER]"` |  |
+| 91 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:73` | 1 | `footnote: "[PLACEHOLDER]"` |  |
+| 92 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:76` | 1 | `title: "US aesthetic clinic: [PLACEHOLDER] \| KalTech"` |  |
+| 93 | `/work/us-aesthetic-clinic` | `src/content/work/us-aesthetic-clinic.md:77` | 1 | `description: "[PLACEHOLDER]"` |  |
+| 94 | `(not rendered)` | `src/data/footprint.json:24` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 95 | `(not rendered)` | `src/data/footprint.json:25` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 96 | `(not rendered)` | `src/data/footprint.json:26` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 97 | `(not rendered)` | `src/data/footprint.json:27` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 98 | `(not rendered)` | `src/data/footprint.json:28` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 99 | `(not rendered)` | `src/data/footprint.json:29` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false },` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 100 | `(not rendered)` | `src/data/footprint.json:30` | 1 | `{ "country": "[PLACEHOLDER]", "confirmed": false }` | A client country. Renders nowhere until it is confirmed and five countries are, which opens the homepage map. |
+| 101 | `/services` | `src/pages/services.astro:43` | 1 | `…(c) => ({ id: c.id, routing: routing[c.id] ?? ['[PLACEHOLDER]'] }));` |  |
 <!-- placeholders:end -->

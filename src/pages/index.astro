@@ -380,7 +380,7 @@ const clientLogos = [
           cases.map((c, i) => (
             <a class={`h-case h-case-${tone[i]} h-case-${i + 1} m-reveal`} href={`/work/${c.id}`} data-spotlight>
               <div class="h-shot">
-                <img class="h-shot-img" src={shots[c.id]} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
+                <img class="h-shot-img" src={(shots[c.id] ?? '/work/case-placeholder.svg')} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
               <div class="h-case-body">
                 <p class="h-case-pill">Constraint found &#8212; {c.data.constraintFound}</p>

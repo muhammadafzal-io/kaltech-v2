@@ -31,11 +31,16 @@ const commitments = [
   { head: 'People', body: 'The engineers named at scoping are the engineers on the work. Where that has to change, you hear it before it happens rather than afterwards.' },
 ];
 
-const proof = [
-  { id: 'kalpay', routing: ['01 Consulting', '02 Development'] },
-  { id: 'ahw-global', routing: ['02 Development'] },
-  { id: 'becs', routing: ['02 Development'] },
-];
+// Every case, in the site order. Routing is known for the three original
+// engagements; the rest await it.
+const routing: Record<string, string[]> = {
+  kalpay: ['01 Consulting', '02 Development'],
+  'ahw-global': ['02 Development'],
+  becs: ['02 Development'],
+};
+const proof = Object.values(cases)
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((c) => ({ id: c.id, routing: routing[c.id] ?? ['[PLACEHOLDER]'] }));
 
 const set = fit.services;
 const need = set.items.length - 1;
