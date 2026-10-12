@@ -49,27 +49,6 @@ const shots: Record<string, string> = {
         />
       </div>
     </div>
-    <div class="h-wrap wk-strip-wrap">
-      <nav class="wk-idx wk-idx-strip" aria-label="The three engagements">
-        <ol class="wk-idx-list">
-          {
-            cases.map((c) => (
-              <li>
-                <a class="wk-idx-link" href={`#${c.id}`}>
-                  <span class="wk-idx-text">
-                    <span class="wk-idx-name">{c.data.title}</span>
-                    <span class="wk-idx-meta">{c.data.industryShort}</span>
-                    <span class="wk-idx-meta">Constraint found &#8212; {c.data.constraintFound}</span>
-                    <span class="wk-idx-meta">{c.data.cardFigureLabel}</span>
-                  </span>
-                  <span class="wk-idx-fig">{c.data.cardFigure}</span>
-                </a>
-              </li>
-            ))
-          }
-        </ol>
-      </nav>
-    </div>
   </section>
 
   <section class="h-sec h-bone" id="cases">
