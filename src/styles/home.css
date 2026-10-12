@@ -6820,3 +6820,17 @@ html:not([data-theme='dark']) .sh-panel {
   .cs-dots { display: none; }
   .cs-nav { justify-content: space-between; }
 }
+
+/* /work hero: six screens. Smaller screens on a deeper platform when there
+   are more than three. */
+.sc:has(.sc-slot-3) .sc-screen { left: -8.5cqw; width: 17cqw; height: 23cqw; padding: 1.8cqw; gap: 1.1cqw; }
+.sc:has(.sc-slot-3) .sc-fig { font-size: 3.3cqw; }
+.sc:has(.sc-slot-3) .sc-name { font-size: 1.8cqw; }
+.sc:has(.sc-slot-3) .sc-stand { left: -5cqw; width: 10cqw; }
+.sc:has(.sc-slot-3) .sc-rim { top: 30%; height: 50%; }
+@media screen and (prefers-reduced-motion: no-preference) {
+  .sc-slot-3 .sc-screen { animation-delay: -1s; }
+  .sc-slot-4 .sc-screen { animation-delay: -3s; }
+  .sc-slot-5 .sc-screen { animation-delay: -5s; }
+}
+.sc:has(.sc-slot-3) .sc-fig.is-long { font-size: 2.7cqw; }

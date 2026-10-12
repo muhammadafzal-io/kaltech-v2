@@ -1,13 +1,18 @@
 ---
-// WORK: "Every one of these started with a constraint." Three glass product
-// screens stand in a fan on a platform, one per engagement, each showing its
+// WORK: "Every one of these started with a constraint." Glass product
+// screens stand on a platform in two rows, one per engagement, each showing its
 // own result. The centre one stands forward. Real CSS 3D.
 interface Props { cases: { title: string; figure: string }[]; label: string }
 const { cases, label } = Astro.props;
+// Up to six screens in two rows on the platform: three at the back, three
+// forward, offset so every screen shows.
 const fan = [
-  { x: -27, y: 6, r: 8 },
-  { x: 0, y: 12, r: 0 },
-  { x: 27, y: 6, r: -8 },
+  { x: -34, y: -10, r: 6 },
+  { x: -4, y: -8, r: 0 },
+  { x: 26, y: -10, r: -6 },
+  { x: -16, y: 26, r: 4 },
+  { x: 14, y: 30, r: -2 },
+  { x: 36, y: 22, r: -6 },
 ];
 ---
 
@@ -22,7 +27,7 @@ const fan = [
           <div class={`sc-slot sc-slot-${i}`} style={`--x:${fan[i].x}cqw;--y:${fan[i].y}cqw;--r:${fan[i].r}deg`}>
             <div class="sc-screen">
               <span class="sc-bar"><i></i><i></i><i></i></span>
-              <span class="sc-fig">{c.figure}</span>
+              <span class={c.figure.length > 6 ? 'sc-fig is-long' : 'sc-fig'}>{c.figure}</span>
               <span class="sc-name">{c.title}</span>
               <span class="sc-lines"><i></i><i></i><i></i></span>
             </div>

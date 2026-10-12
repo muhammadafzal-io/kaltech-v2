@@ -44,8 +44,8 @@ const shots: Record<string, string> = {
 
       <div class="h-hero-viz">
         <Screens3D
-          cases={cases.slice(0, 3).map((c) => ({ title: c.data.title, figure: c.data.cardFigure }))}
-          label="Three product screens in a fan, one per engagement, each showing its result."
+          cases={cases.map((c) => ({ title: c.data.title, figure: c.data.cardFigure }))}
+          label="Six product screens on a platform, one per engagement, each showing its result."
         />
       </div>
     </div>
