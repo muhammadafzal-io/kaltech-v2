@@ -1,4 +1,5 @@
 ---
+import CaseSlider from '../components/home/CaseSlider.astro';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import HomeHeader from '../components/home/HomeHeader.astro';
@@ -375,10 +376,10 @@ const clientLogos = [
         <ImageWheel cases={cases} featured={featured} />
       </div>
 
-      <div class="h-bento">
+      <div class="h-bento cs-track m-reveal" tabindex="0" aria-label="Case studies, scroll sideways">
         {
           cases.map((c, i) => (
-            <a class={`h-case h-case-${tone[i]} h-case-${i + 1} m-reveal`} href={`/work/${c.id}`} data-spotlight>
+            <a class={`h-case h-case-${tone[i]} h-case-${i + 1}`} href={`/work/${c.id}`} data-spotlight>
               <div class="h-shot">
                 <img class="h-shot-img" src={(shots[c.id] ?? '/work/case-placeholder.svg')} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
@@ -409,6 +410,7 @@ const clientLogos = [
           ))
         }
       </div>
+      <CaseSlider count={cases.length} label="case study" />
 
       <p class="h-pull h-pull-light m-reveal">
         Senior engineers on the work throughout. No junior tier absorbing the delivery.

@@ -1,4 +1,5 @@
 ---
+import CaseSlider from '../../components/home/CaseSlider.astro';
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import HomeHeader from '../../components/home/HomeHeader.astro';
@@ -77,10 +78,10 @@ const shots: Record<string, string> = {
         <ImageWheel cases={cases} featured={featured} />
       </div>
 
-      <div class="h-bento">
+      <div class="h-bento cs-track m-reveal" tabindex="0" aria-label="Case studies, scroll sideways">
         {
           cases.map((c, i) => (
-            <article class={`h-case h-case-${i + 1} m-reveal`} id={c.id}>
+            <article class={`h-case h-case-${i + 1}`} id={c.id}>
               <div class="h-shot">
                 <img class="h-shot-img" src={(shots[c.id] ?? '/work/case-placeholder.svg')} alt={c.data.imageCaption} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
@@ -111,6 +112,7 @@ const shots: Record<string, string> = {
           ))
         }
       </div>
+      <CaseSlider count={cases.length} label="case study" />
 
       <blockquote class="h-pull h-pull-light m-reveal">
         Every engagement on this page began with a finding that contradicted the brief.

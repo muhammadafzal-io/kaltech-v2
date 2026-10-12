@@ -6753,3 +6753,70 @@ html:not([data-theme='dark']) .sh-panel {
   @keyframes bt-grow { from { transform: scaleX(0); } }
   @keyframes bt-mark { from { box-shadow: 0 0 20px -14px var(--h-sun-ring); } to { box-shadow: 0 0 44px -8px var(--h-sun-ring); } }
 }
+
+/* ==========================================================================
+   Case slider (homepage Selected Work and /work): one case per slide,
+   scroll-snap, a slice of the next card showing. Works by swipe or scroll
+   without JavaScript; CaseSlider.astro adds arrows, a counter and dots.
+   ========================================================================== */
+:is(#work, #cases) .cs-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 92%;
+  grid-template-columns: none;
+  gap: 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+:is(#work, #cases) .cs-track::-webkit-scrollbar { display: none; }
+:is(#work, #cases) .cs-track:focus-visible { outline: 2px solid var(--h-cobalt); outline-offset: 6px; border-radius: var(--h-r-lg); }
+
+:is(#work, #cases) .cs-track > .h-case,
+:is(#work, #cases) .cs-track > .h-case:nth-child(even) {
+  grid-column: auto;
+  flex-direction: row;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+@media (hover: hover) {
+  :is(#work, #cases) .cs-track > .h-case:hover { translate: none; }
+}
+
+/* Controls. */
+.cs-nav { display: none; align-items: center; gap: 18px; margin-top: 24px; }
+.cs-nav.is-ready { display: flex; }
+.cs-arrow {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  color: var(--h-ink);
+  background: var(--h-white);
+  border: 1px solid var(--h-line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--dur-hover) ease, color var(--dur-hover) ease, border-color var(--dur-hover) ease;
+}
+.cs-arrow:hover:not(:disabled) { color: var(--h-white); background: var(--h-cobalt); border-color: var(--h-cobalt); }
+.cs-arrow:disabled { opacity: 0.35; cursor: default; }
+.cs-count { font-family: var(--font-display); font-weight: var(--fw-semibold); font-size: 15px; letter-spacing: 0.04em; color: var(--h-muted); font-variant-numeric: tabular-nums; }
+.cs-count span { color: var(--h-ink); }
+.cs-dots { display: flex; gap: 2px; margin-left: auto; margin-right: 6px; }
+.cs-dot { position: relative; width: 28px; height: 44px; padding: 0; background: none; border: 0; cursor: pointer; }
+.cs-dot::after { content: ''; position: absolute; left: 4px; right: 4px; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; background: var(--h-line); transition: background var(--dur-hover) ease; }
+.cs-dot[aria-current]::after { background: var(--h-cobalt); }
+.cs-dot:hover::after { background: var(--h-cobalt-soft); }
+.cs-nav > .cs-arrow:last-child { order: 0; }
+
+@media (max-width: 768px) {
+  :is(#work, #cases) .cs-track { grid-auto-columns: 88%; gap: 14px; }
+  :is(#work, #cases) .cs-track > .h-case,
+  :is(#work, #cases) .cs-track > .h-case:nth-child(even) { flex-direction: column; }
+  .cs-dots { display: none; }
+  .cs-nav { justify-content: space-between; }
+}
